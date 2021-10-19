@@ -1,0 +1,6 @@
+tmp/*
+monitoring-*/manifests/*.yaml
+monitoring-*/manifests/*/*.yaml
+monitoring-*/manifests/*/*/*.yaml
+
+kind
