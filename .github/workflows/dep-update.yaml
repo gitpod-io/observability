@@ -1,0 +1,48 @@
+name: Upgrade to latest versions
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1" # Every monday 00:00
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch:
+          - "release-v0.2.0"
+          - "main"
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.branch }}
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+      - name: Update jsonnet dependencies
+        run: |
+          make update
+          # Reset jsonnetfile.lock.json if no dependencies were updated
+          changedFiles=$(git diff --name-only | grep -v 'jsonnetfile.lock.json')
+          if [[ $changedFiles == "" ]]; then
+            git checkout -- jsonnetfile.lock.json;
+          fi
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "[bot] [${{ matrix.branch }}] Automated dependencies update"
+          title: "[bot] [${{ matrix.branch }}] Automated dependencies update"
+          body: |
+            Looks like some of our dependencies got updated upstream!
+
+            This is an automated PR updating those dependencies.
+            Configuration of the workflow is located in `.github/workflows/dep-update.yaml`
+          delete-branch: true
+          author: "Roboquat <roboquat@gitpod.io>"
+          committer: "Roboquat <roboquat@gitpod.io>"
+          reviewers: "arthursens"
+          branch: "roboquat/automated-dependency-update-${{ matrix.branch }}"
+          base: "${{ matrix.branch }}"
+          # GITHUB_TOKEN cannot be used as it won't trigger CI in a created PR
+          # More in https://github.com/peter-evans/create-pull-request/issues/155
+          token: ${{ secrets.ROBOQUAT_PAT }}
