@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: blobserve
+    app.kubernetes.io/name: gitpod
+    app.kubernetes.io/part-of: kube-prometheus
+  name: gitpod-blobserve
+  namespace: default
+spec:
+  ports:
+  - name: metrics
+    port: 9500
+  selector:
+    component: blobserve

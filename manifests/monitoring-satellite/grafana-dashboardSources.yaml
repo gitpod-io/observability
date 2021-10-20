@@ -1,0 +1,67 @@
+apiVersion: v1
+data:
+  dashboards.yaml: |-
+    {
+        "apiVersion": 1,
+        "providers": [
+            {
+                "folder": "Cross Teams",
+                "folderUid": "",
+                "name": "Cross Teams",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/Cross Teams"
+                },
+                "orgId": 1,
+                "type": "file"
+            },
+            {
+                "folder": "Team IDE",
+                "folderUid": "",
+                "name": "Team IDE",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/Team IDE"
+                },
+                "orgId": 1,
+                "type": "file"
+            },
+            {
+                "folder": "Team Meta",
+                "folderUid": "",
+                "name": "Team Meta",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/Team Meta"
+                },
+                "orgId": 1,
+                "type": "file"
+            },
+            {
+                "folder": "Team Platform",
+                "folderUid": "",
+                "name": "Team Platform",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/Team Platform"
+                },
+                "orgId": 1,
+                "type": "file"
+            },
+            {
+                "folder": "Team Workspace",
+                "folderUid": "",
+                "name": "Team Workspace",
+                "options": {
+                    "path": "/grafana-dashboard-definitions/Team Workspace"
+                },
+                "orgId": 1,
+                "type": "file"
+            }
+        ]
+    }
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/component: grafana
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 8.2.1
+  name: grafana-dashboards
+  namespace: monitoring-satellite

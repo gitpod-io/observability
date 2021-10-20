@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: proxy-caddy
+    app.kubernetes.io/name: gitpod
+    app.kubernetes.io/part-of: kube-prometheus
+  name: gitpod-proxy-caddy
+  namespace: default
+spec:
+  ports:
+  - name: caddy-metrics
+    port: 8003
+  selector:
+    component: proxy

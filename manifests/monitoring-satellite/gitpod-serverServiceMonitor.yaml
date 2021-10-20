@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: gitpod
+    app.kubernetes.io/part-of: kube-prometheus
+  name: gitpod-server
+  namespace: monitoring-satellite
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 1m
+    port: metrics
+    scrapeTimeout: 50s
+  jobLabel: app.kubernetes.io/component
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: server
+      app.kubernetes.io/name: gitpod
+      app.kubernetes.io/part-of: kube-prometheus

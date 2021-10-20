@@ -1,0 +1,133 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: kube-state-metrics
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 2.2.3
+  name: kube-state-metrics
+  namespace: monitoring-satellite
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    honorLabels: true
+    interval: 30s
+    metricRelabelings:
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_cloud_google_com_gke_nodepool
+      targetLabel: nodepool
+    - action: labeldrop
+      regex: label_cloud_google_com_gke_nodepool
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_topology_kubernetes_io_region
+      targetLabel: region
+    - action: labeldrop
+      regex: label_topology_kubernetes_io_region
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_component
+      targetLabel: component
+    - action: labeldrop
+      regex: label_component
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_workspace_type
+      targetLabel: workspace_type
+    - action: labeldrop
+      regex: label_workspace_type
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_owner
+      targetLabel: owner
+    - action: labeldrop
+      regex: label_owner
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_meta_id
+      targetLabel: metaID
+    - action: labeldrop
+      regex: label_meta_id
+    port: https-main
+    relabelings:
+    - action: labeldrop
+      regex: (pod|service|endpoint|namespace)
+    scheme: https
+    scrapeTimeout: 30s
+    tlsConfig:
+      insecureSkipVerify: true
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    metricRelabelings:
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_cloud_google_com_gke_nodepool
+      targetLabel: nodepool
+    - action: labeldrop
+      regex: label_cloud_google_com_gke_nodepool
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_topology_kubernetes_io_region
+      targetLabel: region
+    - action: labeldrop
+      regex: label_topology_kubernetes_io_region
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_component
+      targetLabel: component
+    - action: labeldrop
+      regex: label_component
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_workspace_type
+      targetLabel: workspace_type
+    - action: labeldrop
+      regex: label_workspace_type
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_owner
+      targetLabel: owner
+    - action: labeldrop
+      regex: label_owner
+    - action: replace
+      regex: (.*)
+      replacement: $1
+      sourceLabels:
+      - label_meta_id
+      targetLabel: metaID
+    - action: labeldrop
+      regex: label_meta_id
+    port: https-self
+    scheme: https
+    tlsConfig:
+      insecureSkipVerify: true
+  jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: exporter
+      app.kubernetes.io/name: kube-state-metrics
+      app.kubernetes.io/part-of: kube-prometheus
