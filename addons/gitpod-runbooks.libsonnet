@@ -2,7 +2,7 @@ local k8sUtils = (import 'github.com/kubernetes-monitoring/kubernetes-mixin/lib/
 
 local addRunbookURL(rule) = rule {
   [if 'alert' in rule then 'annotations']+: {
-    runbook_url: 'https://github.com/gitpod-io/observability/blob/main/runbooks/%s' % rule.alert + '.md',
+    runbook_url: 'https://github.com/gitpod-io/runbooks/blob/main/runbooks/%s' % rule.alert + '.md',
   },
 };
 
