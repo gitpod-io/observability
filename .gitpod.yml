@@ -2,7 +2,10 @@
 # Need to come up with a minimal image with no more than necessary.
 image: eu.gcr.io/gitpod-core-dev/dev/dev-environment:aledbf-dev-image.0
 tasks:
-  - init: make --always-make
+  - init: |-
+      make --always-make
+      (cd installer && go install)
+      source <(installer completion bash)
 vscode:
   extensions:
     - heptio.jsonnet
