@@ -40,32 +40,12 @@
       },
     },
 
-    certificate: {
-      apiVersion: 'cert-manager.io/v1alpha2',
-      kind: 'Certificate',
-      metadata: {
-        name: 'prometheus',
-        namespace: std.extVar('namespace'),
-      },
-      spec: {
-        dnsNames: [
-          std.extVar('prometheus_dns_name'),
-        ],
-        issuerRef: {
-          kind: 'ClusterIssuer',
-          name: 'letsencrypt-issuer-core-dev',
-        },
-        secretName: 'prometheus-certificate',
-      },
-    },
-
     ingress: {
       apiVersion: 'extensions/v1beta1',
       kind: 'Ingress',
       metadata: {
         annotations: {
           'kubernetes.io/ingress.class': 'gce',
-          'cert-manager.io/cluster-issuer': $.prometheus.certificate.spec.issuerRef.name,
           'external-dns.alpha.kubernetes.io/hostname': std.extVar('prometheus_dns_name'),
         },
         labels: $.prometheus.service.metadata.labels,
@@ -90,7 +70,7 @@
           hosts: [
             std.extVar('prometheus_dns_name'),
           ],
-          secretName: $.prometheus.certificate.spec.secretName,
+          secretName: 'proxy-config-certificates',
         }],
       },
     },
@@ -116,24 +96,6 @@
         type: 'LoadBalancer',
       },
     },
-    certificate: {
-      apiVersion: 'cert-manager.io/v1alpha2',
-      kind: 'Certificate',
-      metadata: {
-        name: 'grafana',
-        namespace: std.extVar('namespace'),
-      },
-      spec: {
-        dnsNames: [
-          std.extVar('grafana_dns_name'),
-        ],
-        issuerRef: {
-          kind: 'ClusterIssuer',
-          name: 'letsencrypt-issuer-core-dev',
-        },
-        secretName: 'grafana-certificate',
-      },
-    },
 
     ingress: {
       apiVersion: 'extensions/v1beta1',
@@ -141,7 +103,6 @@
       metadata: {
         annotations: {
           'kubernetes.io/ingress.class': 'gce',
-          'cert-manager.io/cluster-issuer': $.grafana.certificate.spec.issuerRef.name,
           'external-dns.alpha.kubernetes.io/hostname': std.extVar('grafana_dns_name'),
         },
         labels: $.grafana.service.metadata.labels,
@@ -166,7 +127,7 @@
           hosts: [
             std.extVar('grafana_dns_name'),
           ],
-          secretName: $.grafana.certificate.spec.secretName,
+          secretName: 'proxy-config-certificates',
         }],
       },
     },
