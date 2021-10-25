@@ -46,7 +46,6 @@
       metadata: {
         annotations: {
           'kubernetes.io/ingress.class': 'gce',
-          'external-dns.alpha.kubernetes.io/hostname': std.extVar('prometheus_dns_name'),
         },
         labels: $.prometheus.service.metadata.labels,
         name: 'prometheus',
@@ -103,7 +102,6 @@
       metadata: {
         annotations: {
           'kubernetes.io/ingress.class': 'gce',
-          'external-dns.alpha.kubernetes.io/hostname': std.extVar('grafana_dns_name'),
         },
         labels: $.grafana.service.metadata.labels,
         name: 'grafana',
