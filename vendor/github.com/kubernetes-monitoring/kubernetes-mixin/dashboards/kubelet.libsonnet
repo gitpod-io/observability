@@ -323,7 +323,8 @@ local statPanel = grafana.statPanel;
         template.new(
           'instance',
           '$datasource',
-          'label_values(kubelet_runtime_operations_total{%(clusterLabel)s="$cluster", %(kubeletSelector)s}, instance)' % $._config,
+          'label_values(up{%(kubeletSelector)s,%(clusterLabel)s="$cluster"}, instance)' % $._config,
+          label='Data Source',
           refresh='time',
           includeAll=true,
           sort=1,
