@@ -1,4 +1,6 @@
 // The preview-environment addon provides json snippets that are specific for preview environment installations.
+local otelCollector = import '../components/open-telemetry-collector/open-telemetry-collector.libsonnet';
+
 {
   values+:: {
     // On preview env, Gitpod and monitoring satellite are installed in the same namespace.
@@ -6,10 +8,16 @@
       gitpodNamespace: std.extVar('namespace'),
     },
 
+    otelCollectorParams: {
+      namespace: std.extVar('namespace'),
+    },
+
     nodeExporter+: {
       port: std.parseInt(std.extVar('node_exporter_port')),
     },
   },
+
+  otelCollector: otelCollector($.values.otelCollectorParams),
 
   prometheus+: {
     prometheus+: {
@@ -116,7 +124,7 @@
         type: 'LoadBalancer',
       },
     },
-    
+
     certificate: {
       apiVersion: 'cert-manager.io/v1',
       kind: 'Certificate',

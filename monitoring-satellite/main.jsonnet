@@ -16,3 +16,7 @@ local monitoringSatellite = (import './monitoring-satellite.libsonnet');
 [monitoringSatellite.prometheusOperator[name] for name in std.objectFields(monitoringSatellite.prometheusOperator)] +
 [monitoringSatellite.certmanager[name] for name in std.objectFields(monitoringSatellite.certmanager)] +
 [monitoringSatellite.werft[name] for name in std.objectFields(monitoringSatellite.werft)]
+
+// Exposed by monitoring-satellite object, but we don't want to rollout yet:
+// [monitoringSatellite.otelCollector[name] for name in std.objectFields(monitoringSatellite.otelCollector)]
+

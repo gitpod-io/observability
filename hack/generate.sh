@@ -38,6 +38,8 @@ if [[ $environment == "CI" ]]; then
     --ext-str remote_write_username="user" \
     --ext-str prometheus_dns_name="prometheus.fake.preview.io" \
     --ext-str grafana_dns_name="grafana.fake.preview.io" \
+    --ext-str honeycomb_api_key="fake-key" \
+    --ext-str honeycomb_dataset="fake-dataset" \
     --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
     monitoring-satellite/manifests/continuous_integration.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
@@ -66,6 +68,8 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 --ext-str remote_write_username="user" \
 --ext-str prometheus_dns_name="prometheus.fake.preview.io" \
 --ext-str grafana_dns_name="grafana.fake.preview.io" \
+--ext-str honeycomb_api_key="fake-key" \
+--ext-str honeycomb_dataset="fake-dataset" \
 --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
@@ -97,6 +101,8 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 --ext-str alerting_enabled="false" \
 --ext-str remote_write_enabled="false" \
 --ext-str is_preview="false" \
+--ext-str honeycomb_api_key="fake-key" \
+--ext-str honeycomb_dataset="fake-dataset" \
 monitoring-satellite/manifests/rules.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Make sure to remove json files
