@@ -1,5 +1,6 @@
 local certmanager = import '../components/certmanager/certmanager.libsonnet';
 local gitpod = import '../components/gitpod/gitpod.libsonnet';
+local werft = import '../components/werft/werft.libsonnet';
 
 (import 'kube-prometheus/main.libsonnet') +
 (import 'kube-prometheus/platforms/gke.libsonnet') +
@@ -31,9 +32,15 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
       mixin+: { ruleLabels: $.values.common.ruleLabels },
     },
 
+    werftParams: {
+      namespace: std.extVar('namespace'),
+      werftNamespace: 'werft',
+      prometheusLabels: $.prometheus.prometheus.metadata.labels,
+    },
+
     prometheus+: {
       replicas: 1,
-      namespaces+: [$.values.certmanagerParams.certmanagerNamespace],
+      namespaces+: [$.values.certmanagerParams.certmanagerNamespace, $.values.werftParams.werftNamespace],
       externalLabels: {
         cluster: std.extVar('cluster_name'),
       },
@@ -89,6 +96,7 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 
   gitpod: gitpod($.values.gitpodParams),
   certmanager: certmanager($.values.certmanagerParams),
+  werft: werft($.values.werftParams),
   alertmanager+: {
     prometheusRule+: (import '../lib/alert-severity-mapper.libsonnet') + (import '../lib/alert-filter.libsonnet') + (import '../lib/alert-duration-mapper.libsonnet'),
   },

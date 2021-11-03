@@ -12,4 +12,5 @@ local monitoringSatellite = (import '../monitoring-satellite.libsonnet');
 { ['kubernetes/' + name]: monitoringSatellite.kubernetesControlPlane[name] for name in std.objectFields(monitoringSatellite.kubernetesControlPlane) }
 { ['node-exporter/' + name]: monitoringSatellite.nodeExporter[name] for name in std.objectFields(monitoringSatellite.nodeExporter) } +
 { ['prometheus-operator/' + name]: monitoringSatellite.prometheusOperator[name] for name in std.objectFields(monitoringSatellite.prometheusOperator) } +
-{ ['certmanager/' + name]: monitoringSatellite.certmanager[name] for name in std.objectFields(monitoringSatellite.certmanager) }
+{ ['certmanager/' + name]: monitoringSatellite.certmanager[name] for name in std.objectFields(monitoringSatellite.certmanager) } +
+{ ['werft/' + name]: monitoringSatellite.werft[name] for name in std.objectFields(monitoringSatellite.werft) }
