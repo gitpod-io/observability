@@ -41,7 +41,7 @@
     },
 
     certificate: {
-      apiVersion: 'cert-manager.io/v1alpha2',
+      apiVersion: 'cert-manager.io/v1',
       kind: 'Certificate',
       metadata: {
         name: 'prometheus',
@@ -116,8 +116,9 @@
         type: 'LoadBalancer',
       },
     },
+    
     certificate: {
-      apiVersion: 'cert-manager.io/v1alpha2',
+      apiVersion: 'cert-manager.io/v1',
       kind: 'Certificate',
       metadata: {
         name: 'grafana',
