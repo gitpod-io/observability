@@ -1,16 +1,18 @@
 local defaults = {
   local defaults = self,
-  name: 'prometheus-adapter',
-  namespace: error 'must provide namespace',
-  version: error 'must provide version',
+  // Convention: Top-level fields related to CRDs are public, other fields are hidden
+  // If there is no CRD for the component, everything is hidden in defaults.
+  name:: 'prometheus-adapter',
+  namespace:: error 'must provide namespace',
+  version:: error 'must provide version',
   image: error 'must provide image',
-  resources: {
+  resources:: {
     requests: { cpu: '102m', memory: '180Mi' },
     limits: { cpu: '250m', memory: '180Mi' },
   },
-  replicas: 2,
-  listenAddress: '127.0.0.1',
-  port: 9100,
+  replicas:: 2,
+  listenAddress:: '127.0.0.1',
+  port:: 9100,
   commonLabels:: {
     'app.kubernetes.io/name': 'prometheus-adapter',
     'app.kubernetes.io/version': defaults.version,
@@ -24,14 +26,14 @@ local defaults = {
   },
   // Default range intervals are equal to 4 times the default scrape interval.
   // This is done in order to follow Prometheus rule of thumb with irate().
-  rangeIntervals: {
+  rangeIntervals:: {
     kubelet: '4m',
     nodeExporter: '4m',
     windowsExporter: '4m',
   },
 
-  prometheusURL: error 'must provide prometheusURL',
-  config: {
+  prometheusURL:: error 'must provide prometheusURL',
+  config:: {
     resourceRules: {
       cpu: {
         containerQuery: |||
@@ -95,7 +97,7 @@ local defaults = {
       window: '5m',
     },
   },
-  tlsCipherSuites: [
+  tlsCipherSuites:: [
     'TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305',
     'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305',
     'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256',
@@ -120,6 +122,12 @@ function(params) {
   // Safety check
   assert std.isObject(pa._config.resources),
 
+  _metadata:: {
+    name: pa._config.name,
+    namespace: pa._config.namespace,
+    labels: pa._config.commonLabels,
+  },
+
   apiService: {
     apiVersion: 'apiregistration.k8s.io/v1',
     kind: 'APIService',
@@ -143,10 +151,8 @@ function(params) {
   configMap: {
     apiVersion: 'v1',
     kind: 'ConfigMap',
-    metadata: {
+    metadata: pa._metadata {
       name: 'adapter-config',
-      namespace: pa._config.namespace,
-      labels: pa._config.commonLabels,
     },
     data: { 'config.yaml': std.manifestYamlDoc(pa._config.config) },
   },
@@ -154,11 +160,7 @@ function(params) {
   serviceMonitor: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
-      name: pa._config.name,
-      namespace: pa._config.namespace,
-      labels: pa._config.commonLabels,
-    },
+    metadata: pa._metadata,
     spec: {
       selector: {
         matchLabels: pa._config.selectorLabels,
@@ -195,11 +197,7 @@ function(params) {
   service: {
     apiVersion: 'v1',
     kind: 'Service',
-    metadata: {
-      name: pa._config.name,
-      namespace: pa._config.namespace,
-      labels: pa._config.commonLabels,
-    },
+    metadata: pa._metadata,
     spec: {
       ports: [
         { name: 'https', targetPort: 6443, port: 443 },
@@ -233,14 +231,12 @@ function(params) {
     {
       apiVersion: 'apps/v1',
       kind: 'Deployment',
-      metadata: {
-        name: pa._config.name,
-        namespace: pa._config.namespace,
-        labels: pa._config.commonLabels,
-      },
+      metadata: pa._metadata,
       spec: {
         replicas: pa._config.replicas,
-        selector: { matchLabels: pa._config.selectorLabels },
+        selector: {
+          matchLabels: pa._config.selectorLabels,
+        },
         strategy: {
           rollingUpdate: {
             maxSurge: 1,
@@ -266,20 +262,13 @@ function(params) {
   serviceAccount: {
     apiVersion: 'v1',
     kind: 'ServiceAccount',
-    metadata: {
-      name: pa._config.name,
-      namespace: pa._config.namespace,
-      labels: pa._config.commonLabels,
-    },
+    metadata: pa._metadata,
   },
 
   clusterRole: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRole',
-    metadata: {
-      name: pa._config.name,
-      labels: pa._config.commonLabels,
-    },
+    metadata: pa._metadata,
     rules: [{
       apiGroups: [''],
       resources: ['nodes', 'namespaces', 'pods', 'services'],
@@ -290,10 +279,7 @@ function(params) {
   clusterRoleBinding: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRoleBinding',
-    metadata: {
-      name: pa._config.name,
-      labels: pa._config.commonLabels,
-    },
+    metadata: pa._metadata,
     roleRef: {
       apiGroup: 'rbac.authorization.k8s.io',
       kind: 'ClusterRole',
@@ -309,9 +295,8 @@ function(params) {
   clusterRoleBindingDelegator: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRoleBinding',
-    metadata: {
+    metadata: pa._metadata {
       name: 'resource-metrics:system:auth-delegator',
-      labels: pa._config.commonLabels,
     },
     roleRef: {
       apiGroup: 'rbac.authorization.k8s.io',
@@ -328,9 +313,8 @@ function(params) {
   clusterRoleServerResources: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRole',
-    metadata: {
+    metadata: pa._metadata {
       name: 'resource-metrics-server-resources',
-      labels: pa._config.commonLabels,
     },
     rules: [{
       apiGroups: ['metrics.k8s.io'],
@@ -342,13 +326,13 @@ function(params) {
   clusterRoleAggregatedMetricsReader: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRole',
-    metadata: {
+    metadata: pa._metadata {
       name: 'system:aggregated-metrics-reader',
-      labels: {
+      labels+: {
         'rbac.authorization.k8s.io/aggregate-to-admin': 'true',
         'rbac.authorization.k8s.io/aggregate-to-edit': 'true',
         'rbac.authorization.k8s.io/aggregate-to-view': 'true',
-      } + pa._config.commonLabels,
+      },
     },
     rules: [{
       apiGroups: ['metrics.k8s.io'],
@@ -360,10 +344,9 @@ function(params) {
   roleBindingAuthReader: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'RoleBinding',
-    metadata: {
+    metadata: pa._metadata {
       name: 'resource-metrics-auth-reader',
       namespace: 'kube-system',
-      labels: pa._config.commonLabels,
     },
     roleRef: {
       apiGroup: 'rbac.authorization.k8s.io',
@@ -380,11 +363,7 @@ function(params) {
   [if (defaults + params).replicas > 1 then 'podDisruptionBudget']: {
     apiVersion: 'policy/v1',
     kind: 'PodDisruptionBudget',
-    metadata: {
-      name: pa._config.name,
-      namespace: pa._config.namespace,
-      labels: pa._config.commonLabels,
-    },
+    metadata: pa._metadata,
     spec: {
       minAvailable: 1,
       selector: {

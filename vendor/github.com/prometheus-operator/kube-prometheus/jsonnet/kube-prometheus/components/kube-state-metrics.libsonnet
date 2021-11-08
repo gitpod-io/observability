@@ -2,24 +2,26 @@ local krp = import './kube-rbac-proxy.libsonnet';
 
 local defaults = {
   local defaults = self,
-  name: 'kube-state-metrics',
-  namespace: error 'must provide namespace',
-  version: error 'must provide version',
-  image: error 'must provide version',
-  kubeRbacProxyImage: error 'must provide kubeRbacProxyImage',
-  resources: {
+  // Convention: Top-level fields related to CRDs are public, other fields are hidden
+  // If there is no CRD for the component, everything is hidden in defaults.
+  name:: 'kube-state-metrics',
+  namespace:: error 'must provide namespace',
+  version:: error 'must provide version',
+  image:: error 'must provide version',
+  kubeRbacProxyImage:: error 'must provide kubeRbacProxyImage',
+  resources:: {
     requests: { cpu: '10m', memory: '190Mi' },
     limits: { cpu: '100m', memory: '250Mi' },
   },
 
-  kubeRbacProxyMain: {
+  kubeRbacProxyMain:: {
     resources+: {
       limits+: { cpu: '40m' },
       requests+: { cpu: '20m' },
     },
   },
-  scrapeInterval: '30s',
-  scrapeTimeout: '30s',
+  scrapeInterval:: '30s',
+  scrapeTimeout:: '30s',
   commonLabels:: {
     'app.kubernetes.io/name': defaults.name,
     'app.kubernetes.io/version': defaults.version,
@@ -31,7 +33,7 @@ local defaults = {
     for labelName in std.objectFields(defaults.commonLabels)
     if !std.setMember(labelName, ['app.kubernetes.io/version'])
   },
-  mixin: {
+  mixin:: {
     ruleLabels: {},
     _config: {
       kubeStateMetricsSelector: 'job="' + defaults.name + '"',
@@ -54,6 +56,12 @@ function(params) (import 'github.com/kubernetes/kube-state-metrics/jsonnet/kube-
   commonLabels:: ksm._config.commonLabels,
   podLabels:: ksm._config.selectorLabels,
 
+  _metadata:: {
+    labels: ksm._config.commonLabels,
+    name: ksm._config.name,
+    namespace: ksm._config.namespace,
+  },
+
   mixin:: (import 'github.com/kubernetes/kube-state-metrics/jsonnet/kube-state-metrics-mixin/mixin.libsonnet') +
           (import 'github.com/kubernetes-monitoring/kubernetes-mixin/lib/add-runbook-links.libsonnet') {
             _config+:: ksm._config.mixin._config,
@@ -62,10 +70,9 @@ function(params) (import 'github.com/kubernetes/kube-state-metrics/jsonnet/kube-
   prometheusRule: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'PrometheusRule',
-    metadata: {
-      labels: ksm._config.commonLabels + ksm._config.mixin.ruleLabels,
+    metadata: ksm._metadata {
+      labels+: ksm._config.mixin.ruleLabels,
       name: ksm._config.name + '-rules',
-      namespace: ksm._config.namespace,
     },
     spec: {
       local r = if std.objectHasAll(ksm.mixin, 'prometheusRules') then ksm.mixin.prometheusRules.groups else [],
@@ -135,14 +142,12 @@ function(params) (import 'github.com/kubernetes/kube-state-metrics/jsonnet/kube-
     {
       apiVersion: 'monitoring.coreos.com/v1',
       kind: 'ServiceMonitor',
-      metadata: {
-        name: ksm.name,
-        namespace: ksm._config.namespace,
-        labels: ksm._config.commonLabels,
-      },
+      metadata: ksm._metadata,
       spec: {
         jobLabel: 'app.kubernetes.io/name',
-        selector: { matchLabels: ksm._config.selectorLabels },
+        selector: {
+          matchLabels: ksm._config.selectorLabels,
+        },
         endpoints: [
           {
             port: 'https-main',

@@ -2,18 +2,20 @@ local krp = import './kube-rbac-proxy.libsonnet';
 
 local defaults = {
   local defaults = self,
-  name: 'node-exporter',
-  namespace: error 'must provide namespace',
-  version: error 'must provide version',
-  image: error 'must provide version',
-  kubeRbacProxyImage: error 'must provide kubeRbacProxyImage',
-  resources: {
+  // Convention: Top-level fields related to CRDs are public, other fields are hidden
+  // If there is no CRD for the component, everything is hidden in defaults.
+  name:: 'node-exporter',
+  namespace:: error 'must provide namespace',
+  version:: error 'must provide version',
+  image:: error 'must provide version',
+  kubeRbacProxyImage:: error 'must provide kubeRbacProxyImage',
+  resources:: {
     requests: { cpu: '102m', memory: '180Mi' },
     limits: { cpu: '250m', memory: '180Mi' },
   },
-  listenAddress: '127.0.0.1',
-  filesystemMountPointsExclude: '^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)',
-  port: 9100,
+  listenAddress:: '127.0.0.1',
+  filesystemMountPointsExclude:: '^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/pods/.+)($|/)',
+  port:: 9100,
   commonLabels:: {
     'app.kubernetes.io/name': defaults.name,
     'app.kubernetes.io/version': defaults.version,
@@ -25,7 +27,7 @@ local defaults = {
     for labelName in std.objectFields(defaults.commonLabels)
     if !std.setMember(labelName, ['app.kubernetes.io/version'])
   },
-  mixin: {
+  mixin:: {
     ruleLabels: {},
     _config: {
       nodeExporterSelector: 'job="' + defaults.name + '"',
@@ -49,6 +51,11 @@ function(params) {
   // Safety check
   assert std.isObject(ne._config.resources),
   assert std.isObject(ne._config.mixin._config),
+  _metadata:: {
+    name: ne._config.name,
+    namespace: ne._config.namespace,
+    labels: ne._config.commonLabels,
+  },
 
   mixin:: (import 'github.com/prometheus/node_exporter/docs/node-mixin/mixin.libsonnet') +
           (import 'github.com/kubernetes-monitoring/kubernetes-mixin/lib/add-runbook-links.libsonnet') {
@@ -58,10 +65,9 @@ function(params) {
   prometheusRule: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'PrometheusRule',
-    metadata: {
-      labels: ne._config.commonLabels + ne._config.mixin.ruleLabels,
+    metadata: ne._metadata {
+      labels+: ne._config.mixin.ruleLabels,
       name: ne._config.name + '-rules',
-      namespace: ne._config.namespace,
     },
     spec: {
       local r = if std.objectHasAll(ne.mixin, 'prometheusRules') then ne.mixin.prometheusRules.groups else [],
@@ -73,10 +79,7 @@ function(params) {
   clusterRoleBinding: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRoleBinding',
-    metadata: {
-      name: ne._config.name,
-      labels: ne._config.commonLabels,
-    },
+    metadata: ne._metadata,
     roleRef: {
       apiGroup: 'rbac.authorization.k8s.io',
       kind: 'ClusterRole',
@@ -92,10 +95,7 @@ function(params) {
   clusterRole: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRole',
-    metadata: {
-      name: ne._config.name,
-      labels: ne._config.commonLabels,
-    },
+    metadata: ne._metadata,
     rules: [
       {
         apiGroups: ['authentication.k8s.io'],
@@ -113,21 +113,13 @@ function(params) {
   serviceAccount: {
     apiVersion: 'v1',
     kind: 'ServiceAccount',
-    metadata: {
-      name: ne._config.name,
-      namespace: ne._config.namespace,
-      labels: ne._config.commonLabels,
-    },
+    metadata: ne._metadata,
   },
 
   service: {
     apiVersion: 'v1',
     kind: 'Service',
-    metadata: {
-      name: ne._config.name,
-      namespace: ne._config.namespace,
-      labels: ne._config.commonLabels,
-    },
+    metadata: ne._metadata,
     spec: {
       ports: [
         { name: 'https', targetPort: 'https', port: ne._config.port },
@@ -140,11 +132,7 @@ function(params) {
   serviceMonitor: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
-      name: ne._config.name,
-      namespace: ne._config.namespace,
-      labels: ne._config.commonLabels,
-    },
+    metadata: ne._metadata,
     spec: {
       jobLabel: 'app.kubernetes.io/name',
       selector: {
@@ -221,13 +209,11 @@ function(params) {
     {
       apiVersion: 'apps/v1',
       kind: 'DaemonSet',
-      metadata: {
-        name: ne._config.name,
-        namespace: ne._config.namespace,
-        labels: ne._config.commonLabels,
-      },
+      metadata: ne._metadata,
       spec: {
-        selector: { matchLabels: ne._config.selectorLabels },
+        selector: {
+          matchLabels: ne._config.selectorLabels,
+        },
         updateStrategy: {
           type: 'RollingUpdate',
           rollingUpdate: { maxUnavailable: '10%' },
@@ -260,6 +246,4 @@ function(params) {
         },
       },
     },
-
-
 }
