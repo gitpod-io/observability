@@ -2,10 +2,12 @@ local krp = import './kube-rbac-proxy.libsonnet';
 
 local defaults = {
   local defaults = self,
-  namespace: error 'must provide namespace',
-  version: error 'must provide version',
-  image: error 'must provide version',
-  resources: {
+  // Convention: Top-level fields related to CRDs are public, other fields are hidden
+  // If there is no CRD for the component, everything is hidden in defaults.
+  namespace:: error 'must provide namespace',
+  version:: error 'must provide version',
+  image:: error 'must provide version',
+  resources:: {
     requests: { cpu: '10m', memory: '20Mi' },
     limits: { cpu: '20m', memory: '40Mi' },
   },
@@ -20,13 +22,13 @@ local defaults = {
     for labelName in std.objectFields(defaults.commonLabels)
     if !std.setMember(labelName, ['app.kubernetes.io/version'])
   },
-  configmapReloaderImage: error 'must provide version',
-  kubeRbacProxyImage: error 'must provide kubeRbacProxyImage',
+  configmapReloaderImage:: error 'must provide version',
+  kubeRbacProxyImage:: error 'must provide kubeRbacProxyImage',
 
-  port: 9115,
-  internalPort: 19115,
-  replicas: 1,
-  modules: {
+  port:: 9115,
+  internalPort:: 19115,
+  replicas:: 1,
+  modules:: {
     http_2xx: {
       prober: 'http',
       http: {
@@ -81,7 +83,7 @@ local defaults = {
       },
     },
   },
-  privileged:
+  privileged::
     local icmpModules = [self.modules[m] for m in std.objectFields(self.modules) if self.modules[m].prober == 'icmp'];
     std.length(icmpModules) > 0,
 };
@@ -92,14 +94,17 @@ function(params) {
   _config:: defaults + params,
   // Safety check
   assert std.isObject(bb._config.resources),
+  _metadata:: {
+    name: 'blackbox-exporter',
+    namespace: bb._config.namespace,
+    labels: bb._config.commonLabels,
+  },
 
   configuration: {
     apiVersion: 'v1',
     kind: 'ConfigMap',
-    metadata: {
+    metadata: bb._metadata {
       name: 'blackbox-exporter-configuration',
-      namespace: bb._config.namespace,
-      labels: bb._config.commonLabels,
     },
     data: {
       'config.yml': std.manifestYamlDoc({ modules: bb._config.modules }),
@@ -109,10 +114,7 @@ function(params) {
   serviceAccount: {
     apiVersion: 'v1',
     kind: 'ServiceAccount',
-    metadata: {
-      name: 'blackbox-exporter',
-      namespace: bb._config.namespace,
-    },
+    metadata: bb._metadata,
   },
 
   clusterRole: {
@@ -138,9 +140,7 @@ function(params) {
   clusterRoleBinding: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRoleBinding',
-    metadata: {
-      name: 'blackbox-exporter',
-    },
+    metadata: bb._metadata,
     roleRef: {
       apiGroup: 'rbac.authorization.k8s.io',
       kind: 'ClusterRole',
@@ -212,14 +212,12 @@ function(params) {
     {
       apiVersion: 'apps/v1',
       kind: 'Deployment',
-      metadata: {
-        name: 'blackbox-exporter',
-        namespace: bb._config.namespace,
-        labels: bb._config.commonLabels,
-      },
+      metadata: bb._metadata,
       spec: {
         replicas: bb._config.replicas,
-        selector: { matchLabels: bb._config.selectorLabels },
+        selector: {
+          matchLabels: bb._config.selectorLabels,
+        },
         template: {
           metadata: {
             labels: bb._config.commonLabels,
@@ -243,11 +241,7 @@ function(params) {
   service: {
     apiVersion: 'v1',
     kind: 'Service',
-    metadata: {
-      name: 'blackbox-exporter',
-      namespace: bb._config.namespace,
-      labels: bb._config.commonLabels,
-    },
+    metadata: bb._metadata,
     spec: {
       ports: [{
         name: 'https',
@@ -262,29 +256,24 @@ function(params) {
     },
   },
 
-  serviceMonitor:
-    {
-      apiVersion: 'monitoring.coreos.com/v1',
-      kind: 'ServiceMonitor',
-      metadata: {
-        name: 'blackbox-exporter',
-        namespace: bb._config.namespace,
-        labels: bb._config.commonLabels,
-      },
-      spec: {
-        endpoints: [{
-          bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
-          interval: '30s',
-          path: '/metrics',
-          port: 'https',
-          scheme: 'https',
-          tlsConfig: {
-            insecureSkipVerify: true,
-          },
-        }],
-        selector: {
-          matchLabels: bb._config.selectorLabels,
+  serviceMonitor: {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'ServiceMonitor',
+    metadata: bb._metadata,
+    spec: {
+      endpoints: [{
+        bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
+        interval: '30s',
+        path: '/metrics',
+        port: 'https',
+        scheme: 'https',
+        tlsConfig: {
+          insecureSkipVerify: true,
         },
+      }],
+      selector: {
+        matchLabels: bb._config.selectorLabels,
       },
     },
+  },
 }

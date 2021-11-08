@@ -1,12 +1,14 @@
 local relabelings = import '../addons/dropping-deprecated-metrics-relabelings.libsonnet';
 
 local defaults = {
-  namespace: error 'must provide namespace',
+  // Convention: Top-level fields related to CRDs are public, other fields are hidden
+  // If there is no CRD for the component, everything is hidden in defaults.
+  namespace:: error 'must provide namespace',
   commonLabels:: {
     'app.kubernetes.io/name': 'kube-prometheus',
     'app.kubernetes.io/part-of': 'kube-prometheus',
   },
-  mixin: {
+  mixin:: {
     ruleLabels: {},
     _config: {
       cadvisorSelector: 'job="kubelet", metrics_path="/metrics/cadvisor"',
@@ -22,12 +24,16 @@ local defaults = {
       hostNetworkInterfaceSelector: 'device!~"veth.+"',
     },
   },
-  kubeProxy: false,
+  kubeProxy:: false,
 };
 
 function(params) {
   local k8s = self,
   _config:: defaults + params,
+  _metadata:: {
+    labels: k8s._config.commonLabels,
+    namespace: k8s._config.namespace,
+  },
 
   mixin:: (import 'github.com/kubernetes-monitoring/kubernetes-mixin/mixin.libsonnet') {
     _config+:: k8s._config.mixin._config,
@@ -36,10 +42,9 @@ function(params) {
   prometheusRule: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'PrometheusRule',
-    metadata: {
-      labels: k8s._config.commonLabels + k8s._config.mixin.ruleLabels,
+    metadata: k8s._metadata {
       name: 'kubernetes-monitoring-rules',
-      namespace: k8s._config.namespace,
+      labels+: k8s._config.mixin.ruleLabels,
     },
     spec: {
       local r = if std.objectHasAll(k8s.mixin, 'prometheusRules') then k8s.mixin.prometheusRules.groups else {},
@@ -51,10 +56,9 @@ function(params) {
   serviceMonitorKubeScheduler: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
+    metadata: k8s._metadata {
       name: 'kube-scheduler',
-      namespace: k8s._config.namespace,
-      labels: { 'app.kubernetes.io/name': 'kube-scheduler' },
+      labels+: { 'app.kubernetes.io/name': 'kube-scheduler' },
     },
     spec: {
       jobLabel: 'app.kubernetes.io/name',
@@ -77,10 +81,9 @@ function(params) {
   serviceMonitorKubelet: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
+    metadata: k8s._metadata {
       name: 'kubelet',
-      namespace: k8s._config.namespace,
-      labels: { 'app.kubernetes.io/name': 'kubelet' },
+      labels+: { 'app.kubernetes.io/name': 'kubelet' },
     },
     spec: {
       jobLabel: 'app.kubernetes.io/name',
@@ -172,10 +175,9 @@ function(params) {
   serviceMonitorKubeControllerManager: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
+    metadata: k8s._metadata {
       name: 'kube-controller-manager',
-      namespace: k8s._config.namespace,
-      labels: { 'app.kubernetes.io/name': 'kube-controller-manager' },
+      labels+: { 'app.kubernetes.io/name': 'kube-controller-manager' },
     },
     spec: {
       jobLabel: 'app.kubernetes.io/name',
@@ -207,10 +209,9 @@ function(params) {
   serviceMonitorApiserver: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
+    metadata: k8s._metadata {
       name: 'kube-apiserver',
-      namespace: k8s._config.namespace,
-      labels: { 'app.kubernetes.io/name': 'apiserver' },
+      labels+: { 'app.kubernetes.io/name': 'apiserver' },
     },
     spec: {
       jobLabel: 'component',
@@ -261,12 +262,9 @@ function(params) {
   [if (defaults + params).kubeProxy then 'podMonitorKubeProxy']: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'PodMonitor',
-    metadata: {
-      labels: {
-        'k8s-app': 'kube-proxy',
-      },
+    metadata: k8s._metadata {
+      labels+: { 'k8s-app': 'kube-proxy' },
       name: 'kube-proxy',
-      namespace: k8s._config.namespace,
     },
     spec: {
       jobLabel: 'k8s-app',
@@ -300,10 +298,9 @@ function(params) {
   serviceMonitorCoreDNS: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
-    metadata: {
+    metadata: k8s._metadata {
       name: 'coredns',
-      namespace: k8s._config.namespace,
-      labels: { 'app.kubernetes.io/name': 'coredns' },
+      labels+: { 'app.kubernetes.io/name': 'coredns' },
     },
     spec: {
       jobLabel: 'app.kubernetes.io/name',
