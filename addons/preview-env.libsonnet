@@ -9,6 +9,14 @@
     nodeExporter+: {
       port: std.parseInt(std.extVar('node_exporter_port')),
     },
+
+    prometheusOperator+: {
+      resources+: {
+        limits+: {
+          memory: '1000Mi',
+        },
+      },
+    },
   },
 
   prometheus+: {
