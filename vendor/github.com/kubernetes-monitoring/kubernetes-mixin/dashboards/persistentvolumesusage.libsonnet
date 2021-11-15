@@ -5,7 +5,6 @@ local prometheus = grafana.prometheus;
 local template = grafana.template;
 local graphPanel = grafana.graphPanel;
 local promgrafonnet = import '../lib/promgrafonnet/promgrafonnet.libsonnet';
-local numbersinglestat = promgrafonnet.numbersinglestat;
 local gauge = promgrafonnet.gauge;
 
 {
@@ -132,7 +131,7 @@ local gauge = promgrafonnet.gauge;
         template.new(
           'cluster',
           '$datasource',
-          'label_values(kubelet_volume_stats_capacity_bytes, %s)' % $._config.clusterLabel,
+          'label_values(kubelet_volume_stats_capacity_bytes{%(kubeletSelector)s}, %(clusterLabel)s)' % $._config,
           label='cluster',
           refresh='time',
           hide=if $._config.showMultiCluster then '' else 'variable',
