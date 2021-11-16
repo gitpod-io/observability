@@ -22,3 +22,4 @@ kubectl apply -f monitoring-satellite/manifests/kubernetes/
 kubectl apply -f monitoring-satellite/manifests/kube-state-metrics/
 kubectl apply -f monitoring-satellite/manifests/grafana/
 kubectl apply -f monitoring-satellite/manifests/alertmanager/
+kubectl apply -f monitoring-satellite/manifests/otelCollector/
