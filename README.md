@@ -109,14 +109,3 @@ If you are changing Prometheus rules you can additionally run:
 make promtool-lint
 ```
 
-### CI
-
-We use Github Actions to validate PRs.
-
-### Deployment
-
-To make changes to monitoring-satellites and monitoring-centrals spread across our clusters, simply merge a PR to the `main` branch and ArgoCD will automatically synchronize all deployed applications.
-
-If you want to verify ArgoCD has applied your changes, you can go to [argo-cd.gitpod-io-dev.com](https://argo-cd.gitpod-io-dev.com/) and use the label filter `application=monitoring-satelite` to see the status of all the satelites, or `application=monitoring-central` to see the monitoring centrals.
-
-The ArgoCD applications are configured in [gitpod-com/gitpod](https://github.com/gitpod-com/gitpod) which is also responsible for setting up all the appropriate external-variables.
