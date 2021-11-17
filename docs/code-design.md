@@ -1,12 +1,10 @@
 # Code design
 
-We have a really small team, with a really limited amount of time and hands to properly maintain a whole set of kubernetes resources, Grafana dashboards and Prometheus alerts used to monitor several different technologies that we run on production.
-
-With that in mind, the [Monitoring Mixins](https://github.com/monitoring-mixins/docs/blob/master/design.pdf) project had a apealing offer that made this project move forward. As said in their design:
+We want to embrace DevOps culture and support teams taking full control of their work and responsibility for their code. The [Monitoring Mixins](https://github.com/monitoring-mixins/docs/blob/master/design.pdf) project helps us to move forward in this direction. As said in their design:
 
 > ... it has become accepted wisdom that the developers of a given software package are best placed to operate said software, or at least construct the basic monitoring configuration
 
-That means that we can reuse Grafana Dashboards and Prometheus Alerts created and maintained by the developers of those technologies we run in production. 
+That means that we can reuse Grafana Dashboards and Prometheus Alerts created and maintained by the developers of those technologies we run in production.
 It not only assures a good level of quality but also alleviates the maintainance burden on our side.
 
 ### kube-prometheus
