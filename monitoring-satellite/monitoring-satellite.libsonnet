@@ -12,6 +12,7 @@ local werft = import '../components/werft/werft.libsonnet';
 (import '../addons/cluster-monitoring.libsonnet') +
 (if std.extVar('remote_write_enabled') == 'true' then (import '../addons/remote-write.libsonnet') else {}) +
 (if std.extVar('alerting_enabled') == 'true' then (import '../addons/alerting.libsonnet') else {}) +
+(if std.extVar('tracing_enabled') == 'true' then (import '../addons/tracing.libsonnet') else {}) +
 {
   values+:: {
     common+: {
