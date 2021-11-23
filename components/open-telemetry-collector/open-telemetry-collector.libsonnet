@@ -14,7 +14,7 @@ function(params) {
   local otel = self,
   _config:: defaults + params,
 
-  local collectorConfig =
+  local receiversConfig =
     |||
       receivers:
         jaeger:
@@ -25,21 +25,36 @@ function(params) {
           protocols:
             grpc: # on port 4317
             http: # on port 4318
+    |||,
 
+  local processorsConfig =
+    |||
       processors:
+    |||,
 
+  local exportersConfig =
+    |||
       exporters:
         otlp:
           endpoint: "api.honeycomb.io:443"
           headers:
             "x-honeycomb-team": "%(honeycomb_api_key)s"
             "x-honeycomb-dataset": "%(honeycomb_dataset)s"
+    ||| % {
+      honeycomb_api_key: std.extVar('honeycomb_api_key'),
+      honeycomb_dataset: std.extVar('honeycomb_dataset'),
+    },
 
+  local extensionsConfig =
+    |||
       extensions:
         health_check:
         pprof:
         zpages:
+    |||,
 
+  local serviceConfig =
+    |||
       service:
         telemetry:
           logs:
@@ -50,10 +65,7 @@ function(params) {
             receivers: [jaeger, otlp]
             processors: []
             exporters: [otlp]
-    ||| % {
-      honeycomb_api_key: std.extVar('honeycomb_api_key'),
-      honeycomb_dataset: std.extVar('honeycomb_dataset'),
-    },
+    |||,
 
   configMap: {
     apiVersion: 'v1',
@@ -64,7 +76,12 @@ function(params) {
       labels: otel._config.commonLabels,
     },
     data: {
-      'collector.yaml': collectorConfig,
+      'collector.yaml':
+        receiversConfig +
+        processorsConfig +
+        exportersConfig +
+        extensionsConfig +
+        serviceConfig,
     },
   },
 
