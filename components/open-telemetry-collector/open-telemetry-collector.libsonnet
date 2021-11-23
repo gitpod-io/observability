@@ -35,14 +35,30 @@ function(params) {
   local exportersConfig =
     |||
       exporters:
-        otlp:
-          endpoint: "api.honeycomb.io:443"
-          headers:
-            "x-honeycomb-team": "%(honeycomb_api_key)s"
-            "x-honeycomb-dataset": "%(honeycomb_dataset)s"
+        %(honeycomb_exporter)s
+        %(jaeger_exporter)s
     ||| % {
-      honeycomb_api_key: std.extVar('honeycomb_api_key'),
-      honeycomb_dataset: std.extVar('honeycomb_dataset'),
+      honeycomb_exporter: if std.extVar('honeycomb_api_key') != '' then
+        |||
+          otlp:
+              endpoint: "api.honeycomb.io:443"
+              headers:
+                "x-honeycomb-team": "%(honeycomb_api_key)s"
+                "x-honeycomb-dataset": "%(honeycomb_dataset)s"
+        ||| % {
+          honeycomb_api_key: std.extVar('honeycomb_api_key'),
+          honeycomb_dataset: std.extVar('honeycomb_dataset'),
+        } else ''
+      ,
+      jaeger_exporter: if std.extVar('jaeger_endpoint') != '' then
+        |||
+          jaeger:
+              endpoint: "%(jaeger_endpoint)s"
+              tls:
+                insecure: true
+        ||| % {
+          jaeger_endpoint: std.extVar('jaeger_endpoint'),
+        } else '',
     },
 
   local extensionsConfig =
@@ -64,8 +80,12 @@ function(params) {
           traces:
             receivers: [jaeger, otlp]
             processors: []
-            exporters: [otlp]
-    |||,
+            exporters: %(exporters)s
+    ||| % {
+      exporters: [] +
+                 (if std.extVar('honeycomb_api_key') != '' then ['otlp'] else []) +
+                 (if std.extVar('jaeger_endpoint') != '' then ['jaeger'] else []),
+    },
 
   configMap: {
     apiVersion: 'v1',

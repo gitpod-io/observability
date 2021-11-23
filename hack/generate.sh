@@ -40,6 +40,7 @@ if [[ $environment == "CI" ]]; then
     --ext-str grafana_dns_name="grafana.fake.preview.io" \
     --ext-str honeycomb_api_key="fake-key" \
     --ext-str honeycomb_dataset="fake-dataset" \
+    --ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
     --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
     monitoring-satellite/manifests/continuous_integration.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
@@ -70,6 +71,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 --ext-str grafana_dns_name="grafana.fake.preview.io" \
 --ext-str honeycomb_api_key="fake-key" \
 --ext-str honeycomb_dataset="fake-dataset" \
+--ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
 --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
@@ -103,6 +105,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 --ext-str is_preview="false" \
 --ext-str honeycomb_api_key="fake-key" \
 --ext-str honeycomb_dataset="fake-dataset" \
+--ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
 monitoring-satellite/manifests/rules.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Make sure to remove json files
