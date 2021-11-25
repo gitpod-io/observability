@@ -90,6 +90,7 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
 --ext-str remote_write_password="p@ssW0rd" \
 --ext-str remote_write_username="user" \
 --ext-str vmauth_gcp_external_ip_address="fake_external_ip_address" \
+--ext-str stackdriver_datasource_enabled="false" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Generate monitoring-satellite prometheus rules

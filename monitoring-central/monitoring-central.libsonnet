@@ -7,7 +7,7 @@ local kubePrometheus =
   (import 'kube-prometheus/platforms/gke.libsonnet') +
   (import 'kube-prometheus/addons/podsecuritypolicies.libsonnet') +
   (import '../addons/disable-grafana-auth.libsonnet') +
-  (import '../addons/grafana-on-gcp-oauth.libsonnet')
+  (import '../addons/grafana-on-gcp-oauth.libsonnet') +
   {
     values+:: {
       common+: {
@@ -95,7 +95,12 @@ local kubePrometheus =
       // Disabling serviceMonitor for monitoring-central since there is no prometheus running there.
       serviceMonitor:: {},
     },
-  };
+  } +
+  
+  // We add this addon at the end because Jsonnet cares about order of execution.
+  // $.values.grafana.datasources is being completely overriden above to remove the prometheus datasource
+  // provided by kube-prometheus. If we add this addon before that, stackdriver datasource will also get erased.
+  (if std.extVar('stackdriver_datasource_enabled') == 'true' then (import '../addons/grafana-stackdriver-datasource.libsonnet') else {});
 
 
 kubePrometheus
