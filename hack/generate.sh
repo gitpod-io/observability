@@ -43,6 +43,7 @@ if [[ $environment == "CI" ]]; then
     --ext-str honeycomb_dataset="fake-dataset" \
     --ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
     --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
+    --ext-str stackdriver_datasource_enabled="false" \
     monitoring-satellite/manifests/continuous_integration.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
     # Make sure to remove json files
@@ -75,6 +76,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 --ext-str honeycomb_dataset="fake-dataset" \
 --ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
 --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
+--ext-str stackdriver_datasource_enabled="false" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Generate monitoring-central YAML files
@@ -110,6 +112,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 --ext-str honeycomb_api_key="fake-key" \
 --ext-str honeycomb_dataset="fake-dataset" \
 --ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
+--ext-str stackdriver_datasource_enabled="false" \
 monitoring-satellite/manifests/rules.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Make sure to remove json files
