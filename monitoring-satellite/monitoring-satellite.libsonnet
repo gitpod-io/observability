@@ -29,7 +29,12 @@ local werft = import '../components/werft/werft.libsonnet';
       namespace: std.extVar('namespace'),
       certmanagerNamespace: 'certmanager',
       prometheusLabels: $.prometheus.prometheus.metadata.labels,
-      mixin+: { ruleLabels: $.values.common.ruleLabels },
+      mixin+: {
+        ruleLabels: $.values.common.ruleLabels,
+        _config+: {
+          certManagerCertExpiryDays: 7,
+        },
+      },
     },
 
     werftParams: {
