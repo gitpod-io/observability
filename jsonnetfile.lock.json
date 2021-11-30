@@ -28,8 +28,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "1546851c70507a7f53297c0cf529b35126430de0",
-      "sum": "ZMtNtTT4Rkk4VfKigDO7gIbIHmDlNBIszTZiJe4wT4Y=",
+      "version": "ee703a4c7b15604e96b1d1956c16650f3a172540",
+      "sum": "OQJR1uTPygq/lcVwge4DsL3PBl0weQbMlHg/ROS03C0=",
       "name": "gitpod"
     },
     {
@@ -49,7 +49,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "84900d9dc450116ad66864f48088f92ccae36c54",
+      "version": "41468badd77aba86a4f20b883d47c6761d610fed",
       "sum": "0KkygBQd/AFzUvVzezE4qF/uDYgrwUXVpZfINBti0oc="
     },
     {
@@ -99,7 +99,7 @@
           "subdir": "jsonnet/lib"
         }
       },
-      "version": "9401841557797afdcfde05800c552158cc36a483",
+      "version": "2adff5fcce97b775d9345e316a5d7ee8dff1737d",
       "sum": "/33386b3/boEQGuUF3y8mc7iOzFekzLuPtozDzTKfhs=",
       "name": "observatorium-api"
     },
@@ -195,7 +195,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "0d20ee46fe9de548f94d138e7dc035145a972a3f",
+      "version": "c78fcd29ba5a46859becf6148401c8e5f1388210",
       "sum": "ZjQoYhvgKwJNkg+h+m9lW3SYjnjv5Yx5btEipLhru88=",
       "name": "prometheus"
     },
