@@ -2,7 +2,7 @@
   grafana+: {
     // Certmanager must be installed in the cluster already!
     certificate: {
-      apiVersion: 'cert-manager.io/v1alpha2',
+      apiVersion: 'cert-manager.io/v1',
       kind: 'Certificate',
       metadata: {
         name: 'grafana',
