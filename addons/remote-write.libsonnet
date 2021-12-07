@@ -1,3 +1,5 @@
+local config = std.extVar('config');
+
 {
   prometheus+: {
     prometheus+: {
@@ -16,7 +18,7 @@
               },
             },
           }
-          for url in std.extVar('remote_write_urls')
+          for url in config.remoteWrite.urls
         ],
       },
     },
@@ -31,8 +33,8 @@
       },
       type: 'Opaque',
       data: {
-        username: std.base64(std.extVar('remote_write_username')),
-        password: std.base64(std.extVar('remote_write_password')),
+        username: std.base64(config.remoteWrite.username),
+        password: std.base64(config.remoteWrite.password),
       },
     },
   },

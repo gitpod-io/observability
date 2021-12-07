@@ -22,28 +22,17 @@ if [[ $environment == "CI" ]]; then
     echo 'Generating YAML manifests for continuous integration'
 
     jsonnet -c -J vendor -m monitoring-satellite/manifests \
-    --ext-str namespace="monitoring-satellite" \
-    --ext-str cluster_name="fake-cluster" \
-    --ext-str alerting_enabled="true" \
-    --ext-str slack_webhook_url_critical="http://fake.url.critical" \
-    --ext-str slack_webhook_url_warning="http://fake.url.warning" \
-    --ext-str slack_webhook_url_info="http://fake.url.info" \
-    --ext-str slack_channel_prefix="#fake_channel" \
-    --ext-str pagerduty_routing_key="fakeR0uT1GNKEY" \
-    --ext-str node_affinity_label='' \
-    --ext-str is_preview="true" \
-    --ext-str node_exporter_port="9100" \
-    --ext-str remote_write_enabled="true" \
-    --ext-str remote_write_password="p@ssW0rd" \
-    --ext-str remote_write_username="user" \
-    --ext-str prometheus_dns_name="prometheus.fake.preview.io" \
-    --ext-str grafana_dns_name="grafana.fake.preview.io" \
-    --ext-str tracing_enabled="true" \
-    --ext-str honeycomb_api_key="fake-key" \
-    --ext-str honeycomb_dataset="fake-dataset" \
-    --ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
-    --ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
-    monitoring-satellite/manifests/continuous_integration.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
+    --ext-code config="{
+      namespace: 'monitoring-satellite',
+      clusterName: 'fake-cluster',
+      tracing: {
+        honeycombAPIKey: 'fake-key',
+        honeycombDataset: 'fake-dataset',
+        jaegerEndpoint: 'http://jaeger:14250',
+      },
+      continuousIntegration: true,
+    }" \
+    monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
     # Make sure to remove json files
     find monitoring-satellite/manifests -type f ! -name '*.yaml' ! -name '*.jsonnet'  -delete
@@ -54,27 +43,38 @@ fi
 
 # Generate monitoring-satellite YAML files
 jsonnet -c -J vendor -m monitoring-satellite/manifests \
---ext-str namespace="monitoring-satellite" \
---ext-str cluster_name="fake-cluster" \
---ext-str alerting_enabled="true" \
---ext-str slack_webhook_url_critical="http://fake.url.critical" \
---ext-str slack_webhook_url_warning="http://fake.url.warning" \
---ext-str slack_webhook_url_info="http://fake.url.info" \
---ext-str slack_channel_prefix="#fake_channel" \
---ext-str pagerduty_routing_key="fakeR0uT1GNKEY" \
---ext-str node_affinity_label='' \
---ext-str is_preview="true" \
---ext-str node_exporter_port="9100" \
---ext-str remote_write_enabled="true" \
---ext-str remote_write_password="p@ssW0rd" \
---ext-str remote_write_username="user" \
---ext-str prometheus_dns_name="prometheus.fake.preview.io" \
---ext-str grafana_dns_name="grafana.fake.preview.io" \
---ext-str tracing_enabled="true" \
---ext-str honeycomb_api_key="fake-key" \
---ext-str honeycomb_dataset="fake-dataset" \
---ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
---ext-code remote_write_urls="['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write']" \
+--ext-code config="{
+    namespace: 'monitoring-satellite',
+    clusterName: 'fake-cluster',
+    alerting: {
+        slackWebhookURLCritical: 'http://fake.url.critical',
+        slackWebhookURLWarning: 'http://fake.url.warning',
+        slackWebhookURLInfo: 'http://fake.url.info',
+        slackChannelPrefix: '#fake_channel',
+        pagerdutyRoutingKey: 'fakeR0uT1GNKEY',
+    },
+    tracing: {
+        honeycombAPIKey: 'fake-key',
+        honeycombDataset: 'fake-dataset',
+        jaegerEndpoint: 'http://jaeger:14250',
+    },
+    remoteWrite: {
+        username: 'user',
+        password: 'p@ssW0rd',
+        urls: ['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write'],
+    },
+    previewEnvironment: {
+        prometheusDNS: 'prometheus.fake.preview.io',
+        grafanaDNS: 'grafana.fake.preview.io',
+        nodeExporterPort: 9100
+    },
+    nodeAffinity: {
+        nodeSelector: {
+            nodepool: 'monitoring',
+            'kubernetes.io/os': 'linux',
+        },
+    },
+}" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Generate monitoring-central YAML files
@@ -94,21 +94,10 @@ monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} |
 
 # Generate monitoring-satellite prometheus rules
 jsonnet -c -J vendor -m monitoring-satellite/manifests \
---ext-str namespace="monitoring-satellite" \
---ext-str cluster_name="fake-cluster" \
---ext-str slack_webhook_url_critical="http://fake.url.critical" \
---ext-str slack_webhook_url_warning="http://fake.url.warning" \
---ext-str slack_webhook_url_info="http://fake.url.info" \
---ext-str slack_channel_prefix="#fake_channel" \
---ext-str pagerduty_routing_key="fakeR0uT1GNKEY" \
---ext-str node_affinity_label='' \
---ext-str alerting_enabled="false" \
---ext-str remote_write_enabled="false" \
---ext-str is_preview="false" \
---ext-str tracing_enabled="true" \
---ext-str honeycomb_api_key="fake-key" \
---ext-str honeycomb_dataset="fake-dataset" \
---ext-str jaeger_endpoint="http://jaeger:14268/api/traces" \
+--ext-code config="{
+    namespace: 'monitoring-satellite',
+    clusterName: 'fake-cluster',
+}" \
 monitoring-satellite/manifests/rules.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Make sure to remove json files

@@ -1,67 +1,70 @@
-local affinityLabel = std.extVar('node_affinity_label');
+local config = std.extVar('config');
 
-if affinityLabel != '' then
-  {
+{
+  prometheus+: {
     prometheus+: {
-      prometheus+: {
-        spec+: {
-          nodeSelector+: {
-            [affinityLabel]: 'true',
-          },
-        },
+      spec+: {
+        nodeSelector+: config.nodeAffinity.nodeSelector,
       },
     },
+  },
 
+  alertmanager+: {
     alertmanager+: {
-      alertmanager+: {
-        spec+: {
-          nodeSelector+: {
-            [affinityLabel]: 'true',
-          },
-        },
+      spec+: {
+        nodeSelector+: config.nodeAffinity.nodeSelector,
       },
     },
+  },
 
-    grafana+: {
-      deployment+: {
-        spec+: {
-          template+: {
-            spec+: {
-              nodeSelector+: {
-                [affinityLabel]: 'true',
-              },
+  grafana+: {
+    deployment+: {
+      spec+: {
+        template+: {
+          spec+: {
+            nodeSelector+: {
+              nodeSelector+: config.nodeAffinity.nodeSelector,
             },
           },
         },
       },
     },
+  },
 
-    prometheusOperator+: {
-      deployment+: {
-        spec+: {
-          template+: {
-            spec+: {
-              nodeSelector+: {
-                [affinityLabel]: 'true',
-              },
-            },
+  prometheusOperator+: {
+    deployment+: {
+      spec+: {
+        template+: {
+          spec+: {
+            nodeSelector+: config.nodeAffinity.nodeSelector,
           },
         },
       },
     },
+  },
 
-    kubeStateMetrics+: {
-      deployment+: {
-        spec+: {
-          template+: {
-            spec+: {
-              nodeSelector+: {
-                [affinityLabel]: 'true',
-              },
-            },
+  kubeStateMetrics+: {
+    deployment+: {
+      spec+: {
+        template+: {
+          spec+: {
+            nodeSelector+: config.nodeAffinity.nodeSelector,
           },
         },
       },
     },
-  }
-else {}
+  },
+} +
+(if std.objectHas(config, 'tracing') then {
+   otelCollector+: {
+     deployment+: {
+       spec+: {
+         template+: {
+           spec+: {
+             nodeSelector+: config.nodeAffinity.nodeSelector,
+           },
+         },
+       },
+     },
+   },
+ } else {})
