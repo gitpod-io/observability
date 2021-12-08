@@ -1,4 +1,4 @@
-local config = (import 'config-validation.libsonnet')(std.extVar('config'));
+local config = (import 'load-config.libsonnet')(std.extVar('config'));
 local certmanager = import '../components/certmanager/certmanager.libsonnet';
 local gitpod = import '../components/gitpod/gitpod.libsonnet';
 local werft = import '../components/werft/werft.libsonnet';
