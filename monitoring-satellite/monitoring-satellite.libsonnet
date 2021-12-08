@@ -12,7 +12,7 @@ local werft = import '../components/werft/werft.libsonnet';
 (import '../addons/metrics-relabeling.libsonnet') +
 (if std.objectHas(config, 'alerting') then (import '../addons/alerting.libsonnet') else {}) +
 (if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet') else {}) +
-(if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet') else {}) +
+(if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 {
   values+:: {
     common+: {
@@ -138,4 +138,4 @@ local werft = import '../components/werft/werft.libsonnet';
 (import '../addons/gitpod-runbooks.libsonnet') +
 (if std.objectHas(config, 'previewEnvironment') then (import '../addons/preview-env.libsonnet') else {}) +
 (if std.objectHas(config, 'continuousIntegration') then (import '../addons/continuous_integration.libsonnet') else {}) +
-(if std.objectHas(config, 'nodeAffinity') then (import '../addons/node-affinity.libsonnet') else {}) 
+(if std.objectHas(config, 'nodeAffinity') then (import '../addons/node-affinity.libsonnet') else {})

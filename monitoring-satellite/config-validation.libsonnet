@@ -14,12 +14,6 @@ function(config) config {
   // If it exists, then the second part of the assertions are executed('A||B' construct), making assertions
   // more specific for each object.
 
-  /*********** Tracing assertions ************/
-  assert !std.objectHas(config, 'tracing') || (
-    std.objectHas(config.tracing, 'honeycombAPIKey') ||
-    std.objectHas(config.tracing, 'jaegerEndpoint')
-  ) : "If 'tracing' is set, 'honeycombAPIKey' or 'jaegerEndpoint' should be declared",
-
   /*********** Alerting assertions ************/
   assert !std.objectHas(config, 'alerting') || (
     std.objectHas(config.alerting, 'slackWebhookURLWarning') &&
