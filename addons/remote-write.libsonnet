@@ -1,6 +1,16 @@
-local config = std.extVar('config');
+function(config) {
 
-{
+  assert std.objectHas(config.remoteWrite, 'username') && std.objectHas(config.remoteWrite, 'password') : (
+    "If 'remoteWrite' is set, 'username' and 'password' should be declared"
+  ),
+  assert std.objectHas(config.remoteWrite, 'urls') : (
+    "If 'remoteWrite' is set, 'urls' should be declared"
+  ),
+
+  assert std.isArray(config.remoteWrite.urls) : (
+    'remote-write URLs should be an array'
+  ),
+
   prometheus+: {
     prometheus+: {
       spec+: {

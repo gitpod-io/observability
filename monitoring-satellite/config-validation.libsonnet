@@ -26,19 +26,6 @@ function(config) config {
     std.objectHas(config.alerting, 'pagerdutyRoutingKey')
   ) : "If 'alerting' is set, 'slackWebhookURLCritical' or 'pagerdutyRoutingKey' should be declared",
 
-
-  /*********** Remote-write assertions ************/
-  assert !std.objectHas(config, 'remoteWrite') || (
-    std.objectHas(config.remoteWrite, 'username') ||
-    std.objectHas(config.remoteWrite, 'password')
-  ) : "If 'remoteWrite' is set, 'username' or 'password' should be declared",
-
-  assert !std.objectHas(config, 'remoteWrite') || (
-    std.objectHas(config.remoteWrite, 'urls') &&
-    std.isArray(config.remoteWrite.urls)
-  ) : "If 'remoteWrite' is set, 'urls' should be declared and be an array",
-
-
   /*********** Preview environment assertions ************/
   assert !std.objectHas(config, 'previewEnvironment') || (
     std.objectHas(config.previewEnvironment, 'prometheusDNS') &&

@@ -11,7 +11,7 @@ local werft = import '../components/werft/werft.libsonnet';
 (import '../addons/ksm-extra-labels.libsonnet') +
 (import '../addons/metrics-relabeling.libsonnet') +
 (if std.objectHas(config, 'alerting') then (import '../addons/alerting.libsonnet') else {}) +
-(if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet') else {}) +
+(if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 {
   values+:: {
