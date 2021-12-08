@@ -1,7 +1,14 @@
 // The preview-environment addon provides json snippets that are specific for preview environment installations.
-local config = std.extVar('config');
+function(config) {
 
-{
+  assert std.objectHas(config.previewEnvironment, 'prometheusDNS') && std.objectHas(config.previewEnvironment, 'grafanaDNS') : (
+    "If 'previewEnvironment' is set, 'prometheusDNS' and 'grafanaDNS' should be declared"
+  ),
+
+  assert std.objectHas(config.previewEnvironment, 'nodeExporterPort') && std.isNumber(config.previewEnvironment.nodeExporterPort) : (
+    "If 'previewEnvironment' is set, 'nodeExporterPort' should be declared and it should be a number"
+  ),
+
   values+:: {
     // On preview env, Gitpod and monitoring satellite are installed in the same namespace.
     gitpodParams+: {
