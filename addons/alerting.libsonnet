@@ -1,39 +1,48 @@
-local config = std.extVar('config');
-local criticalReceiver =
-  if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
-    |||
-      pagerduty_configs:
-        - send_resolved: true
-          routing_key: '%(pagerdutyRoutingKey)s'
-    ||| % {
-      pagerdutyRoutingKey: config.alerting.pagerdutyRoutingKey,
-    }
-  else
-    |||
-      slack_configs:
-        - send_resolved: true
-          api_url: %(slackWebhookUrlCritical)s
-          channel: '%(slackChannelPrefix)s_critical'
-          title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
-          text: |
-            {{ range .Alerts }}
-            **Please take immediate action!**
-            *Cluster:* {{ .Labels.cluster }}
-            *Alert:* {{ .Labels.alertname }}
-            *Description:* {{ .Annotations.description }}
-            {{ end }}
-          actions:
-          - type: button
-            text: 'Runbook :book:'
-            url: '{{ .CommonAnnotations.runbook_url }}'
-    ||| % {
-      clusterName: config.clusterName,
-      slackWebhookUrlCritical: config.alerting.slackWebhookURLCritical,
-      slackChannelPrefix: config.alerting.slackChannelPrefix,
-    }
-;
+function(config) {
 
-{
+  assert std.objectHas(config.alerting, 'slackWebhookURLWarning') &&
+         std.objectHas(config.alerting, 'slackWebhookURLInfo') &&
+         std.objectHas(config.alerting, 'slackChannelPrefix') : (
+    "If 'alerting' is set, 'slackWebhookURLWarning', 'slackWebhookURLInfo' and 'slackChannelPrefix' should be declared"
+  ),
+
+  assert std.objectHas(config.alerting, 'slackWebhookURLCritical') || std.objectHas(config.alerting, 'pagerdutyRoutingKey') : (
+    "If 'alerting' is set, 'slackWebhookURLCritical' or 'pagerdutyRoutingKey' should be declared"
+  ),
+
+  local criticalReceiver =
+    if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
+      |||
+        pagerduty_configs:
+          - send_resolved: true
+            routing_key: '%(pagerdutyRoutingKey)s'
+      ||| % {
+        pagerdutyRoutingKey: config.alerting.pagerdutyRoutingKey,
+      }
+    else
+      |||
+        slack_configs:
+          - send_resolved: true
+            api_url: %(slackWebhookUrlCritical)s
+            channel: '%(slackChannelPrefix)s_critical'
+            title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
+            text: |
+              {{ range .Alerts }}
+              **Please take immediate action!**
+              *Cluster:* {{ .Labels.cluster }}
+              *Alert:* {{ .Labels.alertname }}
+              *Description:* {{ .Annotations.description }}
+              {{ end }}
+            actions:
+            - type: button
+              text: 'Runbook :book:'
+              url: '{{ .CommonAnnotations.runbook_url }}'
+      ||| % {
+        clusterName: config.clusterName,
+        slackWebhookUrlCritical: config.alerting.slackWebhookURLCritical,
+        slackChannelPrefix: config.alerting.slackChannelPrefix,
+      },
+
   values+:: {
     alertmanager+: {
       config: |||

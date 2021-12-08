@@ -14,18 +14,6 @@ function(config) config {
   // If it exists, then the second part of the assertions are executed('A||B' construct), making assertions
   // more specific for each object.
 
-  /*********** Alerting assertions ************/
-  assert !std.objectHas(config, 'alerting') || (
-    std.objectHas(config.alerting, 'slackWebhookURLWarning') &&
-    std.objectHas(config.alerting, 'slackWebhookURLInfo') &&
-    std.objectHas(config.alerting, 'slackChannelPrefix')
-  ) : "If 'alerting' is set, 'slackWebhookURLWarning', 'slackWebhookURLInfo' and 'slackChannelPrefix' should be declared",
-
-  assert !std.objectHas(config, 'alerting') || (
-    std.objectHas(config.alerting, 'slackWebhookURLCritical') ||
-    std.objectHas(config.alerting, 'pagerdutyRoutingKey')
-  ) : "If 'alerting' is set, 'slackWebhookURLCritical' or 'pagerdutyRoutingKey' should be declared",
-
   /*********** Preview environment assertions ************/
   assert !std.objectHas(config, 'previewEnvironment') || (
     std.objectHas(config.previewEnvironment, 'prometheusDNS') &&
