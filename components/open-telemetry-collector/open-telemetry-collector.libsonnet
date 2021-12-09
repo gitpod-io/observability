@@ -14,6 +14,8 @@ function(params) {
   local otel = self,
   _config:: defaults + params,
 
+  local withPreviewEnvironment = std.objectHas(config, 'previewEnvironment') && std.objectHas(config.previewEnvironment, 'domain'),
+
   local receiversConfig =
     |||
       receivers:
@@ -27,10 +29,17 @@ function(params) {
             http: # on port 4318
     |||,
 
-  local processorsConfig =
+  local processorsConfig = if withPreviewEnvironment then
     |||
       processors:
-    |||,
+        attributes:
+          actions:
+            - key: 'preview.domain'
+              value: %(domain)s
+              action: insert
+    ||| % {
+      domain: config.previewEnvironment.domain,
+    } else '',
 
   local exportersConfig =
     |||
@@ -79,12 +88,13 @@ function(params) {
         pipelines:
           traces:
             receivers: [jaeger, otlp]
-            processors: []
+            processors: %(processors)s
             exporters: %(exporters)s
     ||| % {
       exporters: [] +
                  (if std.objectHas(config.tracing, 'honeycombAPIKey') then ['otlp'] else []) +
                  (if std.objectHas(config.tracing, 'jaegerEndpoint') then ['jaeger'] else []),
+      processors: [] + (if withPreviewEnvironment then ['attributes'] else []),
     },
 
   configMap: {
