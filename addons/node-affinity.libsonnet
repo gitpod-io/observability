@@ -22,9 +22,7 @@ local config = std.extVar('config');
       spec+: {
         template+: {
           spec+: {
-            nodeSelector+: {
-              nodeSelector+: config.nodeAffinity.nodeSelector,
-            },
+            nodeSelector+: config.nodeAffinity.nodeSelector,
           },
         },
       },
