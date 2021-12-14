@@ -10,6 +10,7 @@ local werft = import '../components/werft/werft.libsonnet';
 (import '../addons/disable-grafana-auth.libsonnet') +
 (import '../addons/ksm-extra-labels.libsonnet') +
 (import '../addons/metrics-relabeling.libsonnet') +
+(import '../addons/argocd-crd-replace.libsonnet') +
 (if std.objectHas(config, 'alerting') then (import '../addons/alerting.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
