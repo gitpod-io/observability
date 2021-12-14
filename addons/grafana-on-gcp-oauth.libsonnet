@@ -1,4 +1,12 @@
-{
+function(config) {
+  assert std.objectHas(config, 'grafana') : 'grafana required',
+  assert std.objectHas(config.grafana, 'DNS') : 'grafana.DNS required',
+  assert std.objectHas(config.grafana, 'nodePort') : 'grafana.nodePort required',
+  assert std.isNumber(config.grafana.nodePort) : 'grafana.nodePort should be a number',
+  assert std.objectHas(config.grafana, 'GCPExternalIpAddress') : 'grafana.GCPExternalIpAddress required',
+  assert std.objectHas(config.grafana, 'IAPClientID') : 'grafana.IAPClientID required',
+  assert std.objectHas(config.grafana, 'IAPClientSecret') : 'grafana.IAPClientSecret required',
+
   grafana+: {
     // Certmanager must be installed in the cluster already!
     certificate: {
@@ -6,11 +14,11 @@
       kind: 'Certificate',
       metadata: {
         name: 'grafana',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         dnsNames: [
-          std.extVar('grafana_dns_name'),
+          config.grafana.DNS,
         ],
         issuerRef: {
           kind: 'ClusterIssuer',
@@ -30,7 +38,7 @@
         type: 'NodePort',
         ports: std.map(
           function(p) p {
-            nodePort: std.parseInt(std.extVar('grafana_ingress_node_port')),
+            nodePort: config.grafana.nodePort,
           }
           , super.ports
         ),
@@ -42,17 +50,17 @@
       kind: 'Ingress',
       metadata: {
         annotations: {
-          'kubernetes.io/ingress.global-static-ip-name': std.extVar('gcp_external_ip_address'),
+          'kubernetes.io/ingress.global-static-ip-name': config.grafana.GCPExternalIpAddress,
           'kubernetes.io/ingress.class': 'gce',
           'cert-manager.io/cluster-issuer': $.grafana.certificate.spec.issuerRef.name,
         },
         labels: $.grafana.service.metadata.labels,
         name: 'grafana',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         rules: [{
-          host: std.extVar('grafana_dns_name'),  // gcp's external ip address
+          host: config.grafana.DNS,  // gcp's external ip address
           http: {
             paths: [{
               backend: {
@@ -66,7 +74,7 @@
         }],
         tls: [{
           hosts: [
-            std.extVar('grafana_dns_name'),
+            config.grafana.DNS,
           ],
           secretName: $.grafana.certificate.spec.secretName,
         }],
@@ -78,12 +86,12 @@
       kind: 'Secret',
       metadata: {
         name: 'grafana-oauth',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
         labels: $.grafana.service.metadata.labels,
       },
       data: {
-        client_id: std.base64(std.extVar('IAP_client_id')),
-        client_secret: std.base64(std.extVar('IAP_client_secret')),
+        client_id: std.base64(config.grafana.IAPClientID),
+        client_secret: std.base64(config.grafana.IAPClientSecret),
       },
     },
 
@@ -92,7 +100,7 @@
       kind: 'BackendConfig',
       metadata: {
         name: 'grafana',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         iap: {

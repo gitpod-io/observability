@@ -79,17 +79,23 @@ monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {}
 
 # Generate monitoring-central YAML files
 jsonnet -c -J vendor -m monitoring-central/manifests \
---ext-str namespace="monitoring-central" \
---ext-str grafana_ingress_node_port=32164 \
---ext-str grafana_dns_name="http://fake.grafana.url" \
---ext-str gcp_external_ip_address="fake_external_ip_address" \
---ext-str IAP_client_id="fakeIAP_ID" \
---ext-str IAP_client_secret="fakeIAP_secret" \
---ext-str victoriametrics_dns_name="http://fake.victoriametrics.url" \
---ext-str vmauth_auth_key="random-key" \
---ext-str remote_write_password="p@ssW0rd" \
---ext-str remote_write_username="user" \
---ext-str vmauth_gcp_external_ip_address="fake_external_ip_address" \
+--ext-code config="{
+    namespace: 'monitoring-central',
+    grafana: {
+        nodePort: 32164,
+        DNS: 'http://fake.grafana.url',
+        GCPExternalIpAddress: 'fake_external_ip_address',
+        IAPClientID: 'fakeIAP_ID',
+        IAPClientSecret: 'fakeIAP_secret',
+    },
+    victoriametrics: {
+        DNS: 'http://fake.victoriametrics.url',
+        authKey: 'random-key',
+        username: 'p@ssW0rd',
+        password: 'user',
+        GCPExternalIpAddress: 'fake_external_ip_address',
+    }
+}" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
 # Generate monitoring-satellite prometheus rules

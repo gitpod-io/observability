@@ -1,3 +1,5 @@
+local config = std.extVar('config');
+
 local defaults = {
   local defaults = self,
 
@@ -17,6 +19,13 @@ local defaults = {
 function(params) {
   local v = self,
   _config:: defaults + params,
+
+  assert std.objectHas(config, 'victoriametrics') : 'victoriametrics object required in configuration',
+  assert std.objectHas(config.victoriametrics, 'authKey') : 'victoriametrics.authKey is required',
+  assert std.objectHas(config.victoriametrics, 'DNS') : 'victoriametrics.DNS is required',
+  assert std.objectHas(config.victoriametrics, 'username') : 'victoriametrics.username is required',
+  assert std.objectHas(config.victoriametrics, 'password') : 'victoriametrics.password is required',
+  assert std.objectHas(config.victoriametrics, 'GCPExternalIpAddress') : 'victoriametrics.GCPExternalIpAddress is required',
 
   clusterRole: {
     apiVersion: 'rbac.authorization.k8s.io/v1beta1',
@@ -156,8 +165,8 @@ function(params) {
               imagePullPolicy: 'IfNotPresent',
               args: [
                 '-auth.config=/vmauth/vmauth-config.yml',
-                '-pprofAuthKey=' + std.extVar('vmauth_auth_key'),
-                '-reloadAuthKey=' + std.extVar('vmauth_auth_key'),
+                '-pprofAuthKey=' + config.victoriametrics.authKey,
+                '-reloadAuthKey=' + config.victoriametrics.authKey,
               ],
               ports: [{
                 containerPort: $._config.vmAuthPort,
@@ -247,18 +256,18 @@ function(params) {
     kind: 'Ingress',
     metadata: {
       annotations: {
-        'kubernetes.io/ingress.global-static-ip-name': std.extVar('vmauth_gcp_external_ip_address'),
+        'kubernetes.io/ingress.global-static-ip-name': config.victoriametrics.GCPExternalIpAddress,
         'kubernetes.io/ingress.class': 'gce',
         'networking.gke.io/v1beta1.FrontendConfig': $.frontendConfig.metadata.name,
         'cert-manager.io/cluster-issuer': $.certificate.spec.issuerRef.name,
       },
       labels: $._config.commonLabels,
       name: $._config.name + '-vmauth',
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
     },
     spec: {
       rules: [{
-        host: std.extVar('victoriametrics_dns_name'),  // gcp's external ip address
+        host: config.victoriametrics.DNS,  // gcp's external ip address
         http: {
           paths: [{
             backend: {
@@ -271,7 +280,7 @@ function(params) {
       }],
       tls: [{
         hosts: [
-          std.extVar('victoriametrics_dns_name'),
+          config.victoriametrics.DNS,
         ],
         secretName: $.certificate.spec.secretName,
       }],
@@ -283,12 +292,12 @@ function(params) {
     kind: 'Certificate',
     metadata: {
       name: $._config.name + '-vmauth',
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
       labels: $._config.commonLabels,
     },
     spec: {
       dnsNames: [
-        std.extVar('victoriametrics_dns_name'),
+        config.victoriametrics.DNS,
       ],
       issuerRef: {
         kind: 'ClusterIssuer',
@@ -300,8 +309,8 @@ function(params) {
 
   local authConfig =
     'users:\n' +
-    '- username: "' + std.extVar('remote_write_username') + '"\n' +
-    '  password: "' + std.extVar('remote_write_password') + '"\n' +
+    '- username: "' + config.victoriametrics.username + '"\n' +
+    '  password: "' + config.victoriametrics.password + '"\n' +
     '  url_prefix:\n' +
     '  - http://localhost:8428',
 
@@ -323,7 +332,7 @@ function(params) {
     kind: 'BackendConfig',
     metadata: {
       name: $._config.name + '-vmauth',
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
     },
     spec: {
       healthCheck: {
@@ -337,7 +346,7 @@ function(params) {
     kind: 'FrontendConfig',
     metadata: {
       name: $._config.name + '-vmauth',
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
     },
     spec: {
       sslPolicy: 'victoriametrics-ssl-policy',
