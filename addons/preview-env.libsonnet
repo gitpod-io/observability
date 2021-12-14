@@ -1,14 +1,22 @@
 // The preview-environment addon provides json snippets that are specific for preview environment installations.
+function(config) {
 
-{
+  assert std.objectHas(config.previewEnvironment, 'prometheusDNS') && std.objectHas(config.previewEnvironment, 'grafanaDNS') : (
+    "If 'previewEnvironment' is set, 'prometheusDNS' and 'grafanaDNS' should be declared"
+  ),
+
+  assert std.objectHas(config.previewEnvironment, 'nodeExporterPort') && std.isNumber(config.previewEnvironment.nodeExporterPort) : (
+    "If 'previewEnvironment' is set, 'nodeExporterPort' should be declared and it should be a number"
+  ),
+
   values+:: {
     // On preview env, Gitpod and monitoring satellite are installed in the same namespace.
     gitpodParams+: {
-      gitpodNamespace: std.extVar('namespace'),
+      gitpodNamespace: config.namespace,
     },
 
     nodeExporter+: {
-      port: std.parseInt(std.extVar('node_exporter_port')),
+      port: config.previewEnvironment.nodeExporterPort,
     },
 
     prometheusOperator+: {
@@ -26,13 +34,13 @@
         serviceMonitorNamespaceSelector: {
           matchLabels: {
             // Each Prometheus should only monitor its own preview environment.
-            namespace: std.extVar('namespace'),
+            namespace: config.namespace,
           },
         },
         ruleNamespaceSelector: {
           matchLabels: {
             // Each Prometheus should only monitor its own preview environment.
-            namespace: std.extVar('namespace'),
+            namespace: config.namespace,
           },
         },
       },
@@ -54,11 +62,11 @@
       kind: 'Certificate',
       metadata: {
         name: 'prometheus',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         dnsNames: [
-          std.extVar('prometheus_dns_name'),
+          config.previewEnvironment.prometheusDNS,
         ],
         issuerRef: {
           kind: 'ClusterIssuer',
@@ -75,15 +83,15 @@
         annotations: {
           'kubernetes.io/ingress.class': 'gce',
           'cert-manager.io/cluster-issuer': $.prometheus.certificate.spec.issuerRef.name,
-          'external-dns.alpha.kubernetes.io/hostname': std.extVar('prometheus_dns_name'),
+          'external-dns.alpha.kubernetes.io/hostname': config.previewEnvironment.prometheusDNS,
         },
         labels: $.prometheus.service.metadata.labels,
         name: 'prometheus',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         rules: [{
-          host: std.extVar('prometheus_dns_name'),
+          host: config.previewEnvironment.prometheusDNS,
           http: {
             paths: [{
               backend: {
@@ -97,7 +105,7 @@
         }],
         tls: [{
           hosts: [
-            std.extVar('prometheus_dns_name'),
+            config.previewEnvironment.prometheusDNS,
           ],
           secretName: $.prometheus.certificate.spec.secretName,
         }],
@@ -109,7 +117,7 @@
       kind: 'BackendConfig',
       metadata: {
         name: 'prometheus',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         healthCheck: {
@@ -131,11 +139,11 @@
       kind: 'Certificate',
       metadata: {
         name: 'grafana',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         dnsNames: [
-          std.extVar('grafana_dns_name'),
+          config.previewEnvironment.grafanaDNS,
         ],
         issuerRef: {
           kind: 'ClusterIssuer',
@@ -152,15 +160,15 @@
         annotations: {
           'kubernetes.io/ingress.class': 'gce',
           'cert-manager.io/cluster-issuer': $.grafana.certificate.spec.issuerRef.name,
-          'external-dns.alpha.kubernetes.io/hostname': std.extVar('grafana_dns_name'),
+          'external-dns.alpha.kubernetes.io/hostname': config.previewEnvironment.grafanaDNS,
         },
         labels: $.grafana.service.metadata.labels,
         name: 'grafana',
-        namespace: std.extVar('namespace'),
+        namespace: config.namespace,
       },
       spec: {
         rules: [{
-          host: std.extVar('grafana_dns_name'),
+          host: config.previewEnvironment.grafanaDNS,
           http: {
             paths: [{
               backend: {
@@ -174,7 +182,7 @@
         }],
         tls: [{
           hosts: [
-            std.extVar('grafana_dns_name'),
+            config.previewEnvironment.grafanaDNS,
           ],
           secretName: $.grafana.certificate.spec.secretName,
         }],

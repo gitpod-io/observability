@@ -1,3 +1,4 @@
+local config = (import 'load-config.libsonnet')(std.extVar('config'));
 local certmanager = import '../components/certmanager/certmanager.libsonnet';
 local gitpod = import '../components/gitpod/gitpod.libsonnet';
 local werft = import '../components/werft/werft.libsonnet';
@@ -9,25 +10,24 @@ local werft = import '../components/werft/werft.libsonnet';
 (import '../addons/disable-grafana-auth.libsonnet') +
 (import '../addons/ksm-extra-labels.libsonnet') +
 (import '../addons/metrics-relabeling.libsonnet') +
-(import '../addons/cluster-monitoring.libsonnet') +
-(if std.extVar('remote_write_enabled') == 'true' then (import '../addons/remote-write.libsonnet') else {}) +
-(if std.extVar('alerting_enabled') == 'true' then (import '../addons/alerting.libsonnet') else {}) +
-(if std.extVar('tracing_enabled') == 'true' then (import '../addons/tracing.libsonnet') else {}) +
+(if std.objectHas(config, 'alerting') then (import '../addons/alerting.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 {
   values+:: {
     common+: {
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
     },
 
     gitpodParams: {
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
       gitpodNamespace: 'default',
       prometheusLabels: $.prometheus.prometheus.metadata.labels,
       mixin+: { ruleLabels: $.values.common.ruleLabels },
     },
 
     certmanagerParams: {
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
       certmanagerNamespace: 'certmanager',
       prometheusLabels: $.prometheus.prometheus.metadata.labels,
       mixin+: {
@@ -39,7 +39,7 @@ local werft = import '../components/werft/werft.libsonnet';
     },
 
     werftParams: {
-      namespace: std.extVar('namespace'),
+      namespace: config.namespace,
       werftNamespace: 'werft',
       prometheusLabels: $.prometheus.prometheus.metadata.labels,
     },
@@ -48,7 +48,7 @@ local werft = import '../components/werft/werft.libsonnet';
       replicas: 1,
       namespaces+: [$.values.certmanagerParams.certmanagerNamespace, $.values.werftParams.werftNamespace],
       externalLabels: {
-        cluster: std.extVar('cluster_name'),
+        cluster: config.clusterName,
       },
       resources: {
         requests: { memory: '2Gi', cpu: '1000m' },
@@ -125,7 +125,7 @@ local werft = import '../components/werft/werft.libsonnet';
     namespace+: {
       metadata+: {
         labels+: {
-          namespace: std.extVar('namespace'),
+          namespace: config.namespace,
         },
       },
     },
@@ -133,5 +133,9 @@ local werft = import '../components/werft/werft.libsonnet';
   },
 }
 +
+// Jsonnet cares about order of execution.
+// At the botton we add configuration that is overriden by other above.
 (import '../addons/gitpod-runbooks.libsonnet') +
-(if std.extVar('is_preview') == 'true' then (import '../addons/preview-env.libsonnet') else {})
+(if std.objectHas(config, 'previewEnvironment') then (import '../addons/preview-env.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'continuousIntegration') then (import '../addons/continuous_integration.libsonnet') else {}) +
+(if std.objectHas(config, 'nodeAffinity') then (import '../addons/node-affinity.libsonnet') else {})
