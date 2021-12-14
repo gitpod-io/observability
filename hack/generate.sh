@@ -74,6 +74,9 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
             'kubernetes.io/os': 'linux',
         },
     },
+    werft: {
+        namespace: 'werft',
+    }
 }" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
