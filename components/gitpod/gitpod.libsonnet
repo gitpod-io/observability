@@ -400,12 +400,12 @@ function(params) {
       name: $._config.name + '-image-builder',
       namespace: $._config.gitpodNamespace,
       labels: $._config.commonLabels {
-        'app.kubernetes.io/component': 'image-builder',
+        'app.kubernetes.io/component': 'image-builder-mk3',
       },
     },
     spec: {
       selector: {
-        component: 'image-builder',
+        component: 'image-builder-mk3',
       },
       ports: [{
         name: 'metrics',
@@ -426,7 +426,7 @@ function(params) {
       jobLabel: 'app.kubernetes.io/component',
       selector: {
         matchLabels: $._config.commonLabels {
-          'app.kubernetes.io/component': 'image-builder',
+          'app.kubernetes.io/component': 'image-builder-mk3',
         },
       },
       namespaceSelector: {
@@ -453,7 +453,7 @@ function(params) {
     spec: {
       podSelector: {
         matchLabels: {
-          component: 'image-builder',
+          component: 'image-builder-mk3',
         },
       },
       policyTypes: ['Ingress'],
