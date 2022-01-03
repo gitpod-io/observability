@@ -39,7 +39,7 @@ jobs:
           delete-branch: true
           author: "Roboquat <roboquat@gitpod.io>"
           committer: "Roboquat <roboquat@gitpod.io>"
-          reviewers: "arthursens"
+          reviewers: "gitpod-io/platform"
           branch: "roboquat/automated-dependency-update-${{ matrix.branch }}"
           base: "${{ matrix.branch }}"
           # GITHUB_TOKEN cannot be used as it won't trigger CI in a created PR
