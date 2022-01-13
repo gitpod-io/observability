@@ -27,6 +27,10 @@ local kubePrometheus =
         internalLoadBalancerIP: '10.32.0.25',
       },
       grafana+: {
+        resources: {
+          requests: { cpu: '1', memory: '1000Mi' },
+          limits: { cpu: '1', memory: '1000Mi' },
+        },
         dashboards:: {},
         folderDashboards+:: {
           'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards,
