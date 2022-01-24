@@ -105,50 +105,6 @@
     {
       "source": {
         "git": {
-          "remote": "https://github.com/observatorium/api.git",
-          "subdir": "jsonnet/lib"
-        }
-      },
-      "version": "c8691fa6eb610fc88b877069304be0320393caac",
-      "sum": "PeiropwPLWC8g7o0xaH0clwLoYHTngNJKtaTaEh+hc0=",
-      "name": "observatorium-api"
-    },
-    {
-      "source": {
-        "git": {
-          "remote": "https://github.com/observatorium/observatorium.git",
-          "subdir": "configuration"
-        }
-      },
-      "version": "60bbf7ac4baac885449866d07ffdce30047330f4",
-      "sum": "IHlHbcCdcJlnwCjfpNP2BNeIZRPHYjRei5bxvHV9xsA=",
-      "name": "observatorium"
-    },
-    {
-      "source": {
-        "git": {
-          "remote": "https://github.com/observatorium/thanos-receive-controller.git",
-          "subdir": "jsonnet/lib"
-        }
-      },
-      "version": "cd12a419fc00eeb354d1f48e3077648222b16c07",
-      "sum": "0yZzNAcHQER0vE90d4iur3mYSitIhe8DhIFBeWdlb6k=",
-      "name": "thanos-receive-controller"
-    },
-    {
-      "source": {
-        "git": {
-          "remote": "https://github.com/observatorium/up.git",
-          "subdir": "jsonnet"
-        }
-      },
-      "version": "21b9125fa700ce2f2472caef720086179329b33e",
-      "sum": "0FKabnXd0rMeu8YpkkopEOknqBf5PLq/DIIDd0ve7cU=",
-      "name": "up"
-    },
-    {
-      "source": {
-        "git": {
           "remote": "https://github.com/prometheus-operator/kube-prometheus.git",
           "subdir": "jsonnet/kube-prometheus"
         }
@@ -208,16 +164,6 @@
       "version": "027b082793bc557f9f7dcf8fe4f149ea1cc856eb",
       "sum": "ZjQoYhvgKwJNkg+h+m9lW3SYjnjv5Yx5btEipLhru88=",
       "name": "prometheus"
-    },
-    {
-      "source": {
-        "git": {
-          "remote": "https://github.com/thanos-io/kube-thanos.git",
-          "subdir": "jsonnet/kube-thanos"
-        }
-      },
-      "version": "55d79c62ffbf39c7a8f5973e5bf6421944b3aea6",
-      "sum": "K3y2JG3FCgXv3zuiaUl2BIfwODpahnb9wphykDreoyI="
     },
     {
       "source": {

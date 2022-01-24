@@ -22,16 +22,6 @@
     {
       "source": {
         "git": {
-          "remote": "https://github.com/observatorium/observatorium.git",
-          "subdir": "configuration"
-        }
-      },
-      "version": "main",
-      "name": "observatorium"
-    },
-    {
-      "source": {
-        "git": {
           "remote": "https://github.com/gitpod-io/gitpod.git",
           "subdir": "operations/observability/mixins"
         }
