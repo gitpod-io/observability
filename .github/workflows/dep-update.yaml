@@ -26,8 +26,10 @@ jobs:
           if [[ $changedFiles == "" ]]; then
             git checkout -- jsonnetfile.lock.json;
           fi
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        id: cpr
         with:
           commit-message: "[bot] [${{ matrix.branch }}] Automated dependencies update"
           title: "[bot] [${{ matrix.branch }}] Automated dependencies update"
@@ -45,3 +47,9 @@ jobs:
           # GITHUB_TOKEN cannot be used as it won't trigger CI in a created PR
           # More in https://github.com/peter-evans/create-pull-request/issues/155
           token: ${{ secrets.ROBOQUAT_PAT }}
+
+      - name: Enable auto-merge
+        uses: peter-evans/enable-pull-request-automerge@v1
+        with:
+          token: ${{ secrets.ROBOQUAT_PAT }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
