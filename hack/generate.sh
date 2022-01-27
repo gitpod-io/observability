@@ -28,7 +28,6 @@ if [[ $environment == "CI" ]]; then
       tracing: {
         honeycombAPIKey: 'fake-key',
         honeycombDataset: 'fake-dataset',
-        jaegerEndpoint: 'http://jaeger:14250',
       },
       continuousIntegration: true,
     }" \
@@ -56,7 +55,6 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     tracing: {
         honeycombAPIKey: 'fake-key',
         honeycombDataset: 'fake-dataset',
-        jaegerEndpoint: 'http://jaeger:14250',
     },
     remoteWrite: {
         username: 'user',

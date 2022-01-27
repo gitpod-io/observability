@@ -2,8 +2,8 @@ local otelCollector = import '../components/open-telemetry-collector/open-teleme
 
 function(config) {
 
-  assert std.objectHas(config.tracing, 'honeycombAPIKey') || std.objectHas(config.tracing, 'jaegerEndpoint') : (
-    "If 'tracing' is set, 'honeycombAPIKey' or 'jaegerEndpoint' should be declared"
+  assert std.objectHas(config.tracing, 'honeycombAPIKey') : (
+    "If 'tracing' is set, 'honeycombAPIKey' should be declared"
   ),
 
   values+:: {
