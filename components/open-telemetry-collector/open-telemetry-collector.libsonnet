@@ -45,7 +45,6 @@ function(params) {
     |||
       exporters:
         %(honeycomb_exporter)s
-        %(jaeger_exporter)s
     ||| % {
       honeycomb_exporter: if std.objectHas(config.tracing, 'honeycombAPIKey') then
         |||
@@ -57,16 +56,6 @@ function(params) {
         ||| % {
           honeycomb_api_key: config.tracing.honeycombAPIKey,
           honeycomb_dataset: config.tracing.honeycombDataset,
-        } else ''
-      ,
-      jaeger_exporter: if std.objectHas(config.tracing, 'jaegerEndpoint') then
-        |||
-          jaeger:
-              endpoint: "%(jaeger_endpoint)s"
-              tls:
-                insecure: true
-        ||| % {
-          jaeger_endpoint: config.tracing.jaegerEndpoint,
         } else '',
     },
 
@@ -92,8 +81,7 @@ function(params) {
             exporters: %(exporters)s
     ||| % {
       exporters: [] +
-                 (if std.objectHas(config.tracing, 'honeycombAPIKey') then ['otlp'] else []) +
-                 (if std.objectHas(config.tracing, 'jaegerEndpoint') then ['jaeger'] else []),
+                 (if std.objectHas(config.tracing, 'honeycombAPIKey') then ['otlp'] else []),
       processors: [] + (if withPreviewEnvironment then ['attributes'] else []),
     },
 
