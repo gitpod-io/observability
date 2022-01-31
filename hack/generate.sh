@@ -74,7 +74,17 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     },
     werft: {
         namespace: 'werft',
-    }
+    },
+    stackdriver: {
+        clientEmail: 'fake@email.com',
+        defaultProject: 'google-project',
+        privateKey: 
+|||
+  multiline
+  fake
+  key
+|||,
+    },
 }" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
@@ -95,7 +105,17 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
         username: 'p@ssW0rd',
         password: 'user',
         GCPExternalIpAddress: 'fake_external_ip_address',
-    }
+    },
+    stackdriver: {
+        clientEmail: 'fake@email.com',
+        defaultProject: 'google-project',
+        privateKey: 
+|||
+  multiline
+  fake
+  key
+|||,
+    },
 }" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 

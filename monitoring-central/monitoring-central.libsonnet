@@ -8,7 +8,8 @@ local kubePrometheus =
   (import 'kube-prometheus/platforms/gke.libsonnet') +
   (import 'kube-prometheus/addons/podsecuritypolicies.libsonnet') +
   (import '../addons/disable-grafana-auth.libsonnet') +
-  (import '../addons/grafana-on-gcp-oauth.libsonnet')(config)
+  (import '../addons/grafana-on-gcp-oauth.libsonnet')(config) +
+  (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
   {
     values+:: {
       common+: {
