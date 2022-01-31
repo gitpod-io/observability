@@ -33,7 +33,7 @@ function(params) {
       g._config.mixin._config,
   },
 
-  metaMixin:: (import 'gitpod/meta/mixin.libsonnet') {
+  webappMixin:: (import 'gitpod/meta/mixin.libsonnet') {
     _config+::
       g._config.mixin._config,
   },
@@ -43,7 +43,7 @@ function(params) {
       g._config.mixin._config,
   },
 
-  mixin:: $.crossTeamsMixin + $.ideMixin + $.metaMixin + $.workspaceMixin,
+  mixin:: $.crossTeamsMixin + $.ideMixin + $.webappMixin + $.workspaceMixin,
 
   prometheusRule: {
     apiVersion: 'monitoring.coreos.com/v1',

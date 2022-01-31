@@ -88,7 +88,7 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
         'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards,
         'Cross Teams': $.gitpod.crossTeamsMixin.grafanaDashboards,
         'Team IDE': $.gitpod.ideMixin.grafanaDashboards,
-        'Team Meta': $.gitpod.metaMixin.grafanaDashboards,
+        'Team WebApp': $.gitpod.webappMixin.grafanaDashboards,
         'Team Workspace': $.gitpod.workspaceMixin.grafanaDashboards,
       },
     },
