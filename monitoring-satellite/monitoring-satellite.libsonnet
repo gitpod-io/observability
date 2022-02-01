@@ -14,6 +14,7 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 (if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'werft') then (import '../addons/monitor-werft.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
 {
   values+:: {
     common+: {
