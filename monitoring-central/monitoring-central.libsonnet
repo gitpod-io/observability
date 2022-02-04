@@ -9,7 +9,6 @@ local kubePrometheus =
   (import 'kube-prometheus/addons/podsecuritypolicies.libsonnet') +
   (import '../addons/disable-grafana-auth.libsonnet') +
   (import '../addons/grafana-on-gcp-oauth.libsonnet')(config) +
-  (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
   {
     values+:: {
       common+: {
@@ -101,7 +100,11 @@ local kubePrometheus =
       // Disabling serviceMonitor for monitoring-central since there is no prometheus running there.
       serviceMonitor:: {},
     },
-  };
+  } +
+  // This addon is being added at the bottom because Jsonnet is concious about code ordering.
+  // Above we override all datasources with victoriametrics.
+  // If this addon is kept above, it will be overriden as well.
+  (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {});
 
 
 kubePrometheus
