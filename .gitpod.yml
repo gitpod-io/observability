@@ -1,3 +1,4 @@
+---
 # TODO(arthursens): The image below has way more than it's needed for this project.
 # Need to come up with a minimal image with no more than necessary.
 image: eu.gcr.io/gitpod-core-dev/dev/dev-environment:aledbf-dev-image.0
@@ -9,3 +10,4 @@ tasks:
 vscode:
   extensions:
     - heptio.jsonnet
+    - zxh404.vscode-proto3

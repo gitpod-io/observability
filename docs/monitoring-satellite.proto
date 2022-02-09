@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package gitpod.monitoringSatellite;
+
+import "k8s.io/api/core/v1/generated.proto";
+
+message config {
+  // Namespace where monitoring-satellite is deployed to.
+  required string namespace = 1;
+
+  // Configures Prometheus' `cluster` external label.
+  // All metrics will have this label attached when Prometheus
+  // pushes metrics to monitoring-central.
+  required string clusterName = 2;
+
+  // Enables alert routing to the stack
+  Alerting alerting = 3;
+
+  // Configures OpenTelemetry Collector
+  Tracing tracing = 4;
+
+  // Configures Prometheus to push metrics to a remote-write endpoint.
+  RemoteWrite remoteWrite = 5;
+
+  // Adds specific configuration to run monitoring-satellite on preview-environments.
+  PreviewEnvironment previewEnvironment = 6;
+
+  // Adds ServiceMonitors for werft deployments.
+  Werft werft = 7;
+
+  // Adds a stackdriver datasource to Grafana.
+  Stackdriver stackdriver = 8;
+
+  // Configures NodeAffinity to all components of the stack.
+  k8s.io.api.core.v1.generated.NodeAffinity nodeAffinity = 9;
+
+  // Adds specific configuration to run the stack in our CI.
+  bool continuousDelivery = 10;
+}
+
+message Alerting {
+  // Webhook URL used to route critical alerts.
+  required string slackWebhookURLCritical = 1;
+
+  // Webhook URL used to route warning alerts.
+  required string slackWebhookURLWarning = 2;
+
+  // Webhook URL used to route info alerts.
+  required string slackWebhookURLInfo = 3;
+
+  // Prefix used by the slack channels.
+  required string slackChannelPrefix = 4;
+
+  // Webhook URL used to route critical alerts. 
+  // If 'pagerdutyRoutingKey' is set, it will take precedence over 'slackWebhookURLCritical'.
+  string pagerdutyRoutingKey = 5;
+}
+
+message Tracing {
+  // API key used to push traces to Honeycomb.
+  required string honeycombAPIKey = 1;
+
+  // Which Honeycomb dataset used to push traces to.
+  required string honeycombDataset = 2;
+}
+
+message RemoteWrite {
+  // Username used to authenticate against remote-write URLs.
+  required string username = 1;
+
+  // Password used to authenticate against remote-write URLs.
+  required string password = 2;
+
+  // Remote-write URLs that monitoring-satellite pushes metrics to.
+  repeated string urls = 3;
+}
+
+message PreviewEnvironment {
+  // Port used by node-exporter to expose node metrics.
+  required int32 nodeExporterPort = 1;
+}
+
+message Werft {
+  // Namespace where werft is deployed.
+  required string namespace = 1;
+}
+
+message Stackdriver {
+  // Google service account's email.
+  required string clientEmail = 1;
+
+  // Default project used by the datasource.
+  required string defaultProject = 2;
+
+  // Google service account's private key.
+  required string privateKey = 3;
+}
