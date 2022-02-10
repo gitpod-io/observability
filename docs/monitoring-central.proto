@@ -37,7 +37,7 @@ message Grafana {
 }
 
 message VictoriaMetrics {
-  // DNS where grafana will be available.
+  // DNS where VictoriaMetrics will be available.
   required string dns = 1;
 
   // Authorization key used to protect VictoriaMetrics /debug/pprof and /-/reload endpoints.
