@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package gitpod.monitoringCentral;
+
+message config {
+  // Namespace where monitoring-satellite is deployed to.
+  required string namespace = 1;
+
+  // Configures the Grafana deployment.
+  required Grafana grafana = 2;
+
+  // Configures the VictoriaMetrics deployment.
+  required VictoriaMetrics victoriaMetrics = 3;
+
+  // Adds a stackdriver datasource to Grafana.
+  Stackdriver stackdriver = 4;
+}
+
+message Grafana {
+  // DNS where grafana will be available.
+  required string dns = 1;
+
+  // Google's external IP resource used by Grafana's loadbalancer.
+  // See also: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address
+  required string GCPExternalIpAddress = 2;
+
+  // Google's Identity aware proxy ID used to protect Grafana.
+  // See also: https://cloud.google.com/iap/docs/concepts-overview
+  required string IAPClientID = 3;
+
+  // Google's Identity aware proxy secret used to protect Grafana.
+  // See also: https://cloud.google.com/iap/docs/concepts-overview
+  required string IAPClientSecret = 4;
+
+  // NodePort used by Grafana's loadbalancer.
+  required int32 nodePort = 5;
+}
+
+message VictoriaMetrics {
+  // DNS where VictoriaMetrics will be available.
+  required string dns = 1;
+
+  // Authorization key used to protect VictoriaMetrics /debug/pprof and /-/reload endpoints.
+  // See also: https://docs.victoriametrics.com/vmauth.html
+  required string authKey = 2;
+
+  // Username required to receive metrics via remote-write protocol.
+  required string username = 3;
+
+  // Password required to receive metrics via remote-write protocol.
+  required string password = 4;
+
+  // Google's external IP resource used by VictoriaMetrics's loadbalancer.
+  // See also: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address
+  required string GCPExternalIpAddress = 5;
+}
+
+message Stackdriver {
+  // Google service account's email.
+  required string clientEmail = 1;
+
+  // Default project used by the datasource.
+  required string defaultProject = 2;
+
+  // Google service account's private key.
+  required string privateKey = 3;
+}

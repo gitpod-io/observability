@@ -62,8 +62,6 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
         urls: ['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write'],
     },
     previewEnvironment: {
-        prometheusDNS: 'prometheus.fake.preview.io',
-        grafanaDNS: 'grafana.fake.preview.io',
         nodeExporterPort: 9100
     },
     nodeAffinity: {
