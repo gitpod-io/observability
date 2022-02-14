@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "bdb13e2e12d44a6eb83d35f7867e3c6b9385655b",
+      "version": "9ebaf58dd6a93fd25d1cfc24cbb343bdc5455b5b",
       "sum": "wIsqEIGSqnWwJApdQ7k8x2kd/AsffJhYcqUebDiS01w="
     },
     {
@@ -28,8 +28,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "ba8b45c3947d47328c5fa9f1fea4fbf01f4f4849",
-      "sum": "EYKEcc+9WM47NzYMXqg8P96EUwToZVIVeyLuGDIyvbI=",
+      "version": "a48e177120e1dba739c0588416bc30cf21f2b4ab",
+      "sum": "En6QZOsktVIRrZBjUPcMWIkVAj8wbpTikph0zOBzJF8=",
       "name": "gitpod"
     },
     {
@@ -69,8 +69,8 @@
           "subdir": ""
         }
       },
-      "version": "5f43b3783b3a7f505e3e4e484af0b22653802342",
-      "sum": "pTtVZP1dZZH8XAQpjk1VS9gcPY/+JVzgwq76a1ClxmQ="
+      "version": "784e037504953992770bdc5c3b775ab91fc92238",
+      "sum": "C2haGtIqotbGCTeh/iY928Co3l8nyZHAFU7ecYqeliM="
     },
     {
       "source": {
@@ -79,7 +79,7 @@
           "subdir": "lib/promgrafonnet"
         }
       },
-      "version": "5f43b3783b3a7f505e3e4e484af0b22653802342",
+      "version": "784e037504953992770bdc5c3b775ab91fc92238",
       "sum": "zv7hXGui6BfHzE9wPatHI/AGZa4A2WKo6pq7ZdqBsps="
     },
     {
@@ -109,8 +109,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "768e882ce8bd7a3ec19d05f35e35dbee769a0526",
-      "sum": "QJpqAz2KXXhTJvaTmhOmoU+TaxwQhNEa4iF6k/UFOqI="
+      "version": "7612bc33cbe2fcc976a0ab4192d303ce9c51cf17",
+      "sum": "yjJggrUteBW9acLtHkQpd9frQVYEJ6g8P+l/Ygm5aPM="
     },
     {
       "source": {
@@ -161,7 +161,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "9a2e93228e63a3fbac950ef0a639f754c3598c5d",
+      "version": "afdd1357e008375e693a1b4c096f81b2358cb46f",
       "sum": "ZjQoYhvgKwJNkg+h+m9lW3SYjnjv5Yx5btEipLhru88=",
       "name": "prometheus"
     },
