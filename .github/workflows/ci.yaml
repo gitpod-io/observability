@@ -39,7 +39,11 @@ jobs:
         with:
           go-version: ${{ env.golang-version }}
       - name: Tree
-        run: alias tree='find . -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"' && tree
+        run: |
+          ls -lha
+          cd .github && ls -lha
+          cd workflows && ls -lha
+          cd kind && ls -lha
       - name: Start KinD
         uses: engineerd/setup-kind@v0.5.0
         with:
