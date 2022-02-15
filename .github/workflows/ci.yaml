@@ -38,6 +38,8 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ env.golang-version }}
+      - name: Tree
+        run: alias tree='find . -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"' && tree
       - name: Start KinD
         uses: engineerd/setup-kind@v0.5.0
         with:
