@@ -7,4 +7,4 @@ nodes:
     kind: ClusterConfiguration
     apiServer:
         extraArgs:
-          enable-admission-plugins: PodSecurityPolicy
+          enable-admission-plugins: NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook

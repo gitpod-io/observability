@@ -38,12 +38,6 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ env.golang-version }}
-      - name: Tree
-        run: |
-          ls -lha
-          cd .github && ls -lha
-          cd workflows && ls -lha
-          cd kind && ls -lha
       - name: Start KinD
         uses: engineerd/setup-kind@v0.5.0
         with:
