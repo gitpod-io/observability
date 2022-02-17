@@ -36,6 +36,9 @@ message config {
 
   // Adds specific configuration to run the stack in our CI.
   bool continuousDelivery = 10;
+
+  // Specific configuration to override Prometheus Custom Resource
+  Prometheus prometheus = 11;
 }
 
 message Alerting {
@@ -94,4 +97,9 @@ message Stackdriver {
 
   // Google service account's private key.
   required string privateKey = 3;
+}
+
+message Prometheus {
+  // Overrides the 'resources' field in Prometheus spec
+  k8s.io.api.core.v1.generated.ResourceRequirements resources = 1;
 }
