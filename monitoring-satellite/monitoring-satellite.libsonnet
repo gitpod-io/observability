@@ -47,8 +47,34 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
         cluster: config.clusterName,
       },
       resources: {
-        requests: { memory: '2Gi', cpu: '1000m' },
-        limits: { memory: '10Gi', cpu: '3000m' },
+        requests: {
+          memory: if std.objectHas(config, 'prometheus') &&
+                     std.objectHas(config.prometheus, 'resources') &&
+                     std.objectHas(config.prometheus.resources, 'requests') &&
+                     std.objectHas(config.prometheus.resources.requests, 'memory')
+          then config.prometheus.resources.requests.memory
+          else '2Gi',
+          cpu: if std.objectHas(config, 'prometheus') &&
+                  std.objectHas(config.prometheus, 'resources') &&
+                  std.objectHas(config.prometheus.resources, 'requests') &&
+                  std.objectHas(config.prometheus.resources.requests, 'cpu')
+          then config.prometheus.resources.requests.cpu
+          else '1000m',
+        },
+        limits: {
+          memory: if std.objectHas(config, 'prometheus') &&
+                     std.objectHas(config.prometheus, 'resources') &&
+                     std.objectHas(config.prometheus.resources, 'limits') &&
+                     std.objectHas(config.prometheus.resources.limits, 'memory')
+          then config.prometheus.resources.limits.memory
+          else '10Gi',
+          cpu: if std.objectHas(config, 'prometheus') &&
+                  std.objectHas(config.prometheus, 'resources') &&
+                  std.objectHas(config.prometheus.resources, 'limits') &&
+                  std.objectHas(config.prometheus.resources.limits, 'cpu')
+          then config.prometheus.resources.limits.cpu
+          else '3000m',
+        },
       },
     },
 
