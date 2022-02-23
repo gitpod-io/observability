@@ -4,7 +4,7 @@
       spec+: {
         template+: {
           spec+: {
-            priorityClassName:: null
+            priorityClassName:: null,
           },
         },
       },
