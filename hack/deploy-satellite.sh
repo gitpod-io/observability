@@ -21,6 +21,7 @@ kubectl apply -f monitoring-satellite/manifests/prometheus/
 kubectl apply -f monitoring-satellite/manifests/nodeExporter/
 kubectl apply -f monitoring-satellite/manifests/kubernetesControlPlane/
 kubectl apply -f monitoring-satellite/manifests/kubeStateMetrics/
+kubectl apply -f monitoring-satellite/manifests/kubescape/
 kubectl apply -f monitoring-satellite/manifests/grafana/
 kubectl apply -f monitoring-satellite/manifests/alertmanager/
 kubectl apply -f monitoring-satellite/manifests/otelCollector/

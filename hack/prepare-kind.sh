@@ -9,12 +9,12 @@ if [[ $? != 0 ]]; then
     | cut -d : -f 2,3 \
     | tr -d \" \
     | wget -qi -
-    mv kind-linux-amd64 kind && chmod +x kind
+    mv kind-linux-amd64 tmp/bin/kind && chmod +x tmp/bin/kind
 fi
 
-cluster_created=$($PWD/kind get clusters 2>&1)
+cluster_created=$($PWD/tmp/bin/kind get clusters 2>&1)
 if [[ "$cluster_created" == "No kind clusters found." ]]; then 
-    $PWD/kind create cluster --image kindest/node:v1.21.1
+    $PWD/tmp/bin/kind create cluster --config $PWD/.github/workflows/kind/config.yml
 else
     echo "Cluster '$cluster_created' already present" 
 fi 

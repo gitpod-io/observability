@@ -1,6 +1,7 @@
 local config = (import 'load-config.libsonnet')(std.extVar('config'));
 local certmanager = import '../components/certmanager/certmanager.libsonnet';
 local gitpod = import '../components/gitpod/gitpod.libsonnet';
+local kubescape = (import 'kubescape/kubescape.libsonnet');
 
 (import 'kube-prometheus/main.libsonnet') +
 (import 'kube-prometheus/platforms/gke.libsonnet') +
@@ -39,6 +40,10 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
           certManagerCertExpiryDays: 7,
         },
       },
+    },
+
+    kubescapeParams: {
+      namespace: config.namespace,
     },
 
     prometheus+: {
@@ -125,6 +130,7 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 
   gitpod: gitpod($.values.gitpodParams),
   certmanager: certmanager($.values.certmanagerParams),
+  kubescape: kubescape($.values.kubescapeParams),
   alertmanager+: {
     prometheusRule+: (import '../lib/alert-severity-mapper.libsonnet') + (import '../lib/alert-filter.libsonnet') + (import '../lib/alert-duration-mapper.libsonnet'),
   },

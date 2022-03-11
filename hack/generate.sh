@@ -83,12 +83,6 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
   key
 |||,
     },
-    prometheus: {
-        resources: {
-            limits: { cpu: '10m' },
-            requests: { memory: '200Mi' },
-        },
-    },
 }" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
