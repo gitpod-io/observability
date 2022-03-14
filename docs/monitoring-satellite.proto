@@ -22,7 +22,8 @@ message config {
   // Configures Prometheus to push metrics to a remote-write endpoint.
   RemoteWrite remoteWrite = 5;
 
-  // Adds specific configuration to run monitoring-satellite on preview-environments.
+  // Adds specific configuration to run monitoring-satellite on
+  // preview-environments.
   PreviewEnvironment previewEnvironment = 6;
 
   // Adds ServiceMonitors for werft deployments.
@@ -39,6 +40,9 @@ message config {
 
   // Specific configuration to override Prometheus Custom Resource
   Prometheus prometheus = 11;
+
+  // Specific configuration to override Kubescape configuration
+  Kubescape kubescape = 12;
 }
 
 message Alerting {
@@ -54,8 +58,9 @@ message Alerting {
   // Prefix used by the slack channels.
   required string slackChannelPrefix = 4;
 
-  // Webhook URL used to route critical alerts. 
-  // If 'pagerdutyRoutingKey' is set, it will take precedence over 'slackWebhookURLCritical'.
+  // Webhook URL used to route critical alerts.
+  // If 'pagerdutyRoutingKey' is set, it will take precedence over
+  // 'slackWebhookURLCritical'.
   string pagerdutyRoutingKey = 5;
 }
 
@@ -102,4 +107,8 @@ message Stackdriver {
 message Prometheus {
   // Overrides the 'resources' field in Prometheus spec
   k8s.io.api.core.v1.generated.ResourceRequirements resources = 1;
+}
+
+message Kubescape {
+  
 }

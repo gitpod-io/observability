@@ -48,7 +48,7 @@ func testMain(m *testing.M) int {
 func TestDeployments(t *testing.T) {
 	kClient := promClient.kubeClient
 
-	apps := []string{"grafana", "kube-state-metrics", "prometheus-operator", "otel-collector"}
+	apps := []string{"grafana", "kube-state-metrics", "prometheus-operator", "otel-collector", "kubescape"}
 
 	for _, app := range apps {
 		// Table-driven + parallel tests are quite tricky and require us

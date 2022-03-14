@@ -1,7 +1,6 @@
 local config = (import 'load-config.libsonnet')(std.extVar('config'));
 local certmanager = import '../components/certmanager/certmanager.libsonnet';
 local gitpod = import '../components/gitpod/gitpod.libsonnet';
-local kubescape = (import 'kubescape/kubescape.libsonnet');
 
 (import 'kube-prometheus/main.libsonnet') +
 (import 'kube-prometheus/platforms/gke.libsonnet') +
@@ -17,6 +16,7 @@ local kubescape = (import 'kubescape/kubescape.libsonnet');
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'werft') then (import '../addons/monitor-werft.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'kubescape') then (import '../addons/kubescape.libsonnet')(config) else {}) +
 {
   values+:: {
     common+: {
@@ -40,10 +40,6 @@ local kubescape = (import 'kubescape/kubescape.libsonnet');
           certManagerCertExpiryDays: 7,
         },
       },
-    },
-
-    kubescapeParams: {
-      namespace: config.namespace,
     },
 
     prometheus+: {
@@ -130,7 +126,6 @@ local kubescape = (import 'kubescape/kubescape.libsonnet');
 
   gitpod: gitpod($.values.gitpodParams),
   certmanager: certmanager($.values.certmanagerParams),
-  kubescape: kubescape($.values.kubescapeParams),
   alertmanager+: {
     prometheusRule+: (import '../lib/alert-severity-mapper.libsonnet') + (import '../lib/alert-filter.libsonnet') + (import '../lib/alert-duration-mapper.libsonnet'),
   },
