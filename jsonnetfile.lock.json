@@ -8,8 +8,8 @@
           "subdir": "jsonnet"
         }
       },
-      "version": "7d98936a171aab3da5263e9e3dbe490bd8670610",
-      "sum": "bgyY9UCQO+o2qaUVdA39AAMwtUN1lp9qNKAcDxZ4fIg=",
+      "version": "48371960ac810e30fbbc16b28930cd94de716d1c",
+      "sum": "v3Wi5jqNJNkCmf7t67OiTev+0SEuRyBJ1C7ZYcfBK8Q=",
       "name": "kubescape"
     },
     {
@@ -151,7 +151,7 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "e84b1b920eb4246694057df112c6b9d2376a81f9",
+      "version": "ec2f5f589402d8b45e327555d1330ce780354221",
       "sum": "iqF63VWQovIGBb7JI5oVVgMShz0dKptSzEVQQjsy+Jo=",
       "name": "alertmanager"
     },

@@ -187,6 +187,10 @@ function(params) {
       hostNetwork: false,
       hostIPC: false,
       hostPID: false,
+      runAsUser: {
+        // Require the container to run without root privileges.
+        rule: 'RunAsAny',
+      },
       seLinux: {
         // This policy assumes the nodes are using AppArmor rather than SELinux.
         rule: 'RunAsAny',
