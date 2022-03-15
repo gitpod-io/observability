@@ -4,6 +4,10 @@ function(config) {
   values+:: {
     kubescapeParams: {
       namespace: config.namespace,
+      scrapeInterval:
+        if std.objectHas(config.kubescape, 'scrapeInterval')
+        then config.kubescape.scrapeInterval
+        else '240s',
     },
 
     grafana+: {
