@@ -110,5 +110,6 @@ message Prometheus {
 }
 
 message Kubescape {
-  
+  // Interval between scrapes performed by Prometheus.
+  string scrapeInterval = 1;
 }
