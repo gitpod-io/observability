@@ -16,6 +16,7 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'werft') then (import '../addons/monitor-werft.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'kubescape') then (import '../addons/kubescape.libsonnet')(config) else {}) +
 {
   values+:: {
     common+: {
@@ -113,11 +114,11 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
     grafana+: {
       dashboards:: {},
       folderDashboards+:: {
-        'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards,
-        'Cross Teams': $.gitpod.crossTeamsMixin.grafanaDashboards,
-        'Team IDE': $.gitpod.ideMixin.grafanaDashboards,
-        'Team WebApp': $.gitpod.webappMixin.grafanaDashboards,
-        'Team Workspace': $.gitpod.workspaceMixin.grafanaDashboards,
+        'Team Platform'+: $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards,
+        'Cross Teams'+: $.gitpod.crossTeamsMixin.grafanaDashboards,
+        'Team IDE'+: $.gitpod.ideMixin.grafanaDashboards,
+        'Team WebApp'+: $.gitpod.webappMixin.grafanaDashboards,
+        'Team Workspace'+: $.gitpod.workspaceMixin.grafanaDashboards,
       },
     },
 

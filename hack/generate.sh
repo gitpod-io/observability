@@ -29,6 +29,7 @@ if [[ $environment == "CI" ]]; then
         honeycombAPIKey: 'fake-key',
         honeycombDataset: 'fake-dataset',
       },
+      kubescape: {},
       continuousIntegration: true,
     }" \
     monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
@@ -83,12 +84,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
   key
 |||,
     },
-    prometheus: {
-        resources: {
-            limits: { cpu: '10m' },
-            requests: { memory: '200Mi' },
-        },
-    },
+    kubescape: {},
 }" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 

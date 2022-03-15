@@ -28,6 +28,16 @@
       },
       "version": "main",
       "name": "gitpod"
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/ArthurSens/kubescape-jsonnet.git",
+          "subdir": "jsonnet"
+        }
+      },
+      "version": "main",
+      "name": "kubescape"
     }
   ],
   "legacyImports": true

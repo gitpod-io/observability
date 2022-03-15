@@ -2,6 +2,7 @@ local config = (import 'load-config.libsonnet')(std.extVar('config'));
 local certmanager = import '../components/certmanager/certmanager.libsonnet';
 local gitpod = import '../components/gitpod/gitpod.libsonnet';
 local victoriaMetrics = import '../components/victoriametrics/victoriametrics.libsonnet';
+local kubescape = (import 'kubescape/kubescape.libsonnet');
 
 local kubePrometheus =
   (import 'kube-prometheus/main.libsonnet') +
@@ -20,6 +21,9 @@ local kubePrometheus =
       certmanagerParams: {
         mixin+: {},
       },
+      kubescapeParams: {
+        namespace: config.namespace,
+      },
       victoriametricsParams: {
         name: 'victoriametrics',
         namespace: 'monitoring-central',
@@ -33,7 +37,7 @@ local kubePrometheus =
         },
         dashboards:: {},
         folderDashboards+:: {
-          'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards,
+          'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards + $.kubescape.mixin.grafanaDashboards,
           'Cross Teams': $.gitpod.crossTeamsMixin.grafanaDashboards,
           'Team IDE': $.gitpod.ideMixin.grafanaDashboards,
           'Team WebApp': $.gitpod.webappMixin.grafanaDashboards,
@@ -96,6 +100,7 @@ local kubePrometheus =
     gitpod: gitpod($.values.gitpodParams),
     certmanager: certmanager($.values.certmanagerParams),
     victoriametrics: victoriaMetrics($.values.victoriametricsParams),
+    kubescape: kubescape($.values.kubescapeParams),
     grafana+: {
       // Disabling serviceMonitor for monitoring-central since there is no prometheus running there.
       serviceMonitor:: {},

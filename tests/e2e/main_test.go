@@ -48,7 +48,7 @@ func testMain(m *testing.M) int {
 func TestDeployments(t *testing.T) {
 	kClient := promClient.kubeClient
 
-	apps := []string{"grafana", "kube-state-metrics", "prometheus-operator", "otel-collector"}
+	apps := []string{"grafana", "kube-state-metrics", "prometheus-operator", "otel-collector", "kubescape"}
 
 	for _, app := range apps {
 		// Table-driven + parallel tests are quite tricky and require us
@@ -149,6 +149,9 @@ func TestQueryPrometheus(t *testing.T) {
 		}, {
 			query:   `up{job="alertmanager-main"} == 1`,
 			expectN: 2,
+		},{
+			query:   `up{job="kubescape"} == 1`,
+			expectN: 1,
 		},
 		// As we want to guarantee more targets, add more tests below
 	}
