@@ -8,8 +8,8 @@
           "subdir": "jsonnet"
         }
       },
-      "version": "a18311bda7eb32d506e1b6722e05ecfb3636ae74",
-      "sum": "eo61qB86iGFgzqe/zLSKKG3LUIVHoUhEGQiT+/u4seI=",
+      "version": "7097afccbe72226bc6e14c575410208f07c2d37d",
+      "sum": "iKVTvol1xTjfA3BfncUgP3byNUmqICTpfOHYRPc1YSc=",
       "name": "kubescape"
     },
     {
@@ -39,7 +39,7 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "8dd2ddd844f30a4ff66d2704f4714e9da875c7d5",
+      "version": "405966efc79f7133ff090bc6d5e95425e6045bf9",
       "sum": "Nf50s6eVK5cJ0T9IAXwW7iv9XKkbGXMKszIjOKPUxqg=",
       "name": "gitpod"
     },
@@ -50,7 +50,7 @@
           "subdir": "grafana-mixin"
         }
       },
-      "version": "4cd27a380d89314118c4833177edf01fba647585",
+      "version": "75935c75c1604c4ca26d58d1da5de8cae10eac73",
       "sum": "MkjR7zCgq6MUZgjDzop574tFKoTX2OBr7DTwm1K+Ofs="
     },
     {
@@ -151,7 +151,7 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "4e07f747ddb41019d2b7ec8a38e51605e7fb7584",
+      "version": "e84b1b920eb4246694057df112c6b9d2376a81f9",
       "sum": "iqF63VWQovIGBb7JI5oVVgMShz0dKptSzEVQQjsy+Jo=",
       "name": "alertmanager"
     },

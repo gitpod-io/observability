@@ -62,6 +62,11 @@ function(params) {
       apiGroups: ['*'],
       resources: ['*'],
       verbs: ['get', 'list', 'describe'],
+    }, {
+      apiGroups: ['policy'],
+      resources: ['podsecuritypolicies'],
+      verbs: ['use'],
+      resourceNames: [k._metadata.name],
     }],
   },
 
@@ -82,7 +87,6 @@ function(params) {
       namespace: k._metadata.namespace,
     }],
   },
-
 
   service: {
     apiVersion: 'v1',
@@ -154,6 +158,60 @@ function(params) {
       selector: {
         matchLabels: _config.selectorLabels,
       },
+    },
+  },
+
+
+  podSecurityPolicy: {
+    apiVersion: 'policy/v1beta1',
+    kind: 'PodSecurityPolicy',
+    metadata: {
+      name: k._metadata.name,
+    },
+    spec: {
+      privileged: false,
+      // Required to prevent escalations to root.
+      allowPrivilegeEscalation: false,
+      // This is redundant with non-root + disallow privilege escalation,
+      // but we can provide it for defense in depth.
+      requiredDropCapabilities: ['ALL'],
+      // Allow core volume types.
+      volumes: [
+        'configMap',
+        'emptyDir',
+        'secret',
+        'projected',
+        // Assume that persistentVolumes set up by the cluster admin are safe to use.
+        'persistentVolumeClaim',
+      ],
+      hostNetwork: false,
+      hostIPC: false,
+      hostPID: false,
+      runAsUser: {
+        // Require the container to run without root privileges.
+        rule: 'MustRunAsNonRoot',
+      },
+      seLinux: {
+        // This policy assumes the nodes are using AppArmor rather than SELinux.
+        rule: 'RunAsAny',
+      },
+      supplementalGroups: {
+        rule: 'MustRunAs',
+        ranges: [{
+          // Forbid adding the root group.
+          min: 1,
+          max: 65535,
+        }],
+      },
+      fsGroup: {
+        rule: 'MustRunAs',
+        ranges: [{
+          // Forbid adding the root group.
+          min: 1,
+          max: 65535,
+        }],
+      },
+      readOnlyRootFilesystem: false,
     },
   },
 }
