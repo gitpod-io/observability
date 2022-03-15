@@ -161,7 +161,6 @@ function(params) {
     },
   },
 
-
   podSecurityPolicy: {
     apiVersion: 'policy/v1beta1',
     kind: 'PodSecurityPolicy',
@@ -212,6 +211,36 @@ function(params) {
         }],
       },
       readOnlyRootFilesystem: false,
+    },
+  },
+
+  networkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: {
+      name: k._metadata.name,
+      namespace: k._metadata.namespace,
+      labels: _config.commonLabels,
+    },
+    spec: {
+      podSelector: {
+        matchLabels: _config.selectorLabels,
+      },
+      policyTypes: ['Egress', 'Ingress'],
+      egress: [{}],
+      ingress: [{
+        from: [{
+          podSelector: {
+            matchLabels: {
+              'app.kubernetes.io/name': 'prometheus',
+            },
+          },
+        }],
+        ports: std.map(function(o) {
+          port: o.port,
+          protocol: 'TCP',
+        }, k.service.spec.ports),
+      }],
     },
   },
 }
