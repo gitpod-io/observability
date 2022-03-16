@@ -8,8 +8,8 @@
           "subdir": "jsonnet"
         }
       },
-      "version": "41b9d59a4bcdff5da414813da8380fe2fb2eb996",
-      "sum": "y3HV/VF/jpy38wbSn39JYA9Lx+BI8bo0CtM55ySCGXc=",
+      "version": "a40d123b7cb2f66b4cb07883d10ee73035132511",
+      "sum": "O+IvYr21LiyK6+eY/fxx7af713qVREMiAJnl0ZwqFAs=",
       "name": "kubescape"
     },
     {
@@ -50,7 +50,7 @@
           "subdir": "grafana-mixin"
         }
       },
-      "version": "15ca294be055225da24e5327efaa116d4f7fa166",
+      "version": "fb0680445098f741645d89626e457a07c1939d4e",
       "sum": "MkjR7zCgq6MUZgjDzop574tFKoTX2OBr7DTwm1K+Ofs="
     },
     {
@@ -183,7 +183,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "430d8bedf2edeb9d8ef40f69ee10819144d99eeb",
+      "version": "9ec283dbea39be1708401eed2830e40a05f6d46a",
       "sum": "dBm9ML50quhu6dwTIgfNmVruMqfaUeQVCO/6EKtQLxE=",
       "name": "thanos-mixin"
     },
