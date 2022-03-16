@@ -4,7 +4,7 @@ local defaults = {
   // If there is no CRD for the component, everything is hidden in defaults.
   name:: 'kubescape',
   namespace:: error 'must provide namespace',
-  version:: 'prometheus.v1',
+  version:: 'prometheus.v2',
   image:: 'quay.io/armosec/kubescape',
   resources:: {
     requests: { cpu: '10m', memory: '100Mi' },
@@ -21,7 +21,7 @@ local defaults = {
     for labelName in std.objectFields(defaults.commonLabels)
     if !std.setMember(labelName, ['app.kubernetes.io/version'])
   },
-  scrapeInterval: '180s',
+  scrapeInterval: '60s',
   mixin: {
     ruleLabels: {},
     _config: {
@@ -111,14 +111,45 @@ function(params) {
       image: _config.image + ':' + _config.version,
       env: [
         {
-          name: 'KS_RUN_PROMETHEUS_SERVER',
+          name: 'KS_SKIP_UPDATE_CHECK',
           value: 'true',
         },
         {
+          name: 'KS_ENABLE_HOST_SCANNER',
+          value: 'false',
+        },
+        {
+          name: 'KS_DOWNLOAD_ARTIFACTS',
+          value: 'false',
+        },
+        {
           name: 'KS_DEFAULT_CONFIGMAP_NAMESPACE',
-          value: k._metadata.namespace,
+          valueFrom: {
+            fieldRef: {
+              apiVersion: 'v1',
+              fieldPath: 'metadata.namespace',
+            },
+          },
         },
       ],
+      livenessProbe: {
+        httpGet: {
+          path: '/livez',
+          port: 8080,
+        },
+        initialDelaySeconds: 3,
+        periodSeconds: 3,
+      },
+      readinessProbe: {
+        httpGet: {
+          path: '/readyz',
+          port: 8080,
+
+        },
+        initialDelaySeconds: 3,
+        periodSeconds: 3,
+
+      },
       ports: [{
         containerPort: 8080,
       }],
