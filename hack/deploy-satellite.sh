@@ -34,6 +34,7 @@ done
 until kubectl $KUBECONFIG_FLAG get servicemonitors.monitoring.coreos.com --all-namespaces ; do date; sleep 1; echo ""; done
 until kubectl $KUBECONFIG_FLAG get prometheusrules.monitoring.coreos.com --all-namespaces ; do date; sleep 1; echo ""; done
 
+kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/pyrra/crd.yaml
 
 for operatorManifest in $(find monitoring-satellite/manifests/prometheusOperator/ -type f ! -name "*CustomResourceDefinition.yaml"); 
 do 
@@ -48,3 +49,4 @@ kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/kubescape/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/grafana/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/alertmanager/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/otelCollector/
+kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/pyrra/
