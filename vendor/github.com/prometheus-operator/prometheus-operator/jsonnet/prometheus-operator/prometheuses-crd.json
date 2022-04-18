@@ -2459,7 +2459,9 @@
                     "type": "integer"
                   },
                   "evaluationInterval": {
-                    "description": "Interval between consecutive evaluations. Default: `1m`",
+                    "default": "30s",
+                    "description": "Interval between consecutive evaluations. Default: `30s`",
+                    "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                     "type": "string"
                   },
                   "excludedFromEnforcement": {
@@ -3953,6 +3955,7 @@
                       },
                       "timeout": {
                         "description": "Maximum time a query may take before being aborted.",
+                        "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                         "type": "string"
                       }
                     },
@@ -4178,6 +4181,7 @@
                         },
                         "remoteTimeout": {
                           "description": "Timeout for requests to the remote read endpoint.",
+                          "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                           "type": "string"
                         },
                         "requiredMatchers": {
@@ -4454,6 +4458,7 @@
                             },
                             "sendInterval": {
                               "description": "How frequently metric metadata is sent to the remote storage.",
+                              "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                               "type": "string"
                             }
                           },
@@ -4610,6 +4615,7 @@
                         },
                         "remoteTimeout": {
                           "description": "Timeout for requests to the remote write endpoint.",
+                          "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                           "type": "string"
                         },
                         "sendExemplars": {
@@ -4934,6 +4940,7 @@
                   },
                   "retention": {
                     "description": "Time duration Prometheus shall retain data for. Default is '24h' if retentionSize is not set, and must match the regular expression `[0-9]+(ms|s|m|h|d|w|y)` (milliseconds seconds minutes hours days weeks years).",
+                    "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                     "type": "string"
                   },
                   "retentionSize": {
@@ -5054,11 +5061,14 @@
                     "type": "object"
                   },
                   "scrapeInterval": {
-                    "description": "Interval between consecutive scrapes. Default: `1m`",
+                    "default": "30s",
+                    "description": "Interval between consecutive scrapes. Default: `30s`",
+                    "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                     "type": "string"
                   },
                   "scrapeTimeout": {
                     "description": "Number of seconds to wait for target to respond before erroring.",
+                    "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                     "type": "string"
                   },
                   "secrets": {
@@ -5978,6 +5988,7 @@
                       },
                       "readyTimeout": {
                         "description": "ReadyTimeout is the maximum time Thanos sidecar will wait for Prometheus to start. Eg 10m",
+                        "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                         "type": "string"
                       },
                       "resources": {
@@ -7699,12 +7710,48 @@
                 "type": "object"
               },
               "status": {
-                "description": "Most recent observed status of the Prometheus cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+                "description": "Most recent observed status of the Prometheus cluster. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
                 "properties": {
                   "availableReplicas": {
                     "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this Prometheus deployment.",
                     "format": "int32",
                     "type": "integer"
+                  },
+                  "conditions": {
+                    "description": "The current state of the Prometheus deployment.",
+                    "items": {
+                      "description": "PrometheusCondition represents the state of the resources associated with the Prometheus resource.",
+                      "properties": {
+                        "lastTransitionTime": {
+                          "description": "lastTransitionTime is the time of the last update to the current status property.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "message": {
+                          "description": "Human-readable message indicating details for the condition's last transition.",
+                          "type": "string"
+                        },
+                        "reason": {
+                          "description": "Reason for the condition's last transition.",
+                          "type": "string"
+                        },
+                        "status": {
+                          "description": "status of the condition.",
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "Type of the condition being reported.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "lastTransitionTime",
+                        "status",
+                        "type"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
                   },
                   "paused": {
                     "description": "Represents whether any actions on the underlying managed objects are being performed. Only delete actions will be performed.",
@@ -7714,6 +7761,46 @@
                     "description": "Total number of non-terminated pods targeted by this Prometheus deployment (their labels match the selector).",
                     "format": "int32",
                     "type": "integer"
+                  },
+                  "shardStatuses": {
+                    "description": "The list has one entry per shard. Each entry provides a summary of the shard status.",
+                    "items": {
+                      "properties": {
+                        "availableReplicas": {
+                          "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this shard.",
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "replicas": {
+                          "description": "Total number of pods targeted by this shard.",
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "shardID": {
+                          "description": "Identifier of the shard.",
+                          "type": "string"
+                        },
+                        "unavailableReplicas": {
+                          "description": "Total number of unavailable pods targeted by this shard.",
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "updatedReplicas": {
+                          "description": "Total number of non-terminated pods targeted by this shard that have the desired spec.",
+                          "format": "int32",
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "availableReplicas",
+                        "replicas",
+                        "shardID",
+                        "unavailableReplicas",
+                        "updatedReplicas"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
                   },
                   "unavailableReplicas": {
                     "description": "Total number of unavailable pods targeted by this Prometheus deployment.",
@@ -7744,7 +7831,9 @@
         },
         "served": true,
         "storage": true,
-        "subresources": {}
+        "subresources": {
+          "status": {}
+        }
       }
     ]
   },
