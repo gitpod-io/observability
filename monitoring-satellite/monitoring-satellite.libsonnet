@@ -27,7 +27,14 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
       namespace: config.namespace,
       gitpodNamespace: 'default',
       prometheusLabels: $.prometheus.prometheus.metadata.labels,
-      mixin+: { ruleLabels: $.values.common.ruleLabels },
+      mixin+: { 
+        ruleLabels: $.values.common.ruleLabels,
+        mixin+:: {
+          _config+: {
+            excludeGitpodWorkspacesNotStartingAlert: (if std.objectHas(config, 'gitpod') then config.gitpod.excludeGitpodWorkspacesNotStartingAlert else false),
+          },
+        },
+      },
     },
 
     certmanagerParams: {
