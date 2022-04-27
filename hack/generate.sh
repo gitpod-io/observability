@@ -30,6 +30,7 @@ if [[ $environment == "CI" ]]; then
         honeycombDataset: 'fake-dataset',
       },
       kubescape: {},
+      pyrra: {},
       continuousIntegration: true,
     }" \
     monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
@@ -85,6 +86,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
 |||,
     },
     kubescape: {},
+    pyrra: {},
 }" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 

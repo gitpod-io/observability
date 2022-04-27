@@ -11,12 +11,14 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 (import '../addons/metrics-relabeling.libsonnet') +
 (import '../addons/argocd-crd-replace.libsonnet') +
 (import '../addons/strip-priority-class.libsonnet') +
+(import '../addons/networkpolicies-disabled.libsonnet') +
 (if std.objectHas(config, 'alerting') then (import '../addons/alerting.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'remoteWrite') then (import '../addons/remote-write.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'werft') then (import '../addons/monitor-werft.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'kubescape') then (import '../addons/kubescape.libsonnet')(config) else {}) +
+(if std.objectHas(config, 'pyrra') then (import '../addons/pyrra.libsonnet')(config) else {}) +
 {
   values+:: {
     common+: {
