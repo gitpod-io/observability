@@ -1188,10 +1188,87 @@ function(params) {
     },
   },
 
-  // Not necessary as ws-proxy doesn't expose metrics
-  wsProxyService:: {},
-  wsProxyServiceMonitor:: {},
-  wsProxyNetworkPolicy:: {},
+  wsProxyService: {
+    apiVersion: 'v1',
+    kind: 'Service',
+    metadata: {
+      name: $._config.name + '-ws-proxy',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels {
+        'app.kubernetes.io/component': 'ws-proxy',
+      },
+    },
+    spec: {
+      selector: {
+        component: 'ws-proxy',
+      },
+      ports: [{
+        name: 'metrics',
+        port: 9500,
+      }],
+    },
+  },
+  wsProxyServiceMonitor: {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'ServiceMonitor',
+    metadata: {
+      name: $._config.name + '-ws-proxy',
+      namespace: $._config.namespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      jobLabel: 'app.kubernetes.io/component',
+      selector: {
+        matchLabels: $._config.commonLabels {
+          'app.kubernetes.io/component': 'ws-proxy',
+        },
+      },
+      namespaceSelector: {
+        matchNames: [
+          $._config.gitpodNamespace,
+        ],
+      },
+      endpoints: [{
+        bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
+        port: 'metrics',
+        interval: '30s',
+        metricRelabelings: [{
+          sourceLabels: ['__name__'],
+          regex: 'gitpod_(.*)',
+          action: 'keep',
+        }],
+      }],
+    },
+  },
+  wsProxyNetworkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: {
+      name: 'ws-proxy-allow-kube-prometheus',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      podSelector: {
+        matchLabels: {
+          component: 'ws-proxy',
+        },
+      },
+      policyTypes: ['Ingress'],
+      ingress: [{
+        from: [{
+          podSelector: {
+            matchLabels: $._config.prometheusLabels,
+          },
+          namespaceSelector: {
+            matchLabels: {
+              namespace: $._config.namespace,
+            },
+          },
+        }],
+      }],
+    },
+  },
 
   wsSchedulerService: {
     apiVersion: 'v1',
