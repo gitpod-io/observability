@@ -951,6 +951,73 @@ function(params) {
     },
   },
 
+  workspacePodMonitor: {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'PodMonitor',
+    metadata: {
+      name: 'workspace',
+      namespace: $._config.namespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      selector: {
+        matchLabels: {
+          component: 'workspace',
+          workspaceType: 'regular',
+        },
+      },
+      namespaceSelector: {
+        matchNames: [
+          $._config.gitpodNamespace,
+        ],
+      },
+      podMetricsEndpoints: [{
+        port: 'supervisor',
+        interval: '60s',
+        scrapeTimeout: '5s',
+        metricRelabelings: [{
+          sourceLabels: ['__name__'],
+          regex: 'gitpod_(.*)',
+          action: 'keep',
+        }],
+      }],
+    },
+  },
+
+  workspaceNetworkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: {
+      name: 'workspace-allow-kube-prometheus',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      podSelector: {
+        matchLabels: {
+          component: 'workspace',
+        },
+      },
+      policyTypes: ['Ingress'],
+      ingress: [{
+        ports: [{
+            protocol: 'TCP',
+            port: 22999,
+        }],
+        from: [{
+          podSelector: {
+            matchLabels: $._config.prometheusLabels,
+          },
+          namespaceSelector: {
+            matchLabels: {
+              namespace: $._config.namespace,
+            },
+          },
+        }],
+      }],
+    },
+  },
+
   wsDaemonService: {
     apiVersion: 'v1',
     kind: 'Service',
