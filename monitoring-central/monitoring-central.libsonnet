@@ -43,6 +43,7 @@ local kubePrometheus =
           'Team IDE': $.gitpod.ideMixin.grafanaDashboards,
           'Team WebApp': $.gitpod.webappMixin.grafanaDashboards,
           'Team Workspace': $.gitpod.workspaceMixin.grafanaDashboards,
+          'Self-hosted examples'+: $.gitpod.selfhostedMixin.grafanaDashboards,
         },
         datasources: [
           {
