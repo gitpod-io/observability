@@ -1,1 +1,1 @@
-function(params) (import 'kube-prometheus/addons/pyrra.libsonnet') 
+function(params) (import 'kube-prometheus/addons/pyrra.libsonnet')

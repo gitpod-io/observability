@@ -10,7 +10,7 @@ jobs:
     name: Jsonnet linter
     steps:
       - uses: actions/checkout@v2
-      - run: make --always-make lint
+      - run: make --always-make fmt && git diff --exit-code
   promtool-lint:
     runs-on: ubuntu-latest
     name: Prometheus alerts and recording rules linter

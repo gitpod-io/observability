@@ -1001,8 +1001,8 @@ function(params) {
       policyTypes: ['Ingress'],
       ingress: [{
         ports: [{
-            protocol: 'TCP',
-            port: 22999,
+          protocol: 'TCP',
+          port: 22999,
         }],
         from: [{
           podSelector: {
