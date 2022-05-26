@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "2dbef7ad513163adcfd482dc568e9bdf1ba3212f",
-      "sum": "oYHri5KONpzFy+KnXTpkeyp62UJMLr+s4X4GekW0PV0=",
+      "version": "49de2b95a068bc7377d550fc764ce851039f51cd",
+      "sum": "vDY69mw0x5U1hvgcFjJZWOz5/L3Q7NSeXG1K3GWszA4=",
       "name": "gitpod"
     },
     {
@@ -183,7 +183,7 @@
           "subdir": "config/crd/bases"
         }
       },
-      "version": "96454e300bf984bd38b18984d6e14b2bd11bcaf3",
+      "version": "2e78eb58ed7ea2dd5be800c56c3c3f31eee79f98",
       "sum": "GQ0GFKGdIWKx1b78VRs6jtC4SMqkBjT5jl65QUjPKK4="
     },
     {
