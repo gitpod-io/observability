@@ -2,6 +2,5 @@
 local monitoringCentral = (import '../monitoring-central.libsonnet');
 
 { namespace: monitoringCentral.kubePrometheus.namespace } +
-{ 'podsecuritypolicy-restricted': monitoringCentral.restrictedPodSecurityPolicy } +
 { ['grafana/' + name]: monitoringCentral.grafana[name] for name in std.objectFields(monitoringCentral.grafana) } +
 { ['victoriametrics/' + name]: monitoringCentral.victoriametrics[name] for name in std.objectFields(monitoringCentral.victoriametrics) }
