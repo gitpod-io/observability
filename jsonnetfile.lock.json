@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "908faa44c4c49d783c384481369895770fc2cff5",
+      "version": "ce77d83ee6cd2ea812c0e1336959c3552fc51a80",
       "sum": "zhLYhUNcXNkMRfJhMUX0UiOpi8TOuLmUqJfO9NFKFkg="
     },
     {
@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "49de2b95a068bc7377d550fc764ce851039f51cd",
-      "sum": "vDY69mw0x5U1hvgcFjJZWOz5/L3Q7NSeXG1K3GWszA4=",
+      "version": "8fc2f531334f1abefd4209c5f9b98e15f504b250",
+      "sum": "EtcJueeU+QmhPfLTBTTPLSyFV73n6pK+tF6E0lqTu34=",
       "name": "gitpod"
     },
     {
@@ -80,7 +80,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "3f71e00a64810075b5d5f969cc6d0e419cbdebc4",
+      "version": "34d0a9e6c36dfa2433eb5776bf6ea3e749624464",
       "sum": "TieGrr7GyKjURk1+wXHFpdoCiwNaIVfZvyc5mbI9OM0="
     },
     {
@@ -120,7 +120,7 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "acd8aeb686ef176a3ac749d76dfcad4694055f65",
+      "version": "1c19d2a26167927459dec3778dfd21050052382f",
       "sum": "FwTPXq9GLUUF49qFDvL9h7kISvKx+dxxju+M1RjWMP8="
     },
     {
@@ -183,7 +183,7 @@
           "subdir": "config/crd/bases"
         }
       },
-      "version": "2e78eb58ed7ea2dd5be800c56c3c3f31eee79f98",
+      "version": "3a58b4ed4f649c9502b8dc3e6bfc5b4159e33b48",
       "sum": "GQ0GFKGdIWKx1b78VRs6jtC4SMqkBjT5jl65QUjPKK4="
     },
     {
