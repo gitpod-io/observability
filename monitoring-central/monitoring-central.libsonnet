@@ -33,7 +33,7 @@ local kubePrometheus =
       },
       grafana+: {
         resources: {
-          requests: { 
+          requests: {
             memory: if std.objectHas(config, 'grafana') &&
                        std.objectHas(config.grafana, 'resources') &&
                        std.objectHas(config.grafana.resources, 'requests') &&
@@ -46,7 +46,7 @@ local kubePrometheus =
                     std.objectHas(config.grafana.resources.requests, 'cpu')
             then config.grafana.resources.requests.cpu
             else '1',
-            },
+          },
           limits: {
             memory: if std.objectHas(config, 'grafana') &&
                        std.objectHas(config.grafana, 'resources') &&
@@ -60,7 +60,7 @@ local kubePrometheus =
                     std.objectHas(config.grafana.resources.limits, 'cpu')
             then config.grafana.resources.limits.cpu
             else '1',
-            },
+          },
         },
         dashboards:: {},
         folderDashboards+:: {
