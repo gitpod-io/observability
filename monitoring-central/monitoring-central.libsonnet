@@ -33,8 +33,34 @@ local kubePrometheus =
       },
       grafana+: {
         resources: {
-          requests: { cpu: '1', memory: '1000Mi' },
-          limits: { cpu: '1', memory: '1000Mi' },
+          requests: {
+            memory: if std.objectHas(config, 'grafana') &&
+                       std.objectHas(config.grafana, 'resources') &&
+                       std.objectHas(config.grafana.resources, 'requests') &&
+                       std.objectHas(config.grafana.resources.requests, 'memory')
+            then config.grafana.resources.requests.memory
+            else '1000Mi',
+            cpu: if std.objectHas(config, 'grafana') &&
+                    std.objectHas(config.grafana, 'resources') &&
+                    std.objectHas(config.grafana.resources, 'requests') &&
+                    std.objectHas(config.grafana.resources.requests, 'cpu')
+            then config.grafana.resources.requests.cpu
+            else '1',
+          },
+          limits: {
+            memory: if std.objectHas(config, 'grafana') &&
+                       std.objectHas(config.grafana, 'resources') &&
+                       std.objectHas(config.grafana.resources, 'limits') &&
+                       std.objectHas(config.grafana.resources.limits, 'memory')
+            then config.grafana.resources.limits.memory
+            else '1000Mi',
+            cpu: if std.objectHas(config, 'grafana') &&
+                    std.objectHas(config.grafana, 'resources') &&
+                    std.objectHas(config.grafana.resources, 'limits') &&
+                    std.objectHas(config.grafana.resources.limits, 'cpu')
+            then config.grafana.resources.limits.cpu
+            else '1',
+          },
         },
         dashboards:: {},
         folderDashboards+:: {
