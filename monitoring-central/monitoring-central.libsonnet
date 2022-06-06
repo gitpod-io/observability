@@ -64,7 +64,7 @@ local kubePrometheus =
         },
         dashboards:: {},
         folderDashboards+:: {
-          'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards + $.kubescape.mixin.grafanaDashboards,
+          'Team Platform': $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards + $.kubescape.mixin.grafanaDashboards + $.gitpod.platformMixin.grafanaDashboards,
           'Cross Teams': $.gitpod.crossTeamsMixin.grafanaDashboards,
           'Team IDE': $.gitpod.ideMixin.grafanaDashboards,
           'Team WebApp': $.gitpod.webappMixin.grafanaDashboards,

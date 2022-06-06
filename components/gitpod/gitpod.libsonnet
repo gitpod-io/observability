@@ -48,7 +48,12 @@ function(params) {
       g._config.mixin._config,
   },
 
-  mixin:: $.crossTeamsMixin + $.ideMixin + $.webappMixin + $.workspaceMixin + $.selfhostedMixin,
+  platformMixin:: (import 'gitpod/platform/mixin.libsonnet') {
+    _config+::
+      g._config.mixin._config,
+  },
+
+  mixin:: $.crossTeamsMixin + $.ideMixin + $.webappMixin + $.workspaceMixin + $.selfhostedMixin + $.platformMixin,
 
   prometheusRule: {
     apiVersion: 'monitoring.coreos.com/v1',
