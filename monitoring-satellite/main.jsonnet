@@ -1,7 +1,6 @@
 // This file is used to update monitoring-satellites with ArgoCD
 local monitoringSatellite = (import './monitoring-satellite.libsonnet');
 local excludedComponents = [
-  'blackboxExporter',
   'kubePrometheus',
   'restrictedPodSecurityPolicy',
 ];

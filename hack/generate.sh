@@ -31,6 +31,9 @@ if [[ $environment == "CI" ]]; then
       },
       kubescape: {},
       pyrra: {},
+      probe: {
+        targets: ['http://google.com'],
+      },
       continuousIntegration: true,
     }" \
     monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
@@ -87,6 +90,9 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     },
     kubescape: {},
     pyrra: {},
+    probe: {
+        targets: ['http://google.com'],
+    },
 }" \
 monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 

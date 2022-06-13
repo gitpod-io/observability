@@ -1,7 +1,6 @@
 // This file is used to generate YAMLs for testing purposes.
 local monitoringSatellite = (import '../monitoring-satellite.libsonnet');
 local excludedComponents = [
-  'blackboxExporter',
   'kubePrometheus',
   'restrictedPodSecurityPolicy',
 ];
