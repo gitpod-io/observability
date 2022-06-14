@@ -50,3 +50,5 @@ kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/grafana/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/alertmanager/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/otelCollector/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/pyrra/
+kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/blackboxExporter/
+kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/probers/
