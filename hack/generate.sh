@@ -61,6 +61,12 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
         honeycombAPIKey: 'fake-key',
         honeycombDataset: 'fake-dataset',
     },
+    prometheus: {
+        externalLabels: {
+            environment: 'test',
+            'extra-label': 'extra-label-value',
+        },
+    },
     remoteWrite: {
         username: 'user',
         password: 'p@ssW0rd',

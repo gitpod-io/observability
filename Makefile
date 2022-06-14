@@ -63,6 +63,11 @@ deploy-satellite: generate
 	./hack/prepare-kind.sh
 	./hack/deploy-satellite.sh
 
+.PHONY: deploy-central
+deploy-central: generate
+	./hack/prepare-kind.sh
+	./hack/deploy-central.sh
+
 .PHONY: test-e2e
 test-e2e:
 	@cd tests/e2e && go test -timeout 55m -v . -count=1
