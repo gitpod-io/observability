@@ -35,7 +35,7 @@ function(config) {
         namespace: config.namespace,
         labels: $.prometheus.service.metadata.labels,
       },
-      spec: {
+      data: {
         auth: std.base64(config.prometheus.BasicAuthSecret),
       },
     },
