@@ -61,7 +61,7 @@ function(config) {
           'kubernetes.io/ingress.class': 'nginx',
           'cert-manager.io/cluster-issuer': $.prometheus.certificate.spec.issuerRef.name,
           'nginx.ingress.kubernetes.io/auth-type': 'basic',
-          'nginx.ingress.kubernetes.io/auth-secret': $.prometheus.secret.metadata.name
+          'nginx.ingress.kubernetes.io/auth-secret': $.prometheus.secret.metadata.name,
         },
         labels: $.prometheus.service.metadata.labels,
         name: 'prometheus-remote-write',

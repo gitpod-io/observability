@@ -66,6 +66,10 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
             environment: 'test',
             'extra-label': 'extra-label-value',
         },
+        DNS: prometheus.fake.dns.com,
+        nodePort: 32164,
+        GCPExternalIpAddress: 'external-ip-name',
+        BasicAuthSecret: '4b9d9f94715581fed0c7:$apr1$t7yWb1qu$1OgkmI30xEnR4tbAI0hQy0',
     },
     remoteWrite: {
         username: 'user',
