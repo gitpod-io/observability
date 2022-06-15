@@ -49,6 +49,7 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
     prometheus+: {
       replicas: 1,
       namespaces+: [$.values.certmanagerParams.certmanagerNamespace],
+      enableFeatures: (if std.objectHas(config, 'prometheus') && std.objectHas(config.prometheus, 'enableFeatures') then config.prometheus.enableFeatures else []),
       externalLabels: (if std.objectHas(config, 'clusterName') then { cluster: config.clusterName } else {}) +
                       (if std.objectHas(config, 'prometheus') && std.objectHas(config.prometheus, 'externalLabels') then config.prometheus.externalLabels else {}),
       resources: {
