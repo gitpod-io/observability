@@ -28,16 +28,16 @@ function(config) {
     },
 
     secret: {
-        apiVersion: 'v1',
-        kind: 'Secret',
-        metadata: {
-            name: 'prometheus-remote-write-basic-auth',
-            namespace: config.namespace,
-            labels: $.prometheus.service.metadata.labels,
-        },
-        spec: {
-            auth: std.base64(config.prometheus.BasicAuthPassword),
-        },
+      apiVersion: 'v1',
+      kind: 'Secret',
+      metadata: {
+          name: 'prometheus-remote-write-basic-auth',
+          namespace: config.namespace,
+          labels: $.prometheus.service.metadata.labels,
+      },
+      spec: {
+          auth: std.base64(config.prometheus.BasicAuthPassword),
+      },
     },
 
     service+: {
