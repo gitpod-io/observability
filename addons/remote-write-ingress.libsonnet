@@ -31,12 +31,12 @@ function(config) {
       apiVersion: 'v1',
       kind: 'Secret',
       metadata: {
-          name: 'prometheus-remote-write-basic-auth',
-          namespace: config.namespace,
-          labels: $.prometheus.service.metadata.labels,
+        name: 'prometheus-remote-write-basic-auth',
+        namespace: config.namespace,
+        labels: $.prometheus.service.metadata.labels,
       },
       spec: {
-          auth: std.base64(config.prometheus.BasicAuthPassword),
+        auth: std.base64(config.prometheus.BasicAuthPassword),
       },
     },
 
