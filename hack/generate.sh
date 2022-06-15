@@ -64,7 +64,6 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     prometheus: {
         externalLabels: {
             environment: 'test',
-            'extra-label': 'extra-label-value',
         },
         DNS: 'prometheus.fake.dns.com',
         nodePort: 32164,
@@ -75,7 +74,16 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     remoteWrite: {
         username: 'user',
         password: 'p@ssW0rd',
-        urls: ['http://victoriametrics-vmauth.monitoring-central.svc:8427/api/v1/write'],
+        urls: ['http://victoriametrics.monitoring-central.svc:8480/insert/0/prometheus'],
+        writeRelabelConfigs: [
+          {
+            sourceLabels: ['__name__'],
+            targetLabel: '__name__',
+            regex: 'up',
+            action: 'replace',
+            replacement: 'relabeled_up'
+          }
+        ],
     },
     previewEnvironment: {
         nodeExporterPort: 9100

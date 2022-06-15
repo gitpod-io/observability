@@ -17,6 +17,13 @@ function(config) {
         remoteWrite+: [
           {
             url: url,
+            writeRelabelConfigs: (
+              if std.objectHas(config.remoteWrite, 'writeRelabelConfigs') then
+                assert std.isArray(config.remoteWrite.writeRelabelConfigs) : ('Remote write relabeling configs should be an array.');
+
+                config.remoteWrite.writeRelabelConfigs
+              else []
+            ),
             basicAuth: {
               username: {
                 name: 'remote-write-auth',
