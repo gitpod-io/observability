@@ -66,6 +66,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
             environment: 'test',
             'extra-label': 'extra-label-value',
         },
+        enableFeatures: ['remote-write-receiver'],
     },
     remoteWrite: {
         username: 'user',
