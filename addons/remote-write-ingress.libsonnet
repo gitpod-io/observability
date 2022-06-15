@@ -4,7 +4,7 @@ function(config) {
   assert std.objectHas(config.prometheus, 'nodePort') : 'prometheus.nodePort required',
   assert std.isNumber(config.prometheus.nodePort) : 'prometheus.nodePort should be a number',
   assert std.objectHas(config.prometheus, 'GCPExternalIpAddress') : 'prometheus.GCPExternalIpAddress required',
-  assert std.objectHas(config.prometheus, 'BasicAuthSecret') : 'prometheus.BasicAuthPassword required',
+  assert std.objectHas(config.prometheus, 'BasicAuthSecret') : 'prometheus.BasicAuthSecret required',
 
 
   prometheus+: {
@@ -36,7 +36,7 @@ function(config) {
         labels: $.prometheus.service.metadata.labels,
       },
       spec: {
-        auth: std.base64(config.prometheus.BasicAuthPassword),
+        auth: std.base64(config.prometheus.BasicAuthSecret),
       },
     },
 
