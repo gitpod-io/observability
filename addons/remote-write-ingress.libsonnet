@@ -21,7 +21,7 @@ function(config) {
         ],
         issuerRef: {
           kind: 'ClusterIssuer',
-          name: 'letsencrypt-issuer',
+          name: 'letsencrypt-issuer-gitpod-core-dev',
         },
         secretName: 'prometheus-remote-write-certificate',
       },
