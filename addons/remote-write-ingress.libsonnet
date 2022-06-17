@@ -44,9 +44,12 @@ function(config) {
       spec+: {
         type: 'NodePort',
         ports: std.map(
-          function(p) p {
-            nodePort: config.prometheus.nodePort,
-          }
+          function(p)
+            if p.name == 'web' then
+              p {
+                nodePort: config.prometheus.nodePort,
+              }
+            else p
           , super.ports
         ),
       },
