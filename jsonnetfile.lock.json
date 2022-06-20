@@ -29,8 +29,8 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "8ac23dad88e2e09a815456c867cb3c668c6ea803",
-      "sum": "zhLYhUNcXNkMRfJhMUX0UiOpi8TOuLmUqJfO9NFKFkg="
+      "version": "4443e14dcd7e50cce71c20c5857c139d9993fa14",
+      "sum": "W/Azptf1PoqjyMwJON96UY69MFugDA4IAYiKURscryc="
     },
     {
       "source": {
@@ -39,7 +39,7 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "bbee5a8df2e00f16f8e7cbcbd23e091619cb3320",
+      "version": "ba74f4d4235f6c9d7b837923713c1e112510d74a",
       "sum": "pUSWkei6W7KkATZ0tcal9u9Osexg2m9ncI743ip81yI=",
       "name": "gitpod"
     },
@@ -50,7 +50,7 @@
           "subdir": "grafana-mixin"
         }
       },
-      "version": "1120f9e255760a3c104b57871fcb91801e934382",
+      "version": "3eed09056849ab873b867b561b7ce580ef2c75ba",
       "sum": "MkjR7zCgq6MUZgjDzop574tFKoTX2OBr7DTwm1K+Ofs="
     },
     {
@@ -66,21 +66,11 @@
     {
       "source": {
         "git": {
-          "remote": "https://github.com/grafana/grafonnet-lib.git",
-          "subdir": "grafonnet-7.0"
-        }
-      },
-      "version": "6db00c292d3a1c71661fc875f90e0ec7caa538c2",
-      "sum": "gCtR9s/4D5fxU9aKXg0Bru+/njZhA0YjLjPiASc61FM="
-    },
-    {
-      "source": {
-        "git": {
           "remote": "https://github.com/grafana/jsonnet-libs.git",
           "subdir": "grafana-builder"
         }
       },
-      "version": "cff1797a6ce7c630fea7d6be9b71839f32613942",
+      "version": "1ddfda8ac51edb0adc38516b9a2435d6abcfc9f0",
       "sum": "TieGrr7GyKjURk1+wXHFpdoCiwNaIVfZvyc5mbI9OM0="
     },
     {
@@ -96,11 +86,21 @@
     {
       "source": {
         "git": {
+          "remote": "https://github.com/kubernetes-monitoring/kubernetes-mixin.git",
+          "subdir": "lib/promgrafonnet"
+        }
+      },
+      "version": "b8f44bb7be728423836bef0e904ec7166895a34b",
+      "sum": "zv7hXGui6BfHzE9wPatHI/AGZa4A2WKo6pq7ZdqBsps="
+    },
+    {
+      "source": {
+        "git": {
           "remote": "https://github.com/kubernetes/kube-state-metrics.git",
           "subdir": "jsonnet/kube-state-metrics"
         }
       },
-      "version": "aa8729abea95d5f19893231e6264c73f83f05353",
+      "version": "0567e1e1b981755e563d2244fa1659563f2cddbc",
       "sum": "P0dCnbzyPScQGNXwXRcwiPkMLeTq0IPNbSTysDbySnM="
     },
     {
@@ -110,7 +110,7 @@
           "subdir": "jsonnet/kube-state-metrics-mixin"
         }
       },
-      "version": "aa8729abea95d5f19893231e6264c73f83f05353",
+      "version": "0567e1e1b981755e563d2244fa1659563f2cddbc",
       "sum": "u8gaydJoxEjzizQ8jY8xSjYgWooPmxw+wIWdDxifMAk="
     },
     {
@@ -120,8 +120,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "4071dafb6a5aaf982ad744b54b0f1206ebcfba05",
-      "sum": "m4EU7LfDpJSjFIbNsGddi2gkvKChpD3Xi72J42LgrMA="
+      "version": "4af90319f557da9b38db4e37d710d6d997ff4744",
+      "sum": "kJIVoJzzriX81zjuVnED4lR0CmZZLuPSg0F0eKeWOcM="
     },
     {
       "source": {
@@ -130,7 +130,7 @@
           "subdir": "jsonnet/mixin"
         }
       },
-      "version": "b4814089738e0b3576a81abc5b5549befba868c3",
+      "version": "5db6996d3ca995e66301c53c33959fd64c3f6ae6",
       "sum": "GQmaVFJwKMiD/P4n3N2LrAZVcwutriWrP8joclDtBYQ=",
       "name": "prometheus-operator-mixin"
     },
@@ -141,8 +141,8 @@
           "subdir": "jsonnet/prometheus-operator"
         }
       },
-      "version": "b4814089738e0b3576a81abc5b5549befba868c3",
-      "sum": "sqcNWGjnMUGikgvG9aRtjHSTqc+zplp16QFTXCvl9v0="
+      "version": "5db6996d3ca995e66301c53c33959fd64c3f6ae6",
+      "sum": "pUggCYwO/3Y/p6Vgryx8Y4KO3QkJ+GqimrZtn/luzzI="
     },
     {
       "source": {
@@ -151,8 +151,8 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "805e505288ce82c3e2b625a3ca63aaf2b0aa9cea",
-      "sum": "EgEdKlM78IJIjmiBL7x/cIJ+wdzGwT65YHyQVo0JCNk=",
+      "version": "14b01e6a34dd3155768c7e9bd5c4376055de9419",
+      "sum": "f3iZDUXQ/YWB5yDCY7VLD5bs442+3CdJgXJhJyWhNf8=",
       "name": "alertmanager"
     },
     {
@@ -162,8 +162,8 @@
           "subdir": "docs/node-mixin"
         }
       },
-      "version": "2192e2a144c9185e9072d1b1c20cbc3777ea4434",
-      "sum": "/ma9CIghDhPEIBZAt41Mkutb6813lMKdIX54SmNQ79g="
+      "version": "a2321e7b940ddcff26873612bccdf7cd4c42b6b6",
+      "sum": "MlWDAKGZ+JArozRKdKEvewHeWn8j2DNBzesJfLVd0dk="
     },
     {
       "source": {
@@ -172,7 +172,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "ee117713230930c85b34dc32d452443424eb2933",
+      "version": "9f1a3970b24e09bd65e189e39920652133a02b38",
       "sum": "APXOIP3B3dZ3Tyh7L2UhyWR8Vbf5+9adTLz/ya7n6uU=",
       "name": "prometheus"
     },
@@ -183,7 +183,7 @@
           "subdir": "config/crd/bases"
         }
       },
-      "version": "1c1581dbc3e4264b957708b04a375a0e6f7d235f",
+      "version": "b715a9b3e1894962f910c10dc4999dda22fabc26",
       "sum": "GQ0GFKGdIWKx1b78VRs6jtC4SMqkBjT5jl65QUjPKK4="
     },
     {
@@ -193,8 +193,8 @@
           "subdir": "mixin"
         }
       },
-      "version": "0d15bc0d4754c090c8ffa765fbadc281cdd6d161",
-      "sum": "/UJrWExMDM89fPfidt1pNLSQOLXsyBpmyp3unRbjaXw=",
+      "version": "17c576472d80972bfd3705e1e0a08e6f8da8e04b",
+      "sum": "dBm9ML50quhu6dwTIgfNmVruMqfaUeQVCO/6EKtQLxE=",
       "name": "thanos-mixin"
     },
     {
