@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "4443e14dcd7e50cce71c20c5857c139d9993fa14",
+      "version": "c9f7473173b1e8d1ba6218c252b7c53b7524ee33",
       "sum": "W/Azptf1PoqjyMwJON96UY69MFugDA4IAYiKURscryc="
     },
     {
@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "ba74f4d4235f6c9d7b837923713c1e112510d74a",
-      "sum": "pUSWkei6W7KkATZ0tcal9u9Osexg2m9ncI743ip81yI=",
+      "version": "7b7282e4273fa3a80dce2d8aa3db7f34400e234b",
+      "sum": "O/s247ZkKy15OiICb/fvl3RtK77SIrRC8117NPV9b+Q=",
       "name": "gitpod"
     },
     {
@@ -120,8 +120,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "4af90319f557da9b38db4e37d710d6d997ff4744",
-      "sum": "kJIVoJzzriX81zjuVnED4lR0CmZZLuPSg0F0eKeWOcM="
+      "version": "17caa6f04c3ea403b4efc2aa877ec21db86c281d",
+      "sum": "IddWjplslXeUgZYZlyoRAPnmTLy9MYElQHCqpBGeAgk="
     },
     {
       "source": {
@@ -172,7 +172,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "9f1a3970b24e09bd65e189e39920652133a02b38",
+      "version": "d7e7b8e04b5ecdc1dd153534ba376a622b72741b",
       "sum": "APXOIP3B3dZ3Tyh7L2UhyWR8Vbf5+9adTLz/ya7n6uU=",
       "name": "prometheus"
     },
