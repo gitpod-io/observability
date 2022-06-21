@@ -56,6 +56,16 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
         slackWebhookURLInfo: 'http://fake.url.info',
         slackChannelPrefix: '#fake_channel',
         pagerdutyRoutingKey: 'fakeR0uT1GNKEY',
+
+        IDE: {
+            pagerdutyRoutingKey: 'fake-IDE-pd-key',
+        },
+        webapp: {
+            pagerdutyRoutingKey: 'fake-webapp-pd-key',
+        },
+        platform: {
+            slackWebhookURLCritical: 'https://platfrom.slack.webhook.com',
+        },
     },
     tracing: {
         honeycombAPIKey: 'fake-key',
