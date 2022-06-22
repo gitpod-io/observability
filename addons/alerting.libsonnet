@@ -10,189 +10,160 @@ function(config) {
     "If 'alerting' is set, 'slackWebhookURLCritical' or 'pagerdutyRoutingKey' should be declared"
   ),
 
-  local IDECriticalReceiver =
-    if
-      (std.objectHas(config.alerting, 'IDE') && std.objectHas(config.alerting.IDE, 'pagerdutyRoutingKey')) ||
-      (!std.objectHas(config.alerting, 'IDE') && std.objectHas(config.alerting, 'pagerdutyRoutingKey'))
+  local pdConfig =
+    |||
+      pagerduty_configs:
+        - send_resolved: true
+          routing_key: '%(pagerdutyRoutingKey)s'
+    |||,
+
+  local slackConfig =
+    |||
+      slack_configs:
+        - send_resolved: true
+          api_url: %(webhookURL)s
+          channel: '%(slackChannel)s'
+          title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
+          text: |
+            {{ range .Alerts }}
+            **Please take immediate action!**
+            *Cluster:* {{ .Labels.cluster }}
+            *Alert:* {{ .Labels.alertname }}
+            *Description:* {{ .Annotations.description }}
+            {{ end }}
+          actions:
+          - type: button
+            text: 'Runbook :book:'
+            url: '{{ .CommonAnnotations.runbook_url }}'
+    |||,
+
+  local globalPagerDutyRoutingKey = if std.objectHas(config.alerting, 'pagerdutyRoutingKey')
+  then config.alerting.pagerdutyRoutingKey
+  else '',
+
+  local globalSlackWebhookURL = if std.objectHas(config.alerting, 'slackWebhookURLCritical')
+  then config.alerting.slackWebhookURLCritical
+  else '',
+
+  local globalCriticalReceiver =
+    if std.length(globalPagerDutyRoutingKey) > 0
     then
-      |||
-        pagerduty_configs:
-          - send_resolved: true
-            routing_key: '%(pagerdutyRoutingKey)s'
-      ||| % {
-        pagerdutyRoutingKey: if std.objectHas(config.alerting, 'IDE') && std.objectHas(config.alerting.IDE, 'pagerdutyRoutingKey') then config.alerting.IDE.pagerdutyRoutingKey
-        else config.alerting.pagerdutyRoutingKey,
+      pdConfig % {
+        pagerdutyRoutingKey: globalPagerDutyRoutingKey,
       }
     else
-      |||
-        slack_configs:
-          - send_resolved: true
-            api_url: %(slackWebhookUrlCritical)s
-            channel: '%(slackChannelPrefix)s_critical'
-            title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
-            text: |
-              {{ range .Alerts }}
-              **Please take immediate action!**
-              *Cluster:* {{ .Labels.cluster }}
-              *Alert:* {{ .Labels.alertname }}
-              *Description:* {{ .Annotations.description }}
-              {{ end }}
-            actions:
-            - type: button
-              text: 'Runbook :book:'
-              url: '{{ .CommonAnnotations.runbook_url }}'
-      ||| % {
+      slackConfig % {
         clusterName: config.clusterName,
-        slackChannelPrefix: config.alerting.slackChannelPrefix,
-        slackWebhookUrlCritical: if std.objectHas(config.alerting, 'IDE') && std.objectHas(config.alerting.IDE, 'slackWebhookURLCritical') then config.alerting.IDE.slackWebhookURLCritical
-        else config.alerting.slackWebhookURLCritical,
+        webhookURL: globalSlackWebhookURL,
+        slackChannel: config.alerting.slackChannelPrefix + '_critical',
       },
+
+  local IDEPagerDutyRoutingKey = if std.objectHas(config.alerting, 'IDE') && std.objectHas(config.alerting.IDE, 'pagerdutyRoutingKey')
+  then config.alerting.IDE.pagerdutyRoutingKey
+  else '',
+
+  local IDESlackWebhookURL = if std.objectHas(config.alerting, 'IDE') && std.objectHas(config.alerting.IDE, 'slackWebhookURL')
+  then config.alerting.IDE.slackWebhookURL
+  else '',
+
+  local IDECriticalReceiver =
+    if !std.objectHas(config.alerting, 'IDE')
+    then globalCriticalReceiver
+    else if std.length(IDEPagerDutyRoutingKey) > 0
+    then
+      pdConfig % {
+        pagerdutyRoutingKey: IDEPagerDutyRoutingKey,
+      }
+    else
+      assert std.objectHas(config.alerting.IDE, 'slackWebhookURL') && std.objectHas(config.alerting.IDE, 'slackChannel') : (
+        "Alerting for IDE team will be done via Slack, but 'slackWebhookURL' or 'slackChannel' is missing."
+      );
+
+      slackConfig % {
+        clusterName: config.clusterName,
+        slackChannel: config.alerting.IDE.slackChannel,
+        webhookURL: IDESlackWebhookURL,
+      },
+
+  local webappPagerDutyRoutingKey = if std.objectHas(config.alerting, 'webapp') && std.objectHas(config.alerting.webapp, 'pagerdutyRoutingKey')
+  then config.alerting.webapp.pagerdutyRoutingKey
+  else '',
+
+  local webappSlackWebhookURL = if std.objectHas(config.alerting, 'webapp') && std.objectHas(config.alerting.webapp, 'slackWebhookURL')
+  then config.alerting.webapp.slackWebhookURL
+  else '',
 
   local webappCriticalReceiver =
-    if
-      (std.objectHas(config.alerting, 'webapp') && std.objectHas(config.alerting.webapp, 'pagerdutyRoutingKey')) ||
-      (!std.objectHas(config.alerting, 'webapp') && std.objectHas(config.alerting, 'pagerdutyRoutingKey'))
+    if !std.objectHas(config.alerting, 'webapp')
+    then globalCriticalReceiver
+    else if std.length(webappPagerDutyRoutingKey) > 0
     then
-      |||
-        pagerduty_configs:
-          - send_resolved: true
-            routing_key: '%(pagerdutyRoutingKey)s'
-      ||| % {
-        pagerdutyRoutingKey: if std.objectHas(config.alerting, 'webapp') && std.objectHas(config.alerting.webapp, 'pagerdutyRoutingKey') then config.alerting.webapp.pagerdutyRoutingKey
-        else config.alerting.pagerdutyRoutingKey,
+      pdConfig % {
+        pagerdutyRoutingKey: webappPagerDutyRoutingKey,
       }
     else
-      |||
-        slack_configs:
-          - send_resolved: true
-            api_url: %(slackWebhookUrlCritical)s
-            channel: '%(slackChannelPrefix)s_critical'
-            title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
-            text: |
-              {{ range .Alerts }}
-              **Please take immediate action!**
-              *Cluster:* {{ .Labels.cluster }}
-              *Alert:* {{ .Labels.alertname }}
-              *Description:* {{ .Annotations.description }}
-              {{ end }}
-            actions:
-            - type: button
-              text: 'Runbook :book:'
-              url: '{{ .CommonAnnotations.runbook_url }}'
-      ||| % {
+      assert std.objectHas(config.alerting.webapp, 'slackWebhookURL') && std.objectHas(config.alerting.webapp, 'slackChannel') : (
+        "Alerting for webapp team will be done via Slack, but 'slackWebhookURL' or 'slackChannel' is missing."
+      );
+
+      slackConfig % {
         clusterName: config.clusterName,
-        slackChannelPrefix: config.alerting.slackChannelPrefix,
-        slackWebhookUrlCritical: if std.objectHas(config.alerting, 'webapp') && std.objectHas(config.alerting.webapp, 'slackWebhookURLCritical') then config.alerting.webapp.slackWebhookURLCritical
-        else config.alerting.slackWebhookURLCritical,
+        slackChannel: config.alerting.webapp.slackChannel,
+        webhookURL: webappSlackWebhookURL,
       },
+
+  local workspacePagerDutyRoutingKey = if std.objectHas(config.alerting, 'workspace') && std.objectHas(config.alerting.workspace, 'pagerdutyRoutingKey')
+  then config.alerting.workspace.pagerdutyRoutingKey
+  else '',
+
+  local workspaceSlackWebhookURL = if std.objectHas(config.alerting, 'workspace') && std.objectHas(config.alerting.workspace, 'slackWebhookURL')
+  then config.alerting.workspace.slackWebhookURL
+  else '',
 
   local workspaceCriticalReceiver =
-    if
-      (std.objectHas(config.alerting, 'workspace') && std.objectHas(config.alerting.workspace, 'pagerdutyRoutingKey')) ||
-      (!std.objectHas(config.alerting, 'workspace') && std.objectHas(config.alerting, 'pagerdutyRoutingKey'))
+    if !std.objectHas(config.alerting, 'workspace')
+    then globalCriticalReceiver
+    else if std.length(workspacePagerDutyRoutingKey) > 0
     then
-      |||
-        pagerduty_configs:
-          - send_resolved: true
-            routing_key: '%(pagerdutyRoutingKey)s'
-      ||| % {
-        pagerdutyRoutingKey: if std.objectHas(config.alerting, 'workspace') && std.objectHas(config.alerting.workspace, 'pagerdutyRoutingKey') then config.alerting.workspace.pagerdutyRoutingKey
-        else config.alerting.pagerdutyRoutingKey,
+      pdConfig % {
+        pagerdutyRoutingKey: workspacePagerDutyRoutingKey,
       }
     else
-      |||
-        slack_configs:
-          - send_resolved: true
-            api_url: %(slackWebhookUrlCritical)s
-            channel: '%(slackChannelPrefix)s_critical'
-            title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
-            text: |
-              {{ range .Alerts }}
-              **Please take immediate action!**
-              *Cluster:* {{ .Labels.cluster }}
-              *Alert:* {{ .Labels.alertname }}
-              *Description:* {{ .Annotations.description }}
-              {{ end }}
-            actions:
-            - type: button
-              text: 'Runbook :book:'
-              url: '{{ .CommonAnnotations.runbook_url }}'
-      ||| % {
+      assert std.objectHas(config.alerting.workspace, 'slackWebhookURL') && std.objectHas(config.alerting.workspace, 'slackChannel') : (
+        "Alerting for workspace team will be done via Slack, but 'slackWebhookURL' or 'slackChannel' is missing."
+      );
+
+      slackConfig % {
         clusterName: config.clusterName,
-        slackChannelPrefix: config.alerting.slackChannelPrefix,
-        slackWebhookUrlCritical: if std.objectHas(config.alerting, 'workspace') && std.objectHas(config.alerting.workspace, 'slackWebhookURLCritical') then config.alerting.workspace.slackWebhookURLCritical
-        else config.alerting.slackWebhookURLCritical,
+        slackChannel: config.alerting.workspace.slackChannel,
+        webhookURL: workspaceSlackWebhookURL,
       },
+
+  local platformPagerDutyRoutingKey = if std.objectHas(config.alerting, 'platform') && std.objectHas(config.alerting.platform, 'pagerdutyRoutingKey')
+  then config.alerting.platform.pagerdutyRoutingKey
+  else '',
+
+  local platformSlackWebhookURL = if std.objectHas(config.alerting, 'platform') && std.objectHas(config.alerting.platform, 'slackWebhookURL')
+  then config.alerting.platform.slackWebhookURL
+  else '',
 
   local platformCriticalReceiver =
-    if
-      (std.objectHas(config.alerting, 'platform') && std.objectHas(config.alerting.platform, 'pagerdutyRoutingKey')) ||
-      (!std.objectHas(config.alerting, 'platform') && std.objectHas(config.alerting, 'pagerdutyRoutingKey'))
+    if !std.objectHas(config.alerting, 'platform')
+    then globalCriticalReceiver
+    else if std.length(platformPagerDutyRoutingKey) > 0
     then
-      |||
-        pagerduty_configs:
-          - send_resolved: true
-            routing_key: '%(pagerdutyRoutingKey)s'
-      ||| % {
-        pagerdutyRoutingKey: if std.objectHas(config.alerting, 'platform') && std.objectHas(config.alerting.platform, 'pagerdutyRoutingKey') then config.alerting.platform.pagerdutyRoutingKey
-        else config.alerting.pagerdutyRoutingKey,
+      pdConfig % {
+        pagerdutyRoutingKey: platformPagerDutyRoutingKey,
       }
     else
-      |||
-        slack_configs:
-          - send_resolved: true
-            api_url: %(slackWebhookUrlCritical)s
-            channel: '%(slackChannelPrefix)s_critical'
-            title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
-            text: |
-              {{ range .Alerts }}
-              **Please take immediate action!**
-              *Cluster:* {{ .Labels.cluster }}
-              *Alert:* {{ .Labels.alertname }}
-              *Description:* {{ .Annotations.description }}
-              {{ end }}
-            actions:
-            - type: button
-              text: 'Runbook :book:'
-              url: '{{ .CommonAnnotations.runbook_url }}'
-      ||| % {
-        clusterName: config.clusterName,
-        slackChannelPrefix: config.alerting.slackChannelPrefix,
-        slackWebhookUrlCritical: if std.objectHas(config.alerting, 'platform') && std.objectHas(config.alerting.platform, 'slackWebhookURLCritical') then config.alerting.platform.slackWebhookURLCritical
-        else config.alerting.slackWebhookURLCritical,
-      },
+      assert std.objectHas(config.alerting.platform, 'slackWebhookURL') && std.objectHas(config.alerting.platform, 'slackChannel') : (
+        "Alerting for platform team will be done via Slack, but 'slackWebhookURL' or 'slackChannel' is missing."
+      );
 
-  local genericCriticalReceiver =
-    if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
-      |||
-        pagerduty_configs:
-          - send_resolved: true
-            routing_key: '%(pagerdutyRoutingKey)s'
-      ||| % {
-        pagerdutyRoutingKey: config.alerting.pagerdutyRoutingKey,
-      }
-    else
-      |||
-        slack_configs:
-          - send_resolved: true
-            api_url: %(slackWebhookUrlCritical)s
-            channel: '%(slackChannelPrefix)s_critical'
-            title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] %(clusterName)s Monitoring'
-            text: |
-              {{ range .Alerts }}
-              **Please take immediate action!**
-              *Cluster:* {{ .Labels.cluster }}
-              *Alert:* {{ .Labels.alertname }}
-              *Description:* {{ .Annotations.description }}
-              {{ end }}
-            actions:
-            - type: button
-              text: 'Runbook :book:'
-              url: '{{ .CommonAnnotations.runbook_url }}'
-      ||| % {
+      slackConfig % {
         clusterName: config.clusterName,
-        slackWebhookUrlCritical: config.alerting.slackWebhookURLCritical,
-        slackChannelPrefix: config.alerting.slackChannelPrefix,
+        slackChannel: config.alerting.platform.slackChannel,
+        webhookURL: platformSlackWebhookURL,
       },
 
   values+:: {
@@ -220,7 +191,7 @@ function(config) {
             match:
               severity: critical
               team: platform
-          - receiver: genericCriticalReceiver
+          - receiver: globalCriticalReceiver
             match:
               severity: critical
           - receiver: SlackWarning
@@ -259,8 +230,8 @@ function(config) {
           %(workspaceCriticalReceiver)s
         - name: platformCriticalReceiver
           %(platformCriticalReceiver)s
-        - name: genericCriticalReceiver
-          %(genericCriticalReceiver)s
+        - name: globalCriticalReceiver
+          %(globalCriticalReceiver)s
         - name: SlackWarning
           slack_configs:
           - send_resolved: true
@@ -306,7 +277,7 @@ function(config) {
         webappCriticalReceiver: webappCriticalReceiver,
         workspaceCriticalReceiver: workspaceCriticalReceiver,
         platformCriticalReceiver: platformCriticalReceiver,
-        genericCriticalReceiver: genericCriticalReceiver,
+        globalCriticalReceiver: globalCriticalReceiver,
       },
     },
   },
