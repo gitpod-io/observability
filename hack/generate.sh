@@ -79,7 +79,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
         DNS: 'prometheus.fake.dns.com',
         nodePort: 32164,
         GCPExternalIpAddress: 'external-ip-name',
-        BasicAuthSecret: '4b9d9f94715581fed0c7:$apr1$t7yWb1qu$1OgkmI30xEnR4tbAI0hQy0',
+        BasicAuthSecretBase64: 'NGI5ZDlmOTQ3MTU1ODFmZWQwYzc6JGFwcjEkdDd5V2IxcXUkMU9na21JMzB4RW5SNHRiQUkwaFF5MA==',
         enableFeatures: ['remote-write-receiver'],
     },
     remoteWrite: {
