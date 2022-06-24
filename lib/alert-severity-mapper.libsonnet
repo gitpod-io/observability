@@ -4,6 +4,7 @@ local alertSeverityMap = {
   // Critical alerts
   // Map alerts as 'critical' if it indicates a problem that requires human intervention immediately.
   NodeFilesystemAlmostOutOfSpace: 'critical',
+  KubeNodeNotReady: 'critical',
 
   // Warning alerts
   // Map alerts as 'warning' if it indicates a problem that needs human intervention, but it can wait until the next shift.
