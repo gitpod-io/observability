@@ -57,7 +57,7 @@ func TestDeployments(t *testing.T) {
 		app := app
 		t.Run(app, func(t *testing.T) {
 			t.Parallel()
-			err := wait.Poll(15*time.Second, 5*time.Minute, func() (bool, error) {
+			err := wait.Poll(15*time.Second, 10*time.Minute, func() (bool, error) {
 				deployment, err := kClient.AppsV1().Deployments("monitoring-satellite").Get(context.Background(), app, metav1.GetOptions{})
 				if err != nil {
 					t.Logf("%v deployment not ready", app)
