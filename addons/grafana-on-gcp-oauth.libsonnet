@@ -53,6 +53,7 @@ function(config) {
           'kubernetes.io/ingress.global-static-ip-name': config.grafana.GCPExternalIpAddress,
           'kubernetes.io/ingress.class': 'gce',
           'cert-manager.io/cluster-issuer': $.grafana.certificate.spec.issuerRef.name,
+          'networking.gke.io/v1beta1.FrontendConfig': $.grafana.frontendConfig.metadata.name,
         },
         labels: $.grafana.service.metadata.labels,
         name: 'grafana',
@@ -108,6 +109,22 @@ function(config) {
           oauthclientCredentials: {
             secretName: $.grafana.backendOAuthSecret.metadata.name,
           },
+        },
+      },
+    },
+
+    frontendConfig: {
+      apiVersion: 'networking.gke.io/v1beta1',
+      kind: 'FrontendConfig',
+      metadata: {
+        name: 'grafana',
+        namespace: config.namespace,
+      },
+      spec: {
+        sslPolicy: 'grafana-ssl-policy',
+        redirectToHttps: {
+          enabled: true,
+          responseCodeName: '301',
         },
       },
     },
