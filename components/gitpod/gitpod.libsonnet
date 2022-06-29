@@ -802,6 +802,85 @@ function(params) {
     },
   },
 
+  usageService: {
+    apiVersion: 'v1',
+    kind: 'Service',
+    metadata: {
+      name: $._config.name + '-usage',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels {
+        'app.kubernetes.io/component': 'usage',
+      },
+    },
+    spec: {
+      selector: {
+        component: 'usage',
+      },
+      ports: [{
+        name: 'metrics',
+        port: 9500,
+      }],
+    },
+  },
+
+  usageServiceMonitor: {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'ServiceMonitor',
+    metadata: {
+      name: $._config.name + '-usage',
+      namespace: $._config.namespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      jobLabel: 'app.kubernetes.io/component',
+      selector: {
+        matchLabels: $._config.commonLabels {
+          'app.kubernetes.io/component': 'usage',
+        },
+      },
+      namespaceSelector: {
+        matchNames: [
+          $._config.gitpodNamespace,
+        ],
+      },
+      endpoints: [{
+        bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
+        port: 'metrics',
+        interval: '30s',
+      }],
+    },
+  },
+
+  usageNetworkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: {
+      name: 'usage-allow-kube-prometheus',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      podSelector: {
+        matchLabels: {
+          component: 'usage',
+        },
+      },
+      policyTypes: ['Ingress'],
+      ingress: [{
+        from: [{
+          podSelector: {
+            matchLabels: $._config.prometheusLabels,
+          },
+          namespaceSelector: {
+            matchLabels: {
+              namespace: $._config.namespace,
+            },
+          },
+        }],
+      }],
+    },
+  },
+
   registryFacadeService: {
     apiVersion: 'v1',
     kind: 'Service',
