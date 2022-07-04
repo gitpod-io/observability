@@ -1,4 +1,10 @@
-function(params) (import 'kube-prometheus/addons/pyrra.libsonnet') {
+function(config) (import 'kube-prometheus/addons/pyrra.libsonnet') {
+  local defaults = {
+    prometheusURL: 'http://prometheus-k8s.%s.svc.cluster.local:9090' % config.namespace,
+  },
+
+  local pyrra = self,
+  _config:: defaults + config.pyrra,
 
   pyrra+: {
     'slo-apiserver-read-response-errors':: {},
@@ -15,5 +21,29 @@ function(params) (import 'kube-prometheus/addons/pyrra.libsonnet') {
     'slo-prometheus-sd-kubernetes-errors':: {},
     'slo-prometheus-query-errors':: {},
     'slo-prometheus-notification-errors':: {},
+
+    apiDeployment+: {
+
+      spec+: {
+        template+: {
+          spec+: {
+            containers: std.map(
+              function(c) c {
+                args:
+                  if c.name == 'pyrra' then
+                    [
+                      'api',
+                      '--api-url=http://%s.%s.svc.cluster.local:9444' % [$.pyrra.kubernetesService.metadata.name, $.pyrra.kubernetesService.metadata.namespace],
+                      '--prometheus-url=%s' % pyrra._config.prometheusURL,
+                    ]
+                  else
+                    [],
+              },
+              super.containers
+            ),
+          },
+        },
+      },
+    },
   },
 }

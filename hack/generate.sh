@@ -154,7 +154,9 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
   key
 |||,
     },
-    pyrra: {},
+    pyrra: {
+        prometheusURL: 'http://victoriametrics.monitoring-central.svc.cluster.local:8428'
+    },
 }" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
