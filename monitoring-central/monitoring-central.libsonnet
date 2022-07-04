@@ -11,6 +11,7 @@ local kubePrometheus =
   (import '../addons/networkpolicies-disabled.libsonnet') +
   (import '../addons/disable-grafana-auth.libsonnet') +
   (import '../addons/grafana-on-gcp-oauth.libsonnet')(config) +
+  (if std.objectHas(config, 'pyrra') then (import '../addons/pyrra.libsonnet')(config) else {}) +
   {
     values+:: {
       common+: {

@@ -154,6 +154,7 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
   key
 |||,
     },
+    pyrra: {},
 }" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 
