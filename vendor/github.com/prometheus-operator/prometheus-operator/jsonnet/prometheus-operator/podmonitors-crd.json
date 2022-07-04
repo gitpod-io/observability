@@ -219,15 +219,26 @@
                             "properties": {
                               "action": {
                                 "default": "replace",
-                                "description": "Action to perform based on regex matching. Default is 'replace'",
+                                "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                                 "enum": [
                                   "replace",
+                                  "Replace",
                                   "keep",
+                                  "Keep",
                                   "drop",
+                                  "Drop",
                                   "hashmod",
+                                  "HashMod",
                                   "labelmap",
+                                  "LabelMap",
                                   "labeldrop",
-                                  "labelkeep"
+                                  "LabelDrop",
+                                  "labelkeep",
+                                  "LabelKeep",
+                                  "lowercase",
+                                  "Lowercase",
+                                  "uppercase",
+                                  "Uppercase"
                                 ],
                                 "type": "string"
                               },
@@ -376,7 +387,7 @@
                           "type": "object"
                         },
                         "path": {
-                          "description": "HTTP path to scrape for metrics.",
+                          "description": "HTTP path to scrape for metrics. If empty, Prometheus uses the default value (e.g. `/metrics`).",
                           "type": "string"
                         },
                         "port": {
@@ -394,15 +405,26 @@
                             "properties": {
                               "action": {
                                 "default": "replace",
-                                "description": "Action to perform based on regex matching. Default is 'replace'",
+                                "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                                 "enum": [
                                   "replace",
+                                  "Replace",
                                   "keep",
+                                  "Keep",
                                   "drop",
+                                  "Drop",
                                   "hashmod",
+                                  "HashMod",
                                   "labelmap",
+                                  "LabelMap",
                                   "labeldrop",
-                                  "labelkeep"
+                                  "LabelDrop",
+                                  "labelkeep",
+                                  "LabelKeep",
+                                  "lowercase",
+                                  "Lowercase",
+                                  "uppercase",
+                                  "Uppercase"
                                 ],
                                 "type": "string"
                               },
