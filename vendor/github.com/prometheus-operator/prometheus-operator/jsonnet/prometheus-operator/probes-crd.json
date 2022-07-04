@@ -175,15 +175,26 @@
                       "properties": {
                         "action": {
                           "default": "replace",
-                          "description": "Action to perform based on regex matching. Default is 'replace'",
+                          "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                           "enum": [
                             "replace",
+                            "Replace",
                             "keep",
+                            "Keep",
                             "drop",
+                            "Drop",
                             "hashmod",
+                            "HashMod",
                             "labelmap",
+                            "LabelMap",
                             "labeldrop",
-                            "labelkeep"
+                            "LabelDrop",
+                            "labelkeep",
+                            "LabelKeep",
+                            "lowercase",
+                            "Lowercase",
+                            "uppercase",
+                            "Uppercase"
                           ],
                           "type": "string"
                         },
@@ -329,6 +340,7 @@
                     "description": "Specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.",
                     "properties": {
                       "path": {
+                        "default": "/probe",
                         "description": "Path to collect metrics from. Defaults to `/probe`.",
                         "type": "string"
                       },
@@ -395,15 +407,26 @@
                               "properties": {
                                 "action": {
                                   "default": "replace",
-                                  "description": "Action to perform based on regex matching. Default is 'replace'",
+                                  "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                                   "enum": [
                                     "replace",
+                                    "Replace",
                                     "keep",
+                                    "Keep",
                                     "drop",
+                                    "Drop",
                                     "hashmod",
+                                    "HashMod",
                                     "labelmap",
+                                    "LabelMap",
                                     "labeldrop",
-                                    "labelkeep"
+                                    "LabelDrop",
+                                    "labelkeep",
+                                    "LabelKeep",
+                                    "lowercase",
+                                    "Lowercase",
+                                    "uppercase",
+                                    "Uppercase"
                                   ],
                                   "type": "string"
                                 },
@@ -504,15 +527,26 @@
                               "properties": {
                                 "action": {
                                   "default": "replace",
-                                  "description": "Action to perform based on regex matching. Default is 'replace'",
+                                  "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                                   "enum": [
                                     "replace",
+                                    "Replace",
                                     "keep",
+                                    "Keep",
                                     "drop",
+                                    "Drop",
                                     "hashmod",
+                                    "HashMod",
                                     "labelmap",
+                                    "LabelMap",
                                     "labeldrop",
-                                    "labelkeep"
+                                    "LabelDrop",
+                                    "labelkeep",
+                                    "LabelKeep",
+                                    "lowercase",
+                                    "Lowercase",
+                                    "uppercase",
+                                    "Uppercase"
                                   ],
                                   "type": "string"
                                 },

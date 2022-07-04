@@ -849,6 +849,7 @@
                             },
                             "timeout": {
                               "description": "Timeout is a per-target Alertmanager timeout when pushing alerts.",
+                              "pattern": "^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$",
                               "type": "string"
                             },
                             "tlsConfig": {
@@ -2504,6 +2505,17 @@
                       "type": "object"
                     },
                     "type": "array"
+                  },
+                  "exemplars": {
+                    "description": "Exemplars related settings that are runtime reloadable. It requires to enable the exemplar storage feature to be effective.",
+                    "properties": {
+                      "maxSize": {
+                        "description": "Maximum number of exemplars stored in memory for all series. If not set, Prometheus uses its default value. A value of zero or less than zero disables the storage.",
+                        "format": "int64",
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
                   },
                   "externalLabels": {
                     "additionalProperties": {
@@ -4865,15 +4877,26 @@
                             "properties": {
                               "action": {
                                 "default": "replace",
-                                "description": "Action to perform based on regex matching. Default is 'replace'",
+                                "description": "Action to perform based on regex matching. Default is 'replace'. uppercase and lowercase actions require Prometheus >= 2.36.",
                                 "enum": [
                                   "replace",
+                                  "Replace",
                                   "keep",
+                                  "Keep",
                                   "drop",
+                                  "Drop",
                                   "hashmod",
+                                  "HashMod",
                                   "labelmap",
+                                  "LabelMap",
                                   "labeldrop",
-                                  "labelkeep"
+                                  "LabelDrop",
+                                  "labelkeep",
+                                  "LabelKeep",
+                                  "lowercase",
+                                  "Lowercase",
+                                  "uppercase",
+                                  "Uppercase"
                                 ],
                                 "type": "string"
                               },
