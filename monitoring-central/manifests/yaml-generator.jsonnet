@@ -3,4 +3,5 @@ local monitoringCentral = (import '../monitoring-central.libsonnet');
 
 { namespace: monitoringCentral.kubePrometheus.namespace } +
 { ['grafana/' + name]: monitoringCentral.grafana[name] for name in std.objectFields(monitoringCentral.grafana) } +
-{ ['victoriametrics/' + name]: monitoringCentral.victoriametrics[name] for name in std.objectFields(monitoringCentral.victoriametrics) }
+{ ['victoriametrics/' + name]: monitoringCentral.victoriametrics[name] for name in std.objectFields(monitoringCentral.victoriametrics) } +
+{ ['pyrra/' + name]: monitoringCentral.pyrra[name] for name in std.objectFields(monitoringCentral.pyrra) }
