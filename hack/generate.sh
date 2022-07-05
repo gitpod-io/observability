@@ -155,7 +155,10 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
 |||,
     },
     pyrra: {
-        prometheusURL: 'http://victoriametrics.monitoring-central.svc.cluster.local:8428'
+        prometheusURL: 'http://victoriametrics.monitoring-central.svc.cluster.local:8428',
+        DNS: 'http://fake.pyrra.url',
+        nodePort: 32164,
+        GCPExternalIpAddress: 'fake_external_ip_address',
     },
 }" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
