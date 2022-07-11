@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "20bf49c24e57f3b78ff88d0f77c5e10fbcb1fd04",
+      "version": "9609a46629064a49e814992d2e350fa544822350",
       "sum": "zhLYhUNcXNkMRfJhMUX0UiOpi8TOuLmUqJfO9NFKFkg="
     },
     {
@@ -120,8 +120,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "e3979c27d7f65779e56661a55e6fde6b74793330",
-      "sum": "EtEZn7EmLanAnv5hBwifoai4fKtvRGpzCpYSxdui8pw="
+      "version": "30a6c1bb4a18e7a3e244c0745de242c2ef3db44e",
+      "sum": "GGxjwJ6gwujEJ0rkYObgpnI8HcdkNevhTZdcLTYilxw="
     },
     {
       "source": {
@@ -193,7 +193,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "b5d0a6167d97c0e179dc9d637fe708091da28f3c",
+      "version": "6f3e4123a9f0ee2a7309ed940b0b4bc0f168977c",
       "sum": "/UJrWExMDM89fPfidt1pNLSQOLXsyBpmyp3unRbjaXw=",
       "name": "thanos-mixin"
     },
