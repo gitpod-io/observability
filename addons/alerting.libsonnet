@@ -70,13 +70,13 @@ function(config) {
   local infoRoute = trimRoutesTmpl(std.manifestYamlDoc(infoRouteTmpl, quote_keys=false)),
   local allRoutes = std.stripChars(criticalRoute + '\n' + teamRoutes + '\n' + warningRoute + '\n' + infoRoute, '[]'),
 
-  local slackReceiver(name, team, webhook) = {
+  local slackReceiver(name, channel, webhook) = {
     name: name,
     slack_configs: [
       {
         send_resolved: true,
         api_url: webhook,
-        channel: 'a_' + team + '_alerts',
+        channel: channel,
         title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] {{ .Labels.cluster }} Monitoring',
         text: '{{ range .Alerts }}\n**Please take immediate action!**\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
         actions: [
@@ -101,13 +101,13 @@ function(config) {
   },
 
 
-  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', p.team, p.webhook) for p in teamWebHookMap],
-  local genericSlackReceiverArr = [slackReceiver('genericReceiver', 'generic', config.alerting.generic.slackWebhookURL)],
+  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', '#a_' + p.team + '_alerts', p.webhook) for p in teamWebHookMap],
+  local genericSlackReceiverArr = [slackReceiver('genericReceiver', config.alerting.generic.slackChannel, config.alerting.generic.slackWebhookURL)],
   local genericCriticalReceiverArr = [
     if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
       pagerdutyReceiver('pagerDuty', config.alerting.pagerdutyRoutingKey)
     else
-      slackReceiver('slackCriticalReceiver', 'generic', config.alerting.slackWebhookURLCritical),
+      slackReceiver('slackCriticalReceiver', config.alerting.generic.slackChannel, config.alerting.generic.slackWebhookURL),
   ],
 
   local teamSlackReceivers = std.manifestYamlDoc(teamSlackReceiversArr, quote_keys=false),
