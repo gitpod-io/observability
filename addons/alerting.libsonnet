@@ -4,22 +4,18 @@ function(config) {
     {
       team: 'platform',
       webhook: config.alerting.platform.slackWebhookURL,
-      //pd_key: config.alerting.platform.pagerdutyRoutingKey,
     },
     {
       team: 'ide',
       webhook: config.alerting.IDE.slackWebhookURL,
-      //pd_key: config.alerting.IDE.slackWebhookURL,
     },
     {
       team: 'workspace',
       webhook: config.alerting.workspace.slackWebhookURL,
-      //pd_key: config.alerting.workspaces.slackWebhookURL,
     },
     {
       team: 'webapp',
       webhook: config.alerting.webapp.slackWebhookURL,
-      //pd_key: config.alerting.webapp.slackWebhookURL,
     },
   ],
 
@@ -51,7 +47,7 @@ function(config) {
     for p in teamWebHookMap
   ],
 
-  local nonCriticalReceiver(team, webhook) = {
+  local slackReceiver(team, webhook) = {
     name: team + 'TeamReceiver',
     slack_configs: [
       {
@@ -71,7 +67,7 @@ function(config) {
     ],
   },
 
-  local criticalReceivers(team, key) = {
+  local pagerdutyReceiver(team, key) = {
     name: team + 'TeamCriticalReceiver',
     pagerduty_configs: [
       {
@@ -81,11 +77,11 @@ function(config) {
     ],
   },
 
-  local teamCriticalReceiversArr = [if std.objectHas(p, 'pd_key') then criticalReceivers(p.team, p.pd_key) for p in teamWebHookMap],
+  local teamCriticalReceiversArr = [if std.objectHas(p, 'pd_key') then pagerdutyReceiver(p.team, p.pd_key) for p in teamWebHookMap],
 
   local teamNonCriticalReceiversArr =
-    [nonCriticalReceiver(config.alerting.generic.name, config.alerting.generic.slackWebhookURL)] +
-    [nonCriticalReceiver(p.team, p.webhook) for p in teamWebHookMap],
+    [slackReceiver(config.alerting.generic.name, config.alerting.generic.slackWebhookURL)] +
+    [slackReceiver(p.team, p.webhook) for p in teamWebHookMap],
 
   // this is the uglies hack ever
   // but is the only way I could figure out to format this correctly (a json object for some reason messes up the order of the keys so it doesn't work either)
