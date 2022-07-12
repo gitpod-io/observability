@@ -101,7 +101,7 @@ function(config) {
         global:
           resolve_timeout: 5m
         route:
-          receiver: %(generic)sTeamReceiver
+          receiver: Black_Hole
           group_by: ['...']
           routes:
         %(teamRoutes)s
@@ -130,6 +130,7 @@ function(config) {
         receivers:
         %(teamReceivers)s
         - name: Watchdog
+        - name: Black_Hole
         - name: globalCriticalReceiver
           pagerduty_configs:
           - send_resolved: true
