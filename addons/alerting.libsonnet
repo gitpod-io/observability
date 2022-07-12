@@ -20,35 +20,58 @@ function(config) {
   ],
 
   local routeTmpl = |||
-    - receiver: %(team)sTeamReceiver
+    - receiver: %(receiverName)s
       match:
         team: %(team)s
   |||,
 
-  local routeCriticalTmpl = |||
-    - receiver: %(team)sTeamCriticalReceiver
+  local routeSeverityTmpl = |||
+    - receiver: %(receiverName)s
       match:
-        team: %(team)s
         severity: %(severity)s
   |||,
 
   local teamRoutesTmpls = [
     if std.objectHas(p, 'team') then routeTmpl % {
+      receiverName: p.team + 'Receiver',
       team: p.team,
     }
     for p in teamWebHookMap
   ],
 
-  local teamCriticalRoutesTmpls = [
-    if std.objectHas(p, 'team') && std.objectHas(p, 'pd_key') then routeCriticalTmpl % {
-      team: p.team,
+  local criticalRouteTmpl = [
+    routeSeverityTmpl % {
+      receiverName: if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then 'pagerDutyCriticalReceiver' else 'slackCriticalReceiver',
       severity: 'critical',
-    }
-    for p in teamWebHookMap
+    },
   ],
 
-  local slackReceiver(team, webhook) = {
-    name: team + 'TeamReceiver',
+  local warningRouteTmpl = [
+    routeSeverityTmpl % {
+      receiverName: 'genericReceiver',
+      severity: 'warning',
+    },
+  ],
+
+  local infoRouteTmpl = [
+    routeSeverityTmpl % {
+      receiverName: 'genericReceiver',
+      severity: 'info',
+    },
+  ],
+
+  // this is the uglies hack ever
+  // but is the only way I could figure out to format this correctly (a json object for some reason messes up the order of the keys so it doesn't work either)
+  local trimRoutesTmpl(routes) = std.lstripChars(std.strReplace(routes, '- |', ''), '\n'),
+
+  local teamRoutes = trimRoutesTmpl(std.manifestYamlDoc(teamRoutesTmpls, quote_keys=false)),
+  local criticalRoute = trimRoutesTmpl(std.manifestYamlDoc(criticalRouteTmpl, quote_keys=false)),
+  local warningRoute = trimRoutesTmpl(std.manifestYamlDoc(warningRouteTmpl, quote_keys=false)),
+  local infoRoute = trimRoutesTmpl(std.manifestYamlDoc(infoRouteTmpl, quote_keys=false)),
+  local allRoutes = std.stripChars(criticalRoute + '\n' + teamRoutes + '\n' + warningRoute + '\n' + infoRoute, '[]'),
+
+  local slackReceiver(name, team, webhook) = {
+    name: name,
     slack_configs: [
       {
         send_resolved: true,
@@ -68,7 +91,7 @@ function(config) {
   },
 
   local pagerdutyReceiver(team, key) = {
-    name: team + 'TeamCriticalReceiver',
+    name: team + 'CriticalReceiver',
     pagerduty_configs: [
       {
         send_resolved: true,
@@ -77,23 +100,20 @@ function(config) {
     ],
   },
 
-  local teamCriticalReceiversArr = [if std.objectHas(p, 'pd_key') then pagerdutyReceiver(p.team, p.pd_key) for p in teamWebHookMap],
 
-  local teamNonCriticalReceiversArr =
-    [slackReceiver(config.alerting.generic.name, config.alerting.generic.slackWebhookURL)] +
-    [slackReceiver(p.team, p.webhook) for p in teamWebHookMap],
+  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', p.team, p.webhook) for p in teamWebHookMap],
+  local genericSlackReceiverArr = [slackReceiver('genericReceiver', 'generic', config.alerting.generic.slackWebhookURL)],
+  local genericCriticalReceiverArr = [
+    if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
+      pagerdutyReceiver('pagerDuty', config.alerting.pagerdutyRoutingKey)
+    else
+      slackReceiver('slackCriticalReceiver', 'generic', config.alerting.slackWebhookURLCritical),
+  ],
 
-  // this is the uglies hack ever
-  // but is the only way I could figure out to format this correctly (a json object for some reason messes up the order of the keys so it doesn't work either)
-  local trimRoutesTmpl(routes) = std.lstripChars(std.strReplace(routes, '- |', ''), '\n'),
-
-  local routes = trimRoutesTmpl(std.manifestYamlDoc(teamRoutesTmpls, quote_keys=false)),
-  local criticalRoutes = trimRoutesTmpl(std.manifestYamlDoc(std.prune(teamCriticalRoutesTmpls), quote_keys=false)),
-  local allRoutes = std.stripChars(routes + '\n' + criticalRoutes, '[]'),
-
-  local teamNonCriticalReceivers = std.manifestYamlDoc(teamNonCriticalReceiversArr, quote_keys=false),
-  local teamCriticalReceivers = std.manifestYamlDoc(std.prune(teamCriticalReceiversArr), quote_keys=false),
-  local allReceivers = std.stripChars(teamNonCriticalReceivers + '\n' + teamCriticalReceivers, '[]'),
+  local teamSlackReceivers = std.manifestYamlDoc(teamSlackReceiversArr, quote_keys=false),
+  local genericSlackReceiver = std.manifestYamlDoc(genericSlackReceiverArr, quote_keys=false),
+  local genericCriticalReceiver = std.manifestYamlDoc(genericCriticalReceiverArr, quote_keys=false),
+  local allReceivers = std.stripChars(genericCriticalReceiver + '\n' + teamSlackReceivers + '\n' + genericSlackReceiver, '[]'),
 
   values+:: {
     alertmanager+: {
@@ -104,10 +124,7 @@ function(config) {
           receiver: Black_Hole
           group_by: ['...']
           routes:
-        %(teamRoutes)s
-          - receiver: globalCriticalReceiver
-            match:
-              severity: critical
+        %(routes)s
           - receiver: Watchdog
             match:
               alertname: Watchdog
@@ -128,20 +145,13 @@ function(config) {
           equal:
           - alertname
         receivers:
-        %(teamReceivers)s
+        %(receivers)s
         - name: Watchdog
         - name: Black_Hole
-        - name: globalCriticalReceiver
-          pagerduty_configs:
-          - send_resolved: true
-            routing_key: 'global-pd-routing-key'
         templates: []
       ||| % {
-        generic: config.alerting.generic.name,
-        teamRoutes: allRoutes,
-        teamReceivers: allReceivers,
-        clusterName: config.clusterName,
-        pagerdutyRoutingKey: config.alerting.pagerdutyRoutingKey,
+        routes: allRoutes,
+        receivers: allReceivers,
       },
     },
   },

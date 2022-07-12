@@ -51,29 +51,25 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     namespace: 'monitoring-satellite',
     clusterName: 'fake-cluster',
     alerting: {
-        pagerdutyRoutingKey: 'global-pd-routing-key',
+        pagerdutyRoutingKey: 'pd-routing-key',
+        slackWebhookURLCritical: 'https://hooks.slack.com/services/critical-fake-url',
 
         IDE: {
-            pagerdutyRoutingKey: 'fake-pd-key',
-            slackWebhookURL: 'https://hooks.slack.com/services/fake-url',
+            slackWebhookURL: 'https://hooks.slack.com/services/ide-fake-url',
         },
         webapp: {
-            pagerdutyRoutingKey: 'fake-pd-key',
-            slackWebhookURL: 'https://hooks.slack.com/services/fake-url',
+            slackWebhookURL: 'https://hooks.slack.com/services/webapp-fake-url',
         },
         platform: {
-            pagerdutyRoutingKey: 'fake-pd-key',
-            slackWebhookURL: 'https://hooks.slack.com/services/fake-url',
+            slackWebhookURL: 'https://hooks.slack.com/services/platform-fake-url',
         },
         workspace: {
-            pagerdutyRoutingKey: 'fake-pd-key',
-            slackWebhookURL: 'https://hooks.slack.com/services/fake-url',
+            slackWebhookURL: 'https://hooks.slack.com/services/workspace-fake-url',
         },
 
         generic: {
-            name:            'generic',
-            slackWebhookURL: 'https://hooks.slack.com/services/fake-url',
-        },
+            slackWebhookURL: 'https://hooks.slack.com/services/generic-fake-url',
+        }
     },
     tracing: {
         honeycombAPIKey: 'fake-key',
