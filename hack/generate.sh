@@ -54,12 +54,12 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
         pagerdutyRoutingKey: 'pd-routing-key',
         slackWebhookURLCritical: 'https://hooks.slack.com/services/critical-fake-url',
 
-        IDE: {
+        ide: {
             slackWebhookURL: 'https://hooks.slack.com/services/ide-fake-url',
         },
-        webapp: {
-            slackWebhookURL: 'https://hooks.slack.com/services/webapp-fake-url',
-        },
+        # webapp: {
+        #     slackWebhookURL: 'https://hooks.slack.com/services/webapp-fake-url',
+        # },
         platform: {
             slackWebhookURL: 'https://hooks.slack.com/services/platform-fake-url',
         },

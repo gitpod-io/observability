@@ -1,23 +1,23 @@
 function(config) {
 
-  local teamWebHookMap = [
-    {
-      team: 'platform',
-      webhook: config.alerting.platform.slackWebhookURL,
-    },
-    {
-      team: 'ide',
-      webhook: config.alerting.IDE.slackWebhookURL,
-    },
-    {
-      team: 'workspace',
-      webhook: config.alerting.workspace.slackWebhookURL,
-    },
-    {
-      team: 'webapp',
-      webhook: config.alerting.webapp.slackWebhookURL,
-    },
-  ],
+  local teamWebHookMap =
+    (
+      if std.objectHas(config.alerting, 'platform') then
+        [{ team: 'platform', webhook: config.alerting.platform.slackWebhookURL }] else []
+    ) +
+    (
+      if std.objectHas(config.alerting, 'ide') then
+        [{ team: 'ide', webhook: config.alerting.ide.slackWebhookURL }] else []
+    ) +
+    (
+      if std.objectHas(config.alerting, 'workspace') then
+        [{ team: 'workspace', webhook: config.alerting.workspace.slackWebhookURL }] else []
+    ) +
+    (
+      if std.objectHas(config.alerting, 'webapp') then
+        [{ team: 'webapp', webhook: config.alerting.webapp.slackWebhookURL }] else []
+    ),
+
 
   local routeTmpl = |||
     - receiver: %(receiverName)s
