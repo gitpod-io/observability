@@ -77,8 +77,9 @@ function(config) {
         send_resolved: true,
         api_url: webhook,
         channel: channel,
-        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}]',
-        text: '{{ range .Alerts }}\n**Please take immediate action!**\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
+        title: '[{{ .CommonLabels.alertname }} {{ .Status | toUpper }} {{ if eq .Status "firing" }}{{ end }}]',
+        text: '{{ range .Alerts }}\n*Severity: {{ .Labels.severity }}*\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
+        color: '{{ if eq .Status "firing" -}}{{ if eq .CommonLabels.severity "warning" -}}warning{{- else if eq .CommonLabels.severity "critical" -}}danger{{- else -}}#439FE0{{- end -}}{{ else -}}good{{- end }}',
         actions: [
           {
             type: 'button',
