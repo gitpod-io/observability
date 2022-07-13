@@ -77,7 +77,7 @@ function(config) {
         send_resolved: true,
         api_url: webhook,
         channel: channel,
-        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}] {{ .Labels.cluster }} Monitoring',
+        title: '[{{ .Status | toUpper }}{{ if eq .Status "firing" }}{{ end }}]',
         text: '{{ range .Alerts }}\n**Please take immediate action!**\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
         actions: [
           {
