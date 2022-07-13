@@ -22,7 +22,7 @@ function(config) {
         ],
         issuerRef: {
           kind: 'ClusterIssuer',
-          name: 'letsencrypt-issuer',
+          name: 'letsencrypt-issuer-gitpod-191109',
         },
         secretName: 'grafana-certificate',
       },
