@@ -51,22 +51,25 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     namespace: 'monitoring-satellite',
     clusterName: 'fake-cluster',
     alerting: {
-        slackWebhookURLCritical: 'http://fake.url.critical',
-        slackWebhookURLWarning: 'http://fake.url.warning',
-        slackWebhookURLInfo: 'http://fake.url.info',
-        slackChannelPrefix: '#fake_channel',
-        pagerdutyRoutingKey: 'global-pd-routing-key',
+        pagerdutyRoutingKey: 'pd-routing-key',
 
-        IDE: {
-            pagerdutyRoutingKey: 'fake-IDE-pd-key',
+        ide: {
+            slackWebhookURL: 'https://hooks.slack.com/services/ide-fake-url',
         },
-        webapp: {
-            pagerdutyRoutingKey: 'fake-webapp-pd-key',
-        },
+        # webapp: {
+        #     slackWebhookURL: 'https://hooks.slack.com/services/webapp-fake-url',
+        # },
         platform: {
-            slackWebhookURL: 'https://hooks.slack.com/services/fake-url',
-            slackChannel: '#t_platform_alerting'
+            slackWebhookURL: 'https://hooks.slack.com/services/platform-fake-url',
         },
+        workspace: {
+            slackWebhookURL: 'https://hooks.slack.com/services/workspace-fake-url',
+        },
+
+        generic: {
+            slackChannel: '#a_generic_channel',
+            slackWebhookURL: 'https://hooks.slack.com/services/generic-fake-url',
+        }
     },
     tracing: {
         honeycombAPIKey: 'fake-key',
