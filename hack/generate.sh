@@ -162,6 +162,8 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
         DNS: 'http://fake.pyrra.url',
         nodePort: 32164,
         GCPExternalIpAddress: 'fake_external_ip_address',
+        IAPClientID: 'fakeIAP_ID',
+        IAPClientSecret: 'fakeIAP_secret',
     },
 }" \
 monitoring-central/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}

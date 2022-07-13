@@ -3,6 +3,8 @@ function(config) {
   assert std.objectHas(config.pyrra, 'nodePort') : 'pyrra.nodePort required',
   assert std.isNumber(config.pyrra.nodePort) : 'pyrra.nodePort should be a number',
   assert std.objectHas(config.pyrra, 'GCPExternalIpAddress') : 'pyrra.GCPExternalIpAddress required',
+  assert std.objectHas(config.grafana, 'IAPClientID') : 'grafana.IAPClientID required',
+  assert std.objectHas(config.grafana, 'IAPClientSecret') : 'grafana.IAPClientSecret required',
 
 
   pyrra+: {
@@ -26,6 +28,11 @@ function(config) {
     },
 
     apiService+: {
+      metadata+: {
+        annotations+: {
+          'cloud.google.com/backend-config': '{"ports": {"9099":"' + $.pyrra.backendOAuth.metadata.name + '"}}',  // same name as backend-config
+        },
+      },
       spec+: {
         type: 'NodePort',
         ports: std.map(
@@ -74,6 +81,37 @@ function(config) {
           ],
           secretName: $.pyrra.certificate.spec.secretName,
         }],
+      },
+    },
+
+    backendOAuthSecret: {
+      apiVersion: 'v1',
+      kind: 'Secret',
+      metadata: {
+        name: 'pyrra-oauth',
+        namespace: config.namespace,
+        labels: $.pyrra.apiService.metadata.labels,
+      },
+      data: {
+        client_id: std.base64(config.pyrra.IAPClientID),
+        client_secret: std.base64(config.pyrra.IAPClientSecret),
+      },
+    },
+
+    backendOAuth: {
+      apiVersion: 'cloud.google.com/v1',
+      kind: 'BackendConfig',
+      metadata: {
+        name: 'pyrra',
+        namespace: config.namespace,
+      },
+      spec: {
+        iap: {
+          enabled: true,
+          oauthclientCredentials: {
+            secretName: $.pyrra.backendOAuthSecret.metadata.name,
+          },
+        },
       },
     },
 
