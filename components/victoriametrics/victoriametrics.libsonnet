@@ -128,7 +128,10 @@ function(params) {
               name: $._config.name,
               image: 'victoriametrics/victoria-metrics:' + $._config.version,
               imagePullPolicy: 'IfNotPresent',
-              args: ['-search.maxUniqueTimeseries=3000000'],
+              args: [
+                '-search.maxUniqueTimeseries=3000000',
+                '-search.maxQueryDuration=60s',
+              ],
               ports: [{
                 containerPort: $._config.port,
               }],
