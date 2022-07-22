@@ -102,7 +102,7 @@ function(config) {
   },
 
 
-  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', '#a_' + p.team + '_alerts', p.webhook) for p in teamWebHookMap],
+  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', '#t_' + p.team + '_alerts', p.webhook) for p in teamWebHookMap],
   local genericSlackReceiverArr = [slackReceiver('genericReceiver', config.alerting.generic.slackChannel, config.alerting.generic.slackWebhookURL)],
   local genericCriticalReceiverArr = [
     if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
