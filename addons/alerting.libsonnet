@@ -1,21 +1,21 @@
 function(config) {
 
-  local teamWebHookMap =
+  local teamMap =
     (
       if std.objectHas(config.alerting, 'platform') then
-        [{ team: 'platform', webhook: config.alerting.platform.slackWebhookURL }] else []
+        [{ team: 'platform' }] else []
     ) +
     (
       if std.objectHas(config.alerting, 'ide') then
-        [{ team: 'ide', webhook: config.alerting.ide.slackWebhookURL }] else []
+        [{ team: 'ide' }] else []
     ) +
     (
       if std.objectHas(config.alerting, 'workspace') then
-        [{ team: 'workspace', webhook: config.alerting.workspace.slackWebhookURL }] else []
+        [{ team: 'workspace' }] else []
     ) +
     (
       if std.objectHas(config.alerting, 'webapp') then
-        [{ team: 'webapp', webhook: config.alerting.webapp.slackWebhookURL }] else []
+        [{ team: 'webapp' }] else []
     ),
 
 
@@ -36,7 +36,7 @@ function(config) {
       receiverName: p.team + 'Receiver',
       team: p.team,
     }
-    for p in teamWebHookMap
+    for p in teamMap
   ],
 
   local criticalRouteTmpl = [
@@ -70,13 +70,18 @@ function(config) {
   local infoRoute = trimRoutesTmpl(std.manifestYamlDoc(infoRouteTmpl, quote_keys=false)),
   local allRoutes = std.stripChars(criticalRoute + '\n' + teamRoutes + '\n' + warningRoute + '\n' + infoRoute, '[]'),
 
-  local slackReceiver(name, channel, webhook) = {
+  local slackReceiver(name, channel) = {
     name: name,
     slack_configs: [
       {
         send_resolved: true,
-        api_url: webhook,
+        api_url: 'https://slack.com/api/chat.postMessage',
         channel: channel,
+        http_config: {
+          authorization: {
+            credentials: config.alerting.slackOAuthToken,
+          },
+        },
         title: '[{{ .CommonLabels.alertname }} {{ .Status | toUpper }} {{ if eq .Status "firing" }}{{ end }}]',
         text: '{{ range .Alerts }}\n*Severity: {{ .Labels.severity }}*\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
         color: '{{ if eq .Status "firing" -}}{{ if eq .CommonLabels.severity "warning" -}}warning{{- else if eq .CommonLabels.severity "critical" -}}danger{{- else -}}#439FE0{{- end -}}{{ else -}}good{{- end }}',
@@ -101,14 +106,13 @@ function(config) {
     ],
   },
 
-
-  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', '#t_' + p.team + '_alerts', p.webhook) for p in teamWebHookMap],
-  local genericSlackReceiverArr = [slackReceiver('genericReceiver', config.alerting.generic.slackChannel, config.alerting.generic.slackWebhookURL)],
+  local teamSlackReceiversArr = [slackReceiver(p.team + 'Receiver', '#t_' + p.team + '_alerts') for p in teamMap],
+  local genericSlackReceiverArr = [slackReceiver('genericReceiver', config.alerting.generic.slackChannel)],
   local genericCriticalReceiverArr = [
     if std.objectHas(config.alerting, 'pagerdutyRoutingKey') then
       pagerdutyReceiver('pagerDuty', config.alerting.pagerdutyRoutingKey)
     else
-      slackReceiver('slackCriticalReceiver', config.alerting.generic.slackChannel, config.alerting.generic.slackWebhookURL),
+      slackReceiver('slackCriticalReceiver', config.alerting.generic.slackChannel),
   ],
 
   local teamSlackReceivers = std.manifestYamlDoc(teamSlackReceiversArr, quote_keys=false),
