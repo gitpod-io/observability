@@ -4,7 +4,7 @@ local defaults = {
   name: 'http-prober',
   namespace: error 'must provide namespace',
   image: 'ghcr.io/arthursens/http-prober',
-  version: 'v0.0.2',
+  version: 'v0.0.1',
   commonLabels: {
     'app.kubernetes.io/name': defaults.name,
     'app.kubernetes.io/part-of': 'kube-prometheus',
