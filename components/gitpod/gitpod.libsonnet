@@ -602,6 +602,7 @@ function(params) {
         ],
       },
       endpoints: [{
+        bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
         port: 'metrics',
         interval: '30s',
       }],
