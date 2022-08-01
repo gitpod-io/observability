@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "6ccb9eedb9bdd4d7252894b968e6fd72d0c85f3a",
-      "sum": "ha7oqGiuFWIjxnIJZxjFOFj80KrmNnKWTRj94ojHeLM=",
+      "version": "5bdda8ecea8d7a9086f439481f30b916f6966454",
+      "sum": "NOPay7z2l3YjkVrpmhvMKCToI9pDMmv9cF4hqkiesX8=",
       "name": "gitpod"
     },
     {
@@ -172,7 +172,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "7ef6f287cfc6fbe883238e4763570f43d922dcf2",
+      "version": "595d1343542dedd31e2d75330f63dcbc1cac392d",
       "sum": "crD6rsagAMJFnVRw4pO63z3LLYfz4QFIiMR14zjjIfY=",
       "name": "prometheus"
     },
@@ -193,7 +193,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "fd275f8ac3d906c4ebb3c3f8be9db8701a71eabd",
+      "version": "227928ceb9840808c26f67ae14d863df682f41a6",
       "sum": "M8vlJRfaKuqG8LJMMYBdFKuuKQgcLiFG27ZDWePHzTQ=",
       "name": "thanos-mixin"
     },
