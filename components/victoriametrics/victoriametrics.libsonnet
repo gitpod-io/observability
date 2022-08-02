@@ -304,7 +304,7 @@ function(params) {
       ],
       issuerRef: {
         kind: 'ClusterIssuer',
-        name: 'letsencrypt-issuer',
+        name: 'letsencrypt-issuer-gitpod-191109',
       },
       secretName: 'victoriametrics-certificate',
     },
