@@ -13,6 +13,9 @@ local unwatedAlerts = [
   // From node-exporter
   'NodeFilesystemSpaceFillingUp',
   'NodeHighNumberConntrackEntriesUsed',
+
+  // From kube-prometheus
+  'Watchdog',
 ];
 
 {
