@@ -83,7 +83,7 @@ function(config) {
           },
         },
         title: '[{{ .CommonLabels.alertname }} {{ .Status | toUpper }} {{ if eq .Status "firing" }}{{ end }}]',
-        text: '{{ range .Alerts }}\n*Summary*: {{ .Labels.severity }}\n*Severity: {{ .Labels.severity }}*\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
+        text: '{{ range .Alerts }}\n*Summary*: {{ .Labels.summary }}\n*Severity: {{ .Labels.severity }}*\n*Cluster:* {{ .Labels.cluster }}\n*Alert:* {{ .Labels.alertname }}\n*Description:* {{ .Annotations.description }}\n{{ end }}\n',
         color: '{{ if eq .Status "firing" -}}{{ if eq .CommonLabels.severity "warning" -}}warning{{- else if eq .CommonLabels.severity "critical" -}}danger{{- else -}}#439FE0{{- end -}}{{ else -}}good{{- end }}',
         actions: [
           {
