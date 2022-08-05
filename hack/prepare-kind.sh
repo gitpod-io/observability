@@ -10,11 +10,12 @@ if [[ $? != 0 ]]; then
     | tr -d \" \
     | wget -qi -
     mv kind-linux-amd64 tmp/bin/kind && chmod +x tmp/bin/kind
+    export PATH=$PATH:$(pwd)/tmp/bin
 fi
 
-cluster_created=$($PWD/tmp/bin/kind get clusters 2>&1)
+cluster_created=$(kind get clusters 2>&1)
 if [[ "$cluster_created" == "No kind clusters found." ]]; then 
-    $PWD/tmp/bin/kind create cluster --config $PWD/.github/workflows/kind/config.yml
+    kind create cluster --config $PWD/.github/workflows/kind/config.yml
 else
     echo "Cluster '$cluster_created' already present" 
 fi 
