@@ -112,7 +112,7 @@ function(config) {
             type: 'button',
             text: 'Dashboard :grafana:',
             url: '{{ .CommonAnnotations.dashboard_url}}',
-          }
+          },
         ],
       },
     ],
@@ -125,19 +125,19 @@ function(config) {
         send_resolved: true,
         routing_key: key,
         links: [
-            {
-                text: 'Runbook :book:',
-                href: '{{ .CommonAnnotations.runbook_url }}'
-            },
-            {
-                text: 'Query :prometheus:',
-                href: queryButtonTmpl
-            },
-            {
-                text: 'Dashboard :grafana:',
-                href: '{{ .CommonAnnotations.dashboard_url }}'
-            }
-        ]
+          {
+            text: 'Runbook :book:',
+            href: '{{ .CommonAnnotations.runbook_url }}',
+          },
+          {
+            text: 'Query :prometheus:',
+            href: queryButtonTmpl,
+          },
+          {
+            text: 'Dashboard :grafana:',
+            href: '{{ .CommonAnnotations.dashboard_url }}',
+          },
+        ],
       },
     ],
   },
