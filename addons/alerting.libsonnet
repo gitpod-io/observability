@@ -70,6 +70,18 @@ function(config) {
   local infoRoute = trimRoutesTmpl(std.manifestYamlDoc(infoRouteTmpl, quote_keys=false)),
   local allRoutes = std.stripChars(criticalRoute + '\n' + teamRoutes + '\n' + warningRoute + '\n' + infoRoute, '[]'),
 
+
+  // This was a nightmare to do. The URL that we get from the query that triggered the alert is the address of the prometheus
+  // Since we can't access it from outside, we want to link to grafana with the query
+  // So we descent into madness, i.e. we use regex to replace the relevant parts and concatenate that with the url of our grafana. In order of execution
+  // "reReplaceAll "%22" "%5C%22" (index .Alerts 0).GeneratorURL - .GeneratorURL is a link to the prometheus with the query. We replace %22 (", with (\"), as this is what makes grafana happy
+  // reReplaceAll ".*expr=" ... - The URL is something like: http://prometheus.:9090/graph?g0.range_input=1h&g0.expr=QUERY&g0.tab=1 We keep everything after `expr=` and replace the rest with our grafana URL
+  // reReplaceAll "&g0.tab=1" "%22%7D%5D%7D" - replaces the last bit (&g0.tab=1) with ("}]})
+  // reReplaceAll `\\+` "%20" - replace all (+) with spaces ( ) - again to make grafana happy
+  // reReplaceAll "%0A" "" - newlines with nothing
+  // reReplaceAll "%28" "(" | reReplaceAll "%29" ")" - self explanatory
+  local queryButtonTmpl = '{{ reReplaceAll "%22" "%5C%22" (index .Alerts 0).GeneratorURL | reReplaceAll ".*expr=" "https://grafana.gitpod.io/explore?orgId=1&left=%7B%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D,%22datasource%22:%22VictoriaMetrics%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22" | reReplaceAll "&g0.tab=1" "%22%7D%5D%7D" | reReplaceAll `\\+` "%20" | reReplaceAll "%0A" "" | reReplaceAll "%28" "(" | reReplaceAll "%29" ")" }}',
+
   local slackReceiver(name, channel) = {
     name: name,
     slack_configs: [
@@ -91,6 +103,16 @@ function(config) {
             text: 'Runbook :book:',
             url: '{{ .CommonAnnotations.runbook_url }}',
           },
+          {
+            type: 'button',
+            text: 'Query :prometheus:',
+            url: queryButtonTmpl,
+          },
+          {
+            type: 'button',
+            text: 'Dashboard :grafana:',
+            url: '{{ .CommonAnnotations.dashboard_url}}',
+          },
         ],
       },
     ],
@@ -102,6 +124,20 @@ function(config) {
       {
         send_resolved: true,
         routing_key: key,
+        links: [
+          {
+            text: 'Runbook :book:',
+            href: '{{ .CommonAnnotations.runbook_url }}',
+          },
+          {
+            text: 'Query :prometheus:',
+            href: queryButtonTmpl,
+          },
+          {
+            text: 'Dashboard :grafana:',
+            href: '{{ .CommonAnnotations.dashboard_url }}',
+          },
+        ],
       },
     ],
   },
