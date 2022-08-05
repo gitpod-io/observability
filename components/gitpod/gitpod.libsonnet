@@ -425,6 +425,85 @@ function(params) {
     },
   },
 
+  ideMetricsServiceMonitor: {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'ServiceMonitor',
+    metadata: {
+      name: $._config.name + '-ide-metrics',
+      namespace: $._config.namespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      jobLabel: 'app.kubernetes.io/component',
+      selector: {
+        matchLabels: $._config.commonLabels {
+          'app.kubernetes.io/component': 'ide-metrics',
+        },
+      },
+      namespaceSelector: {
+        matchNames: [
+          $._config.gitpodNamespace,
+        ],
+      },
+      endpoints: [{
+        bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
+        port: 'metrics',
+        interval: '30s',
+      }],
+    },
+  },
+
+  ideMetricsNetworkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: {
+      name: 'image-builder-allow-kube-prometheus',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      podSelector: {
+        matchLabels: {
+          component: 'ide-metrics',
+        },
+      },
+      policyTypes: ['Ingress'],
+      ingress: [{
+        from: [{
+          podSelector: {
+            matchLabels: $._config.prometheusLabels,
+          },
+          namespaceSelector: {
+            matchLabels: {
+              namespace: $._config.namespace,
+            },
+          },
+        }],
+      }],
+    },
+  },
+
+  ideMetricsService: {
+    apiVersion: 'v1',
+    kind: 'Service',
+    metadata: {
+      name: $._config.name + '-ide-metrics',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels {
+        'app.kubernetes.io/component': 'ide-metrics',
+      },
+    },
+    spec: {
+      selector: {
+        component: 'ide-metrics',
+      },
+      ports: [{
+        name: 'metrics',
+        port: 9500,
+      }],
+    },
+  },
+
   imageBuilderServiceMonitor: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'ServiceMonitor',
