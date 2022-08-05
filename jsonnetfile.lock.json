@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "e3452c71b2fe1e81bfb91b5cc25bc8089d4efbde",
-      "sum": "vBCFsegs4HmH4x7AwPMEsNxCFwkafV9GHQxyeSR8bbk=",
+      "version": "93335ab6ab2fca47861d4784e3ff552dee0965fc",
+      "sum": "jAX+wQDCB12SakAgWmbIuJZtd0knmwpD5kQbIQysnK0=",
       "name": "gitpod"
     },
     {
@@ -172,7 +172,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "1078081aec0a1b68beaf22ad483347d732bb0b48",
+      "version": "daeb7fe4693ec3f93c933a1b94a03e95edd9ee3e",
       "sum": "crD6rsagAMJFnVRw4pO63z3LLYfz4QFIiMR14zjjIfY=",
       "name": "prometheus"
     },
