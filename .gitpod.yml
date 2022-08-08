@@ -1,5 +1,5 @@
----
 image: gitpod/workspace-full:2022-08-04-13-40-17
+workspaceLocation: observability/observability.code-workspace
 tasks:
   - init: |
       # TODO(arthursens): We should update the workspace image so we dont need the step below
@@ -9,3 +9,4 @@ vscode:
   extensions:
     - heptio.jsonnet
     - zxh404.vscode-proto3
+    - golang.go
