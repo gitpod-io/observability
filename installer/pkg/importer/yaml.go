@@ -30,13 +30,13 @@ func (y YAMLImporter) Import() {
 	y.cloneRepository()
 	yamlPaths, err := y.getFiles()
 	if err != nil {
-		fmt.Errorf("Error finding YAML files: %v", err)
+		fmt.Printf("Error finding YAML files: %v", err)
 	}
 
 	for _, yamlPath := range yamlPaths {
 		yaml, err := ioutil.ReadFile(yamlPath)
 		if err != nil {
-			fmt.Errorf("Error reading YAML files: File: %s Err: %v", yamlPath, err)
+			fmt.Printf("Error reading YAML files: File: %s Err: %v", yamlPath, err)
 		}
 
 		// Just to showcase that we can import and manipulate YAML
