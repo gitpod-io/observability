@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "ae36a577d7becbdeebf1f0fb665573b721e435f8",
+      "version": "c070dedb92820cf66a33af994f1adff6a54a8707",
       "sum": "IkDHlaE0gvvcPjSNurFT+jQ2aCOAbqHF1WVmXbAgkds="
     },
     {
@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "98715106f50187566e945e2f5c5f0bc607e0a916",
-      "sum": "7YBnBhaAmM5xpIAI9Z9yskDXAvcXut73fGd+PEncEho=",
+      "version": "901747676745bd97c7922f85ff9b95aa952e6d2a",
+      "sum": "4XwaABYJZkPj/rp09qsjxsdvMHXWI9HBtsAlt8Il9Hg=",
       "name": "gitpod"
     },
     {
@@ -120,8 +120,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "c9f2b8cd17591abc4ed6cdf3e307b1293f413fb4",
-      "sum": "Uvxt7GzRLjajMqepCYKd3t3ReWI5h2XrL58xfzNvh+s="
+      "version": "f2935d167beaa30e085b2c11362fd9edae58cd47",
+      "sum": "oX3B1cEoGHwopQwekbbYALEeIcM6dlZj4Os7uKQJc5M="
     },
     {
       "source": {
@@ -151,7 +151,7 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "540951163b25d90712c597591694390a5cb57078",
+      "version": "c732372d7d3be49198398d34753080459f01749e",
       "sum": "PsK+V7oETCPKu2gLoPfqY0wwPKH9TzhNj6o2xezjjXc=",
       "name": "alertmanager"
     },
@@ -172,7 +172,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "8bcad096eda1ed110f15f94c345ef0b0d9711e43",
+      "version": "d91621890a2ccb3191a6d74812cc1827dd4093bf",
       "sum": "crD6rsagAMJFnVRw4pO63z3LLYfz4QFIiMR14zjjIfY=",
       "name": "prometheus"
     },
@@ -193,7 +193,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "99239df3ba6ceb60ada032225c92622c5ee9ae4b",
+      "version": "ca32b2318a52e431f891d005dcad4e7460ad08aa",
       "sum": "M8vlJRfaKuqG8LJMMYBdFKuuKQgcLiFG27ZDWePHzTQ=",
       "name": "thanos-mixin"
     },
