@@ -7,5 +7,9 @@
 			"path": "installer"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"yaml.schemas": {
+			"kubernetes": ["**/manifests/**"]
+		 }
+	}
 }
