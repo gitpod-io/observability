@@ -30,7 +30,6 @@ var renderCmd = &cobra.Command{
 		for _, item := range yaml {
 			fmt.Println(item)
 		}
-
 		return nil
 	},
 }
