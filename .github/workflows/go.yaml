@@ -1,0 +1,15 @@
+name: Go
+on:
+  - push
+env:
+  golang-version: "1.18"
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    name: Go
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.golang-version }}
+      - run: cd installer && make build && git diff --exit-code
