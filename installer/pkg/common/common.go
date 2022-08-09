@@ -1,6 +1,8 @@
 package common
 
-import "k8s.io/apimachinery/pkg/runtime"
+import (
+	"k8s.io/apimachinery/pkg/runtime"
+)
 
 func MergeLists(runtimeObjectLists ...[]runtime.Object) []runtime.Object {
 	var retObjects []runtime.Object
@@ -17,4 +19,8 @@ func Labels(name, component, app, version string) map[string]string {
 		"app.kubernetes.io/part-of":   app,
 		"app.kubernetes.io/version":   version,
 	}
+}
+
+func ToPointer[T any](o T) *T {
+	return &o
 }
