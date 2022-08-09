@@ -35,7 +35,7 @@ var renderCmd = &cobra.Command{
 }
 
 func renderKubernetesObjects() ([]string, error) {
-	objs := components.MonitoringSatelliteObjects
+	objs := components.MonitoringSatelliteObjects()
 
 	k8s := make([]string, 0)
 	for _, o := range objs {
