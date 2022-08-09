@@ -3,6 +3,7 @@ package components
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	"github.com/gitpod-io/observability/installer/pkg/components/alertmanager"
+	kubestateMetrics "github.com/gitpod-io/observability/installer/pkg/components/kubestate-metrics"
 	nodeExporter "github.com/gitpod-io/observability/installer/pkg/components/node-exporter"
 	"github.com/gitpod-io/observability/installer/pkg/components/prometheusOperator"
 	"github.com/gitpod-io/observability/installer/pkg/components/pyrra"
@@ -21,5 +22,7 @@ func MonitoringSatelliteObjects() []runtime.Object {
 		nodeExporter.Objects,
 		prometheusOperator.Objects,
 		mixinRules,
-		alertmanager.Objects)
+		alertmanager.Objects,
+		kubestateMetrics.Objects,
+	)
 }
