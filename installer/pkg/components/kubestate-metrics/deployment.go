@@ -11,10 +11,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func objectPointer[T any](o T) *T {
-	return &o
-}
-
 func rbacProxyContainerSpec(portName string, portNumber int32) corev1.Container {
 	return corev1.Container{
 		Name:            fmt.Sprintf("kube-rbac-proxy-%s", portName),
@@ -41,11 +37,11 @@ func rbacProxyContainerSpec(portName string, portNumber int32) corev1.Container 
 			Name:          fmt.Sprintf("https-%s", portName),
 		}},
 		SecurityContext: &corev1.SecurityContext{
-			AllowPrivilegeEscalation: objectPointer(false),
+			AllowPrivilegeEscalation: common.ToPointer(false),
 			Capabilities:             &corev1.Capabilities{Drop: []corev1.Capability{"ALL"}},
-			ReadOnlyRootFilesystem:   objectPointer(true),
-			RunAsUser:                objectPointer(int64(65532)),
-			RunAsGroup:               objectPointer(int64(65532)),
+			ReadOnlyRootFilesystem:   common.ToPointer(true),
+			RunAsUser:                common.ToPointer(int64(65532)),
+			RunAsGroup:               common.ToPointer(int64(65532)),
 		},
 	}
 }
@@ -61,7 +57,7 @@ func deployment() []runtime.Object {
 			},
 			Spec: appsv1.DeploymentSpec{
 				Selector: &metav1.LabelSelector{MatchLabels: common.Labels(Name, Component, App, Version)},
-				Replicas: objectPointer(int32(1)),
+				Replicas: common.ToPointer(int32(1)),
 				Strategy: common.DeploymentStrategy(1, 1),
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
@@ -71,7 +67,7 @@ func deployment() []runtime.Object {
 					},
 					Spec: corev1.PodSpec{
 						ServiceAccountName:           Name,
-						AutomountServiceAccountToken: objectPointer(true),
+						AutomountServiceAccountToken: common.ToPointer(true),
 						NodeSelector: map[string]string{
 							"kubernetes.io/os": "linux",
 							"nodepool":         "monitoring",
@@ -95,10 +91,10 @@ func deployment() []runtime.Object {
 									},
 								},
 								SecurityContext: &corev1.SecurityContext{
-									AllowPrivilegeEscalation: objectPointer(false),
+									AllowPrivilegeEscalation: common.ToPointer(false),
 									Capabilities:             &corev1.Capabilities{Drop: []corev1.Capability{"ALL"}},
-									ReadOnlyRootFilesystem:   objectPointer(true),
-									RunAsUser:                objectPointer(int64(65534)),
+									ReadOnlyRootFilesystem:   common.ToPointer(true),
+									RunAsUser:                common.ToPointer(int64(65534)),
 								},
 							},
 							rbacProxyContainerSpec("main", 8081),

@@ -1,6 +1,8 @@
 package common
 
-import "k8s.io/apimachinery/pkg/runtime"
+import (
+	"k8s.io/apimachinery/pkg/runtime"
+)
 
 func MergeLists(runtimeObjectLists ...[]runtime.Object) []runtime.Object {
 	var retObjects []runtime.Object
