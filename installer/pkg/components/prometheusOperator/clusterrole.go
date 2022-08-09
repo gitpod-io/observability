@@ -2,6 +2,7 @@ package prometheusOperator
 
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
+	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 	rbacv1 "k8s.io/api/rbac/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -84,11 +85,10 @@ func clusterRole() []runtime.Object {
 					Verbs:     []string{"create"},
 				},
 				{
-					APIGroups: []string{"policy"},
-					Resources: []string{"podsecuritypolicies"},
-					Verbs:     []string{"use"},
-					// TODO: The psp name will be a constant declared in the 'common' pkg.
-					ResourceNames: []string{"kube-prometheus-restricted"},
+					APIGroups:     []string{"policy"},
+					Resources:     []string{"podsecuritypolicies"},
+					Verbs:         []string{"use"},
+					ResourceNames: []string{shared.RestrictedPodsecurityPolicyName()},
 				},
 			},
 		},
