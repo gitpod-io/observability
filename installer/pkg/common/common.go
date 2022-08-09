@@ -18,3 +18,7 @@ func Labels(name, component, app, version string) map[string]string {
 		"app.kubernetes.io/version":   version,
 	}
 }
+
+func ToPointer[T any](o T) *T {
+	return &o
+}
