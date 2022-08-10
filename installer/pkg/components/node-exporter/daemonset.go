@@ -1,6 +1,8 @@
 package nodeExporter
 
 import (
+	"fmt"
+
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	appsv1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
@@ -87,7 +89,7 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 									"--collector.netclass.ignored-devices=^(veth.*|[a-f0-9]{15})$",
 									"--collector.netdev.device-exclude=^(veth.*|[a-f0-9]{15})$",
 								},
-								Image: common.ImageName(ctx.Config.Components.NodeExporter.Repository, ctx.Config.Components.NodeExporter.Version),
+								Image: fmt.Sprintf("%s:v%s", ImageURL, Version),
 								Name:  Name,
 								Resources: v1.ResourceRequirements{
 									Requests: v1.ResourceList{

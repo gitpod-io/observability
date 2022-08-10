@@ -2,6 +2,7 @@ package kubestateMetrics
 
 import (
 	"fmt"
+
 	"k8s.io/apimachinery/pkg/api/resource"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
@@ -75,7 +76,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Containers: []corev1.Container{
 							{
 								Name:            Name,
-								Image:           common.ImageName(ctx.Config.Components.KubeStateMetrics.Repository, ctx.Config.Components.KubeStateMetrics.Version),
+								Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
 								ImagePullPolicy: corev1.PullIfNotPresent,
 								Args: []string{
 									"--host=127.0.0.1",

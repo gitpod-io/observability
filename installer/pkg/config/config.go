@@ -4,6 +4,11 @@
 
 package config
 
+import (
+	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	corev1 "k8s.io/api/core/v1"
+)
+
 func Factory() interface{} {
 	return &Config{}
 }
@@ -14,39 +19,30 @@ func Defaults(in interface{}) error {
 		return ErrInvalidType
 	}
 
-	cfg.Components = &Components{
-		AlertManager: Version{
-			Version:    "0.24.0",
-			Repository: "quay.io/prometheus/alertmanager",
-		},
-		NodeExporter: Version{
-			Version:    "1.31.1",
-			Repository: "quay.io/prometheus/node-exporter",
-		},
-		KubeStateMetrics: Version{
-			Version:    "2.5.0",
-			Repository: "k8s.gcr.io/kube-state-metrics/kube-state-metrics",
-		},
-		OtelCollector: Version{
-			Version:    "0.38.0",
-			Repository: "docker.io/otel/opentelemetry-collector",
-		},
-		Probers: Version{
-			Version:    "0.0.1",
-			Repository: "ghcr.io/arthursens/http-prober",
-		},
-		PrometheusOperator: Version{
-			Version:    "0.58.0",
-			Repository: "quay.io/prometheus-operator/prometheus-operator",
-		},
-		Prometheus: Version{
-			Version:    "2.37.0",
-			Repository: "quay.io/prometheus/prometheus",
-		},
-		Pyrra: Version{
-			Version:    "0.4.4",
-			Repository: "ghcr.io/pyrra-dev/pyrra",
-		},
+	cfg.Namespace = "monitoring-satellite"
+
+	cfg.Alerting = &Alerting{
+		Config: map[string]interface{}{},
+	}
+
+	cfg.Tracing = &Tracing{
+		Install: false,
+	}
+
+	cfg.Pyrra = &Pyrra{
+		Install: false,
+	}
+
+	cfg.Prober = &Prober{
+		Install: false,
+	}
+
+	cfg.Werft = &Werft{
+		InstallServiceMonitors: false,
+	}
+
+	cfg.Gitpod = &Gitpod{
+		InstallServiceMonitors: true,
 	}
 
 	return nil
@@ -54,21 +50,60 @@ func Defaults(in interface{}) error {
 
 // Config defines the structure of the observability config file
 type Config struct {
-	Components *Components `json:"components,omitempty"`
+	Namespace    string            `json:"namespace"`
+	Tracing      *Tracing          `json:"tracing,omitempty"`
+	Alerting     *Alerting         `json:"alerting,omitempty"`
+	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+	Prometheus   *Prometheus       `json:"prometheus,omitempty"`
+	Pyrra        *Pyrra            `json:"pyrra,omitempty"`
+	Prober       *Prober           `json:"prober,omitempty"`
+	Werft        *Werft            `json:"werft,omitempty"`
+	Gitpod       *Gitpod           `json:"gitpod,omitempty"`
 }
 
-type Components struct {
-	AlertManager       Version `json:"alertManager"`
-	NodeExporter       Version `json:"nodeExporter"`
-	KubeStateMetrics   Version `json:"kubeStateMetrics"`
-	OtelCollector      Version `json:"otelCollector"`
-	Probers            Version `json:"probers"`
-	PrometheusOperator Version `json:"prometheusOperator"`
-	Prometheus         Version `json:"prometheus"`
-	Pyrra              Version `json:"pyrra"`
+type Tracing struct {
+	Install          bool   `json:"install"`
+	HoneycombAPIKey  string `json:"honeycombAPIKey,omitempty"`
+	HoneycombDataset string `json:"honeycombDataset,omitempty"`
 }
 
-type Version struct {
-	Version    string
-	Repository string
+type Alerting struct {
+	Config map[string]interface{} `json:"config"`
+}
+
+type Prometheus struct {
+	ExternalLabels map[string]string            `json:"externalLabels,omitempty"`
+	EnableFeatures []string                     `json:"enableFeatures,omitempty"`
+	Ingress        *GoogleIAPBasedIngress       `json:"ingress,omitempty"`
+	Resources      *corev1.ResourceRequirements `json:"resources,omitempty"`
+	RemoteWrite    []*RemoteWrite               `json:"remoteWrite,omitempty"`
+}
+
+type RemoteWrite struct {
+	monitoringv1.RemoteWriteSpec
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type GoogleIAPBasedIngress struct {
+	DNS                  string
+	GCPExternalIPAddress string
+	IAPClientID          string
+	IAPClientSecret      string
+}
+
+type Pyrra struct {
+	Install bool                   `json:"install"`
+	Ingress *GoogleIAPBasedIngress `json:"ingress,omitempty"`
+}
+
+type Prober struct {
+	Install bool `json:"install"`
+}
+
+type Werft struct {
+	InstallServiceMonitors bool `json:"installServiceMonitors"`
+}
+type Gitpod struct {
+	InstallServiceMonitors bool `json:"installServiceMonitors"`
 }

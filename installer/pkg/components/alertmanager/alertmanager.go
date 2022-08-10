@@ -26,7 +26,7 @@ func alertmanager(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			Spec: monitoringv1.AlertmanagerSpec{
-				Image: pointer.String(common.ImageName(ctx.Config.Components.AlertManager.Repository, ctx.Config.Components.AlertManager.Version)),
+				Image: pointer.String(fmt.Sprintf("%s:v%s", ImageURL, Version)),
 				PodMetadata: &monitoringv1.EmbeddedObjectMetadata{
 					Labels: common.Labels(Name, Component, App, Version),
 				},
