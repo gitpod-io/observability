@@ -10,12 +10,12 @@ import (
 // extraNamespaceRoles and extraNamespaceRoleBindings are used to give permission to prometheus to scrape metrics
 // from endpoints in other namespaces.
 // TODO: Add more namespaces from configuration
-func extraNamespaceRoles() []runtime.Object {
+func extraNamespaceRoles(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		roleFactory(Namespace),
 		roleFactory("default"),
 		roleFactory("kube-system"),
-	}
+	}, nil
 }
 
 func roleFactory(ns string) *rbacv1.Role {

@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func roleBinding() []runtime.Object {
+func roleBinding(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.RoleBinding{
 			TypeMeta: metav1.TypeMeta{
@@ -32,5 +32,5 @@ func roleBinding() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

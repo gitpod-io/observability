@@ -1,14 +1,13 @@
 package pyrra
 
 import (
-	"fmt"
-
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/utils/pointer"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 const (
@@ -21,7 +20,7 @@ func replicas() *int32 {
 	return &replicas
 }
 
-func deployment() []runtime.Object {
+func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&appsv1.Deployment{
 			TypeMeta: common.DeploymentType,
@@ -43,7 +42,7 @@ func deployment() []runtime.Object {
 					Spec: corev1.PodSpec{
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
+							Image:           common.ImageName(ctx.Config.Components.Pyrra.Repository, ctx.Config.Components.Pyrra.Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args: []string{
 								"api",
@@ -83,7 +82,7 @@ func deployment() []runtime.Object {
 						ServiceAccountName: "pyrra-kubernetes",
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
+							Image:           common.ImageName(ctx.Config.Components.Pyrra.Repository, ctx.Config.Components.Pyrra.Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args:            []string{"kubernetes"},
 							Ports: []corev1.ContainerPort{{
@@ -98,5 +97,5 @@ func deployment() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

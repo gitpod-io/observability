@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func serviceMonitor() []runtime.Object {
+func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&monitoringv1.ServiceMonitor{
 			TypeMeta: metav1.TypeMeta{
@@ -59,5 +59,5 @@ func serviceMonitor() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

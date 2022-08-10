@@ -6,5 +6,5 @@ const (
 	Component = "collector"
 	Version   = "0.38.0"
 	Namespace = "monitoring-satellite"
-	ImageURL  = "otel/opentelemetry-collector"
+	ImageURL  = "docker.io/otel/opentelemetry-collector"
 )

@@ -45,7 +45,7 @@ func endpointConfig(portName string, configs []*monitoringv1.RelabelConfig) moni
 	}
 }
 
-func serviceMonitor() []runtime.Object {
+func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 	configs := labelsReplaceAndDrop([]replaceLabel{
 		{
 			Source: "label_cloud_google_com_gke_nodepool",
@@ -95,5 +95,5 @@ func serviceMonitor() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

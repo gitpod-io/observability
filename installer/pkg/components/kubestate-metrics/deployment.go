@@ -46,7 +46,7 @@ func rbacProxyContainerSpec(portName string, portNumber int32) corev1.Container 
 	}
 }
 
-func deployment() []runtime.Object {
+func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&appsv1.Deployment{
 			TypeMeta: common.DeploymentType,
@@ -75,7 +75,7 @@ func deployment() []runtime.Object {
 						Containers: []corev1.Container{
 							{
 								Name:            Name,
-								Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
+								Image:           common.ImageName(ctx.Config.Components.KubeStateMetrics.Repository, ctx.Config.Components.KubeStateMetrics.Version),
 								ImagePullPolicy: corev1.PullIfNotPresent,
 								Args: []string{
 									"--host=127.0.0.1",
@@ -104,5 +104,5 @@ func deployment() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

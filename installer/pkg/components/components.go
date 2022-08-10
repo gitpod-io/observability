@@ -10,19 +10,17 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/components/prometheusOperator"
 	"github.com/gitpod-io/observability/installer/pkg/components/pyrra"
 	"github.com/gitpod-io/observability/installer/pkg/importer"
-	"k8s.io/apimachinery/pkg/runtime"
 )
 
-var MonitoringCentralObjects = common.MergeLists(pyrra.Objects)
+var MonitoringCentralObjects = common.CompositeRenderFunc(pyrra.Objects)
 
-func MonitoringSatelliteObjects() []runtime.Object {
+func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 	mixinImporter := importer.NewMixinImporter("https://github.com/gitpod-io/observability", "")
-	mixinRules := mixinImporter.ImportPrometheusRules()
 
-	return common.MergeLists(
+	return common.CompositeRenderFunc(
 		alertmanager.Objects,
 		kubestateMetrics.Objects,
-		mixinRules,
+		mixinImporter.ImportPrometheusRules,
 		nodeExporter.Objects,
 		otelCollector.Objects,
 		prometheusOperator.Objects,

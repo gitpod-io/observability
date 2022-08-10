@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func serviceAccount() []runtime.Object {
+func serviceAccount(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.ServiceAccount{
 			TypeMeta: metav1.TypeMeta{
@@ -20,5 +20,5 @@ func serviceAccount() []runtime.Object {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 		},
-	}
+	}, nil
 }

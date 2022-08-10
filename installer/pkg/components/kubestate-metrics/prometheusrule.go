@@ -8,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 )
 
-func prometheusRule() []runtime.Object {
+func prometheusRule(ctx *common.RenderContext) ([]runtime.Object, error) {
 	labelMap := common.Labels(Name, Component, App, Version)
 	labelMap["prometheus"] = "k8s"
 	labelMap["role"] = "alert-rules"
@@ -87,5 +87,5 @@ sum( 2 ^ max by (shard_ordinal) (kube_state_metrics_shard_ordinal{job="kube-stat
 				},
 			},
 		},
-	}
+	}, nil
 }

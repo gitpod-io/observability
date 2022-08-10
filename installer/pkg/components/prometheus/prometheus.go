@@ -12,7 +12,7 @@ import (
 	"k8s.io/utils/pointer"
 )
 
-func prometheus() []runtime.Object {
+func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&monitoringv1.Prometheus{
 			TypeMeta: metav1.TypeMeta{
@@ -95,5 +95,5 @@ func prometheus() []runtime.Object {
 				// },
 			},
 		},
-	}
+	}, nil
 }

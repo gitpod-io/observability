@@ -4,12 +4,12 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
-var Objects = common.MergeLists(
-	clusterRole(),
-	clusterRoleBinding(),
-	daemonset(),
-	podsecuritypolicy(),
-	service(),
-	serviceAccount(),
-	serviceMonitor(),
+var Objects = common.CompositeRenderFunc(
+	clusterRole,
+	clusterRoleBinding,
+	daemonset,
+	podsecuritypolicy,
+	service,
+	serviceAccount,
+	serviceMonitor,
 )

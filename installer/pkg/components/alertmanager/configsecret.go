@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func configSecret() []runtime.Object {
+func configSecret(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.Secret{
 			TypeMeta: metav1.TypeMeta{
@@ -24,5 +24,5 @@ func configSecret() []runtime.Object {
 				"alertmanager.yaml": "",
 			},
 		},
-	}
+	}, nil
 }

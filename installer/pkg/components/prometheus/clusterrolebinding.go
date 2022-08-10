@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func clusterRoleBinding() []runtime.Object {
+func clusterRoleBinding(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.ClusterRoleBinding{
 			TypeMeta: metav1.TypeMeta{
@@ -32,5 +32,5 @@ func clusterRoleBinding() []runtime.Object {
 				Name:     resourceName(),
 			},
 		},
-	}
+	}, nil
 }

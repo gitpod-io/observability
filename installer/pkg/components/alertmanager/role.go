@@ -8,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func role() []runtime.Object {
+func role(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.Role{
 			TypeMeta: metav1.TypeMeta{
@@ -29,5 +29,5 @@ func role() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

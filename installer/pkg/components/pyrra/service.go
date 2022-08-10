@@ -8,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 )
 
-func service() []runtime.Object {
+func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.Service{
 			TypeMeta: common.ServiceType,
@@ -46,5 +46,5 @@ func service() []runtime.Object {
 				Selector: pyrraLabels(kubernetesComponent),
 			},
 		},
-	}
+	}, nil
 }

@@ -1,8 +1,6 @@
 package otelCollector
 
 import (
-	"fmt"
-
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -10,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func deployment() []runtime.Object {
+func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&appsv1.Deployment{
 			TypeMeta: common.DeploymentType,
@@ -32,7 +30,7 @@ func deployment() []runtime.Object {
 						ServiceAccountName: Name,
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
+							Image:           common.ImageName(ctx.Config.Components.OtelCollector.Repository, ctx.Config.Components.OtelCollector.Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args: []string{
 								"--config=/conf/collector.yaml",
@@ -62,5 +60,5 @@ func deployment() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

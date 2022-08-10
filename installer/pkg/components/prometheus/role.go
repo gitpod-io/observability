@@ -11,7 +11,7 @@ import (
 
 // extraNamespaceRoles and extraNamespaceRoleBindings are used to give permission to prometheus to scrape metrics
 // from endpoints in other namespaces.
-func role() []runtime.Object {
+func role(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.Role{
 			TypeMeta: metav1.TypeMeta{
@@ -31,7 +31,7 @@ func role() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }
 
 func configRoleName() string {

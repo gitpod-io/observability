@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func podsecuritypolicy() []runtime.Object {
+func podsecuritypolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&policyv1beta1.PodSecurityPolicy{
 			TypeMeta: metav1.TypeMeta{
@@ -35,5 +35,5 @@ func podsecuritypolicy() []runtime.Object {
 				Volumes: []policyv1beta1.FSType{"*"},
 			},
 		},
-	}
+	}, nil
 }

@@ -9,7 +9,7 @@ import (
 	"k8s.io/utils/pointer"
 )
 
-func podsecuritypolicy() []runtime.Object {
+func podsecuritypolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&policyv1beta1.PodSecurityPolicy{
 			TypeMeta: metav1.TypeMeta{
@@ -74,5 +74,5 @@ func podsecuritypolicy() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }
