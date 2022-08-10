@@ -12,7 +12,7 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.Service{
 			TypeMeta: metav1.TypeMeta{
-				APIVersion: "apps/v1",
+				APIVersion: "v1",
 				Kind:       "Service",
 			},
 			ObjectMeta: metav1.ObjectMeta{

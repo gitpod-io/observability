@@ -12,7 +12,7 @@ var (
 		Kind:       "Deployment",
 	}
 	ServiceType = metav1.TypeMeta{
-		APIVersion: "apps/v1",
+		APIVersion: "v1",
 		Kind:       "Service",
 	}
 )
