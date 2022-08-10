@@ -1,8 +1,9 @@
 image: gitpod/workspace-full:2022-08-04-13-40-17
 workspaceLocation: observability/observability.code-workspace
 tasks:
-  - init: |
-      # TODO(arthursens): We should update the workspace image so we dont need the step below
+  - command: |
+      # TODO(arthursens): We should update the workspace image so we dont need the steps below
+      sudo curl -Lo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.27.2/yq_linux_amd64 && sudo chmod +x /usr/bin/yq
       sudo apt update ; sudo apt-get install shellcheck apt-transport-https ca-certificates -y ; sudo update-ca-certificates
       make --always-make
       pip install pre-commit && pre-commit install --install-hooks
