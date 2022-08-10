@@ -6,6 +6,7 @@ import (
 	kubestateMetrics "github.com/gitpod-io/observability/installer/pkg/components/kubestate-metrics"
 	nodeExporter "github.com/gitpod-io/observability/installer/pkg/components/node-exporter"
 	otelCollector "github.com/gitpod-io/observability/installer/pkg/components/otel-collector"
+	"github.com/gitpod-io/observability/installer/pkg/components/prometheus"
 	"github.com/gitpod-io/observability/installer/pkg/components/prometheusOperator"
 	"github.com/gitpod-io/observability/installer/pkg/components/pyrra"
 	"github.com/gitpod-io/observability/installer/pkg/importer"
@@ -25,6 +26,7 @@ func MonitoringSatelliteObjects() []runtime.Object {
 		nodeExporter.Objects,
 		otelCollector.Objects,
 		prometheusOperator.Objects,
+		prometheus.Objects,
 		pyrra.Objects,
 	)
 }
