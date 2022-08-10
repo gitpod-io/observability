@@ -4,6 +4,6 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
-var Objects = common.MergeLists(
-	restrictedPodsecurityPolicy(),
+var Objects = common.CompositeRenderFunc(
+	restrictedPodsecurityPolicy,
 )

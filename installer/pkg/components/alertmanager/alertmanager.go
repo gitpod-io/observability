@@ -3,16 +3,17 @@ package alertmanager
 import (
 	"fmt"
 
-	"github.com/gitpod-io/observability/installer/pkg/common"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/utils/pointer"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
+	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 )
 
-func alertmanager() []runtime.Object {
+func alertmanager(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&monitoringv1.Alertmanager{
 			TypeMeta: metav1.TypeMeta{
@@ -25,7 +26,7 @@ func alertmanager() []runtime.Object {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			Spec: monitoringv1.AlertmanagerSpec{
-				Image: pointer.String(fmt.Sprintf("%s:v%s", ImageURL, Version)),
+				Image: pointer.String(common.ImageName(ctx.Config.Components.AlertManager.Repository, ctx.Config.Components.AlertManager.Version)),
 				PodMetadata: &monitoringv1.EmbeddedObjectMetadata{
 					Labels: common.Labels(Name, Component, App, Version),
 				},
@@ -50,5 +51,5 @@ func alertmanager() []runtime.Object {
 				// },
 			},
 		},
-	}
+	}, nil
 }

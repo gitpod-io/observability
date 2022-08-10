@@ -1,6 +1,7 @@
 package pyrra
 
 import (
+	"github.com/gitpod-io/observability/installer/pkg/common"
 	rbacv1 "k8s.io/api/rbac/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -16,7 +17,7 @@ var allRBACVerbs = []string{
 	"watch",
 }
 
-func clusterRole() []runtime.Object {
+func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.ClusterRole{
 			TypeMeta: metav1.TypeMeta{
@@ -55,10 +56,10 @@ func clusterRole() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }
 
-func clusterRoleBinding() []runtime.Object {
+func clusterRoleBinding(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.ClusterRoleBinding{
 			TypeMeta: metav1.TypeMeta{
@@ -83,5 +84,5 @@ func clusterRoleBinding() []runtime.Object {
 				Name:     componentName(kubernetesComponent),
 			},
 		},
-	}
+	}, nil
 }

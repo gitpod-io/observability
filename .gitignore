@@ -2,5 +2,7 @@ tmp/*
 monitoring-*/manifests/*.yaml
 monitoring-*/manifests/*/*.yaml
 monitoring-*/manifests/*/*/*.yaml
+config.yaml
 
+.idea
 ./kind

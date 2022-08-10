@@ -3,6 +3,7 @@ package importer
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gitpod-io/observability/installer/pkg/common"
 	"strings"
 
 	"github.com/google/go-jsonnet"
@@ -49,7 +50,7 @@ func NewMixinImporter(gitURL, path string) *MixinImporter {
 	}
 }
 
-func (m MixinImporter) ImportPrometheusRules() []runtime.Object {
+func (m MixinImporter) ImportPrometheusRules(ctx *common.RenderContext) ([]runtime.Object, error) {
 	m.cloneRepository()
 
 	jsonnetImports := []string{platformMixinImport, ideMixinImport, webappMixinImport, workspaceMixinImport}
@@ -66,7 +67,7 @@ func (m MixinImporter) ImportPrometheusRules() []runtime.Object {
 		fmt.Println(err)
 	}
 
-	return unmarshalMixinToRuntimeObject(out)
+	return unmarshalMixinToRuntimeObject(out), nil
 }
 
 func unmarshalMixinToRuntimeObject(j string) []runtime.Object {

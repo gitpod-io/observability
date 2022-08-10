@@ -7,7 +7,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func configMap() []runtime.Object {
+func configMap(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.ConfigMap{
 			TypeMeta: metav1.TypeMeta{
@@ -53,5 +53,5 @@ service:
 	  exporters: ["otlp"]`,
 			},
 		},
-	}
+	}, nil
 }

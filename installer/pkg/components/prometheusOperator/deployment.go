@@ -12,7 +12,7 @@ import (
 	"k8s.io/utils/pointer"
 )
 
-func deployment() []runtime.Object {
+func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&appsv1.Deployment{
 			TypeMeta: metav1.TypeMeta{
@@ -37,7 +37,7 @@ func deployment() []runtime.Object {
 						AutomountServiceAccountToken: pointer.Bool(true),
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
+							Image:           common.ImageName(ctx.Config.Components.PrometheusOperator.Repository, ctx.Config.Components.PrometheusOperator.Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args: []string{
 								"--kubelet-service=kube-system/kubelet",
@@ -102,5 +102,5 @@ func deployment() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

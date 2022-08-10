@@ -8,7 +8,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func clusterRole() []runtime.Object {
+func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&rbacv1.ClusterRole{
 			TypeMeta: metav1.TypeMeta{
@@ -39,5 +39,5 @@ func clusterRole() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }

@@ -1,6 +1,7 @@
 package shared
 
 import (
+	"github.com/gitpod-io/observability/installer/pkg/common"
 	corev1 "k8s.io/api/core/v1"
 	policyv1beta1 "k8s.io/api/policy/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -8,7 +9,7 @@ import (
 	"k8s.io/utils/pointer"
 )
 
-func restrictedPodsecurityPolicy() []runtime.Object {
+func restrictedPodsecurityPolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&policyv1beta1.PodSecurityPolicy{
 			TypeMeta: metav1.TypeMeta{
@@ -53,7 +54,7 @@ func restrictedPodsecurityPolicy() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }
 
 func RestrictedPodsecurityPolicyName() string {

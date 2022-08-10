@@ -1,8 +1,6 @@
 package nodeExporter
 
 import (
-	"fmt"
-
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	appsv1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
@@ -13,7 +11,7 @@ import (
 	"k8s.io/utils/pointer"
 )
 
-func daemonset() []runtime.Object {
+func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 	hostToContainer := v1.MountPropagationHostToContainer
 	maxUnavailable := intstr.FromString("10%")
 
@@ -89,7 +87,7 @@ func daemonset() []runtime.Object {
 									"--collector.netclass.ignored-devices=^(veth.*|[a-f0-9]{15})$",
 									"--collector.netdev.device-exclude=^(veth.*|[a-f0-9]{15})$",
 								},
-								Image: fmt.Sprintf("%s:v%s", ImageURL, Version),
+								Image: common.ImageName(ctx.Config.Components.NodeExporter.Repository, ctx.Config.Components.NodeExporter.Version),
 								Name:  Name,
 								Resources: v1.ResourceRequirements{
 									Requests: v1.ResourceList{
@@ -172,5 +170,5 @@ func daemonset() []runtime.Object {
 				},
 			},
 		},
-	}
+	}, nil
 }
