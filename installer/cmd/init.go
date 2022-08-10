@@ -21,7 +21,7 @@ var initCmd = &cobra.Command{
 This file contains all the credentials to install a Gitpod instance and
 be saved to a repository.`,
 	Example: `  # Save config to config.yaml.
-  gitpod-installer init > config.yaml`,
+  installer init > config.yaml`,
 	Run: func(cmd *cobra.Command, args []string) {
 		cfg, err := config.NewDefaultConfig()
 		if err != nil {

@@ -26,15 +26,15 @@ var renderOpts struct {
 // renderCmd represents the render command
 var renderCmd = &cobra.Command{
 	Use:   "render",
-	Short: "Renders the Kubernetes manifests required to install Gitpod",
-	Long: `Renders the Kubernetes manifests required to install Gitpod
+	Short: "Renders the Kubernetes manifests required to install Gitpod's observability stack",
+	Long: `Renders the Kubernetes manifests required to install Gitpod's observability stack
 
 A config file is required which can be generated with the init command.`,
 	Example: `  # Default install.
-  gitpod-installer render --config config.yaml | kubectl apply -f -
+  installer render --config config.yaml | kubectl apply -f -
 
-  # Install Gitpod into a non-default namespace.
-  gitpod-installer render --config config.yaml --namespace gitpod | kubectl apply -f -`,
+  # Install Gitpod's observability stack into a non-default namespace.
+  installer render --config config.yaml --namespace gitpod | kubectl apply -f -`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		yaml, err := renderFn()
 		if err != nil {
