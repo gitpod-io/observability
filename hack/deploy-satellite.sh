@@ -26,15 +26,7 @@ fi
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/namespace.yaml
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/podsecuritypolicy-restricted.yaml
 
-for CRD in $(find monitoring-satellite/manifests/prometheusOperator/ -type f -name "*CustomResourceDefinition.yaml"); 
-do 
-  kubectl $KUBECONFIG_FLAG replace -f $CRD || kubectl $KUBECONFIG_FLAG create -f $CRD
-done
-
-until kubectl $KUBECONFIG_FLAG get servicemonitors.monitoring.coreos.com --all-namespaces ; do date; sleep 1; echo ""; done
-until kubectl $KUBECONFIG_FLAG get prometheusrules.monitoring.coreos.com --all-namespaces ; do date; sleep 1; echo ""; done
-
-kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/pyrra/crd.yaml
+./hack/deploy-crds.sh --kubeconfig $KUBECONFIG
 
 for operatorManifest in $(find monitoring-satellite/manifests/prometheusOperator/ -type f ! -name "*CustomResourceDefinition.yaml"); 
 do 

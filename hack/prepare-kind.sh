@@ -9,8 +9,8 @@ if [[ $? != 0 ]]; then
     | cut -d : -f 2,3 \
     | tr -d \" \
     | wget -qi -
-    mv kind-linux-amd64 tmp/bin/kind && chmod +x tmp/bin/kind
-    export PATH=$PATH:$(pwd)/tmp/bin
+    sudo mv kind-linux-amd64 /usr/bin/kind && sudo chmod +x /usr/bin/kind
+    rm -f kind-linux-amd64*
 fi
 
 cluster_created=$(kind get clusters 2>&1)

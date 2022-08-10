@@ -63,6 +63,12 @@ deploy-satellite: generate
 	./hack/prepare-kind.sh
 	./hack/deploy-satellite.sh
 
+.PHONY: deploy-satellite-go
+deploy-satellite-go: generate
+	./hack/prepare-kind.sh
+	./hack/deploy-crds.sh
+	@cd installer && $(MAKE) apply-satellite
+
 .PHONY: deploy-central
 deploy-central: generate
 	./hack/prepare-kind.sh

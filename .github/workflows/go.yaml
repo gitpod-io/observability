@@ -3,6 +3,7 @@ on:
   - push
 env:
   golang-version: "1.18"
+  kind-version: "v0.11.1"
 jobs:
   go:
     runs-on: ubuntu-latest
@@ -13,3 +14,35 @@ jobs:
         with:
           go-version: ${{ env.golang-version }}
       - run: cd installer && make build && git diff --exit-code
+  e2e-tests:
+    name: E2E tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        kind-image:
+          - "kindest/node:v1.21.1"
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.golang-version }}
+      - name: Start KinD
+        uses: engineerd/setup-kind@v0.5.0
+        with:
+          version: ${{ env.kind-version }}
+          image: ${{ matrix.kind-image }}
+          wait: 300s
+      - name: Wait for cluster to finish bootstraping
+        run: kubectl wait --for=condition=Ready pods --all --all-namespaces --timeout=300s
+      - name: Create monitoring-satellite
+        run: |
+          make generate
+          ./hack/deploy-crds.sh
+          cd installer && make apply-satellite
+      - name: Run tests
+        run: |
+          export KUBECONFIG="${HOME}/.kube/config"
+          make test-e2e
+
