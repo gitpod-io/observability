@@ -64,7 +64,7 @@ func clusterRoleBinding(ctx *common.RenderContext) ([]runtime.Object, error) {
 		&rbacv1.ClusterRoleBinding{
 			TypeMeta: metav1.TypeMeta{
 				APIVersion: "rbac.authorization.k8s.io/v1",
-				Kind:       "ClusterRole",
+				Kind:       "ClusterRoleBinding",
 			},
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      componentName(kubernetesComponent),

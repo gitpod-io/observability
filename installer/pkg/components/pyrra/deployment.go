@@ -1,6 +1,8 @@
 package pyrra
 
 import (
+	"fmt"
+
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -25,7 +27,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 		&appsv1.Deployment{
 			TypeMeta: common.DeploymentType,
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      Name,
+				Name:      fmt.Sprintf("%s-%s", Name, "api"),
 				Namespace: Namespace,
 				Labels:    pyrraLabels(apiComponent),
 			},
@@ -64,7 +66,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 		&appsv1.Deployment{
 			TypeMeta: common.DeploymentType,
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      Name,
+				Name:      fmt.Sprintf("%s-%s", Name, "kubernetes"),
 				Namespace: Namespace,
 				Labels:    pyrraLabels(kubernetesComponent),
 			},

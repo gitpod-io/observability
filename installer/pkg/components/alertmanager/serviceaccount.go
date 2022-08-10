@@ -11,7 +11,7 @@ func serviceAccount(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.ServiceAccount{
 			TypeMeta: metav1.TypeMeta{
-				APIVersion: "apps/v1",
+				APIVersion: "v1",
 				Kind:       "ServiceAccount",
 			},
 			ObjectMeta: metav1.ObjectMeta{
