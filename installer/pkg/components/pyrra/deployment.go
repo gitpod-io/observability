@@ -1,6 +1,8 @@
 package pyrra
 
 import (
+	"fmt"
+
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -42,7 +44,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 					Spec: corev1.PodSpec{
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           common.ImageName(ctx.Config.Components.Pyrra.Repository, ctx.Config.Components.Pyrra.Version),
+							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args: []string{
 								"api",
@@ -82,7 +84,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						ServiceAccountName: "pyrra-kubernetes",
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           common.ImageName(ctx.Config.Components.Pyrra.Repository, ctx.Config.Components.Pyrra.Version),
+							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args:            []string{"kubernetes"},
 							Ports: []corev1.ContainerPort{{

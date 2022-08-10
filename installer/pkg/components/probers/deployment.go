@@ -1,6 +1,8 @@
 package probers
 
 import (
+	"fmt"
+
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -30,7 +32,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 					Spec: corev1.PodSpec{
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           common.ImageName(ctx.Config.Components.Probers.Repository, ctx.Config.Components.Probers.Version),
+							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 						}},
 						NodeSelector: map[string]string{

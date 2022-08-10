@@ -6,6 +6,7 @@ package common
 
 import (
 	"fmt"
+
 	"github.com/docker/distribution/reference"
 	"github.com/gitpod-io/observability/installer/pkg/config"
 	"helm.sh/helm/v3/pkg/cli/values"

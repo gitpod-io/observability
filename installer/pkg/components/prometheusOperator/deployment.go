@@ -37,7 +37,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						AutomountServiceAccountToken: pointer.Bool(true),
 						Containers: []corev1.Container{{
 							Name:            Name,
-							Image:           common.ImageName(ctx.Config.Components.PrometheusOperator.Repository, ctx.Config.Components.PrometheusOperator.Version),
+							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 							Args: []string{
 								"--kubelet-service=kube-system/kubelet",
