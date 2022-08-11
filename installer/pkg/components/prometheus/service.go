@@ -26,12 +26,12 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 					{
 						Name:       "web",
 						Port:       9090,
-						TargetPort: intstr.IntOrString{IntVal: 9090},
+						TargetPort: intstr.FromString("web"),
 					},
 					{
 						Name:       "reloader-web",
 						Port:       8080,
-						TargetPort: intstr.IntOrString{IntVal: 8080},
+						TargetPort: intstr.FromString("reloader-web"),
 					},
 				},
 				Selector: common.Labels(Name, Component, App, Version),

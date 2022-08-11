@@ -16,9 +16,8 @@ func clusterRoleBinding(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Kind:       "ClusterRoleBinding",
 			},
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      resourceName(),
-				Namespace: Namespace,
-				Labels:    common.Labels(Name, Component, App, Version),
+				Name:   resourceName(),
+				Labels: common.Labels(Name, Component, App, Version),
 			},
 			Subjects: []rbacv1.Subject{
 				{
