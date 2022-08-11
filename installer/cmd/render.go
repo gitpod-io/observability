@@ -168,6 +168,11 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		output = append(output, grafanaImporter.Import()...)
 	}
 
+	if ctx.Config.Prober.Install {
+		proberImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/probers")
+		output = append(output, proberImporter.Import()...)
+	}
+
 	return output, nil
 }
 
