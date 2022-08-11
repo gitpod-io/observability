@@ -29,6 +29,10 @@ func Defaults(in interface{}) error {
 		Install: false,
 	}
 
+	cfg.Prometheus = &Prometheus{
+		RemoteWrite: []*RemoteWrite{},
+	}
+
 	cfg.Pyrra = &Pyrra{
 		Install: false,
 	}
