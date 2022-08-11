@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2230
 which kind
-if [[ ! $?  ]]; then
+if [[ $? != 0  ]]; then
     # shellcheck disable=SC2016
     echo 'kind not available in $PATH, installing latest kind'
     # Install latest kind
@@ -13,8 +13,6 @@ if [[ ! $?  ]]; then
     | wget -qi -
     sudo mv kind-linux-amd64 /usr/bin/kind && sudo chmod +x /usr/bin/kind
     rm -f kind-linux-amd64*
-    binpath=$PATH:$(pwd)/tmp/bin
-    export PATH=$binpath
 fi
 
 cluster_created=$(kind get clusters 2>&1)
