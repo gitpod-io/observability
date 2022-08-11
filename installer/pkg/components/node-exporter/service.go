@@ -26,7 +26,7 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 					{
 						Name:       "https",
 						Port:       9100,
-						TargetPort: intstr.IntOrString{IntVal: 9100},
+						TargetPort: intstr.FromString("https"),
 					},
 				},
 				Selector: common.Labels(Name, Component, App, Version),
