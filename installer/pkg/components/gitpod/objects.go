@@ -20,9 +20,10 @@ func Objects(ctx *common.RenderContext) common.RenderFunc {
 		}
 	}
 
-	var objects common.RenderFunc
+	var objects []common.RenderFunc
 	for _, t := range targets {
-		objects = common.CompositeRenderFunc(objects, generateObjects(t))
+		objects = append(objects, generateObjects(t))
 	}
-	return objects
+
+	return common.CompositeRenderFunc(objects...)
 }
