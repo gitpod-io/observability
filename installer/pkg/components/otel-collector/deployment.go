@@ -38,10 +38,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 								"--config=/conf/collector.yaml",
 							},
 						}},
-						NodeSelector: map[string]string{
-							"kubernetes.io/os": "linux",
-							"nodepool":         "monitoring",
-						},
+						NodeSelector: ctx.Config.NodeSelector,
 						Volumes: []corev1.Volume{
 							{
 								Name: Name,

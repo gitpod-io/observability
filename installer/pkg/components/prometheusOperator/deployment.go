@@ -34,6 +34,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Labels:    common.Labels(Name, Component, App, Version),
 					},
 					Spec: corev1.PodSpec{
+						NodeSelector:                 ctx.Config.NodeSelector,
 						AutomountServiceAccountToken: pointer.Bool(true),
 						Containers: []corev1.Container{{
 							Name:            Name,
