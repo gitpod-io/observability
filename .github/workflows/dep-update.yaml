@@ -26,6 +26,7 @@ jobs:
           if [[ $changedFiles == "" ]]; then
             git checkout -- jsonnetfile.lock.json;
           fi
+          make generate
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
