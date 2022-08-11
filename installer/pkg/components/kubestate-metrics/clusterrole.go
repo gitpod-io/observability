@@ -23,9 +23,8 @@ func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Kind:       "ClusterRole",
 			},
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      Name,
-				Namespace: Namespace,
-				Labels:    common.Labels(Name, Component, App, Version),
+				Name:   Name,
+				Labels: common.Labels(Name, Component, App, Version),
 			},
 			Rules: []rbacv1.PolicyRule{
 				{

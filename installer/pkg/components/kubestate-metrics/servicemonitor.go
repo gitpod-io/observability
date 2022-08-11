@@ -31,21 +31,6 @@ func labelsReplaceAndDrop(replaceLabels []replaceLabel) []*monitoringv1.RelabelC
 	return configs
 }
 
-func endpointConfig(portName string, configs []*monitoringv1.RelabelConfig) monitoringv1.Endpoint {
-	return monitoringv1.Endpoint{
-		BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
-		Port:            portName,
-		Interval:        "30s",
-		Scheme:          "https",
-		TLSConfig: &monitoringv1.TLSConfig{
-			SafeTLSConfig: monitoringv1.SafeTLSConfig{
-				InsecureSkipVerify: true,
-			},
-		},
-		RelabelConfigs: configs,
-	}
-}
-
 func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 	configs := labelsReplaceAndDrop([]replaceLabel{
 		{
@@ -87,8 +72,37 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 			},
 			Spec: monitoringv1.ServiceMonitorSpec{
 				Endpoints: []monitoringv1.Endpoint{
-					endpointConfig("https-main", configs),
-					endpointConfig("https-self", configs),
+					{
+						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
+						Port:            "https-main",
+						Interval:        "30s",
+						ScrapeTimeout:   "30s",
+						Scheme:          "https",
+						HonorLabels:     true,
+						TLSConfig: &monitoringv1.TLSConfig{
+							SafeTLSConfig: monitoringv1.SafeTLSConfig{
+								InsecureSkipVerify: true,
+							},
+						},
+						MetricRelabelConfigs: configs,
+						RelabelConfigs: []*monitoringv1.RelabelConfig{
+							{
+								Action: "labeldrop",
+								Regex:  "(pod|service|endpoint|namespace)",
+							},
+						},
+					},
+					{
+						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
+						Port:            "https-self",
+						Interval:        "30s",
+						Scheme:          "https",
+						TLSConfig: &monitoringv1.TLSConfig{
+							SafeTLSConfig: monitoringv1.SafeTLSConfig{
+								InsecureSkipVerify: true,
+							},
+						},
+					},
 				},
 				JobLabel: "app.kubernetes.io/name",
 				Selector: metav1.LabelSelector{
