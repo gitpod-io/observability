@@ -3,7 +3,7 @@ on:
   - push
 env:
   golang-version: "1.18"
-  kind-version: "v0.11.1"
+  kind-version: "v0.14.0"
 jobs:
   config-generation:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         kind-image:
-          - "kindest/node:v1.21.1"
+          - "kindest/node:v1.24.0"
     steps:
       - uses: actions/checkout@v2
         with:
