@@ -12,8 +12,9 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/importer"
 )
 
-var MonitoringCentralObjects = common.CompositeRenderFunc(pyrra.Objects)
-
+func MonitoringCentralObjects(ctx *common.RenderContext) common.RenderFunc {
+	return common.CompositeRenderFunc(pyrra.Objects(ctx))
+}
 func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 	mixinImporter := importer.NewMixinImporter("https://github.com/gitpod-io/observability", "")
 
@@ -25,6 +26,6 @@ func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 		otelCollector.Objects,
 		prometheusOperator.Objects,
 		prometheus.Objects,
-		pyrra.Objects,
+		pyrra.Objects(ctx),
 	)
 }
