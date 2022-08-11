@@ -5,15 +5,6 @@ env:
   golang-version: "1.18"
   kind-version: "v0.11.1"
 jobs:
-  go:
-    runs-on: ubuntu-latest
-    name: Go Linting
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
-        with:
-          go-version: ${{ env.golang-version }}
-      - run: cd installer && make build && git diff --exit-code
   config-generation:
     runs-on: ubuntu-latest
     name: Default config generation check
