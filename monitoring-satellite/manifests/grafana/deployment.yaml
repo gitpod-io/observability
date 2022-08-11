@@ -1,0 +1,469 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: grafana
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 9.0.6
+  name: grafana
+  namespace: monitoring-satellite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: grafana
+      app.kubernetes.io/name: grafana
+      app.kubernetes.io/part-of: kube-prometheus
+  template:
+    metadata:
+      annotations:
+        checksum/grafana-config: 6b58e8d9f906ad50ba52f75ca33a99e3
+        checksum/grafana-dashboardproviders: 6c38a9f7cda475bbdc01ee39d9860b15
+        checksum/grafana-datasources: 3347a8fa60d8f9e558a2d8f4e7febb31
+      labels:
+        app.kubernetes.io/component: grafana
+        app.kubernetes.io/name: grafana
+        app.kubernetes.io/part-of: kube-prometheus
+        app.kubernetes.io/version: 9.0.6
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env:
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: "true"
+        - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+          value: Admin
+        - name: GF_AUTH_DISABLE_LOGIN_FORM
+          value: "true"
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: "true"
+        - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+          value: Admin
+        - name: GF_AUTH_DISABLE_LOGIN_FORM
+          value: "true"
+        image: grafana/grafana:9.0.6
+        name: grafana
+        ports:
+        - containerPort: 3000
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: http
+        resources:
+          limits: {}
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        volumeMounts:
+        - mountPath: /var/lib/grafana
+          name: grafana-storage
+          readOnly: false
+        - mountPath: /etc/grafana/provisioning/datasources
+          name: grafana-datasources
+          readOnly: false
+        - mountPath: /etc/grafana/provisioning/dashboards
+          name: grafana-dashboards
+          readOnly: false
+        - mountPath: /tmp
+          name: tmp-plugins
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-admin-nodes
+          name: grafana-dashboard-gitpod-admin-nodes
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-admin-workspaces
+          name: grafana-dashboard-gitpod-admin-workspaces
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-cluster-autoscaler-k3s
+          name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-node-resource-metrics
+          name: grafana-dashboard-gitpod-node-resource-metrics
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-nodes-overview
+          name: grafana-dashboard-gitpod-nodes-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-overview
+          name: grafana-dashboard-gitpod-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-slo-workspace-startuptime
+          name: grafana-dashboard-gitpod-slo-workspace-startuptime
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Self-hosted examples/gitpod-sh-example-overview
+          name: grafana-dashboard-gitpod-sh-example-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-jb
+          name: grafana-dashboard-gitpod-component-jb
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-openvsx-proxy
+          name: grafana-dashboard-gitpod-component-openvsx-proxy
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-ssh-gateway
+          name: grafana-dashboard-gitpod-component-ssh-gateway
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/alertmanager-overview
+          name: grafana-dashboard-alertmanager-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/apiserver
+          name: grafana-dashboard-apiserver
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/cert-manager
+          name: grafana-dashboard-cert-manager
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/cluster-total
+          name: grafana-dashboard-cluster-total
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/controller-manager
+          name: grafana-dashboard-controller-manager
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/k8s-resources-cluster
+          name: grafana-dashboard-k8s-resources-cluster
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/k8s-resources-namespace
+          name: grafana-dashboard-k8s-resources-namespace
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/k8s-resources-node
+          name: grafana-dashboard-k8s-resources-node
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/k8s-resources-pod
+          name: grafana-dashboard-k8s-resources-pod
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/k8s-resources-workload
+          name: grafana-dashboard-k8s-resources-workload
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/k8s-resources-workloads-namespace
+          name: grafana-dashboard-k8s-resources-workloads-namespace
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/kubelet
+          name: grafana-dashboard-kubelet
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/namespace-by-pod
+          name: grafana-dashboard-namespace-by-pod
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/namespace-by-workload
+          name: grafana-dashboard-namespace-by-workload
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/node-cluster-rsrc-use
+          name: grafana-dashboard-node-cluster-rsrc-use
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/node-rsrc-use
+          name: grafana-dashboard-node-rsrc-use
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/nodes-darwin
+          name: grafana-dashboard-nodes-darwin
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/nodes
+          name: grafana-dashboard-nodes
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/persistentvolumesusage
+          name: grafana-dashboard-persistentvolumesusage
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/pod-total
+          name: grafana-dashboard-pod-total
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/prometheus-remote-write
+          name: grafana-dashboard-prometheus-remote-write
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/prometheus
+          name: grafana-dashboard-prometheus
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/proxy
+          name: grafana-dashboard-proxy
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/scheduler
+          name: grafana-dashboard-scheduler
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/vulnerabilities
+          name: grafana-dashboard-vulnerabilities
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/workload-total
+          name: grafana-dashboard-workload-total
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-dashboard
+          name: grafana-dashboard-gitpod-component-dashboard
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-db-sync
+          name: grafana-dashboard-gitpod-component-db-sync
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-db
+          name: grafana-dashboard-gitpod-component-db
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-image-builder
+          name: grafana-dashboard-gitpod-component-image-builder
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-messagebus
+          name: grafana-dashboard-gitpod-component-messagebus
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-proxy
+          name: grafana-dashboard-gitpod-component-proxy
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-server
+          name: grafana-dashboard-gitpod-component-server
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-usage
+          name: grafana-dashboard-gitpod-component-usage
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-ws-manager-bridge
+          name: grafana-dashboard-gitpod-component-ws-manager-bridge
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-meta-overview
+          name: grafana-dashboard-gitpod-meta-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-meta-services
+          name: grafana-dashboard-gitpod-meta-services
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-slo-login
+          name: grafana-dashboard-gitpod-slo-login
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-agent-smith
+          name: grafana-dashboard-gitpod-component-agent-smith
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-blobserve
+          name: grafana-dashboard-gitpod-component-blobserve
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-content-service
+          name: grafana-dashboard-gitpod-component-content-service
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-registry-facade
+          name: grafana-dashboard-gitpod-component-registry-facade
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-daemon
+          name: grafana-dashboard-gitpod-component-ws-daemon
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-manager
+          name: grafana-dashboard-gitpod-component-ws-manager
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-proxy
+          name: grafana-dashboard-gitpod-component-ws-proxy
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-node-ephemeral-storage
+          name: grafana-dashboard-gitpod-node-ephemeral-storage
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-node-problem-detector
+          name: grafana-dashboard-gitpod-node-problem-detector
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-node-swap
+          name: grafana-dashboard-gitpod-node-swap
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-coredns
+          name: grafana-dashboard-gitpod-workspace-coredns
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-success-criteria
+          name: grafana-dashboard-gitpod-workspace-success-criteria
+          readOnly: false
+        - mountPath: /etc/grafana
+          name: grafana-config
+          readOnly: false
+      nodeSelector:
+        kubernetes.io/os: linux
+        nodepool: monitoring
+      securityContext:
+        fsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccountName: grafana
+      volumes:
+      - emptyDir: {}
+        name: grafana-storage
+      - name: grafana-datasources
+        secret:
+          secretName: grafana-datasources
+      - configMap:
+          name: grafana-dashboards
+        name: grafana-dashboards
+      - emptyDir:
+          medium: Memory
+        name: tmp-plugins
+      - configMap:
+          name: grafana-dashboard-gitpod-admin-nodes
+        name: grafana-dashboard-gitpod-admin-nodes
+      - configMap:
+          name: grafana-dashboard-gitpod-admin-workspaces
+        name: grafana-dashboard-gitpod-admin-workspaces
+      - configMap:
+          name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+        name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+      - configMap:
+          name: grafana-dashboard-gitpod-node-resource-metrics
+        name: grafana-dashboard-gitpod-node-resource-metrics
+      - configMap:
+          name: grafana-dashboard-gitpod-nodes-overview
+        name: grafana-dashboard-gitpod-nodes-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-overview
+        name: grafana-dashboard-gitpod-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-slo-workspace-startuptime
+        name: grafana-dashboard-gitpod-slo-workspace-startuptime
+      - configMap:
+          name: grafana-dashboard-gitpod-sh-example-overview
+        name: grafana-dashboard-gitpod-sh-example-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-component-jb
+        name: grafana-dashboard-gitpod-component-jb
+      - configMap:
+          name: grafana-dashboard-gitpod-component-openvsx-proxy
+        name: grafana-dashboard-gitpod-component-openvsx-proxy
+      - configMap:
+          name: grafana-dashboard-gitpod-component-ssh-gateway
+        name: grafana-dashboard-gitpod-component-ssh-gateway
+      - configMap:
+          name: grafana-dashboard-alertmanager-overview
+        name: grafana-dashboard-alertmanager-overview
+      - configMap:
+          name: grafana-dashboard-apiserver
+        name: grafana-dashboard-apiserver
+      - configMap:
+          name: grafana-dashboard-cert-manager
+        name: grafana-dashboard-cert-manager
+      - configMap:
+          name: grafana-dashboard-cluster-total
+        name: grafana-dashboard-cluster-total
+      - configMap:
+          name: grafana-dashboard-controller-manager
+        name: grafana-dashboard-controller-manager
+      - configMap:
+          name: grafana-dashboard-k8s-resources-cluster
+        name: grafana-dashboard-k8s-resources-cluster
+      - configMap:
+          name: grafana-dashboard-k8s-resources-namespace
+        name: grafana-dashboard-k8s-resources-namespace
+      - configMap:
+          name: grafana-dashboard-k8s-resources-node
+        name: grafana-dashboard-k8s-resources-node
+      - configMap:
+          name: grafana-dashboard-k8s-resources-pod
+        name: grafana-dashboard-k8s-resources-pod
+      - configMap:
+          name: grafana-dashboard-k8s-resources-workload
+        name: grafana-dashboard-k8s-resources-workload
+      - configMap:
+          name: grafana-dashboard-k8s-resources-workloads-namespace
+        name: grafana-dashboard-k8s-resources-workloads-namespace
+      - configMap:
+          name: grafana-dashboard-kubelet
+        name: grafana-dashboard-kubelet
+      - configMap:
+          name: grafana-dashboard-namespace-by-pod
+        name: grafana-dashboard-namespace-by-pod
+      - configMap:
+          name: grafana-dashboard-namespace-by-workload
+        name: grafana-dashboard-namespace-by-workload
+      - configMap:
+          name: grafana-dashboard-node-cluster-rsrc-use
+        name: grafana-dashboard-node-cluster-rsrc-use
+      - configMap:
+          name: grafana-dashboard-node-rsrc-use
+        name: grafana-dashboard-node-rsrc-use
+      - configMap:
+          name: grafana-dashboard-nodes-darwin
+        name: grafana-dashboard-nodes-darwin
+      - configMap:
+          name: grafana-dashboard-nodes
+        name: grafana-dashboard-nodes
+      - configMap:
+          name: grafana-dashboard-persistentvolumesusage
+        name: grafana-dashboard-persistentvolumesusage
+      - configMap:
+          name: grafana-dashboard-pod-total
+        name: grafana-dashboard-pod-total
+      - configMap:
+          name: grafana-dashboard-prometheus-remote-write
+        name: grafana-dashboard-prometheus-remote-write
+      - configMap:
+          name: grafana-dashboard-prometheus
+        name: grafana-dashboard-prometheus
+      - configMap:
+          name: grafana-dashboard-proxy
+        name: grafana-dashboard-proxy
+      - configMap:
+          name: grafana-dashboard-scheduler
+        name: grafana-dashboard-scheduler
+      - configMap:
+          name: grafana-dashboard-vulnerabilities
+        name: grafana-dashboard-vulnerabilities
+      - configMap:
+          name: grafana-dashboard-workload-total
+        name: grafana-dashboard-workload-total
+      - configMap:
+          name: grafana-dashboard-gitpod-component-dashboard
+        name: grafana-dashboard-gitpod-component-dashboard
+      - configMap:
+          name: grafana-dashboard-gitpod-component-db-sync
+        name: grafana-dashboard-gitpod-component-db-sync
+      - configMap:
+          name: grafana-dashboard-gitpod-component-db
+        name: grafana-dashboard-gitpod-component-db
+      - configMap:
+          name: grafana-dashboard-gitpod-component-image-builder
+        name: grafana-dashboard-gitpod-component-image-builder
+      - configMap:
+          name: grafana-dashboard-gitpod-component-messagebus
+        name: grafana-dashboard-gitpod-component-messagebus
+      - configMap:
+          name: grafana-dashboard-gitpod-component-proxy
+        name: grafana-dashboard-gitpod-component-proxy
+      - configMap:
+          name: grafana-dashboard-gitpod-component-server
+        name: grafana-dashboard-gitpod-component-server
+      - configMap:
+          name: grafana-dashboard-gitpod-component-usage
+        name: grafana-dashboard-gitpod-component-usage
+      - configMap:
+          name: grafana-dashboard-gitpod-component-ws-manager-bridge
+        name: grafana-dashboard-gitpod-component-ws-manager-bridge
+      - configMap:
+          name: grafana-dashboard-gitpod-meta-overview
+        name: grafana-dashboard-gitpod-meta-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-meta-services
+        name: grafana-dashboard-gitpod-meta-services
+      - configMap:
+          name: grafana-dashboard-gitpod-slo-login
+        name: grafana-dashboard-gitpod-slo-login
+      - configMap:
+          name: grafana-dashboard-gitpod-component-agent-smith
+        name: grafana-dashboard-gitpod-component-agent-smith
+      - configMap:
+          name: grafana-dashboard-gitpod-component-blobserve
+        name: grafana-dashboard-gitpod-component-blobserve
+      - configMap:
+          name: grafana-dashboard-gitpod-component-content-service
+        name: grafana-dashboard-gitpod-component-content-service
+      - configMap:
+          name: grafana-dashboard-gitpod-component-registry-facade
+        name: grafana-dashboard-gitpod-component-registry-facade
+      - configMap:
+          name: grafana-dashboard-gitpod-component-ws-daemon
+        name: grafana-dashboard-gitpod-component-ws-daemon
+      - configMap:
+          name: grafana-dashboard-gitpod-component-ws-manager
+        name: grafana-dashboard-gitpod-component-ws-manager
+      - configMap:
+          name: grafana-dashboard-gitpod-component-ws-proxy
+        name: grafana-dashboard-gitpod-component-ws-proxy
+      - configMap:
+          name: grafana-dashboard-gitpod-node-ephemeral-storage
+        name: grafana-dashboard-gitpod-node-ephemeral-storage
+      - configMap:
+          name: grafana-dashboard-gitpod-node-problem-detector
+        name: grafana-dashboard-gitpod-node-problem-detector
+      - configMap:
+          name: grafana-dashboard-gitpod-node-swap
+        name: grafana-dashboard-gitpod-node-swap
+      - configMap:
+          name: grafana-dashboard-gitpod-workspace-coredns
+        name: grafana-dashboard-gitpod-workspace-coredns
+      - configMap:
+          name: grafana-dashboard-gitpod-workspace-success-criteria
+        name: grafana-dashboard-gitpod-workspace-success-criteria
+      - name: grafana-config
+        secret:
+          secretName: grafana-config

@@ -6,5 +6,7 @@ config.yaml
 
 .idea
 ./kind
-
 diff
+
+!monitoring-satellite/manifests/grafana/*
+!monitoring-satellite/manifests/kubescape/*
