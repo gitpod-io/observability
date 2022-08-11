@@ -1,4 +1,4 @@
-package werft
+package certManager
 
 import (
 	"fmt"
@@ -24,7 +24,8 @@ func networkPolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 			Spec: networkv1.NetworkPolicySpec{
 				PodSelector: metav1.LabelSelector{
 					MatchLabels: map[string]string{
-						"component": Component,
+						"app":                         "cert-manager",
+						"app.kubernetes.io/component": "controller",
 					},
 				},
 				Ingress: []networkv1.NetworkPolicyIngressRule{

@@ -23,7 +23,11 @@ func networkPolicy(target string) common.RenderFunc {
 					Labels:    labels(target),
 				},
 				Spec: networkv1.NetworkPolicySpec{
-					PodSelector: metav1.LabelSelector{},
+					PodSelector: metav1.LabelSelector{
+						MatchLabels: map[string]string{
+							"component": target,
+						},
+					},
 					Ingress: []networkv1.NetworkPolicyIngressRule{
 						{
 							From: []networkv1.NetworkPolicyPeer{
