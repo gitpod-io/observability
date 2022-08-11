@@ -12,14 +12,14 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
-func rbacProxyContainerSpec(portName string, portNumber int32) corev1.Container {
+func rbacProxyContainerSpec(portName string, portNumber, listenAddress int32) corev1.Container {
 	return corev1.Container{
 		Name:            fmt.Sprintf("kube-rbac-proxy-%s", portName),
 		Image:           fmt.Sprintf("%s:v%s", rbacURL, rbacVersion),
 		ImagePullPolicy: corev1.PullIfNotPresent,
 		Args: []string{
 			"--logtostderr",
-			"--secure-listen-address=:9443",
+			fmt.Sprintf("--secure-listen-address=:%d", listenAddress),
 			"--tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
 			fmt.Sprintf("--upstream=http://127.0.0.1:%d/", portNumber),
 		},
@@ -34,7 +34,7 @@ func rbacProxyContainerSpec(portName string, portNumber int32) corev1.Container 
 			},
 		},
 		Ports: []corev1.ContainerPort{{
-			ContainerPort: 8443,
+			ContainerPort: listenAddress,
 			Name:          fmt.Sprintf("https-%s", portName),
 		}},
 		SecurityContext: &corev1.SecurityContext{
@@ -95,8 +95,8 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 									RunAsUser:                common.ToPointer(int64(65534)),
 								},
 							},
-							rbacProxyContainerSpec("main", 8081),
-							rbacProxyContainerSpec("self", 8082),
+							rbacProxyContainerSpec("main", 8081, 8443),
+							rbacProxyContainerSpec("self", 8082, 9443),
 						},
 					},
 				},
