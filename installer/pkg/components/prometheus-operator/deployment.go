@@ -30,17 +30,19 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Replicas: pointer.Int32(1),
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
-						Name:      Name,
-						Namespace: Namespace,
-						Labels:    common.Labels(Name, Component, App, Version),
+						Labels: common.Labels(Name, Component, App, Version),
 					},
 					Spec: corev1.PodSpec{
 						NodeSelector:                 ctx.Config.NodeSelector,
 						AutomountServiceAccountToken: pointer.Bool(true),
+						SecurityContext: &corev1.PodSecurityContext{
+							RunAsNonRoot: common.ToPointer(true),
+							RunAsUser:    common.ToPointer(int64(65534)),
+						},
+						ServiceAccountName: Name,
 						Containers: []corev1.Container{{
-							Name:            Name,
-							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
-							ImagePullPolicy: corev1.PullIfNotPresent,
+							Name:  Name,
+							Image: fmt.Sprintf("%s:v%s", ImageURL, Version),
 							Args: []string{
 								"--kubelet-service=kube-system/kubelet",
 								fmt.Sprintf("--prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v%s", Version),
