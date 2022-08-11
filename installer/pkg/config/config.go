@@ -72,11 +72,11 @@ type Alerting struct {
 }
 
 type Prometheus struct {
-	ExternalLabels map[string]string            `json:"externalLabels,omitempty"`
-	EnableFeatures []string                     `json:"enableFeatures,omitempty"`
-	Ingress        *GoogleIAPBasedIngress       `json:"ingress,omitempty"`
-	Resources      *corev1.ResourceRequirements `json:"resources,omitempty"`
-	RemoteWrite    []*RemoteWrite               `json:"remoteWrite,omitempty"`
+	ExternalLabels map[string]string           `json:"externalLabels,omitempty"`
+	EnableFeatures []string                    `json:"enableFeatures,omitempty"`
+	Ingress        *GoogleIAPBasedIngress      `json:"ingress,omitempty"`
+	Resources      corev1.ResourceRequirements `json:"resources,omitempty"`
+	RemoteWrite    []*RemoteWrite              `json:"remoteWrite,omitempty"`
 }
 
 type RemoteWrite struct {
