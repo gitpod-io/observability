@@ -52,7 +52,7 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 						HostPID:                      true,
 						SecurityContext: &v1.PodSecurityContext{
 							RunAsNonRoot: pointer.Bool(true),
-							RunAsUser:    pointer.Int64(65532),
+							RunAsUser:    pointer.Int64(65534),
 						},
 						ServiceAccountName: Name,
 						Tolerations: []v1.Toleration{
