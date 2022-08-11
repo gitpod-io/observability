@@ -39,4 +39,4 @@ repos:
         language: golang
         pass_filenames: false
 
-exclude: ^vendor|^hack/deploy.*
+exclude: (^vendor|^hack\/deploy-.*)

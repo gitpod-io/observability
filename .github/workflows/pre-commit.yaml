@@ -1,0 +1,19 @@
+name: pre-commit
+on:
+  - push
+
+env:
+  golang-version: "1.19"
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ env.golang-version }}
+      - name: Pre-commit
+        run: pip install pre-commit && pre-commit run --all-files
