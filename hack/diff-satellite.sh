@@ -72,7 +72,7 @@ jsonnet -c -J vendor -m diff/jsonnet-tmp \
     stackdriver: {
         clientEmail: 'fake@email.com',
         defaultProject: 'google-project',
-        privateKey: 
+        privateKey:
 |||
   multiline
   fake
@@ -98,28 +98,34 @@ function normalize() {
 
     # iterate through all documents from the YAML
     documentIndex=0
-    while [ ! -z $(yq e "select(documentIndex == $documentIndex) | .apiVersion" $IN) ]; do
+    while [[ -n $(yq e "select(documentIndex == $documentIndex) | .apiVersion" "${IN}") ]]; do
 
         # extract the component name from the label. If the label is not set, the result will be 'null'.
-        COMP=$(yq e "select(documentIndex == $documentIndex) | .metadata.labels.\"app.kubernetes.io/component\"" $IN)
+        COMP=$(yq e "select(documentIndex == $documentIndex) | .metadata.labels.\"app.kubernetes.io/component\"" "${IN}")
         TMP="$OUT/$COMP.tmp"
 
         # add a YAML document separator ("---") to the file if the file already exists.
         [[ ! -e "$TMP" ]] || echo "---" >> "$TMP"
 
         # extract the document from the large input file and append it to the file that's named after the component.
-        yq e "select(documentIndex == $documentIndex)" $IN >> "$TMP"
+        yq e "select(documentIndex == $documentIndex)" "${IN}">> "$TMP"
 
         documentIndex=$((documentIndex + 1))
     done
 
     # sort the documents in the YAML by .kind (first) and .metadata.name. (second)
+    # shellcheck disable=SC2044
+    # shellcheck disable=SC2061
+    # shellcheck disable=SC2006
+    # shellcheck disable=SC2035
+    # shellcheck disable=SC2086
     for I in `find $OUT -iname *.tmp`; do
+        # shellcheck disable=SC2086
         yq ea '[.] | sort_by(.kind + .metadata.name) | .[] | splitDoc' $I > ${I/tmp/yaml}
     done
 
     # delete TMP files.
-    rm $OUT/*.tmp
+    rm "${OUT}"/*.tmp
 }
 
 normalize diff/jsonnet-unsorted.yaml diff/jsonnet
@@ -141,7 +147,7 @@ tracing:
 werft:
   installServiceMonitors: false
 prometheus:
-  enableFeatures: 
+  enableFeatures:
     - foo
 ") > diff/go-unsorted.yaml
 
