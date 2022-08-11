@@ -1,11 +1,12 @@
 package prometheus
 
 import (
-	"github.com/gitpod-io/observability/installer/pkg/common"
-	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 	rbacv1 "k8s.io/api/rbac/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
+	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 )
 
 func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {

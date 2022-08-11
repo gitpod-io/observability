@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/gitpod-io/observability/installer/pkg/components"
 	"io"
 	"io/ioutil"
 	"os"
@@ -12,6 +11,7 @@ import (
 	"sigs.k8s.io/yaml"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
+	"github.com/gitpod-io/observability/installer/pkg/components"
 	"github.com/gitpod-io/observability/installer/pkg/config"
 )
 
@@ -98,7 +98,6 @@ func loadConfig(cfgFN string) (rawCfg interface{}, cfg *config.Config, err error
 		cfgBytes, err := ioutil.ReadFile(cfgFN)
 		if err != nil {
 			panic(fmt.Sprintf("couldn't read file %s, %s", cfgFN, err))
-
 		}
 		overrideConfig = string(cfgBytes)
 	}

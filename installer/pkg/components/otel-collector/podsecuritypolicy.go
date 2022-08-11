@@ -1,10 +1,11 @@
-package otelCollector
+package otelcollector
 
 import (
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	policyv1beta1 "k8s.io/api/policy/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func podsecuritypolicy(ctx *common.RenderContext) ([]runtime.Object, error) {

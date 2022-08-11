@@ -1,4 +1,4 @@
-package kubestateMetrics
+package kubestatemetrics
 
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"

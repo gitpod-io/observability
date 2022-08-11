@@ -1,8 +1,9 @@
-package otelCollector
+package otelcollector
 
 import (
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func Objects(ctx *common.RenderContext) common.RenderFunc {
@@ -22,5 +23,4 @@ func Objects(ctx *common.RenderContext) common.RenderFunc {
 	return func(cfg *common.RenderContext) ([]runtime.Object, error) {
 		return []runtime.Object{}, nil
 	}
-
 }

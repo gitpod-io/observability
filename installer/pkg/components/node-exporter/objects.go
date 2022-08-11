@@ -1,4 +1,4 @@
-package nodeExporter
+package nodeexporter
 
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"

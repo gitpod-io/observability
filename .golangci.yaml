@@ -1,0 +1,49 @@
+run:
+  timeout: 5m
+  go: '1.19'
+  skip-dirs:
+    - vendor/
+
+linters:
+  disable-all: true
+  enable:
+    - bodyclose # checks whether HTTP response body is closed successfully
+    - deadcode # Finds unused code
+    - gci # Gci controls golang package import order and makes it always deterministic.
+    - dogsled # Checks assignments with too many blank identifiers (e.g. x, , , _, := f())
+    - dupl # Tool for code clone detection
+    - errcheck # checks whether Err of rows is checked successfully
+    - goconst # Finds repeated strings that could be replaced by a constant
+    - gocritic # check for bugs, performance and style issues.
+    - gocyclo # Computes and checks the cyclomatic complexity of functions
+    - gofmt
+    - goimports # In addition to fixing imports, goimports also formats your code in the same style as gofmt.
+    - goprintffuncname # Checks that printf-like functions are named with f at the end
+    - gosec # Inspects source code for security problems
+    - gosimple # Linter for Go source code that specializes in simplifying code
+    - govet
+    - ineffassign # Detects when assignments to existing variables are not used
+    - nakedret # Finds naked returns in functions
+    - stylecheck # Stylecheck is a replacement for golint
+    - typecheck # Like the front-end of a Go compiler, parses and type-checks Go code
+    - unparam # Reports unused function parameters
+    - unused # Checks Go code for unused constants, variables, functions and types
+    - varcheck # Finds unused global variables and constants
+    - whitespace # Tool for detection of leading and trailing whitespace
+
+issues:
+  # List of regexps of issue texts to exclude.
+  exclude-rules:
+    - linters:
+        - gosec
+      text: "G306"
+
+linters-settings:
+  gci:
+    # Section configuration to compare against.
+    # Section names are case-insensitive and may contain parameters in ().
+    # Default: ["standard", "default"]
+    sections:
+      - standard                       # Captures all standard packages if they do not match another section.
+      - default                        # Contains all imports that could not be matched to another section type.
+      - prefix(github.com/gitpod-io/observability) # Groups all imports with the specified Prefix.

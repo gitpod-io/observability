@@ -3,8 +3,9 @@ workspaceLocation: observability/observability.code-workspace
 tasks:
   - init: |
       # TODO(arthursens): We should update the workspace image so we dont need the step below
-      sudo apt update ; sudo apt-get install apt-transport-https ca-certificates -y ; sudo update-ca-certificates
+      sudo apt update ; sudo apt-get install shellcheck apt-transport-https ca-certificates -y ; sudo update-ca-certificates
       make --always-make
+      pip install pre-commit && pre-commit install --install-hooks
 vscode:
   extensions:
     - heptio.jsonnet

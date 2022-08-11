@@ -27,9 +27,9 @@ Therefore, adding new external variables to the project is considered a breaking
 
 ### Adding new components
 
-In an ideal world, new components that we'd like to add to any of our applications would already have a jsonnet library that we could easily import and use. Unfortunately, this is not a common practice. 
+In an ideal world, new components that we'd like to add to any of our applications would already have a jsonnet library that we could easily import and use. Unfortunately, this is not a common practice.
 
-For the components that do not have a jsonnet library, we can create them ourselves under the [components](components/) directory. Those libraries should generate all manifests required to monitor this component, e.g. network policies, services and serviceMonitors. 
+For the components that do not have a jsonnet library, we can create them ourselves under the [components](components/) directory. Those libraries should generate all manifests required to monitor this component, e.g. network policies, services and serviceMonitors.
 
 After adding a new library, make sure you're adding it to either [monitoring-satellite](monitoring-satellite/monitoring-satellite.libsonnet) or [monitoring-central](monitoring-central/monitoring-central.libsonnet).
 

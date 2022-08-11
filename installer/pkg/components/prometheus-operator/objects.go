@@ -1,4 +1,4 @@
-package prometheusOperator
+package prometheusoperator
 
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"

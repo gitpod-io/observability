@@ -1,0 +1,42 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-symlinks
+      - id: mixed-line-ending
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: check-merge-conflict
+
+  # keep fork in sync!
+  - repo: https://github.com/gitpod-io/pre-commit-hooks
+    rev: "2.1.5"
+    hooks:
+      - id: forbid-binary
+        exclude: |
+          (?x)^(
+            .*example-layer.tar.gz|
+            .*\.(png|svg|ico|gpg)|
+            dev/version-manifest/version-manifest|
+            .*gradle-wrapper\.jar
+          )$
+      - id: script-must-have-extension
+      - id: shellcheck
+        args: [ -e, "SC1090,SC1091" ]
+        exclude: .*/gradlew$
+
+  - repo: https://github.com/golangci/golangci-lint
+    rev: "v1.48.0"
+    hooks:
+      - id: golangci-lint
+        name: golangci-lint
+        entry: bash -c 'cd installer && golangci-lint run --fix'
+        types: [ go ]
+        language: golang
+        pass_filenames: false
+
+exclude: ^vendor|^hack/deploy.*

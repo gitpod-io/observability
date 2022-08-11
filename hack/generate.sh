@@ -7,7 +7,7 @@ set -o pipefail
 
 while getopts ":e:" option; do
    case $option in
-      e) 
+      e)
          environment=$OPTARG;;
      \?) # Invalid option
          echo "Error: Invalid option"
@@ -106,7 +106,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     stackdriver: {
         clientEmail: 'fake@email.com',
         defaultProject: 'google-project',
-        privateKey: 
+        privateKey:
 |||
   multiline
   fake
@@ -142,7 +142,7 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
     stackdriver: {
         clientEmail: 'fake@email.com',
         defaultProject: 'google-project',
-        privateKey: 
+        privateKey:
 |||
   multiline
   fake

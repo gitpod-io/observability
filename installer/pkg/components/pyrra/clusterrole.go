@@ -1,10 +1,11 @@
 package pyrra
 
 import (
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	rbacv1 "k8s.io/api/rbac/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 var allRBACVerbs = []string{
