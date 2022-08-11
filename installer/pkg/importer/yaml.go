@@ -38,7 +38,7 @@ func (y YAMLImporter) Import() []string {
 			fmt.Printf("Error reading YAML files: File: %s Err: %v", yamlPath, err)
 		}
 
-		yamls = append(yamls, fmt.Sprintf("%s\n---", string(yaml)))
+		yamls = append(yamls, fmt.Sprintf("---\n%s", string(yaml)))
 	}
 
 	return yamls
