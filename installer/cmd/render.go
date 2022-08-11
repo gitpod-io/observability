@@ -164,7 +164,7 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 	}
 
 	if ctx.Config.Grafana.Install {
-		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
+		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/grafana")
 		output = append(output, grafanaImporter.Import()...)
 	}
 
