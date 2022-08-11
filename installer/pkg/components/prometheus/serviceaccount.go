@@ -20,6 +20,7 @@ func serviceAccount(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Namespace: Namespace,
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
+			AutomountServiceAccountToken: common.ToPointer(true),
 		},
 	}, nil
 }

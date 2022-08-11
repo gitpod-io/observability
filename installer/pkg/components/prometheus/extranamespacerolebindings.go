@@ -12,11 +12,23 @@ import (
 // from endpoints in other namespaces.
 // TODO: Add more namespaces from configuration
 func extraNamespaceRoleBindings(ctx *common.RenderContext) ([]runtime.Object, error) {
-	return []runtime.Object{
+	var extraRoleBindings []runtime.Object
+
+	extraRoleBindings = append(extraRoleBindings,
 		rolebindingFactory(Namespace),
 		rolebindingFactory("default"),
 		rolebindingFactory("kube-system"),
-	}, nil
+	)
+
+	if ctx.Config.Werft.InstallServiceMonitors {
+		extraRoleBindings = append(extraRoleBindings, rolebindingFactory("werft"))
+	}
+
+	if ctx.Config.Certmanager.InstallServiceMonitors {
+		extraRoleBindings = append(extraRoleBindings, rolebindingFactory("certmanager"))
+	}
+
+	return extraRoleBindings, nil
 }
 
 func rolebindingFactory(ns string) *rbacv1.RoleBinding {

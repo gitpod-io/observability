@@ -17,13 +17,12 @@ func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Kind:       "ClusterRole",
 			},
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      resourceName(),
-				Namespace: Namespace,
-				Labels:    common.Labels(Name, Component, App, Version),
+				Name:   resourceName(),
+				Labels: common.Labels(Name, Component, App, Version),
 			},
 			Rules: []rbacv1.PolicyRule{
 				{
-					APIGroups: []string{"monitoring.coreos.com"},
+					APIGroups: []string{""},
 					Resources: []string{"nodes/metrics"},
 					Verbs:     []string{"get"},
 				},
