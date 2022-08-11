@@ -1,0 +1,27 @@
+alerting:
+  config: {}
+certmanager:
+  installServiceMonitors: false
+gitpod:
+  installServiceMonitors: true
+grafana:
+  install: true
+kubescape:
+  install: true
+namespace: monitoring-satellite
+prober:
+  install: true
+prometheus:
+  remoteWrite:
+  - password: password
+    url: https://example.com
+    username: user
+  resources: {}
+pyrra:
+  install: true
+tracing:
+  install: true
+  honeycombDataset: "fake-dataset"
+  honeycombAPIKey: "fake-key"
+werft:
+  installServiceMonitors: false

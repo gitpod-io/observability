@@ -7,13 +7,22 @@ env:
 jobs:
   go:
     runs-on: ubuntu-latest
-    name: Go
+    name: Go Linting
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
           go-version: ${{ env.golang-version }}
       - run: cd installer && make build && git diff --exit-code
+  config-generation:
+    runs-on: ubuntu-latest
+    name: Default config generation check
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.golang-version }}
+      - run: cd installer && make generate && git diff --exit-code
   e2e-tests:
     name: E2E tests
     runs-on: ubuntu-latest

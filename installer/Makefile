@@ -16,11 +16,14 @@ fmt:
 vet:
 	go vet ./...
 
-monitoring-satellite.yaml: generate
+monitoring-satellite.yaml: generate-full
 
 generate: installer
-	./installer init > config.yaml
-	./installer render --config config.yaml > monitoring-satellite.yaml
+	./installer init > examples/default-config.yaml
+	./installer render --config examples/default-config.yaml > monitoring-satellite.yaml
+
+generate-full: installer
+	./installer render --config examples/full-config.yaml > monitoring-satellite.yaml
 
 .PHONY: deploy-satellite
 apply-satellite: monitoring-satellite.yaml
