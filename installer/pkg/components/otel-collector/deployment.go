@@ -25,18 +25,21 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Replicas: common.ToPointer(int32(1)),
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
-						Name:      Name,
-						Namespace: Namespace,
-						Labels:    common.Labels(Name, Component, App, Version),
+						Labels: common.Labels(Name, Component, App, Version),
 					},
 					Spec: corev1.PodSpec{
 						ServiceAccountName: Name,
 						Containers: []corev1.Container{{
-							Name:            Name,
-							Image:           fmt.Sprintf("%s:%s", ImageURL, Version),
-							ImagePullPolicy: corev1.PullIfNotPresent,
+							Name:  Name,
+							Image: fmt.Sprintf("%s:%s", ImageURL, Version),
 							Args: []string{
 								"--config=/conf/collector.yaml",
+							},
+							VolumeMounts: []corev1.VolumeMount{
+								{
+									Name:      Name,
+									MountPath: "/conf",
+								},
 							},
 						}},
 						NodeSelector: ctx.Config.NodeSelector,

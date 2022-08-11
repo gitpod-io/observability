@@ -25,7 +25,7 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Type: "ClusterIP",
 				Ports: []corev1.ServicePort{
 					{
-						Name:       "jaegar",
+						Name:       "jaeger",
 						Port:       14268,
 						TargetPort: intstr.IntOrString{IntVal: 14268},
 						Protocol:   "TCP",
