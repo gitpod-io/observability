@@ -1,4 +1,4 @@
-package certManager
+package certmanager
 
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"

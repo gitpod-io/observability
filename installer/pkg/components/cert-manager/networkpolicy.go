@@ -1,12 +1,13 @@
-package certManager
+package certmanager
 
 import (
 	"fmt"
-	"github.com/gitpod-io/observability/installer/pkg/common"
 
 	networkv1 "k8s.io/api/networking/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func networkPolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
@@ -14,7 +15,7 @@ func networkPolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 		&networkv1.NetworkPolicy{
 			TypeMeta: metav1.TypeMeta{
 				APIVersion: "networking.k8s.io/v1",
-				Kind:       "ServiceMonitor",
+				Kind:       "NetworkPolicy",
 			},
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      fmt.Sprintf("%s-allow-kube-prometheus", Component),

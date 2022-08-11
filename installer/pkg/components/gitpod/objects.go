@@ -1,8 +1,9 @@
 package gitpod
 
 import (
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func generateObjects(target string) common.RenderFunc {
