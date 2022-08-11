@@ -14,9 +14,8 @@ import (
 
 func rbacProxyContainerSpec(portName string, portNumber, listenAddress int32) corev1.Container {
 	return corev1.Container{
-		Name:            fmt.Sprintf("kube-rbac-proxy-%s", portName),
-		Image:           fmt.Sprintf("%s:v%s", rbacURL, rbacVersion),
-		ImagePullPolicy: corev1.PullIfNotPresent,
+		Name:  fmt.Sprintf("kube-rbac-proxy-%s", portName),
+		Image: fmt.Sprintf("%s:v%s", rbacURL, rbacVersion),
 		Args: []string{
 			"--logtostderr",
 			fmt.Sprintf("--secure-listen-address=:%d", listenAddress),
@@ -43,6 +42,7 @@ func rbacProxyContainerSpec(portName string, portNumber, listenAddress int32) co
 			ReadOnlyRootFilesystem:   common.ToPointer(true),
 			RunAsUser:                common.ToPointer(int64(65532)),
 			RunAsGroup:               common.ToPointer(int64(65532)),
+			RunAsNonRoot:             common.ToPointer(true),
 		},
 	}
 }
@@ -59,12 +59,9 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 			Spec: appsv1.DeploymentSpec{
 				Selector: &metav1.LabelSelector{MatchLabels: common.Labels(Name, Component, App, Version)},
 				Replicas: common.ToPointer(int32(1)),
-				Strategy: common.DeploymentStrategy(1, 1),
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
-						Name:      Name,
-						Namespace: Namespace,
-						Labels:    common.Labels(Name, Component, App, Version),
+						Labels: common.Labels(Name, Component, App, Version),
 					},
 					Spec: corev1.PodSpec{
 						ServiceAccountName:           Name,
@@ -72,9 +69,8 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						NodeSelector:                 ctx.Config.NodeSelector,
 						Containers: []corev1.Container{
 							{
-								Name:            Name,
-								Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
-								ImagePullPolicy: corev1.PullIfNotPresent,
+								Name:  Name,
+								Image: fmt.Sprintf("%s:v%s", ImageURL, Version),
 								Args: []string{
 									"--host=127.0.0.1",
 									"--port=8081",
