@@ -49,6 +49,10 @@ func Defaults(in interface{}) error {
 		InstallServiceMonitors: true,
 	}
 
+	cfg.Certmanager = &Certmanager{
+		InstallServiceMonitors: false,
+	}
+
 	cfg.Kubescape = &Kubescape{
 		Install: false,
 	}
@@ -85,6 +89,7 @@ type Config struct {
 	Gitpod       *Gitpod           `json:"gitpod,omitempty"`
 	Kubescape    *Kubescape        `json:"kubescape,omitempty"`
 	Grafana      *Grafana          `json:"grafana,omitempty"`
+	Certmanager  *Certmanager      `json:"certmanager,omitempty"`
 }
 
 type Tracing struct {
@@ -141,4 +146,8 @@ type Kubescape struct {
 
 type Grafana struct {
 	Install bool `json:"install"`
+}
+
+type Certmanager struct {
+	InstallServiceMonitors bool `json:"installServiceMonitors"`
 }

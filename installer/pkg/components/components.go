@@ -3,7 +3,7 @@ package components
 import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	"github.com/gitpod-io/observability/installer/pkg/components/alertmanager"
-	certManager "github.com/gitpod-io/observability/installer/pkg/components/cert-manager"
+	certmanager "github.com/gitpod-io/observability/installer/pkg/components/cert-manager"
 	"github.com/gitpod-io/observability/installer/pkg/components/gitpod"
 	kubestateMetrics "github.com/gitpod-io/observability/installer/pkg/components/kubestate-metrics"
 	nodeExporter "github.com/gitpod-io/observability/installer/pkg/components/node-exporter"
@@ -33,6 +33,6 @@ func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 		pyrra.Objects(ctx),
 		werft.Objects(ctx),
 		gitpod.Objects(ctx),
-		certManager.Objects,
+		certmanager.Objects(ctx),
 	)
 }
