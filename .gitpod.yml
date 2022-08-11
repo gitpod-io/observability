@@ -6,7 +6,7 @@ tasks:
       sudo curl -Lo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.27.2/yq_linux_amd64 && sudo chmod +x /usr/bin/yq
       sudo apt update ; sudo apt-get install shellcheck apt-transport-https ca-certificates -y ; sudo update-ca-certificates
       make --always-make
-      $(pyenv which python) -m pip install pre-commit && $(pyenv which python) install --install-hooks
+      $(pyenv which python) -m pip install pre-commit && $(pyenv which pre-commit) install --install-hooks
 vscode:
   extensions:
     - heptio.jsonnet
