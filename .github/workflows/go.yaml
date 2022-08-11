@@ -45,4 +45,3 @@ jobs:
         run: |
           export KUBECONFIG="${HOME}/.kube/config"
           make test-e2e
-

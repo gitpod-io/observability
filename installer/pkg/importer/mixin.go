@@ -3,17 +3,14 @@ package importer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	"strings"
 
 	"github.com/google/go-jsonnet"
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
-)
 
-const (
-	outputFolder = "manifests"
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 var (
@@ -79,13 +76,13 @@ func unmarshalMixinToRuntimeObject(j string) []runtime.Object {
 
 	// 'prometheusRules' is the key defined in the variable 'rulesSnippet'!
 	prometheusRules := result["prometheusRules"].(map[string]interface{})
-	rulesAsJson, err := json.Marshal(prometheusRules)
+	rulesAsJSON, err := json.Marshal(prometheusRules)
 	if err != nil {
 		fmt.Println(err)
 	}
 
 	var ruleSpec monitoringv1.PrometheusRuleSpec
-	err = json.Unmarshal(rulesAsJson, &ruleSpec)
+	err = json.Unmarshal(rulesAsJSON, &ruleSpec)
 	if err != nil {
 		fmt.Println(err)
 	}

@@ -4,14 +4,14 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
-	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/utils/pointer"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
@@ -45,7 +45,7 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 					Labels: common.Labels(Name, Component, App, Version),
 				},
 				Replicas: pointer.Int32(1),
-				SecurityContext: &v1.PodSecurityContext{
+				SecurityContext: &corev1.PodSecurityContext{
 					FSGroup:      pointer.Int64(2000),
 					RunAsUser:    pointer.Int64(1000),
 					RunAsNonRoot: pointer.Bool(true),
@@ -102,15 +102,15 @@ func remoteWriteSpecs(ctx *common.RenderContext) []monitoringv1.RemoteWriteSpec 
 
 	for i, rw := range ctx.Config.Prometheus.RemoteWrite {
 		rw.BasicAuth = &monitoringv1.BasicAuth{
-			Username: v1.SecretKeySelector{
+			Username: corev1.SecretKeySelector{
 				Key: "username",
-				LocalObjectReference: v1.LocalObjectReference{
+				LocalObjectReference: corev1.LocalObjectReference{
 					Name: fmt.Sprintf("remote-write-secret-%d", i),
 				},
 			},
-			Password: v1.SecretKeySelector{
+			Password: corev1.SecretKeySelector{
 				Key: "password",
-				LocalObjectReference: v1.LocalObjectReference{
+				LocalObjectReference: corev1.LocalObjectReference{
 					Name: fmt.Sprintf("remote-write-secret-%d", i),
 				},
 			},

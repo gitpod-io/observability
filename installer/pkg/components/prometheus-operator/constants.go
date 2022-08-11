@@ -1,8 +1,4 @@
-package prometheusOperator
-
-import (
-	"github.com/gitpod-io/observability/installer/pkg/common"
-)
+package prometheusoperator
 
 const (
 	Name      = "prometheus-operator"
@@ -12,7 +8,3 @@ const (
 	ImageURL  = "quay.io/prometheus-operator/prometheus-operator"
 	Component = "controller"
 )
-
-func prometheusOperatorLabels() map[string]string {
-	return common.Labels(Name, Component, App, Version)
-}

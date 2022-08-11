@@ -1,4 +1,4 @@
-package kubestateMetrics
+package kubestatemetrics
 
 const (
 	Name        = "kube-state-metrics"

@@ -1,4 +1,4 @@
-package otelCollector
+package otelcollector
 
 const (
 	Name      = "otel-collector"

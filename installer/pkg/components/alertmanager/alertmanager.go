@@ -3,6 +3,7 @@ package alertmanager
 import (
 	"fmt"
 
+	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -10,7 +11,6 @@ import (
 	"k8s.io/utils/pointer"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 func alertmanager(ctx *common.RenderContext) ([]runtime.Object, error) {

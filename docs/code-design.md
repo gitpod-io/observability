@@ -11,7 +11,7 @@ It not only assures a good level of quality but also alleviates the maintainance
 
 Kube-prometheus is the most popular project that bundles together several components, and their mixins, that are commonly used together to monitor applications that run on Kubernetes Clusters.
 
-Inspired by [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) design, we separate our libsonnet code in 3 main sections. By following their design, it's easy for us to propose new features upstream instead of maintaing them ourselves :) 
+Inspired by [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) design, we separate our libsonnet code in 3 main sections. By following their design, it's easy for us to propose new features upstream instead of maintaing them ourselves :)
 
 The sections are:
 

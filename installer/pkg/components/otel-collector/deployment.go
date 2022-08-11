@@ -1,13 +1,14 @@
-package otelCollector
+package otelcollector
 
 import (
 	"fmt"
 
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {

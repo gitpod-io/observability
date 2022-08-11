@@ -47,7 +47,7 @@ monitoring-satellite/manifests/yaml-generator.jsonnet | xargs -I{} sh -c 'cat {}
 #### Components
 
 * [Grafana](https://github.com/grafana/grafana)
-* [VictoriaMetrics](https://github.com/VictoriaMetrics/VictoriaMetrics) 
+* [VictoriaMetrics](https://github.com/VictoriaMetrics/VictoriaMetrics)
 
 To customize the stack, we make use of Jsonnet's [external-variables feature](https://jsonnet.org/ref/stdlib.html). We expect one single external variable called `config` which is loaded and merged with monitoring-satellite to customize the stack.
 

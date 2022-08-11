@@ -1,9 +1,8 @@
-package nodeExporter
+package nodeexporter
 
 import (
 	"fmt"
 
-	"github.com/gitpod-io/observability/installer/pkg/common"
 	appsv1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
@@ -11,6 +10,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/utils/pointer"
+
+	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
 func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {

@@ -23,8 +23,9 @@ if [[ $KUBECONFIG != "" ]]; then
   KUBECONFIG_FLAG="--kubeconfig ${KUBECONFIG}"
 fi
 
-for CRD in $(find monitoring-satellite/manifests/prometheusOperator/ -type f -name "*CustomResourceDefinition.yaml"); 
-do 
+# shellcheck disable=SC2044
+for CRD in $(find monitoring-satellite/manifests/prometheusOperator/ -type f -name "*CustomResourceDefinition.yaml");
+do
   kubectl $KUBECONFIG_FLAG replace -f $CRD || kubectl $KUBECONFIG_FLAG create -f $CRD
 done
 

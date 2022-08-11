@@ -15,7 +15,7 @@ clean:
 	git clean -Xfd .
 
 .PHONY: setup-workspace
-setup-workspace: 
+setup-workspace:
 	go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
 	go get github.com/brancz/gojsontoyaml
 	go get github.com/google/go-jsonnet/cmd/jsonnet
@@ -25,7 +25,7 @@ setup-workspace:
 
 .PHONY: generate
 generate: $(JSONNET_BIN)
-	./hack/generate.sh 
+	./hack/generate.sh
 
 .PHONY: generate-ci
 generate-ci: $(JSONNET_BIN)
@@ -37,14 +37,14 @@ fmt: $(JSONNETFMT_BIN)
 		xargs -n 1 -- $(JSONNET_FMT) -i
 
 .PHONY: lint
-lint: $(JSONNETFMT_BIN) 
+lint: $(JSONNETFMT_BIN)
 	find . -name 'vendor' -prune -o -name '*.libsonnet' -print -o -name '*.jsonnet' -print | \
 		while read f; do \
 			$(JSONNET_FMT) "$$f" | diff -u "$$f" -; \
 		done
 
 .PHONY: promtool-lint
-promtool-lint: 
+promtool-lint:
 	promtool check rules monitoring-satellite/manifests/ci_prometheus_rules.yaml
 
 $(BIN_DIR):

@@ -26,11 +26,12 @@ fi
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/namespace.yaml
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/podsecuritypolicy-restricted.yaml
 
-./hack/deploy-crds.sh --kubeconfig $KUBECONFIG
+./hack/deploy-crds.sh --kubeconfig "${KUBECONFIG}"
 
-for operatorManifest in $(find monitoring-satellite/manifests/prometheusOperator/ -type f ! -name "*CustomResourceDefinition.yaml"); 
-do 
-  kubectl $KUBECONFIG_FLAG apply -f $operatorManifest
+# shellcheck disable=SC2044
+for operatorManifest in $(find monitoring-satellite/manifests/prometheusOperator/ -type f ! -name "*CustomResourceDefinition.yaml");
+do
+  kubectl $KUBECONFIG_FLAG apply -f "${operatorManifest}"
 done
 
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/prometheus/

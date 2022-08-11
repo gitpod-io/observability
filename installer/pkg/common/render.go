@@ -8,9 +8,10 @@ import (
 	"fmt"
 
 	"github.com/docker/distribution/reference"
-	"github.com/gitpod-io/observability/installer/pkg/config"
 	"helm.sh/helm/v3/pkg/cli/values"
 	"k8s.io/apimachinery/pkg/runtime"
+
+	"github.com/gitpod-io/observability/installer/pkg/config"
 )
 
 // Renderable turns the config into a set of Kubernetes runtime objects

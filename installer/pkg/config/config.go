@@ -45,6 +45,18 @@ func Defaults(in interface{}) error {
 		InstallServiceMonitors: true,
 	}
 
+	cfg.Prometheus = &Prometheus{
+		RemoteWrite: []*RemoteWrite{
+			{
+				RemoteWriteSpec: monitoringv1.RemoteWriteSpec{
+					URL: "https://example.com",
+				},
+				Username: "user",
+				Password: "password",
+			},
+		},
+	}
+
 	return nil
 }
 

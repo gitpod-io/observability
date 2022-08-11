@@ -1,4 +1,4 @@
-package nodeExporter
+package nodeexporter
 
 const (
 	Name      = "node-exporter"
