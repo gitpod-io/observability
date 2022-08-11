@@ -26,22 +26,24 @@ func NewYAMLImporter(gitURL, path string, recursive bool) *YAMLImporter {
 	}
 }
 
-func (y YAMLImporter) Import() {
+func (y YAMLImporter) Import() []string {
 	y.cloneRepository()
 	yamlPaths, err := y.getFiles()
 	if err != nil {
 		fmt.Printf("Error finding YAML files: %v", err)
 	}
 
+	var yamls []string
 	for _, yamlPath := range yamlPaths {
 		yaml, err := ioutil.ReadFile(yamlPath)
 		if err != nil {
 			fmt.Printf("Error reading YAML files: File: %s Err: %v", yamlPath, err)
 		}
 
-		// Just to showcase that we can import and manipulate YAML
-		fmt.Println(string(yaml))
+		yamls = append(yamls, fmt.Sprintf("%s\n---", string(yaml)))
 	}
+
+	return yamls
 }
 
 func (y YAMLImporter) getFiles() ([]string, error) {

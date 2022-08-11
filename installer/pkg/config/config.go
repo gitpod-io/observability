@@ -45,6 +45,14 @@ func Defaults(in interface{}) error {
 		InstallServiceMonitors: true,
 	}
 
+	cfg.Kubescape = &Kubescape{
+		Install: false,
+	}
+
+	cfg.Grafana = &Grafana{
+		Install: false,
+	}
+
 	cfg.Prometheus = &Prometheus{
 		RemoteWrite: []*RemoteWrite{
 			{
@@ -71,6 +79,8 @@ type Config struct {
 	Prober       *Prober           `json:"prober,omitempty"`
 	Werft        *Werft            `json:"werft,omitempty"`
 	Gitpod       *Gitpod           `json:"gitpod,omitempty"`
+	Kubescape    *Kubescape        `json:"kubescape,omitempty"`
+	Grafana      *Grafana          `json:"grafana,omitempty"`
 }
 
 type Tracing struct {
@@ -116,6 +126,15 @@ type Prober struct {
 type Werft struct {
 	InstallServiceMonitors bool `json:"installServiceMonitors"`
 }
+
 type Gitpod struct {
 	InstallServiceMonitors bool `json:"installServiceMonitors"`
+}
+
+type Kubescape struct {
+	Install bool `json:"install"`
+}
+
+type Grafana struct {
+	Install bool `json:"install"`
 }
