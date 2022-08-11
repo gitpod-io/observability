@@ -21,6 +21,9 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			Spec: monitoringv1.ServiceMonitorSpec{
+				Selector: metav1.LabelSelector{
+					MatchLabels: common.Labels(Name, Component, App, Version),
+				},
 				Endpoints: []monitoringv1.Endpoint{
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
