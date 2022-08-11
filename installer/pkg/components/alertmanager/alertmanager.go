@@ -44,11 +44,7 @@ func alertmanager(ctx *common.RenderContext) ([]runtime.Object, error) {
 				},
 				ServiceAccountName: fmt.Sprintf("alertmanager-%s", Name),
 				Version:            Version,
-
-				// TODO: Load all below from config file
-				// NodeSelector: map[string]string{
-				// 	"nodepool": "example",
-				// },
+				NodeSelector:       ctx.Config.NodeSelector,
 			},
 		},
 	}, nil

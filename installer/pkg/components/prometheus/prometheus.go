@@ -53,6 +53,7 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 							"kubernetes.io/metadata.name": Namespace,
 						},
 					},
+					NodeSelector: ctx.Config.NodeSelector,
 				},
 				RuleNamespaceSelector: &metav1.LabelSelector{
 					MatchLabels: map[string]string{
@@ -69,9 +70,6 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 				// 	},
 				// Resources: {},
 				// 	EnableFeatures: []string{"remote-write-receiver"},
-				// 	NodeSelector: map[string]string{
-				// 		"nodepool": "example",
-				// 	},
 				// 	RemoteWrite: []monitoringv1.RemoteWriteSpec{
 				// 		{
 				// 			URL: "https://example-remote-write-url.com",

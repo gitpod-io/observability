@@ -69,10 +69,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 					Spec: corev1.PodSpec{
 						ServiceAccountName:           Name,
 						AutomountServiceAccountToken: common.ToPointer(true),
-						NodeSelector: map[string]string{
-							"kubernetes.io/os": "linux",
-							"nodepool":         "monitoring",
-						},
+						NodeSelector:                 ctx.Config.NodeSelector,
 						Containers: []corev1.Container{
 							{
 								Name:            Name,

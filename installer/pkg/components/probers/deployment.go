@@ -35,10 +35,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
 							ImagePullPolicy: corev1.PullIfNotPresent,
 						}},
-						NodeSelector: map[string]string{
-							"kubernetes.io/os": "linux",
-							"nodepool":         "monitoring",
-						},
+						NodeSelector: ctx.Config.NodeSelector,
 					},
 				},
 			},

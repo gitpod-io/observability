@@ -42,6 +42,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Labels:    pyrraLabels(apiComponent),
 					},
 					Spec: corev1.PodSpec{
+						NodeSelector: ctx.Config.NodeSelector,
 						Containers: []corev1.Container{{
 							Name:            Name,
 							Image:           fmt.Sprintf("%s:v%s", ImageURL, Version),
@@ -81,6 +82,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Labels:    pyrraLabels(kubernetesComponent),
 					},
 					Spec: corev1.PodSpec{
+						NodeSelector:       ctx.Config.NodeSelector,
 						ServiceAccountName: "pyrra-kubernetes",
 						Containers: []corev1.Container{{
 							Name:            Name,
