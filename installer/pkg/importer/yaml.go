@@ -16,13 +16,11 @@ const YAMLpattern = "*.yaml"
 // yamlImporter.Import()
 type YAMLImporter struct {
 	*importer
-	recursive bool
 }
 
-func NewYAMLImporter(gitURL, path string, recursive bool) *YAMLImporter {
+func NewYAMLImporter(gitURL, path string) *YAMLImporter {
 	return &YAMLImporter{
-		importer:  newImporter(gitURL, path),
-		recursive: recursive,
+		importer: newImporter(gitURL, path),
 	}
 }
 

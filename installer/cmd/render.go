@@ -159,12 +159,12 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 	}
 
 	if ctx.Config.Kubescape.Install {
-		kubescapeImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape", false)
+		kubescapeImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
 		output = append(output, kubescapeImporter.Import()...)
 	}
 
 	if ctx.Config.Grafana.Install {
-		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape", false)
+		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
 		output = append(output, grafanaImporter.Import()...)
 	}
 
