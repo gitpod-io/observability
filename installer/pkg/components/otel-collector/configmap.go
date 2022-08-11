@@ -1,6 +1,8 @@
 package otelCollector
 
 import (
+	"fmt"
+
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -20,7 +22,7 @@ func configMap(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			Data: map[string]string{
-				"collector.yaml": `|
+				"collector.yaml": fmt.Sprintf(`|
 receivers:
   jaeger:
 	protocols:
@@ -34,8 +36,8 @@ exporters:
   otlp:
 	endpoint: "api.honeycomb.io:443"
 	headers:
-	  "x-honeycomb-team": "fake-key"
-	  "x-honeycomb-dataset": "fake-dataset"
+	  "x-honeycomb-team": "%s"
+	  "x-honeycomb-dataset": "%s"
 
 extensions:
   health_check:
@@ -50,7 +52,7 @@ service:
 	traces:
 	  receivers: [jaeger, otlp]
 	  processors: [ ]
-	  exporters: ["otlp"]`,
+	  exporters: ["otlp"]`, ctx.Config.Tracing.HoneycombAPIKey, ctx.Config.Tracing.HoneycombDataset),
 			},
 		},
 	}, nil

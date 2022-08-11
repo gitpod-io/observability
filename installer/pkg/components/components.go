@@ -23,7 +23,7 @@ func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 		kubestateMetrics.Objects,
 		mixinImporter.ImportPrometheusRules,
 		nodeExporter.Objects,
-		otelCollector.Objects,
+		otelCollector.Objects(ctx),
 		prometheusOperator.Objects,
 		prometheus.Objects,
 		pyrra.Objects(ctx),
