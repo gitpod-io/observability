@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # shellcheck disable=SC2230
-which kind
-if [[ $? != 0  ]]; then
+if [[ $(which kind) != 0  ]]; then
     # shellcheck disable=SC2016
     echo 'kind not available in $PATH, installing latest kind'
     # Install latest kind
