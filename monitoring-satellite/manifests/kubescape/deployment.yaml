@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: kubescape
+    app.kubernetes.io/name: kubescape
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: prometheus.v2
+  name: kubescape
+  namespace: monitoring-satellite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: kubescape
+      app.kubernetes.io/name: kubescape
+      app.kubernetes.io/part-of: kube-prometheus
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: kubescape
+        app.kubernetes.io/name: kubescape
+        app.kubernetes.io/part-of: kube-prometheus
+        app.kubernetes.io/version: prometheus.v2
+    spec:
+      containers:
+      - command:
+        - kubescape
+        env:
+        - name: KS_SKIP_UPDATE_CHECK
+          value: "true"
+        - name: KS_ENABLE_HOST_SCANNER
+          value: "false"
+        - name: KS_DOWNLOAD_ARTIFACTS
+          value: "false"
+        - name: KS_DEFAULT_CONFIGMAP_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        image: quay.io/armosec/kubescape:prometheus.v2
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        name: kubescape
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        resources:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 10m
+            memory: 100Mi
+      serviceAccountName: kubescape

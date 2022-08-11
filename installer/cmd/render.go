@@ -13,6 +13,7 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 	"github.com/gitpod-io/observability/installer/pkg/components"
 	"github.com/gitpod-io/observability/installer/pkg/config"
+	"github.com/gitpod-io/observability/installer/pkg/importer"
 )
 
 var renderOpts struct {
@@ -155,6 +156,16 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 	output := make([]string, 0)
 	for _, c := range sortedObjs {
 		output = append(output, fmt.Sprintf("---\n# %s/%s %s\n%s", c.TypeMeta.APIVersion, c.TypeMeta.Kind, c.Metadata.Name, c.Content))
+	}
+
+	if ctx.Config.Kubescape.Install {
+		kubescapeImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
+		output = append(output, kubescapeImporter.Import()...)
+	}
+
+	if ctx.Config.Grafana.Install {
+		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
+		output = append(output, grafanaImporter.Import()...)
 	}
 
 	return output, nil

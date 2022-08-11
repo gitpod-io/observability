@@ -103,16 +103,6 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     werft: {
         namespace: 'werft',
     },
-    stackdriver: {
-        clientEmail: 'fake@email.com',
-        defaultProject: 'google-project',
-        privateKey:
-|||
-  multiline
-  fake
-  key
-|||,
-    },
     kubescape: {},
     pyrra: {},
     probe: {
