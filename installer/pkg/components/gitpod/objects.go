@@ -26,7 +26,7 @@ func Objects(ctx *common.RenderContext) common.RenderFunc {
 		objects = append(objects, generateObjects(t))
 	}
 
-	objects = append(objects, podMonitor())
+	objects = append(objects, podMonitor(), proxyCaddyObjects())
 
 	return common.CompositeRenderFunc(objects...)
 }
