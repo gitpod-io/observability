@@ -94,7 +94,7 @@ func unmarshalMixinToRuntimeObject(j string) []runtime.Object {
 				Kind:       "PrometheusRule",
 			},
 			ObjectMeta: metav1.ObjectMeta{
-				Name: "gitpod-monitoring",
+				Name: "gitpod-monitoring-rules",
 				//TODO: get namespace from config
 				Namespace: "monitoring-satellite",
 			},
