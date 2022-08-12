@@ -17,7 +17,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 			},
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      App,
-				Namespace: Namespace,
+				Namespace: ServiceMonitorNamespace,
 				Labels:    labels(),
 			},
 			Spec: monitoringv1.ServiceMonitorSpec{

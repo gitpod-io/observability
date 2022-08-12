@@ -1,9 +1,10 @@
 package werft
 
 const (
-	Namespace = "werft"
-	App       = "werft"
-	Component = "werft"
+	Namespace               = "werft"
+	ServiceMonitorNamespace = "monitoring-satellite"
+	App                     = "werft"
+	Component               = "werft"
 )
 
 var (
