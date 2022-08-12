@@ -59,5 +59,5 @@ func restrictedPodsecurityPolicy(ctx *common.RenderContext) ([]runtime.Object, e
 }
 
 func RestrictedPodsecurityPolicyName() string {
-	return "restricted-psp"
+	return "kube-prometheus-restricted"
 }
