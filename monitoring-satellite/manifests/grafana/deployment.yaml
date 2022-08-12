@@ -262,8 +262,8 @@ spec:
           name: grafana-config
           readOnly: false
       nodeSelector:
+        gitpod.io/workload_services: "true"
         kubernetes.io/os: linux
-        nodepool: monitoring
       securityContext:
         fsGroup: 65534
         runAsNonRoot: true

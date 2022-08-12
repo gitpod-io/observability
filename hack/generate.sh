@@ -96,7 +96,7 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     },
     nodeAffinity: {
         nodeSelector: {
-            nodepool: 'monitoring',
+            'gitpod.io/workload_services': 'true',
             'kubernetes.io/os': 'linux',
         },
     },
