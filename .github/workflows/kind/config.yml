@@ -7,4 +7,4 @@ nodes:
     kind: InitConfiguration
     nodeRegistration:
       kubeletExtraArgs:
-        node-labels: "nodepool=monitoring"
+        node-labels: "gitpod.io/workload_services='true'"
