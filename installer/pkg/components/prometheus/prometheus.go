@@ -51,21 +51,12 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 					RunAsNonRoot: pointer.Bool(true),
 				},
 				ServiceAccountName: fmt.Sprintf("prometheus-%s", Name),
-				ServiceMonitorNamespaceSelector: &metav1.LabelSelector{
-					MatchLabels: map[string]string{
-						"kubernetes.io/metadata.name": Namespace,
-					},
-				},
-				ExternalLabels: ctx.Config.Prometheus.ExternalLabels,
-				EnableFeatures: ctx.Config.Prometheus.EnableFeatures,
-				Resources:      ctx.Config.Prometheus.Resources,
-				NodeSelector:   ctx.Config.NodeSelector,
-				RemoteWrite:    remoteWriteSpecs(ctx),
-			},
-			RuleNamespaceSelector: &metav1.LabelSelector{
-				MatchLabels: map[string]string{
-					"kubernetes.io/metadata.name": Namespace,
-				},
+				ExternalLabels:     ctx.Config.Prometheus.ExternalLabels,
+				EnableFeatures:     ctx.Config.Prometheus.EnableFeatures,
+				Resources:          ctx.Config.Prometheus.Resources,
+				NodeSelector:       ctx.Config.NodeSelector,
+				RemoteWrite:        remoteWriteSpecs(ctx),
+				Version:            Version,
 			},
 		},
 	})
