@@ -10,6 +10,38 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
+var configMapData = `receivers:
+  jaeger:
+    protocols:
+      thrift_http:
+        endpoint: "0.0.0.0:14268"
+  otlp:
+    protocols:
+      grpc: # on port 4317
+      http: # on port 4318
+exporters:
+  otlp:
+    endpoint: "api.honeycomb.io:443"
+    headers:
+      "x-honeycomb-team": "%s"
+      "x-honeycomb-dataset": "%s"
+
+extensions:
+  health_check:
+  pprof:
+  zpages:
+service:
+  telemetry:
+    logs:
+      level: "debug"
+  extensions: [health_check, pprof,  zpages]
+  pipelines:
+    traces:
+      receivers: [jaeger, otlp]
+      processors: [ ]
+      exporters: ["otlp"]
+`
+
 func configMap(ctx *common.RenderContext) ([]runtime.Object, error) {
 	return []runtime.Object{
 		&corev1.ConfigMap{
@@ -23,37 +55,7 @@ func configMap(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			Data: map[string]string{
-				"collector.yaml": fmt.Sprintf(`|
-receivers:
-  jaeger:
-	protocols:
-	  thrift_http:
-		endpoint: "0.0.0.0:14268"
-  otlp:
-	protocols:
-	  grpc: # on port 4317
-	  http: # on port 4318
-exporters:
-  otlp:
-	endpoint: "api.honeycomb.io:443"
-	headers:
-	  "x-honeycomb-team": "%s"
-	  "x-honeycomb-dataset": "%s"
-
-extensions:
-  health_check:
-  pprof:
-  zpages:
-service:
-  telemetry:
-	logs:
-	  level: "debug"
-  extensions: [health_check, pprof,  zpages]
-  pipelines:
-	traces:
-	  receivers: [jaeger, otlp]
-	  processors: [ ]
-	  exporters: ["otlp"]`, ctx.Config.Tracing.HoneycombAPIKey, ctx.Config.Tracing.HoneycombDataset),
+				"collector.yaml": fmt.Sprintf(configMapData, ctx.Config.Tracing.HoneycombAPIKey, ctx.Config.Tracing.HoneycombDataset),
 			},
 		},
 	}, nil
