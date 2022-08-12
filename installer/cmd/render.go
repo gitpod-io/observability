@@ -140,14 +140,8 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		return nil, err
 	}
 
-	// generate a config map with every component installed
-	runtimeObjsAndConfig, err := common.GenerateInstallationConfigMap(ctx, runtimeObjs)
-	if err != nil {
-		return nil, err
-	}
-
 	// sort the objects and return the plain YAML
-	sortedObjs, err := common.DependencySortingRenderFunc(runtimeObjsAndConfig)
+	sortedObjs, err := common.DependencySortingRenderFunc(runtimeObjs)
 	if err != nil {
 		return nil, err
 	}

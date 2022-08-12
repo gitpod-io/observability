@@ -5,7 +5,6 @@ import (
 	"sort"
 	"strings"
 
-	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/yaml"
 )
@@ -73,60 +72,6 @@ func DependencySortingRenderFunc(objects []RuntimeObject) ([]RuntimeObject, erro
 		}
 
 		return scoreI < scoreJ
-	})
-
-	return objects, nil
-}
-
-func GenerateInstallationConfigMap(ctx *RenderContext, objects []RuntimeObject) ([]RuntimeObject, error) {
-	cfgMapData := make([]string, 0)
-	component := "gitpod-app"
-
-	// Convert to a simplified object that allows us to access the objects
-	for _, c := range objects {
-		// Jobs are excluded as they break uninstallation if they've been cleaned up
-		if c.Kind != "" && !(c.APIVersion == TypeMetaBatchJob.APIVersion && c.Kind == TypeMetaBatchJob.Kind) {
-			marshal, err := yaml.Marshal(c)
-			if err != nil {
-				return nil, err
-			}
-
-			cfgMapData = append(cfgMapData, string(marshal))
-		}
-	}
-
-	cfgMap := corev1.ConfigMap{
-		TypeMeta: TypeMetaConfigmap,
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      component,
-			Namespace: ctx.Namespace,
-		},
-	}
-
-	// generate the config map data so it can be injected to the object
-	marshal, err := yaml.Marshal(cfgMap)
-	if err != nil {
-		return nil, err
-	}
-
-	cfgMapData = append(cfgMapData, string(marshal))
-
-	// Generate the data, including this config map
-	cfgMap.Data = map[string]string{
-		"app.yaml": strings.Join(cfgMapData, "---\n"),
-	}
-
-	// regenerate the config map so it can be injected into the charts with this config map in
-	marshal, err = yaml.Marshal(cfgMap)
-	if err != nil {
-		return nil, err
-	}
-
-	// Add in the ConfigMap
-	objects = append(objects, RuntimeObject{
-		TypeMeta: cfgMap.TypeMeta,
-		Metadata: cfgMap.ObjectMeta,
-		Content:  string(marshal),
 	})
 
 	return objects, nil
