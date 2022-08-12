@@ -11,6 +11,7 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/components/prometheus"
 	prometheusoperator "github.com/gitpod-io/observability/installer/pkg/components/prometheus-operator"
 	"github.com/gitpod-io/observability/installer/pkg/components/pyrra"
+	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 	"github.com/gitpod-io/observability/installer/pkg/components/werft"
 	"github.com/gitpod-io/observability/installer/pkg/importer"
 )
@@ -34,5 +35,6 @@ func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 		werft.Objects(ctx),
 		gitpod.Objects(ctx),
 		certmanager.Objects(ctx),
+		shared.Objects,
 	)
 }
