@@ -1,5 +1,25 @@
 alerting:
-  config: {}
+  config:
+    global:
+      resolve_timeout: 5m
+      pagerduty_url: https://events.pagerduty.com/v2/enqueue
+    route:
+      receiver: Default
+      group_by:
+      - namespace
+      continue: false
+      routes:
+      - receiver: Watchdog
+        matchers:
+        - alertname="Watchdog"
+        continue: false
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 12h
+    receivers:
+    - name: Default
+    - name: Watchdog
+    templates: []
 certmanager:
   installServiceMonitors: false
 gitpod:
