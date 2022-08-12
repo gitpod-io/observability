@@ -1,8 +1,9 @@
 package gitpod
 
 const (
-	Namespace = "monitoring-satellite"
-	App       = "gitpod"
+	GitpodNamespace = "default"
+	Namespace       = "monitoring-satellite"
+	App             = "gitpod"
 )
 
 var (

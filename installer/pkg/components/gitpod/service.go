@@ -17,7 +17,7 @@ func service(target string) common.RenderFunc {
 				TypeMeta: common.ServiceType,
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      fmt.Sprintf("%s-%s", App, target),
-					Namespace: Namespace,
+					Namespace: GitpodNamespace,
 					Labels:    labels(target),
 				},
 				Spec: corev1.ServiceSpec{

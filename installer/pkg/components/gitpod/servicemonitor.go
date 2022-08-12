@@ -33,7 +33,7 @@ func serviceMonitor(target string) common.RenderFunc {
 					},
 					JobLabel: "app.kubernetes.io/component",
 					NamespaceSelector: monitoringv1.NamespaceSelector{
-						MatchNames: []string{Namespace},
+						MatchNames: []string{GitpodNamespace},
 					},
 					Selector: metav1.LabelSelector{
 						MatchLabels: labels(target),

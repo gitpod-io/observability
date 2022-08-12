@@ -20,7 +20,7 @@ func networkPolicy(target string) common.RenderFunc {
 				},
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      fmt.Sprintf("%s-allow-kube-prometheus", target),
-					Namespace: Namespace,
+					Namespace: GitpodNamespace,
 					Labels:    labels(target),
 				},
 				Spec: networkv1.NetworkPolicySpec{
