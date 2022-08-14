@@ -34,6 +34,7 @@ jobs:
           version: ${{ env.kind-version }}
           image: ${{ matrix.kind-image }}
           wait: 300s
+          config: .github/workflows/kind/config.yml
       - name: Wait for cluster to finish bootstraping
         run: kubectl wait --for=condition=Ready pods --all --all-namespaces --timeout=300s
       - name: Create monitoring-satellite
