@@ -25,4 +25,4 @@ local rules = {
   },
 };
 
-{ 'kube-prometheus-rules/rules': rules }
+{ 'kube-prometheus-rules/rules': rules.prometheusRule }
