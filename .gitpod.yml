@@ -1,15 +1,11 @@
-image: gitpod/workspace-full:2022-08-04-13-40-17
+image: eu.gcr.io/gitpod-core-dev/dev-environment:observability-2022-08-15
 workspaceLocation: observability/observability.code-workspace
 tasks:
-  - init: |
-      # TODO(arthursens): We should update the workspace image so we dont need the steps below
-      sudo curl -Lo /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.27.2/yq_linux_amd64 && sudo chmod +x /usr/bin/yq
-      sudo apt update ; sudo apt-get install shellcheck apt-transport-https ca-certificates -y ; sudo update-ca-certificates
+  - name: Install pre-commit hooks & generate manifests
+    command: |
       make --always-make
-  - init: |
-      $(pyenv which python) -m pip install pre-commit && $(pyenv which pre-commit) install --install-hooks
-      # The first pre-commit run is the one that takes the longest. We run only once so all the others are ⚡.
-      $(pyenv which pre-commit) run --all-files &>/dev/null
+      pre-commit install --install-hooks
+      pre-commit run --all-files &>/dev/null
 vscode:
   extensions:
     - heptio.jsonnet
