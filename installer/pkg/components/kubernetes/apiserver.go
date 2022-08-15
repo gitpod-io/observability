@@ -1,6 +1,8 @@
 package kubernetes
 
 import (
+	"fmt"
+
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -22,7 +24,7 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 				Kind:       "ServiceMonitor",
 			},
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      Name,
+				Name:      fmt.Sprintf("%s-apiserver", Name),
 				Namespace: Namespace,
 				Labels:    labels,
 			},
