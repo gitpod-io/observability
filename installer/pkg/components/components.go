@@ -5,6 +5,7 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/components/alertmanager"
 	certmanager "github.com/gitpod-io/observability/installer/pkg/components/cert-manager"
 	"github.com/gitpod-io/observability/installer/pkg/components/gitpod"
+	"github.com/gitpod-io/observability/installer/pkg/components/kubernetes"
 	kubestateMetrics "github.com/gitpod-io/observability/installer/pkg/components/kubestate-metrics"
 	nodeExporter "github.com/gitpod-io/observability/installer/pkg/components/node-exporter"
 	otelCollector "github.com/gitpod-io/observability/installer/pkg/components/otel-collector"
@@ -35,6 +36,7 @@ func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
 		werft.Objects(ctx),
 		gitpod.Objects(ctx),
 		certmanager.Objects(ctx),
+		kubernetes.Objects,
 		shared.Objects,
 	)
 }
