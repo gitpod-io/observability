@@ -21,7 +21,6 @@ var (
 		"content-service",
 		"ide-metrics",
 		"image-builder-mk3",
-		"messagebus",
 		"openvsx-proxy",
 		"public-api-server",
 		"registry-facade",
