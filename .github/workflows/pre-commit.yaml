@@ -16,4 +16,4 @@ jobs:
         with:
           go-version: ${{ env.golang-version }}
       - name: Pre-commit
-        run: pip install pre-commit && pre-commit run --all-files
+        run: pip install pre-commit && pre-commit run --all-files --show-diff-on-failure
