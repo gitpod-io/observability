@@ -9,7 +9,6 @@ var Objects = common.CompositeRenderFunc(
 	clusterRoleBinding,
 	deployment,
 	podsecuritypolicy,
-	prometheusRule,
 	service,
 	serviceAccount,
 	serviceMonitor,
