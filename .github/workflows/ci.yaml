@@ -23,7 +23,7 @@ jobs:
         uses: peimanja/promtool-github-actions@master
         with:
           promtool_actions_subcommand: "rules"
-          promtool_actions_files: "monitoring-satellite/manifests/ci_prometheus_rules.yaml"
+          promtool_actions_files: "monitoring-satellite/manifests/kube-prometheus-rules/rules.yaml"
           promtool_actions_comment: true
           promtool_actions_version: "2.26.0"
 
