@@ -34,7 +34,9 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 						TargetPort: intstr.FromString("reloader-web"),
 					},
 				},
-				Selector: common.Labels(Name, Component, App, Version),
+				Selector: map[string]string{
+					"app.kubernetes.io/name": "alertmanager",
+				},
 			},
 		},
 	}, nil
