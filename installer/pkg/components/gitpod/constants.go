@@ -20,7 +20,7 @@ var (
 		"containerd-metrics",
 		"content-service",
 		"ide-metrics",
-		"image-builder",
+		"image-builder-mk3",
 		"messagebus",
 		"openvsx-proxy",
 		"public-api-server",
