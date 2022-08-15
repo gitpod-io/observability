@@ -3,7 +3,7 @@ image:
 workspaceLocation: observability/observability.code-workspace
 tasks:
   - name: Install pre-commit hooks & generate manifests
-    command: |
+    init: |
       make --always-make
       pre-commit install --install-hooks
       pre-commit run --all-files &>/dev/null

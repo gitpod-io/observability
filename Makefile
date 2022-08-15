@@ -7,21 +7,12 @@ TOOLING=$(JSONNETFMT_BIN) $(JSONNET_BIN) $(GOJSONTOYAML_BIN) $(JB_BIN)
 
 JSONNET_FMT := $(JSONNETFMT_BIN) -n 2 --max-blank-lines 2 --string-style s --comment-style s
 
-all: setup-workspace fmt lint generate
+all: fmt lint generate
 
 .PHONY: clean
 clean:
     # Delete files marked in .gitignore
 	git clean -Xfd .
-
-.PHONY: setup-workspace
-setup-workspace:
-	go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
-	go get github.com/brancz/gojsontoyaml
-	go get github.com/google/go-jsonnet/cmd/jsonnet
-	go get github.com/google/go-jsonnet/cmd/jsonnetfmt
-	GO111MODULE=on go get github.com/prometheus/prometheus/cmd/promtool@release-2.26
-	export PATH=$(PATH):$(PWD)/tmp/bin
 
 .PHONY: generate
 generate: $(JSONNET_BIN)
