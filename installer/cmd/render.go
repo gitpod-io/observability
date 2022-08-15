@@ -167,6 +167,9 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		output = append(output, proberImporter.Import()...)
 	}
 
+	kubePrometheusRulesImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kube-prometheus-rules")
+	output = append(output, kubePrometheusRulesImporter.Import()...)
+
 	return output, nil
 }
 
