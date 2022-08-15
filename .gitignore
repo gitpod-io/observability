@@ -11,3 +11,4 @@ diff
 !monitoring-satellite/manifests/grafana/*
 !monitoring-satellite/manifests/kubescape/*
 !monitoring-satellite/manifests/probers/*
+!monitoring-satellite/manifests/kube-prometheus-rules/*
