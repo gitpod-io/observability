@@ -1,4 +1,4 @@
-image: 
+image:
   file: gitpod.Dockerfile
 workspaceLocation: observability/observability.code-workspace
 tasks:
