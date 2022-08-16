@@ -1,7 +1,6 @@
 package prometheus
 
 import (
-	"encoding/base64"
 	"fmt"
 
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
@@ -82,8 +81,8 @@ func remoteWriteSecrets(ctx *common.RenderContext) []runtime.Object {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			StringData: map[string]string{
-				"password": base64.StdEncoding.EncodeToString([]byte(rw.Password)),
-				"username": base64.StdEncoding.EncodeToString([]byte(rw.Username)),
+				"password": rw.Password,
+				"username": rw.Username,
 			},
 		})
 	}
