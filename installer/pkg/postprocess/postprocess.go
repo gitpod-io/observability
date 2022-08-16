@@ -95,7 +95,7 @@ func Run(objects []common.RuntimeObject) ([]common.RuntimeObject, error) {
 	for _, o := range objects {
 		for _, p := range Processors {
 			if useProcessor(o, p) {
-				o := o // Fix for G601: Implicit memory aliasing in for loop. (gosec)
+				//nolint:gosec //gosec is flagging dangerous use of address for the loop variable o. Unfortunately we couldn't find a way to make it work without this strategy
 				err := process(p.Expression, &o)
 				if err != nil {
 					return nil, err
