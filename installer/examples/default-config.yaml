@@ -1,5 +1,6 @@
 alerting:
-  config: {}
+  config:
+    templates: null
 certmanager:
   installServiceMonitors: false
 gitpod:
