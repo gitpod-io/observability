@@ -14,6 +14,7 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/components"
 	"github.com/gitpod-io/observability/installer/pkg/config"
 	"github.com/gitpod-io/observability/installer/pkg/importer"
+	"github.com/gitpod-io/observability/installer/pkg/postprocess"
 )
 
 var renderOpts struct {
@@ -146,9 +147,14 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		return nil, err
 	}
 
+	postProcessed, err := postprocess.Run(sortedObjs)
+	if err != nil {
+		return nil, err
+	}
+
 	// output the YAML to stdout
 	output := make([]string, 0)
-	for _, c := range sortedObjs {
+	for _, c := range postProcessed {
 		output = append(output, fmt.Sprintf("---\n# %s/%s %s\n%s", c.TypeMeta.APIVersion, c.TypeMeta.Kind, c.Metadata.Name, c.Content))
 	}
 

@@ -27,4 +27,8 @@ var (
 		APIVersion: "batch/v1",
 		Kind:       "Job",
 	}
+	TypeMetaNetworkPolicy = metav1.TypeMeta{
+		APIVersion: "networking.k8s.io/v1",
+		Kind:       "NetworkPolicy",
+	}
 )
