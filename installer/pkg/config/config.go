@@ -22,7 +22,7 @@ func Defaults(in interface{}) error {
 	cfg.Namespace = "monitoring-satellite"
 
 	cfg.Alerting = &Alerting{
-		Config: map[string]interface{}{},
+		Config: AlertmanagerConfig{},
 	}
 
 	cfg.Tracing = &Tracing{
@@ -99,7 +99,7 @@ type Tracing struct {
 }
 
 type Alerting struct {
-	Config map[string]interface{} `json:"config"`
+	Config AlertmanagerConfig `json:"config"`
 }
 
 type Prometheus struct {

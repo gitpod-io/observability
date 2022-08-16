@@ -7,6 +7,7 @@ require (
 	github.com/google/go-jsonnet v0.18.0
 	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.58.0
 	github.com/prometheus/alertmanager v0.24.0
+	github.com/prometheus/common v0.32.1
 	github.com/spf13/cobra v1.5.0
 	helm.sh/helm/v3 v3.9.2
 	k8s.io/api v0.24.3
@@ -75,7 +76,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.12.2 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
-	github.com/prometheus/common v0.32.1 // indirect
 	github.com/prometheus/common/sigv4 v0.1.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
