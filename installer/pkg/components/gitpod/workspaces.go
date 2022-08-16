@@ -1,14 +1,17 @@
 package gitpod
 
 import (
+	"fmt"
+
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	networkv1 "k8s.io/api/networking/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
 )
 
-func podMonitor() common.RenderFunc {
+func workspaceObjects() common.RenderFunc {
 	return func(ctx *common.RenderContext) ([]runtime.Object, error) {
 		return []runtime.Object{
 			&monitoringv1.PodMonitor{
@@ -49,6 +52,43 @@ func podMonitor() common.RenderFunc {
 								},
 							},
 						},
+					},
+				},
+			},
+			&networkv1.NetworkPolicy{
+				TypeMeta: metav1.TypeMeta{
+					APIVersion: "networking.k8s.io/v1",
+					Kind:       "NetworkPolicy",
+				},
+				ObjectMeta: metav1.ObjectMeta{
+					Name:      fmt.Sprintf("%s-allow-kube-prometheus", "workspace"),
+					Namespace: GitpodNamespace,
+					Labels:    labels("workspace"),
+				},
+				Spec: networkv1.NetworkPolicySpec{
+					PodSelector: metav1.LabelSelector{
+						MatchLabels: map[string]string{
+							"component": "workspace",
+						},
+					},
+					Ingress: []networkv1.NetworkPolicyIngressRule{
+						{
+							From: []networkv1.NetworkPolicyPeer{
+								{
+									NamespaceSelector: &metav1.LabelSelector{
+										MatchLabels: map[string]string{
+											"namespace": Namespace,
+										},
+									},
+									PodSelector: &metav1.LabelSelector{
+										MatchLabels: matchLabels,
+									},
+								},
+							},
+						},
+					},
+					PolicyTypes: []networkv1.PolicyType{
+						networkv1.PolicyTypeIngress,
 					},
 				},
 			},
