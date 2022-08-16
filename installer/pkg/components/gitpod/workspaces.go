@@ -4,9 +4,11 @@ import (
 	"fmt"
 
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	corev1 "k8s.io/api/core/v1"
 	networkv1 "k8s.io/api/networking/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/util/intstr"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
 )
@@ -83,6 +85,12 @@ func workspaceObjects() common.RenderFunc {
 									PodSelector: &metav1.LabelSelector{
 										MatchLabels: matchLabels,
 									},
+								},
+							},
+							Ports: []networkv1.NetworkPolicyPort{
+								{
+									Port:     common.ToPointer(intstr.FromInt(22999)),
+									Protocol: common.ToPointer(corev1.ProtocolTCP),
 								},
 							},
 						},
