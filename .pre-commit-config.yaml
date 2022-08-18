@@ -12,6 +12,11 @@ repos:
       - id: check-shebang-scripts-are-executable
       - id: check-merge-conflict
 
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.11.0
+    hooks:
+      - id: gitleaks
+
   # keep fork in sync!
   - repo: https://github.com/gitpod-io/pre-commit-hooks
     rev: "2.1.5"
