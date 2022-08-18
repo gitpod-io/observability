@@ -29,8 +29,6 @@ grafana:
 kubescape:
   install: true
 namespace: monitoring-satellite
-prober:
-  install: true
 prometheus:
   remoteWrite:
   - password: password
@@ -49,7 +47,5 @@ imports:
   yaml:
     - gitURL: https://github.com/gitpod-io/observability
       path: monitoring-satellite/manifests/kube-prometheus-rules
-    - gitURL: https://github.com/gitpod-io/observability
-      path: monitoring-satellite/manifests/kubescape
     - gitURL: https://github.com/gitpod-io/observability
       path: monitoring-satellite/manifests/probers

@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 
 	"github.com/spf13/cobra"
+	"gopkg.in/op/go-logging.v1"
 	"sigs.k8s.io/yaml"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
@@ -110,6 +111,7 @@ func loadConfig(cfgFN string) (rawCfg interface{}, cfg *config.Config, err error
 		return
 	}
 	cfg = rawCfg.(*config.Config)
+	cfg = replaceDeprecatedFields(cfg)
 
 	return rawCfg, cfg, err
 }
@@ -177,6 +179,54 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 	output = append(output, mixinImporter.ImportPrometheusRules()...)
 
 	return output, nil
+}
+
+func replaceDeprecatedFields(cfg *config.Config) *config.Config {
+	// No deprecated config is set
+	if !(cfg.Kubescape.Install || cfg.Prober.Install) {
+		return cfg
+	}
+
+	// Set up logging to stderr, so it is not mixed with the rendered output.
+	var format = logging.MustStringFormatter(
+		`%{color}%{time:15:04:05} [%{level:.4s}]%{color:reset} %{message}`,
+	)
+	var backend = logging.AddModuleLevel(
+		logging.NewBackendFormatter(logging.NewLogBackend(os.Stderr, "", 0), format))
+
+	backend.SetLevel(logging.INFO, "")
+	logging.SetBackend(backend)
+
+	logger, _ := logging.GetLogger("INFO")
+
+	if cfg.Imports == nil {
+		cfg.Imports = &config.Imports{
+			YAML:      []importer.YAMLImporter{},
+			Kustomize: []importer.KustomizeImporter{},
+		}
+	}
+
+	if cfg.Kubescape.Install {
+		logger.Info("kubescape.install is deprecated, please use the importer interface instead.")
+		cfg.Imports.YAML = append(cfg.Imports.YAML, importer.YAMLImporter{
+			Importer: &importer.Importer{
+				GitURL: "https://github.com/gitpod-io/observability",
+				Path:   "monitoring-satellite/manifests/kubescape",
+			},
+		})
+	}
+
+	if cfg.Prober.Install {
+		logger.Info("prober.install is deprecated, please use the importer interface instead.")
+		cfg.Imports.YAML = append(cfg.Imports.YAML, importer.YAMLImporter{
+			Importer: &importer.Importer{
+				GitURL: "https://github.com/gitpod-io/observability",
+				Path:   "monitoring-satellite/manifests/probers",
+			},
+		})
+	}
+
+	return cfg
 }
 
 func init() {
