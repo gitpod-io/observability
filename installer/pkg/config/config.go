@@ -7,6 +7,8 @@ package config
 import (
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
+
+	"github.com/gitpod-io/observability/installer/pkg/importer"
 )
 
 func Factory() interface{} {
@@ -61,6 +63,8 @@ func Defaults(in interface{}) error {
 		Install: false,
 	}
 
+	cfg.Imports = &Imports{}
+
 	cfg.Prometheus = &Prometheus{
 		RemoteWrite: []*RemoteWrite{
 			{
@@ -90,6 +94,7 @@ type Config struct {
 	Kubescape    *Kubescape        `json:"kubescape,omitempty"`
 	Grafana      *Grafana          `json:"grafana,omitempty"`
 	Certmanager  *Certmanager      `json:"certmanager,omitempty"`
+	Imports      *Imports          `json:"imports,omitempty"`
 }
 
 type Tracing struct {
@@ -150,4 +155,9 @@ type Grafana struct {
 
 type Certmanager struct {
 	InstallServiceMonitors bool `json:"installServiceMonitors"`
+}
+
+type Imports struct {
+	YAML      *[]importer.YAMLImporter      `json:"yaml,omitempty"`
+	Kustomize *[]importer.KustomizeImporter `json:"kustomize,omitempty"`
 }
