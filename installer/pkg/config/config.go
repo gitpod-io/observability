@@ -158,6 +158,6 @@ type Certmanager struct {
 }
 
 type Imports struct {
-	YAML      *[]importer.YAMLImporter      `json:"yaml,omitempty"`
-	Kustomize *[]importer.KustomizeImporter `json:"kustomize,omitempty"`
+	YAML      []importer.YAMLImporter      `json:"yaml,omitempty"`
+	Kustomize []importer.KustomizeImporter `json:"kustomize,omitempty"`
 }

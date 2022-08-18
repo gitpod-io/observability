@@ -12,21 +12,21 @@ const (
 )
 
 type importer struct {
-	gitURL string
-	path   string
+	GitURL string
+	Path   string
 }
 
 func newImporter(gitURL, path string) *importer {
 	return &importer{
-		gitURL: gitURL,
-		path:   path,
+		GitURL: gitURL,
+		Path:   path,
 	}
 }
 
 func (i importer) cloneRepository() {
 	os.RemoveAll(clonePath)
 	_, err := git.PlainClone(clonePath, false, &git.CloneOptions{
-		URL: i.gitURL,
+		URL: i.GitURL,
 	})
 
 	if err != nil {

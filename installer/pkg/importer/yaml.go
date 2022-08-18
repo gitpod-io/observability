@@ -46,7 +46,7 @@ func (y YAMLImporter) Import() []string {
 
 func (y YAMLImporter) getFiles() ([]string, error) {
 	var matches []string
-	err := filepath.Walk(fmt.Sprintf("%s/%s/", clonePath, y.path), func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(fmt.Sprintf("%s/%s/", clonePath, y.Path), func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}

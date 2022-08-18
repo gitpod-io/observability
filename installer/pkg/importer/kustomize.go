@@ -22,11 +22,11 @@ func NewKustomizeImporter(gitURL, path string) *KustomizeImporter {
 	}
 }
 
-func (k KustomizeImporter) Import() {
+func (k KustomizeImporter) Import() []string {
 	k.cloneRepository()
 
 	kustomize := krusty.MakeKustomizer(krusty.MakeDefaultOptions())
-	m, err := kustomize.Run(filesys.MakeFsOnDisk(), fmt.Sprintf("%s/%s", clonePath, k.path))
+	m, err := kustomize.Run(filesys.MakeFsOnDisk(), fmt.Sprintf("%s/%s", clonePath, k.Path))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -36,5 +36,5 @@ func (k KustomizeImporter) Import() {
 		fmt.Println(err)
 	}
 
-	fmt.Println(string(yml))
+	return []string{string(yml)}
 }
