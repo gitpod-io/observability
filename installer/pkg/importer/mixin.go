@@ -36,12 +36,12 @@ var (
 //
 // The import snippet is hard-coded because the mixin importer is very specialized to the way mixins are organized internally at gitpod.
 type MixinImporter struct {
-	*importer
+	*Importer
 }
 
 func NewMixinImporter(gitURL, path string) *MixinImporter {
 	return &MixinImporter{
-		importer: newImporter(gitURL, path),
+		Importer: newImporter(gitURL, path),
 	}
 }
 

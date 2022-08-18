@@ -15,12 +15,12 @@ const YAMLpattern = "*.yaml"
 // yamlImporter := importer.NewYAMLImporter("https://github.com/ArthurSens/observability", "manifests/production/meta/kubescape", false)
 // yamlImporter.Import()
 type YAMLImporter struct {
-	*importer
+	*Importer
 }
 
 func NewYAMLImporter(gitURL, path string) *YAMLImporter {
 	return &YAMLImporter{
-		importer: newImporter(gitURL, path),
+		Importer: newImporter(gitURL, path),
 	}
 }
 

@@ -13,12 +13,12 @@ import (
 // kustomizeImporter := NewKustomizeImporter("https://github.com/kubernetes-sigs/kustomize", "examples/helloWorld")
 // kustomizeImporter.Import()
 type KustomizeImporter struct {
-	*importer
+	*Importer
 }
 
 func NewKustomizeImporter(gitURL, path string) *KustomizeImporter {
 	return &KustomizeImporter{
-		importer: newImporter(gitURL, path),
+		Importer: newImporter(gitURL, path),
 	}
 }
 

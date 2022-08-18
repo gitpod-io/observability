@@ -158,6 +158,16 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		output = append(output, fmt.Sprintf("---\n# %s/%s %s\n%s", c.TypeMeta.APIVersion, c.TypeMeta.Kind, c.Metadata.Name, c.Content))
 	}
 
+	for _, imp := range ctx.Config.Imports.Kustomize {
+		kImporter := importer.NewKustomizeImporter(imp.GitURL, imp.Path)
+		output = append(output, kImporter.Import()...)
+	}
+
+	for _, imp := range ctx.Config.Imports.YAML {
+		yImporter := importer.NewYAMLImporter(imp.GitURL, imp.Path)
+		output = append(output, yImporter.Import()...)
+	}
+
 	if ctx.Config.Kubescape.Install {
 		kubescapeImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
 		output = append(output, kubescapeImporter.Import()...)
