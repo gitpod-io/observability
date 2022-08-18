@@ -168,23 +168,10 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		output = append(output, yImporter.Import()...)
 	}
 
-	if ctx.Config.Kubescape.Install {
-		kubescapeImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kubescape")
-		output = append(output, kubescapeImporter.Import()...)
-	}
-
 	if ctx.Config.Grafana.Install {
 		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/grafana")
 		output = append(output, grafanaImporter.Import()...)
 	}
-
-	if ctx.Config.Prober.Install {
-		proberImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/probers")
-		output = append(output, proberImporter.Import()...)
-	}
-
-	kubePrometheusRulesImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/kube-prometheus-rules")
-	output = append(output, kubePrometheusRulesImporter.Import()...)
 
 	mixinImporter := importer.NewMixinImporter("https://github.com/gitpod-io/observability", "")
 	output = append(output, mixinImporter.ImportPrometheusRules()...)
