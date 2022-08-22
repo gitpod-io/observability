@@ -1,6 +1,8 @@
 alerting:
   config:
     templates: null
+  genericSlackChannel: ""
+  slackOAuthToken: ""
 certmanager:
   installServiceMonitors: false
 gitpod:

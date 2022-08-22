@@ -23,9 +23,7 @@ func Defaults(in interface{}) error {
 
 	cfg.Namespace = "monitoring-satellite"
 
-	cfg.Alerting = &Alerting{
-		Config: AlertmanagerConfig{},
-	}
+	cfg.Alerting = &Alerting{}
 
 	cfg.Tracing = &Tracing{
 		Install: false,
@@ -104,7 +102,16 @@ type Tracing struct {
 }
 
 type Alerting struct {
-	Config AlertmanagerConfig `json:"config"`
+	Config              AlertmanagerConfig  `json:"config"`
+	PagerDutyRoutingKey string              `json:"pagerdutyRoutingKey,omitempty"`
+	SlackOAuthToken     string              `json:"slackOAuthToken"`
+	GenericSlackChannel string              `json:"genericSlackChannel"`
+	TeamRoutes          []TeamAlertingRoute `json:"teamRoutes,omitempty"`
+}
+
+type TeamAlertingRoute struct {
+	TeamLabel    string `json:"teamLabel,omitempty"`
+	SlackChannel string `json:"slackChannel,omitempty"`
 }
 
 type Prometheus struct {
