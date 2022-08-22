@@ -7,8 +7,8 @@ import (
 
 	"github.com/google/go-jsonnet"
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"gopkg.in/yaml.v2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
 )
 
 var (
@@ -45,7 +45,7 @@ func NewMixinImporter(gitURL, path string) *MixinImporter {
 	}
 }
 
-func (m MixinImporter) ImportPrometheusRules() []string {
+func (m MixinImporter) ImportPrometheusRules() []runtime.Object {
 	m.cloneRepository()
 
 	jsonnetImports := []string{platformMixinImport, ideMixinImport, webappMixinImport, workspaceMixinImport}
@@ -62,10 +62,10 @@ func (m MixinImporter) ImportPrometheusRules() []string {
 		fmt.Println(err)
 	}
 
-	return []string{unmarshalMixinToYAML(out)}
+	return unmarshalMixinToRuntimeObject(out)
 }
 
-func unmarshalMixinToYAML(j string) string {
+func unmarshalMixinToRuntimeObject(j string) []runtime.Object {
 	var result map[string]interface{}
 	err := json.Unmarshal([]byte(j), &result)
 	if err != nil {
@@ -85,23 +85,18 @@ func unmarshalMixinToYAML(j string) string {
 		fmt.Println(err)
 	}
 
-	r := monitoringv1.PrometheusRule{
-		TypeMeta: metav1.TypeMeta{
-			APIVersion: "monitoring.coreos.com/v1",
-			Kind:       "PrometheusRule",
+	return []runtime.Object{
+		&monitoringv1.PrometheusRule{
+			TypeMeta: metav1.TypeMeta{
+				APIVersion: "monitoring.coreos.com/v1",
+				Kind:       "PrometheusRule",
+			},
+			ObjectMeta: metav1.ObjectMeta{
+				Name: "gitpod-monitoring-rules",
+				//TODO: get namespace from config
+				Namespace: "monitoring-satellite",
+			},
+			Spec: ruleSpec,
 		},
-		ObjectMeta: metav1.ObjectMeta{
-			Name: "gitpod-monitoring-rules",
-			//TODO: get namespace from config
-			Namespace: "monitoring-satellite",
-		},
-		Spec: ruleSpec,
 	}
-
-	yamlData, err := yaml.Marshal(&r)
-	if err != nil {
-		fmt.Printf("Error while Marshaling. %v", err)
-	}
-
-	return string(yamlData)
 }
