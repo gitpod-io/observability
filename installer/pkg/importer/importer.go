@@ -11,22 +11,22 @@ const (
 	clonePath = "/tmp/clonedRepository"
 )
 
-type importer struct {
-	gitURL string
-	path   string
+type Importer struct {
+	GitURL string `json:"gitURL"`
+	Path   string `json:"path"`
 }
 
-func newImporter(gitURL, path string) *importer {
-	return &importer{
-		gitURL: gitURL,
-		path:   path,
+func newImporter(gitURL, path string) *Importer {
+	return &Importer{
+		GitURL: gitURL,
+		Path:   path,
 	}
 }
 
-func (i importer) cloneRepository() {
+func (i Importer) cloneRepository() {
 	os.RemoveAll(clonePath)
 	_, err := git.PlainClone(clonePath, false, &git.CloneOptions{
-		URL: i.gitURL,
+		URL: i.GitURL,
 	})
 
 	if err != nil {

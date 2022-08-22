@@ -7,6 +7,7 @@ gitpod:
   installServiceMonitors: true
 grafana:
   install: false
+imports: {}
 kubescape:
   install: false
 namespace: monitoring-satellite

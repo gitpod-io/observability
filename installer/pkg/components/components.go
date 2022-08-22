@@ -14,7 +14,6 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/components/pyrra"
 	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 	"github.com/gitpod-io/observability/installer/pkg/components/werft"
-	"github.com/gitpod-io/observability/installer/pkg/importer"
 )
 
 func MonitoringCentralObjects(ctx *common.RenderContext) common.RenderFunc {
@@ -22,12 +21,9 @@ func MonitoringCentralObjects(ctx *common.RenderContext) common.RenderFunc {
 }
 
 func MonitoringSatelliteObjects(ctx *common.RenderContext) common.RenderFunc {
-	mixinImporter := importer.NewMixinImporter("https://github.com/gitpod-io/observability", "")
-
 	return common.CompositeRenderFunc(
 		alertmanager.Objects,
 		kubestateMetrics.Objects,
-		mixinImporter.ImportPrometheusRules,
 		nodeExporter.Objects,
 		prometheusoperator.Objects,
 		otelCollector.Objects(ctx),
