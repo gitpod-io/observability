@@ -1,6 +1,12 @@
 alerting:
   genericSlackChannel: "#generic_alerts"
   slackOAuthToken: "fake-token"
+  pagerdutyRoutingKey: "fake-pd-key"
+  teamRoutes:
+  - teamLabel: platform
+    slackChannel: "#team_platform_alerts"
+  - teamLabel: newTeam
+    slackChannel: "#newTeam_channel"
 certmanager:
   installServiceMonitors: false
 gitpod:
