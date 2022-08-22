@@ -102,7 +102,6 @@ type Tracing struct {
 }
 
 type Alerting struct {
-	Config              AlertmanagerConfig  `json:"config"`
 	PagerDutyRoutingKey string              `json:"pagerdutyRoutingKey,omitempty"`
 	SlackOAuthToken     string              `json:"slackOAuthToken"`
 	GenericSlackChannel string              `json:"genericSlackChannel"`

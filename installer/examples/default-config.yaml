@@ -1,6 +1,4 @@
 alerting:
-  config:
-    templates: null
   genericSlackChannel: ""
   slackOAuthToken: ""
 certmanager:

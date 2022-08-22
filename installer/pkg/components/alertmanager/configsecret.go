@@ -21,7 +21,7 @@ func configSecret(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			StringData: map[string]string{
-				"alertmanager.yaml": ctx.Config.Alerting.Config.String(),
+				"alertmanager.yaml": "",
 			},
 		},
 	}, nil
