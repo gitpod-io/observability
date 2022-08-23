@@ -34,6 +34,139 @@ local defaults = {
 function(params) {
   local k = self,
   local _config = defaults + params,
+  local controlConfig =
+    |||
+      {
+        "cpu_limit_max": [],
+        "cpu_limit_min": [],
+        "cpu_request_max": [],
+        "cpu_request_min": [],
+        "imageRepositoryAllowList": [
+          "ecr.*amazonaws.com",
+          ".*.gcr.io",
+          ".*azurecr.io"
+        ],
+        "insecureCapabilities": [
+          "SETPCAP",
+          "NET_ADMIN",
+          "NET_RAW",
+          "SYS_MODULE",
+          "SYS_RAWIO",
+          "SYS_PTRACE",
+          "SYS_ADMIN",
+          "SYS_BOOT",
+          "MAC_OVERRIDE",
+          "MAC_ADMIN",
+          "PERFMON",
+          "ALL",
+          "BPF"
+        ],
+        "k8sRecommendedLabels": [
+          "app.kubernetes.io/name",
+          "app.kubernetes.io/instance",
+          "app.kubernetes.io/version",
+          "app.kubernetes.io/component",
+          "app.kubernetes.io/part-of",
+          "app.kubernetes.io/managed-by",
+          "app.kubernetes.io/created-by"
+        ],
+        "listOfDangerousArtifcats": [
+          "bin/bash",
+          "sbin/sh",
+          "bin/ksh",
+          "bin/tcsh",
+          "bin/zsh",
+          "usr/bin/scsh",
+          "bin/csh",
+          "bin/busybox",
+          "usr/bin/busybox"
+        ],
+        "max_critical_vulnerabilities": [
+          "5"
+        ],
+        "max_high_vulnerabilities": [
+          "10"
+        ],
+        "memory_limit_max": [],
+        "memory_limit_min": [],
+        "memory_request_max": [],
+        "memory_request_min": [],
+        "publicRegistries": [
+          "quay.io",
+          "registry.hub.docker.com"
+        ],
+        "recommendedLabels": [
+          "app",
+          "tier",
+          "phase",
+          "version",
+          "owner",
+          "env"
+        ],
+        "sensitiveInterfaces": [
+          "nifi",
+          "argo-server",
+          "weave-scope-app",
+          "kubeflow",
+          "kubernetes-dashboard"
+        ],
+        "sensitiveKeyNames": [
+          "aws_access_key_id",
+          "aws_secret_access_key",
+          "azure_batchai_storage_account",
+          "azure_batchai_storage_key",
+          "azure_batch_account",
+          "azure_batch_key",
+          "secret",
+          "key",
+          "password",
+          "pwd",
+          "token",
+          "jwt",
+          "bearer",
+          "credential"
+        ],
+        "sensitiveValues": [
+          "BEGIN \\w+ PRIVATE KEY",
+          "PRIVATE KEY",
+          "eyJhbGciO",
+          "JWT",
+          "Bearer",
+          "_key_",
+          "_secret_"
+        ],
+        "sensitiveValuesAllowed": [],
+        "servicesNames": [
+          "nifi-service",
+          "argo-server",
+          "minio",
+          "postgres",
+          "workflow-controller-metrics",
+          "weave-scope-app",
+          "kubernetes-dashboard"
+        ],
+        "untrustedRegistries": [],
+        "wlKnownNames": [
+          "coredns",
+          "kube-proxy",
+          "event-exporter-gke",
+          "kube-dns",
+          "17-default-backend",
+          "metrics-server",
+          "ca-audit",
+          "ca-dashboard-aggregator",
+          "ca-notification-server",
+          "ca-ocimage",
+          "ca-oracle",
+          "ca-posture",
+          "ca-rbac",
+          "ca-vuln-scan",
+          "ca-webhook",
+          "ca-websocket",
+          "clair-clair"
+        ]
+      }
+    |||,
   // Safety check
   assert std.isObject(_config.resources),
 
@@ -109,6 +242,10 @@ function(params) {
     local container = {
       name: _config.name,
       image: _config.image + ':' + _config.version,
+      args: [
+        '--controls-config',
+        '/home/.kubescape/controls-input.json',
+      ],
       env: [
         {
           name: 'KS_SKIP_UPDATE_CHECK',
@@ -155,6 +292,13 @@ function(params) {
       }],
       command: ['kubescape'],
       resources: _config.resources,
+      volumeMounts: [
+        {
+          name: 'config',
+          mountPath: '/home/.kubescape',
+          readOnly: true,
+        },
+      ],
     },
 
     apiVersion: 'apps/v1',
@@ -172,8 +316,25 @@ function(params) {
         spec: {
           serviceAccountName: k._metadata.name,
           containers: [container],
+          volumes: [
+            {
+              name: 'config',
+              configMap: {
+                name: k._metadata.name,
+              },
+            },
+          ],
         },
       },
+    },
+  },
+
+  configMap: {
+    apiVersion: 'v1',
+    kind: 'ConfigMap',
+    metadata: k._metadata,
+    data: {
+      'controls-inputs.json': controlConfig,
     },
   },
 

@@ -24,7 +24,10 @@ spec:
         app.kubernetes.io/version: prometheus.v2
     spec:
       containers:
-      - command:
+      - args:
+        - --controls-config
+        - /home/.kubescape/controls-input.json
+        command:
         - kubescape
         env:
         - name: KS_SKIP_UPDATE_CHECK
@@ -61,4 +64,12 @@ spec:
           requests:
             cpu: 10m
             memory: 100Mi
+        volumeMounts:
+        - mountPath: /home/.kubescape
+          name: config
+          readOnly: true
       serviceAccountName: kubescape
+      volumes:
+      - configMap:
+          name: kubescape
+        name: config
