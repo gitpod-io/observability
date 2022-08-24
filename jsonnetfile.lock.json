@@ -8,8 +8,8 @@
           "subdir": "jsonnet"
         }
       },
-      "version": "e777daba011c3df1d12d9a8d1f84373cb63d8104",
-      "sum": "CC34FFIcuKFxwwTEGTXdHAy8FWb/vlYm4faH2YokhA4=",
+      "version": "a686504ded78c3d43debe4c92bd55f301fccf018",
+      "sum": "UbJnz0DmyTPO0qFWbI3f7urPVrMCfCDXUaTM/3bIDjQ=",
       "name": "kubescape"
     },
     {
@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "e087c349e120be98a27790ac434832df0a54b2a2",
+      "version": "c29dbf34005532640875df2b30711399ce3d236f",
       "sum": "IkDHlaE0gvvcPjSNurFT+jQ2aCOAbqHF1WVmXbAgkds="
     },
     {
@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "5e16a2daa468af8d9b8faf1a3c97a8b30327fd2c",
-      "sum": "yuVhmEKtM3MyJhhOvbDJk0KLiO1xKu0xpucsHzgOsA8=",
+      "version": "7cee528fb83937bd293fa06875f5e67650dcd171",
+      "sum": "moUdpYLFkUuKaAY5tNnR0TQIBlk3uYwqxWwbYXHP7lo=",
       "name": "gitpod"
     },
     {
@@ -80,8 +80,8 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "a2ba95acc8b7653d33bd57075678d8de2a64e5b3",
-      "sum": "1Ge62JmmPDq7fWyDAt3uCTobGEj4sJdbkqxRGWK22p0="
+      "version": "c132c4afcf17491718539db4c2d94c0ea4346120",
+      "sum": "tDR6yT2GVfw0wTU12iZH+m01HrbIr6g/xN+/8nzNkU0="
     },
     {
       "source": {
@@ -90,8 +90,8 @@
           "subdir": ""
         }
       },
-      "version": "b8f44bb7be728423836bef0e904ec7166895a34b",
-      "sum": "LCgSosxceeYuoau5fYSPtE5eXOFe46DxexfkrctUv7c="
+      "version": "eb98d4f74e8ac9c30b1f0e815b07bed31da76c8f",
+      "sum": "CVGLCx1cF1erVl5FbE6oQtW/UvH3QuQUJciL+LV659A="
     },
     {
       "source": {
@@ -100,7 +100,7 @@
           "subdir": "jsonnet/kube-state-metrics"
         }
       },
-      "version": "5b017f7ffc570a3e28b435d26004a4cb1c3d3312",
+      "version": "4c141d5877f1eeaeb3194a79b9c948d7efe72fd7",
       "sum": "evJ+PXRzuM1tezCG5WzpAn4Lk3YJfMvDFcs+45fsscU="
     },
     {
@@ -110,7 +110,7 @@
           "subdir": "jsonnet/kube-state-metrics-mixin"
         }
       },
-      "version": "5b017f7ffc570a3e28b435d26004a4cb1c3d3312",
+      "version": "4c141d5877f1eeaeb3194a79b9c948d7efe72fd7",
       "sum": "u8gaydJoxEjzizQ8jY8xSjYgWooPmxw+wIWdDxifMAk="
     },
     {
@@ -183,7 +183,7 @@
           "subdir": "config/crd/bases"
         }
       },
-      "version": "e9fbdfcd9213415bef43f762ff7bd2145a8ef930",
+      "version": "d1288834c1571731a34a599cf8136a88b65d0d35",
       "sum": "d1550yhsX4VxdVN7b0gWT0cido/W90P6OGLzLqPwZcs="
     },
     {

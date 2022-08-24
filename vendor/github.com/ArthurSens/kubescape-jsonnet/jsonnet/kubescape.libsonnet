@@ -44,7 +44,9 @@ function(params) {
         "imageRepositoryAllowList": [
           "ecr.*amazonaws.com",
           ".*.gcr.io",
-          ".*azurecr.io"
+          ".*azurecr.io",
+          "quay.io",
+          "docker.io"
         ],
         "insecureCapabilities": [
           "SETPCAP",
@@ -92,7 +94,6 @@ function(params) {
         "memory_request_max": [],
         "memory_request_min": [],
         "publicRegistries": [
-          "quay.io",
           "registry.hub.docker.com"
         ],
         "recommendedLabels": [
