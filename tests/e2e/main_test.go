@@ -149,9 +149,6 @@ func TestQueryPrometheus(t *testing.T) {
 		}, {
 			query:   `up{job="alertmanager-main"} == 1`,
 			expectN: 2,
-		},{
-			query:   `up{job="kubescape"} == 1`,
-			expectN: 1,
 		},
 		// As we want to guarantee more targets, add more tests below
 	}
