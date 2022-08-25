@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "803b52a388107e72d90d8f6ed11a14ea87c2b2a4",
-      "sum": "ofmf/heE6uIkoRj4sMCiywjW3lHSNdiIqIPCTBiDTTY=",
+      "version": "074d9842ca28ac5e8cc9c44de20c9b19a060f92f",
+      "sum": "YcwcgtFa/V9zrtcXWkD0EqYGuAhN8H2qH5yfI8puCd4=",
       "name": "gitpod"
     },
     {
@@ -120,7 +120,7 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "a4e3fc4cda07ffad693c811a112d8b3a6ae51326",
+      "version": "bfb332ee037e17848f8aeaf7529da321558a4898",
       "sum": "LlAIPGfg64e7PQdLzfTx1rXt6+jaWcATgYIMoqMOTd0="
     },
     {
