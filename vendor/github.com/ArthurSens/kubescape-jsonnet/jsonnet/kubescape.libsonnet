@@ -168,6 +168,124 @@ function(params) {
         ]
       }
     |||,
+
+  local exceptionConfig =
+    |||
+      [
+        {
+          "name": "exclude-allowed-privileged",
+          "policyType": "postureExceptionPolicy",
+          "actions": [
+            "alertOnly"
+          ],
+          "resources": [
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "agent-smith"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "ws-daemon"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "falco"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "calico-node"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "ip-masq-agent"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "kube-proxy"
+              }
+            },
+          {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "metadata-proxy-v0.1"
+              }
+            },
+          {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "nvidia-gpu-device-plugin"
+              }
+            },
+          {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "pdcsi-node"
+              }
+            },
+          ],
+          "posturePolicies": [
+            {
+              "controlID": "C-0057"
+            }
+          ]
+        },
+      {
+          "name": "exclude-allowed-hostPID",
+          "policyType": "postureExceptionPolicy",
+          "actions": [
+            "alertOnly"
+          ],
+          "resources": [
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "node-exporter"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "ws-daemon"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "agent-smith"
+              }
+            }
+          ],
+          "posturePolicies": [
+            {
+              "controlID": "C-0038"
+            }
+          ]
+        }
+      ]
+    |||,
   // Safety check
   assert std.isObject(_config.resources),
 
@@ -246,6 +364,8 @@ function(params) {
       args: [
         '--controls-config',
         '/home/.kubescape/controls-input.json',
+        '--exceptions',
+        '/home/.kubescape/kubescape-exceptions.json',
       ],
       env: [
         {
@@ -336,6 +456,7 @@ function(params) {
     metadata: k._metadata,
     data: {
       'controls-inputs.json': controlConfig,
+      'kubescape-exceptions.json': exceptionConfig,
     },
   },
 

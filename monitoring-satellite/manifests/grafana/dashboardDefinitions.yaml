@@ -9667,7 +9667,7 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
-                                  "expr": "sum(\n  rate(gitpod_ws_manager_workspace_stops_total{cluster=~\"$cluster\", reason=\"failed\"}[5m])\n) by (cluster, type)\n",
+                                  "expr": "sum(\n  rate(gitpod_ws_manager_workspace_stops_total{cluster=~\"$cluster\", reason=\"failed\"}[5m])\n) by (cluster, type) OR on() vector(0)\n",
                                   "format": "time_series",
                                   "intervalFactor": 2,
                                   "legendFormat": "{{type}}",
