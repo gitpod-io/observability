@@ -27,6 +27,8 @@ spec:
       - args:
         - --controls-config
         - /home/.kubescape/controls-input.json
+        - --exceptions
+        - /home/.kubescape/kubescape-exceptions.json
         command:
         - kubescape
         env:
