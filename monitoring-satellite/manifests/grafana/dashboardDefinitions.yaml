@@ -9551,7 +9551,7 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
-                                  "expr": "gitpod_ws_manager_workspace_phase_total{cluster=~\"$cluster\", phase!=\"RUNNING\"}",
+                                  "expr": "sum by (type, phase)(gitpod_ws_manager_workspace_phase_total{cluster=~\"$cluster\", phase!=\"RUNNING\"})",
                                   "format": "time_series",
                                   "intervalFactor": 2,
                                   "legendFormat": "{{type}} - {{phase}}",
