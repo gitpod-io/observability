@@ -30,10 +30,10 @@ import (
 // marshalling. See the following issue for details:
 // https://github.com/prometheus/alertmanager/issues/1985
 type AlertmanagerConfig struct {
-	Global            *globalConfig       `yaml:"global,omitempty" json:"global,omitempty"`
-	Route             *route              `yaml:"route,omitempty" json:"route,omitempty"`
-	InhibitRules      []*inhibitRule      `yaml:"inhibit_rules,omitempty" json:"inhibit_rules,omitempty"`
-	Receivers         []*receiver         `yaml:"receivers,omitempty" json:"receivers,omitempty"`
+	Global            *GlobalConfig       `yaml:"global,omitempty" json:"global,omitempty"`
+	Route             *Route              `yaml:"route,omitempty" json:"route,omitempty"`
+	InhibitRules      []*InhibitRule      `yaml:"inhibit_rules,omitempty" json:"inhibit_rules,omitempty"`
+	Receivers         []*Receiver         `yaml:"receivers,omitempty" json:"receivers,omitempty"`
 	MuteTimeIntervals []*muteTimeInterval `yaml:"mute_time_intervals,omitempty" json:"mute_time_intervals,omitempty"`
 	Templates         []string            `yaml:"templates" json:"templates"`
 }
@@ -46,12 +46,12 @@ func (ac AlertmanagerConfig) String() string {
 	return string(b)
 }
 
-type globalConfig struct {
+type GlobalConfig struct {
 	// ResolveTimeout is the time after which an alert is declared resolved
 	// if it has not been updated.
 	ResolveTimeout *model.Duration `yaml:"resolve_timeout,omitempty" json:"resolve_timeout,omitempty"`
 
-	HTTPConfig *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 
 	SMTPFrom           string          `yaml:"smtp_from,omitempty" json:"smtp_from,omitempty"`
 	SMTPHello          string          `yaml:"smtp_hello,omitempty" json:"smtp_hello,omitempty"`
@@ -77,21 +77,21 @@ type globalConfig struct {
 	TelegramAPIURL     *config.URL     `yaml:"telegram_api_url,omitempty" json:"telegram_api_url,omitempty"`
 }
 
-type route struct {
+type Route struct {
 	Receiver          string            `yaml:"receiver,omitempty" json:"receiver,omitempty"`
 	GroupByStr        []string          `yaml:"group_by,omitempty" json:"group_by,omitempty"`
 	Match             map[string]string `yaml:"match,omitempty" json:"match,omitempty"`
 	MatchRE           map[string]string `yaml:"match_re,omitempty" json:"match_re,omitempty"`
 	Matchers          []string          `yaml:"matchers,omitempty" json:"matchers,omitempty"`
 	Continue          bool              `yaml:"continue,omitempty" json:"continue,omitempty"`
-	Routes            []*route          `yaml:"routes,omitempty" json:"routes,omitempty"`
+	Routes            []*Route          `yaml:"routes,omitempty" json:"routes,omitempty"`
 	GroupWait         string            `yaml:"group_wait,omitempty" json:"group_wait,omitempty"`
 	GroupInterval     string            `yaml:"group_interval,omitempty" json:"group_interval,omitempty"`
 	RepeatInterval    string            `yaml:"repeat_interval,omitempty" json:"repeat_interval,omitempty"`
 	MuteTimeIntervals []string          `yaml:"mute_time_intervals,omitempty" json:"mute_time_intervals,omitempty"`
 }
 
-type inhibitRule struct {
+type InhibitRule struct {
 	TargetMatch    map[string]string `yaml:"target_match,omitempty" json:"target_match,omitempty"`
 	TargetMatchRE  map[string]string `yaml:"target_match_re,omitempty" json:"target_match_re,omitempty"`
 	TargetMatchers []string          `yaml:"target_matchers,omitempty" json:"target_matchers,omitempty"`
@@ -101,11 +101,11 @@ type inhibitRule struct {
 	Equal          []string          `yaml:"equal,omitempty" json:"equal,omitempty"`
 }
 
-type receiver struct {
+type Receiver struct {
 	Name             string             `yaml:"name" json:"name"`
 	OpsgenieConfigs  []*opsgenieConfig  `yaml:"opsgenie_configs,omitempty" json:"opsgenie_configs,omitempty"`
-	PagerdutyConfigs []*pagerdutyConfig `yaml:"pagerduty_configs,omitempty" json:"pagerduty_configs,omitempty"`
-	SlackConfigs     []*slackConfig     `yaml:"slack_configs,omitempty" json:"slack_configs,omitempty"`
+	PagerdutyConfigs []*PagerdutyConfig `yaml:"pagerduty_configs,omitempty" json:"pagerduty_configs,omitempty"`
+	SlackConfigs     []*SlackConfig     `yaml:"slack_configs,omitempty" json:"slack_configs,omitempty"`
 	WebhookConfigs   []*webhookConfig   `yaml:"webhook_configs,omitempty" json:"webhook_configs,omitempty"`
 	WeChatConfigs    []*weChatConfig    `yaml:"wechat_configs,omitempty" json:"wechat_config,omitempty"`
 	EmailConfigs     []*emailConfig     `yaml:"email_configs,omitempty" json:"email_configs,omitempty"`
@@ -118,13 +118,13 @@ type receiver struct {
 type webhookConfig struct {
 	VSendResolved *bool             `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
 	URL           string            `yaml:"url,omitempty" json:"url,omitempty"`
-	HTTPConfig    *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	MaxAlerts     int32             `yaml:"max_alerts,omitempty" json:"max_alerts,omitempty"`
 }
 
-type pagerdutyConfig struct {
+type PagerdutyConfig struct {
 	VSendResolved *bool             `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
-	HTTPConfig    *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	ServiceKey    string            `yaml:"service_key,omitempty" json:"service_key,omitempty"`
 	RoutingKey    string            `yaml:"routing_key,omitempty" json:"routing_key,omitempty"`
 	URL           string            `yaml:"url,omitempty" json:"url,omitempty"`
@@ -133,7 +133,7 @@ type pagerdutyConfig struct {
 	Description   string            `yaml:"description,omitempty" json:"description,omitempty"`
 	Details       map[string]string `yaml:"details,omitempty" json:"details,omitempty"`
 	Images        []pagerdutyImage  `yaml:"images,omitempty" json:"images,omitempty"`
-	Links         []pagerdutyLink   `yaml:"links,omitempty" json:"links,omitempty"`
+	Links         []PagerdutyLink   `yaml:"links,omitempty" json:"links,omitempty"`
 	Severity      string            `yaml:"severity,omitempty" json:"severity,omitempty"`
 	Class         string            `yaml:"class,omitempty" json:"class,omitempty"`
 	Component     string            `yaml:"component,omitempty" json:"component,omitempty"`
@@ -142,7 +142,7 @@ type pagerdutyConfig struct {
 
 type opsgenieConfig struct {
 	VSendResolved *bool               `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
-	HTTPConfig    *httpClientConfig   `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig   `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	APIKey        string              `yaml:"api_key,omitempty" json:"api_key,omitempty"`
 	APIKeyFile    string              `yaml:"api_key_file,omitempty" json:"api_key_file,omitempty"`
 	APIURL        string              `yaml:"api_url,omitempty" json:"api_url,omitempty"`
@@ -170,12 +170,12 @@ type weChatConfig struct {
 	ToTag         string            `yaml:"to_tag,omitempty" json:"to_tag,omitempty"`
 	Message       string            `yaml:"message,omitempty" json:"message,omitempty"`
 	MessageType   string            `yaml:"message_type,omitempty" json:"message_type,omitempty"`
-	HTTPConfig    *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 }
 
-type slackConfig struct {
+type SlackConfig struct {
 	VSendResolved *bool             `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
-	HTTPConfig    *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	APIURL        string            `yaml:"api_url,omitempty" json:"api_url,omitempty"`
 	APIURLFile    string            `yaml:"api_url_file,omitempty" json:"api_url_file,omitempty"`
 	Channel       string            `yaml:"channel,omitempty" json:"channel,omitempty"`
@@ -196,11 +196,11 @@ type slackConfig struct {
 	ThumbURL      string            `yaml:"thumb_url,omitempty" json:"thumb_url,omitempty"`
 	LinkNames     bool              `yaml:"link_names,omitempty" json:"link_names,omitempty"`
 	MrkdwnIn      []string          `yaml:"mrkdwn_in,omitempty" json:"mrkdwn_in,omitempty"`
-	Actions       []slackAction     `yaml:"actions,omitempty" json:"actions,omitempty"`
+	Actions       []SlackAction     `yaml:"actions,omitempty" json:"actions,omitempty"`
 }
 
-type httpClientConfig struct {
-	Authorization   *authorization `yaml:"authorization,omitempty"`
+type HTTPClientConfig struct {
+	Authorization   *Authorization `yaml:"authorization,omitempty"`
 	BasicAuth       *basicAuth     `yaml:"basic_auth,omitempty"`
 	OAuth2          *oauth2        `yaml:"oauth2,omitempty"`
 	BearerToken     string         `yaml:"bearer_token,omitempty"`
@@ -218,7 +218,7 @@ type tlsConfig struct {
 	InsecureSkipVerify bool   `yaml:"insecure_skip_verify"`
 }
 
-type authorization struct {
+type Authorization struct {
 	Type            string `yaml:"type,omitempty"`
 	Credentials     string `yaml:"credentials,omitempty"`
 	CredentialsFile string `yaml:"credentials_file,omitempty"`
@@ -241,7 +241,7 @@ type oauth2 struct {
 	TLSConfig *tlsConfig `yaml:"tls_config,omitempty"`
 }
 
-type pagerdutyLink struct {
+type PagerdutyLink struct {
 	Href string `yaml:"href,omitempty" json:"href,omitempty"`
 	Text string `yaml:"text,omitempty" json:"text,omitempty"`
 }
@@ -265,7 +265,7 @@ type slackField struct {
 	Short bool   `yaml:"short,omitempty" json:"short,omitempty"`
 }
 
-type slackAction struct {
+type SlackAction struct {
 	Type         string                  `yaml:"type,omitempty"  json:"type,omitempty"`
 	Text         string                  `yaml:"text,omitempty"  json:"text,omitempty"`
 	URL          string                  `yaml:"url,omitempty"   json:"url,omitempty"`
@@ -301,7 +301,7 @@ type emailConfig struct {
 
 type pushoverConfig struct {
 	VSendResolved *bool             `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
-	HTTPConfig    *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	UserKey       string            `yaml:"user_key,omitempty" json:"user_key,omitempty"`
 	Token         string            `yaml:"token,omitempty" json:"token,omitempty"`
 	Title         string            `yaml:"title,omitempty" json:"title,omitempty"`
@@ -317,7 +317,7 @@ type pushoverConfig struct {
 
 type snsConfig struct {
 	VSendResolved *bool             `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
-	HTTPConfig    *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig    *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	APIUrl        string            `yaml:"api_url,omitempty" json:"api_url,omitempty"`
 	Sigv4         sigV4Config       `yaml:"sigv4,omitempty" json:"sigv4,omitempty"`
 	TopicARN      string            `yaml:"topic_arn,omitempty" json:"topic_arn,omitempty"`
@@ -336,7 +336,7 @@ type telegramConfig struct {
 	Message              string            `yaml:"message,omitempty" json:"message,omitempty"`
 	DisableNotifications bool              `yaml:"disable_notifications,omitempty" json:"disable_notifications,omitempty"`
 	ParseMode            string            `yaml:"parse_mode,omitempty" json:"parse_mode,omitempty"`
-	HTTPConfig           *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig           *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 }
 
 type sigV4Config struct {
@@ -363,7 +363,7 @@ func (d duration) MarshalText() ([]byte, error) {
 
 type victorOpsConfig struct {
 	VSendResolved     *bool             `yaml:"send_resolved,omitempty" json:"send_resolved,omitempty"`
-	HTTPConfig        *httpClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
+	HTTPConfig        *HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 	APIKey            string            `yaml:"api_key,omitempty" json:"api_key,omitempty"`
 	APIURL            string            `yaml:"api_url,omitempty" json:"api_url,omitempty"`
 	RoutingKey        string            `yaml:"routing_key,omitempty" json:"routing_key,omitempty"`
