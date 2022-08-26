@@ -12,7 +12,6 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/config"
 )
 
-
 const queryString = `{{ reReplaceAll "%22" "%5C%22" (index .Alerts 0).GeneratorURL | reReplaceAll ".*expr=" "https://grafana.gitpod.io/explore?orgId=1&left=%7B%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D,%22datasource%22:%22VictoriaMetrics%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22" | reReplaceAll "&g0.tab=1" "%22%7D%5D%7D" | reReplaceAll ` + "`\\+`" + ` "%20" | reReplaceAll "%0A" "" | reReplaceAll "%28" "(" | reReplaceAll "%29" ")" }}`
 
 func configSecret(ctx *common.RenderContext) ([]runtime.Object, error) {
