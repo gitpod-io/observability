@@ -22,7 +22,7 @@ local rules = {
               monitoringSatellite.prometheusOperator.prometheusRule.spec.groups +
               monitoringSatellite.certmanager.prometheusRule.spec.groups,
     },
-  },
+  } + (import '../lib/alert-severity-mapper.libsonnet') + (import '../lib/alert-filter.libsonnet') + (import '../lib/alert-duration-mapper.libsonnet'),
 };
 
 { 'kube-prometheus-rules/rules': rules.prometheusRule }
