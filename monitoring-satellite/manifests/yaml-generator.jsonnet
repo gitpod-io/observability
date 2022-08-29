@@ -3,6 +3,8 @@ local monitoringSatellite = (import '../monitoring-satellite.libsonnet');
 local excludedComponents = [
   'kubePrometheus',
   'restrictedPodSecurityPolicy',
+  'prometheusOperator',
+  'pyrra',
 ];
 
 { namespace: monitoringSatellite.kubePrometheus.namespace } +
@@ -11,5 +13,15 @@ local excludedComponents = [
 {
   [component + '/' + resource]: monitoringSatellite[component][resource]
   for component in std.filter(function(component) !std.member(excludedComponents, component), std.objectFields(monitoringSatellite))
-  for resource in std.objectFields(monitoringSatellite[component],)
+  for resource in std.objectFields(monitoringSatellite[component])
+} +
+{
+  [component + '/' + resource]: monitoringSatellite[component][resource]
+  for component in std.filter(function(component) std.member(['pyrra', 'prometheusOperator'], component), std.objectFields(monitoringSatellite))
+  for resource in std.filter(function(resource) monitoringSatellite[component][resource].kind != 'CustomResourceDefinition', std.objectFields(monitoringSatellite[component]))
+} +
+{
+  ['crds' + '/' + component + '-' + resource]: monitoringSatellite[component][resource]
+  for component in std.filter(function(component) std.member(['pyrra', 'prometheusOperator'], component), std.objectFields(monitoringSatellite))
+  for resource in std.filter(function(resource) monitoringSatellite[component][resource].kind == 'CustomResourceDefinition', std.objectFields(monitoringSatellite[component]))
 }
