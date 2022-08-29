@@ -49,6 +49,11 @@ var sortOrder = []string{
 	"CronJob",
 	"Ingress",
 	"APIService",
+	"Prometheus",
+	"Alertmanager",
+	"ServiceMonitor",
+	"PodMonitor",
+	"PrometheusRule",
 }
 
 type RuntimeObject struct {
