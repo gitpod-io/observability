@@ -23,7 +23,7 @@ if [[ $KUBECONFIG != "" ]]; then
   KUBECONFIG_FLAG="--kubeconfig ${KUBECONFIG}"
 fi
 
-kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/crds/
+kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/crds/ --server-side
 
 until kubectl $KUBECONFIG_FLAG get servicemonitors.monitoring.coreos.com --all-namespaces ; do date; sleep 1; echo ""; done
 until kubectl $KUBECONFIG_FLAG get prometheusrules.monitoring.coreos.com --all-namespaces ; do date; sleep 1; echo ""; done
