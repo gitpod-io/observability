@@ -16,6 +16,12 @@ local unwatedAlerts = [
 
   // From kube-prometheus
   'Watchdog',
+
+  // From certmanager
+  'CertManagerAbsent',
+  'CertManagerCertExpirySoon',
+  'CertManagerCertNotReady',
+  'CertManagerHittingRateLimits',
 ];
 
 {
