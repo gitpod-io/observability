@@ -22,6 +22,51 @@ local unwatedAlerts = [
   'CertManagerCertExpirySoon',
   'CertManagerCertNotReady',
   'CertManagerHittingRateLimits',
+
+  // From kubernetes
+  'KubePodCrashLooping',
+  'KubeDeploymentGenerationMismatch',
+  'KubeDeploymentReplicasMismatch',
+  'KubeStatefulSetReplicasMismatch',
+  'KubeStatefulSetGenerationMismatch',
+  'KubeStatefulSetUpdateNotRolledOut',
+  'KubeDaemonSetRolloutStuck',
+  'KubeContainerWaiting',
+  'KubeDaemonSetNotScheduled',  // Re-added to platform-mixin
+  'KubeDaemonSetMisScheduled',
+  'KubeJobNotCompleted',  // Re-added to platform-mixin
+  'KubeJobFailed',  // Re-added to platform-mixin
+  'KubeHpaReplicasMismatch',
+  'KubeHpaMaxedOut',
+  'KubeCPUOvercommit',  // Re-added to platform-mixin
+  'KubeMemoryOvercommit',  // Re-added to platform-mixin
+  'KubeCPUQuotaOvercommit',
+  'KubeMemoryQuotaOvercommit',
+  'KubeQuotaAlmostFull',
+  'KubeQuotaFullyUsed',
+  'KubeQuotaExceeded',
+  'KubePersistentVolumeFillingUp',  // Re-added to platform-mixin
+  'KubePersistentVolumeInodesFillingUp',
+  'KubePersistentVolumeErrors',  // Re-added to platform-mixin
+  'KubeVersionMismatch',  // Re-added to platform-mixin
+  'KubeAPIErrorBudgetBurn',
+  'KubeClientCertificateExpiration',
+  'KubeAggregatedAPIErrors',
+  'KubeAggregatedAPIDown',
+  'KubeAPIDown',
+  'KubeAPITerminatedRequests',
+  'KubeNodeNotReady',  // Re-added to platform-mixin
+  'KubeNodeUnreachable',
+  'KubeletTooManyPods',
+  'KubeNodeReadinessFlapping',
+  'KubeletPlegDurationHigh',
+  'KubeletPodStartUpLatencyHigh',
+  'KubeletClientCertificateExpiration',
+  'KubeletServerCertificateExpiration',
+  'KubeletClientCertificateRenewalErrors',
+  'KubeletServerCertificateRenewalErrors',
+  'KubeletDown',  // Re-added to platform-mixin
+  'KubeClientErrors',
 ];
 
 {
