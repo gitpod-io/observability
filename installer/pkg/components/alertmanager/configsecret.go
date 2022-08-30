@@ -220,7 +220,7 @@ func slackButtons() []config.SlackAction {
 	return []config.SlackAction{
 		{
 			Type: "button",
-			Text: "Runbbok :runbook",
+			Text: "Runbook :book:",
 			URL:  "{{ .CommonAnnotations.runbook_url }}",
 		},
 		{
