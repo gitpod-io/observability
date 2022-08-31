@@ -1750,7 +1750,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-admin-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -2837,7 +2837,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-admin-workspaces
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3931,7 +3931,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -8069,7 +8069,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-node-resource-metrics
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -8941,7 +8941,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-nodes-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -9921,7 +9921,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -10374,7 +10374,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-slo-workspace-startuptime
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -10838,7 +10838,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-sh-example-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -11117,7 +11117,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-jb
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -13233,7 +13233,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-openvsx-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -13711,7 +13711,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-ssh-gateway
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14287,7 +14287,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-alertmanager-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -16048,7 +16048,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-apiserver
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -17385,7 +17385,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-cert-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -19256,7 +19256,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-cluster-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -20435,7 +20435,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-controller-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -23512,7 +23512,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-k8s-resources-cluster
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -26298,7 +26298,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-k8s-resources-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -27313,7 +27313,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-k8s-resources-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -29771,7 +29771,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-k8s-resources-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -31784,7 +31784,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-k8s-resources-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -33962,7 +33962,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -36205,7 +36205,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-kubelet
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -37658,7 +37658,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-namespace-by-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -39383,7 +39383,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-namespace-by-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -40435,7 +40435,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -41513,7 +41513,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-node-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -42575,7 +42575,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-nodes-darwin
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -43630,7 +43630,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -44206,7 +44206,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-persistentvolumesusage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -45423,7 +45423,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-pod-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -47082,7 +47082,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-prometheus-remote-write
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -48306,7 +48306,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-prometheus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -49566,7 +49566,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -50667,7 +50667,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-scheduler
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -51131,7 +51131,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-vulnerabilities
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -52558,7 +52558,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-workload-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -53965,7 +53965,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-dashboard
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55370,7 +55370,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-db-sync
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -56775,7 +56775,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-db
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -59346,7 +59346,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-image-builder
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -64019,7 +64019,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-messagebus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -65426,7 +65426,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -65437,7 +65437,10 @@ items:
               "list": [
                   {
                       "builtIn": 1,
-                      "datasource": "-- Grafana --",
+                      "datasource": {
+                          "type": "datasource",
+                          "uid": "grafana"
+                      },
                       "enable": true,
                       "hide": true,
                       "iconColor": "rgba(0, 211, 255, 1)",
@@ -65457,7 +65460,6 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "iteration": 1643631956016,
           "links": [
 
           ],
@@ -65465,6 +65467,10 @@ items:
           "panels": [
               {
                   "collapsed": false,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -65474,6 +65480,15 @@ items:
                   "id": 42,
                   "panels": [
 
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
                   ],
                   "title": "server Metrics",
                   "type": "row"
@@ -65518,7 +65533,7 @@ items:
                       "alertThreshold": true
                   },
                   "percentage": false,
-                  "pluginVersion": "8.3.4",
+                  "pluginVersion": "9.1.0",
                   "pointradius": 2,
                   "points": false,
                   "renderer": "flot",
@@ -65530,6 +65545,9 @@ items:
                   "steppedLine": false,
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(rate(gitpod_server_api_calls_total{cluster=~\"$cluster\", pod=~\"$pod\", method=~\"$method\"}[5m])) by (method)",
                           "interval": "",
@@ -65616,7 +65634,7 @@ items:
                       "alertThreshold": true
                   },
                   "percentage": false,
-                  "pluginVersion": "8.3.4",
+                  "pluginVersion": "9.1.0",
                   "pointradius": 2,
                   "points": false,
                   "renderer": "flot",
@@ -65628,6 +65646,9 @@ items:
                   "steppedLine": false,
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "expr": "sum(\n  rate(gitpod_server_api_calls_total{cluster=~\"$cluster\", pod=~\"$pod\", method=~\"$method\", statusCode!~\"2..|429\"}[5m])\n) by (method)\n/\nsum(\n  rate(gitpod_server_api_calls_total{cluster=~\"$cluster\", pod=~\"$pod\", method=~\"$method\"}[5m])\n) by (method)",
                           "interval": "",
                           "legendFormat": "{{method}}",
@@ -65657,14 +65678,15 @@ items:
                   },
                   "yaxes": [
                       {
+                          "$$hashKey": "object:62",
                           "decimals": 2,
-                          "format": "percentunit",
+                          "format": "reqps",
                           "logBase": 1,
-                          "max": "1",
                           "min": "0",
                           "show": true
                       },
                       {
+                          "$$hashKey": "object:63",
                           "format": "short",
                           "logBase": 1,
                           "show": true
@@ -65686,6 +65708,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -65751,10 +65775,12 @@ items:
 
                           ],
                           "displayMode": "table",
-                          "placement": "right"
+                          "placement": "right",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "pluginVersion": "8.3.3",
@@ -65819,6 +65845,23 @@ items:
                       "uid": "${datasource}"
                   },
                   "description": "A heatmap of the API requests duration.",
+                  "fieldConfig": {
+                      "defaults": {
+                          "custom": {
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              }
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
                   "gridPos": {
                       "h": 8,
                       "w": 12,
@@ -65834,7 +65877,47 @@ items:
                   "legend": {
                       "show": false
                   },
-                  "pluginVersion": "8.3.3",
+                  "options": {
+                      "calculate": false,
+                      "calculation": {
+
+                      },
+                      "cellGap": 2,
+                      "cellValues": {
+
+                      },
+                      "color": {
+                          "exponent": 0.5,
+                          "fill": "#b4ff00",
+                          "mode": "scheme",
+                          "scale": "exponential",
+                          "scheme": "Greens",
+                          "steps": 128
+                      },
+                      "exemplars": {
+                          "color": "rgba(255,0,255,0.7)"
+                      },
+                      "filterValues": {
+                          "le": 0.000000001
+                      },
+                      "legend": {
+                          "show": false
+                      },
+                      "rowsFrame": {
+                          "layout": "auto"
+                      },
+                      "showValue": "never",
+                      "tooltip": {
+                          "show": true,
+                          "yHistogram": false
+                      },
+                      "yAxis": {
+                          "axisPlacement": "left",
+                          "reverse": false,
+                          "unit": "s"
+                      }
+                  },
+                  "pluginVersion": "9.1.0",
                   "reverseYBuckets": false,
                   "targets": [
                       {
@@ -65878,6 +65961,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -65944,10 +66029,12 @@ items:
                               "max"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "pluginVersion": "8.3.1",
@@ -65979,6 +66066,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66040,14 +66129,19 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(rate(gitpod_server_api_connections_closed_total{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (cluster, pod)",
                           "hide": false,
@@ -66070,6 +66164,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66131,14 +66227,19 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(rate(gitpod_server_api_connections_total{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (cluster, pod)",
                           "interval": "",
@@ -66187,7 +66288,7 @@ items:
                       "alertThreshold": true
                   },
                   "percentage": false,
-                  "pluginVersion": "8.3.4",
+                  "pluginVersion": "9.1.0",
                   "pointradius": 2,
                   "points": false,
                   "renderer": "flot",
@@ -66275,6 +66376,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66339,14 +66442,19 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "multi"
+                          "mode": "multi",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum (server_websocket_connection_count{cluster=~\"$cluster\", pod=~\"$pod\"}) by (cluster, pod)",
                           "interval": "",
@@ -66368,6 +66476,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66432,14 +66542,19 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "multi"
+                          "mode": "multi",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(server_websocket_connection_count{cluster=~\"$cluster\", pod=~\"$pod\"}) by (cluster, clientType)",
                           "interval": "",
@@ -66460,6 +66575,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66521,14 +66638,19 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(rate(gitpod_server_api_calls_user_total{cluster=~\"$cluster\", method=~\"ts.*\"}[5m])) by (cluster, method) * 60",
                           "interval": "",
@@ -66549,6 +66671,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66611,14 +66735,19 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum (gitpod_version_info{}) by (cluster, gitpod_version)",
                           "interval": "",
@@ -66639,6 +66768,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -66700,14 +66831,19 @@ items:
 
                           ],
                           "displayMode": "table",
-                          "placement": "right"
+                          "placement": "right",
+                          "showLegend": true
                       },
                       "tooltip": {
-                          "mode": "single"
+                          "mode": "single",
+                          "sort": "none"
                       }
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "kube_pod_container_info{cluster=~\"$cluster\", pod=~\"$pod\", image=~\".+\", container=\"server\"}",
                           "interval": "",
@@ -66721,6 +66857,10 @@ items:
               },
               {
                   "collapsed": true,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -66778,6 +66918,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "process_resident_memory_bytes{cluster=~\"$cluster\", pod=~\"$pod\", job=\"server\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{pod}}",
@@ -66879,6 +67022,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "rate(process_cpu_seconds_total{cluster=~\"$cluster\", job=\"server\", pod=~\"$pod\"}[1m])",
                                   "interval": "",
                                   "intervalFactor": 2,
@@ -66986,6 +67132,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "nodejs_eventloop_lag_seconds{cluster=~\"$cluster\", job=\"server\", pod=~\"$pod\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{pod}}",
@@ -67088,6 +67237,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "nodejs_active_handles_total{cluster=~\"$cluster\", job=\"server\", pod=~\"$pod\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{pod}}",
@@ -67132,11 +67284,24 @@ items:
                           }
                       }
                   ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
+                  ],
                   "title": "Node.js Runtime Metrics",
                   "type": "row"
               },
               {
                   "collapsed": false,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -67146,6 +67311,15 @@ items:
                   "id": 50,
                   "panels": [
 
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
                   ],
                   "title": "HTTP Metrics",
                   "type": "row"
@@ -67331,6 +67505,9 @@ items:
                   "steppedLine": false,
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "expr": "histogram_quantile(0.99, \n  sum(rate(gitpod_server_http_request_duration_seconds_bucket{cluster=~\"$cluster\", route=~\"$http_route\"}[5m])) by (cluster, le)\n )",
                           "interval": "",
                           "legendFormat": "{{cluster}} - 99th percentile",
@@ -67338,6 +67515,9 @@ items:
                           "refId": "A"
                       },
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "expr": "histogram_quantile(0.95, \n  sum(rate(gitpod_server_http_request_duration_seconds_bucket{cluster=~\"$cluster\", route=~\"$http_route\"}[5m])) by (cluster, le)\n )",
                           "hide": false,
                           "interval": "",
@@ -67346,6 +67526,9 @@ items:
                           "refId": "B"
                       },
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "expr": "histogram_quantile(0.50, \n  sum(rate(gitpod_server_http_request_duration_seconds_bucket{cluster=~\"$cluster\", route=~\"$http_route\"}[5m])) by (cluster, le)\n )",
                           "hide": false,
                           "interval": "",
@@ -67354,6 +67537,9 @@ items:
                           "refId": "C"
                       },
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "expr": "sum(rate(gitpod_server_http_request_duration_seconds_sum{cluster=~\"$cluster\", route=~\"$http_route\"}[5m])) by (cluster)\n/\nsum(rate(gitpod_server_http_request_duration_seconds_count{cluster=~\"$cluster\", route=~\"$http_route\"}[5m])) by (cluster)",
                           "hide": false,
                           "interval": "",
@@ -67400,6 +67586,10 @@ items:
               },
               {
                   "collapsed": true,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -67457,6 +67647,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(container_memory_working_set_bytes{container!=\"POD\", container!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}}",
@@ -67553,6 +67746,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(\n  rate(container_cpu_usage_seconds_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Cores being used",
@@ -67675,7 +67871,8 @@ items:
                                       "max"
                                   ],
                                   "displayMode": "table",
-                                  "placement": "bottom"
+                                  "placement": "bottom",
+                                  "showLegend": true
                               },
                               "tooltip": {
                                   "mode": "single"
@@ -67748,6 +67945,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_receive_bytes_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Received",
@@ -67755,6 +67955,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_transmit_bytes_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Transmitted",
@@ -67849,6 +68052,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_receive_packets_dropped_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Receive",
@@ -67856,6 +68062,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_transmit_packets_dropped_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Transmit",
@@ -67950,6 +68159,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_receive_errors_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Received",
@@ -67957,6 +68169,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_transmit_errors_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Transmitted",
@@ -68053,6 +68268,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "rate(kube_pod_container_status_restarts_total{cluster=~\"$cluster\", pod=~\"$pod\"}[1m])",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{kubernetes_pod_node_name}} - {{pod}} ",
@@ -68149,6 +68367,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_pod_container_status_running{cluster=~\"$cluster\", pod=~\"$pod\"} == 1 ",
                                   "interval": "",
                                   "legendFormat": "{{pod}}  - RUNNING",
@@ -68156,6 +68377,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "(\n  sum by (pod) (kube_pod_container_status_terminated{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n) * on(pod) group_left(reason) (\n  sum by (pod, reason) (kube_pod_container_status_terminated_reason{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n)",
                                   "interval": "",
                                   "legendFormat": "{{pod}}  - TERMINATED -> {{reason}}",
@@ -68163,6 +68387,9 @@ items:
                                   "refId": "B"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "(\n  sum by (pod) (kube_pod_container_status_waiting{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n) * on(pod) group_left(reason) (\n  sum by (pod, reason) (kube_pod_container_status_waiting_reason{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n)",
                                   "interval": "",
                                   "legendFormat": "{{pod}}  - WAITING -> {{reason}}",
@@ -68257,6 +68484,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_deployment_spec_replicas{cluster=~\"$cluster\", deployment=\"server\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{deployment}} - Desired",
@@ -68264,6 +68494,9 @@ items:
                                   "refId": "C"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_deployment_status_replicas_available{cluster=~\"$cluster\", deployment=\"server\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{deployment}} - Available replicas",
@@ -68271,6 +68504,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_deployment_status_replicas_unavailable{cluster=~\"$cluster\", deployment=\"server\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{deployment}} - Unvailable replicas",
@@ -68316,12 +68552,21 @@ items:
                           }
                       }
                   ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
+                  ],
                   "title": "Pod Metrics",
                   "type": "row"
               }
           ],
           "refresh": false,
-          "schemaVersion": 34,
+          "schemaVersion": 37,
           "style": "dark",
           "tags": [
               "gitpod-mixin"
@@ -68540,7 +68785,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -69158,7 +69403,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-usage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -71457,7 +71702,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-ws-manager-bridge
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -71468,7 +71713,10 @@ items:
               "list": [
                   {
                       "builtIn": 1,
-                      "datasource": "-- Grafana --",
+                      "datasource": {
+                          "type": "datasource",
+                          "uid": "grafana"
+                      },
                       "enable": true,
                       "hide": true,
                       "iconColor": "rgba(0, 211, 255, 1)",
@@ -71488,7 +71736,6 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "iteration": 1646144275104,
           "links": [
 
           ],
@@ -71496,6 +71743,10 @@ items:
           "panels": [
               {
                   "collapsed": false,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -71505,6 +71756,15 @@ items:
                   "id": 18,
                   "panels": [
 
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
                   ],
                   "title": "General overview",
                   "type": "row"
@@ -71519,6 +71779,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71585,7 +71847,8 @@ items:
                               "max"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71595,6 +71858,9 @@ items:
                   "pluginVersion": "8.2.2",
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(rate(gitpod_server_api_calls_total{cluster=~\"$cluster\"}[5m])) by (cluster, method)",
                           "interval": "",
@@ -71608,6 +71874,7 @@ items:
               },
               {
                   "datasource": {
+                      "type": "prometheus",
                       "uid": "$datasource"
                   },
                   "fieldConfig": {
@@ -71616,7 +71883,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
-                              "axisLabel": "",
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
                               "drawStyle": "line",
@@ -71647,7 +71915,6 @@ items:
                           "mappings": [
 
                           ],
-                          "max": 1,
                           "min": 0,
                           "thresholds": {
                               "mode": "absolute",
@@ -71662,7 +71929,7 @@ items:
                                   }
                               ]
                           },
-                          "unit": "percentunit"
+                          "unit": "reqps"
                       },
                       "overrides": [
 
@@ -71683,7 +71950,8 @@ items:
                               "max"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71693,11 +71961,16 @@ items:
                   "pluginVersion": "8.2.2",
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
+                          "editorMode": "code",
                           "exemplar": true,
                           "expr": "sum(\n  rate(gitpod_server_api_calls_total{cluster=~\"$cluster\", statusCode!~\"2..|429\"}[5m])\n) by (method)",
                           "interval": "",
                           "legendFormat": "{{method}}",
                           "queryType": "randomWalk",
+                          "range": true,
                           "refId": "A"
                       }
                   ],
@@ -71715,6 +71988,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71779,7 +72054,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "multi",
@@ -71788,6 +72064,9 @@ items:
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(server_websocket_connection_count{cluster=~\"$cluster\"}) by (cluster, clientType)",
                           "interval": "",
@@ -71809,6 +72088,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71870,7 +72151,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71904,6 +72186,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71981,7 +72265,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72026,6 +72311,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -72088,7 +72375,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72097,6 +72385,9 @@ items:
                   },
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum (gitpod_version_info{cluster=~\"$cluster\"}) by (cluster, gitpod_version)",
                           "interval": "",
@@ -72109,6 +72400,10 @@ items:
               },
               {
                   "collapsed": false,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -72118,6 +72413,15 @@ items:
                   "id": 20,
                   "panels": [
 
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
                   ],
                   "title": "External metrics",
                   "type": "row"
@@ -72133,6 +72437,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -72194,7 +72500,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72219,6 +72526,10 @@ items:
               },
               {
                   "collapsed": false,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -72228,6 +72539,15 @@ items:
                   "id": 22,
                   "panels": [
 
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
                   ],
                   "title": "Messagebus health",
                   "type": "row"
@@ -72242,6 +72562,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -72308,7 +72630,8 @@ items:
                               "max"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72318,6 +72641,9 @@ items:
                   "pluginVersion": "8.2.2",
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(\n  rate(container_cpu_usage_seconds_total{cluster=~\"$cluster\", container!=\"POD\", pod=~\"messagebus.*\"}[1m])\n) by (pod, cluster, node)",
                           "interval": "",
@@ -72339,6 +72665,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -72404,7 +72732,8 @@ items:
                               "max"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72414,6 +72743,9 @@ items:
                   "pluginVersion": "8.2.2",
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum(container_memory_working_set_bytes{cluster=~\"$cluster\", container!=\"POD\", container!=\"\", pod=~\"messagebus.*\"}) by (pod, cluster, node)",
                           "interval": "",
@@ -72435,6 +72767,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -72498,7 +72832,8 @@ items:
                               "lastNotNull"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72508,6 +72843,9 @@ items:
                   "pluginVersion": "8.2.2",
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum (\n  rate(container_network_receive_bytes_total{container!=\"POD\", cluster=~\"$cluster\", pod=~\"messagebus.*\"}[1m])\n) by (pod, cluster, node)",
                           "interval": "",
@@ -72516,6 +72854,9 @@ items:
                           "refId": "A"
                       },
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "sum (\n  rate(container_network_transmit_bytes_total{container!=\"POD\", cluster=~\"$cluster\", pod=~\"messagebus.*\"}[1m])\n) by (pod, cluster, node)",
                           "interval": "",
@@ -72538,6 +72879,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -72601,7 +72944,8 @@ items:
                               "lastNotNull"
                           ],
                           "displayMode": "table",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72611,6 +72955,9 @@ items:
                   "pluginVersion": "8.2.2",
                   "targets": [
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "kube_pod_container_status_running{cluster=~\"$cluster\", pod=~\"messagebus.*\"} == 1 ",
                           "interval": "",
@@ -72619,6 +72966,9 @@ items:
                           "refId": "A"
                       },
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "(\n  sum by (pod) (kube_pod_container_status_terminated{cluster=~\"$cluster\", pod=~\"messagebus.*\"}) == 1\n) * on(pod) group_left(reason) (\n  sum by (pod, reason) (kube_pod_container_status_terminated_reason{cluster=~\"$cluster\", pod=~\"messagebus.*\"}) == 1\n)",
                           "interval": "",
@@ -72627,6 +72977,9 @@ items:
                           "refId": "B"
                       },
                       {
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "exemplar": true,
                           "expr": "(\n  sum by (pod) (kube_pod_container_status_waiting{cluster=~\"$cluster\", pod=~\"messagebus.*\"}) == 1\n) * on(pod) group_left(reason) (\n  sum by (pod, reason) (kube_pod_container_status_waiting_reason{cluster=~\"$cluster\", pod=~\"messagebus.*\"}) == 1\n)",
                           "interval": "",
@@ -72639,7 +72992,7 @@ items:
                   "type": "timeseries"
               }
           ],
-          "schemaVersion": 35,
+          "schemaVersion": 37,
           "style": "dark",
           "tags": [
               "gitpod-mixin"
@@ -72716,7 +73069,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-meta-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -73263,7 +73616,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-meta-services
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -74824,7 +75177,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-slo-login
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -77697,7 +78050,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-agent-smith
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -79821,7 +80174,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-blobserve
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -82389,7 +82742,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-content-service
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -85410,7 +85763,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-registry-facade
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -87984,7 +88337,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-ws-daemon
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -91244,7 +91597,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-ws-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -92652,7 +93005,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-component-ws-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -92955,7 +93308,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-node-ephemeral-storage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -93717,7 +94070,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-node-problem-detector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -93980,7 +94333,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-node-swap
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -96076,7 +96429,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-workspace-coredns
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -96771,7 +97124,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.0
+      app.kubernetes.io/version: 9.1.1
     name: grafana-dashboard-gitpod-workspace-success-criteria
     namespace: monitoring-satellite
 kind: ConfigMapList
