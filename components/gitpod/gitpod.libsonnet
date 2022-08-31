@@ -457,7 +457,7 @@ function(params) {
     apiVersion: 'networking.k8s.io/v1',
     kind: 'NetworkPolicy',
     metadata: {
-      name: 'image-builder-allow-kube-prometheus',
+      name: 'ide-metrics-allow-kube-prometheus',
       namespace: $._config.gitpodNamespace,
       labels: $._config.commonLabels,
     },
