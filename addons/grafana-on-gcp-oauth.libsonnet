@@ -6,6 +6,7 @@ function(config) {
   assert std.objectHas(config.grafana, 'GCPExternalIpAddress') : 'grafana.GCPExternalIpAddress required',
   assert std.objectHas(config.grafana, 'IAPClientID') : 'grafana.IAPClientID required',
   assert std.objectHas(config.grafana, 'IAPClientSecret') : 'grafana.IAPClientSecret required',
+  assert std.objectHas(config.grafana, 'issuer') : 'grafana.issuer required',
 
   grafana+: {
     // Certmanager must be installed in the cluster already!
@@ -22,7 +23,7 @@ function(config) {
         ],
         issuerRef: {
           kind: 'ClusterIssuer',
-          name: 'letsencrypt-issuer-gitpod-191109',
+          name: config.grafana.issuer,
         },
         secretName: 'grafana-certificate',
       },

@@ -3,7 +3,6 @@ local config = std.extVar('config');
 local defaults = {
   local defaults = self,
 
-
   name: 'victoriametrics',
   namespace: 'monitoring-central',
   version: 'v1.47.0',
@@ -14,6 +13,7 @@ local defaults = {
     'app.kubernetes.io/name': defaults.name,
     'app.kubernetes.io/part-of': 'monitoring-central',
   },
+  issuer: 'letsencrypt-issuer-gitpod-191109',
 };
 
 function(params) {
@@ -304,7 +304,7 @@ function(params) {
       ],
       issuerRef: {
         kind: 'ClusterIssuer',
-        name: 'letsencrypt-issuer-gitpod-191109',
+        name: config.victoriametrics.issuer,
       },
       secretName: 'victoriametrics-certificate',
     },

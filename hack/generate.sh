@@ -121,6 +121,7 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
         GCPExternalIpAddress: 'fake_external_ip_address',
         IAPClientID: 'fakeIAP_ID',
         IAPClientSecret: 'fakeIAP_secret',
+        issuer: 'issuer-123',
     },
     victoriametrics: {
         DNS: 'http://fake.victoriametrics.url',
@@ -128,6 +129,7 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
         username: 'p@ssW0rd',
         password: 'user',
         GCPExternalIpAddress: 'fake_external_ip_address',
+        issuer: 'issuer-123',
     },
     stackdriver: {
         clientEmail: 'fake@email.com',
