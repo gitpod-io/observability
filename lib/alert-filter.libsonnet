@@ -67,6 +67,16 @@ local unwatedAlerts = [
   'KubeletServerCertificateRenewalErrors',
   'KubeletDown',  // Re-added to platform-mixin
   'KubeClientErrors',
+
+  // From Alertmanager
+  'AlertmanagerFailedReload',  // Re-added to platform-mixin
+  'AlertmanagerFailedToSendAlerts',  // Re-added to platform-mixin
+  'AlertmanagerMembersInconsistent',
+  'AlertmanagerClusterFailedToSendAlerts',
+  'AlertmanagerConfigInconsistent',
+  'AlertmanagerClusterDown',
+  'AlertmanagerClusterCrashlooping',
+
 ];
 
 {
