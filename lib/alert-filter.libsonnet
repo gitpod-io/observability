@@ -67,6 +67,19 @@ local unwatedAlerts = [
   'KubeletServerCertificateRenewalErrors',
   'KubeletDown',  // Re-added to platform-mixin
   'KubeClientErrors',
+
+  // From node-exporter
+  'NodeFilesystemAlmostOutOfSpace',  // Re-added to platform-mixin
+  'NodeFilesystemFilesFillingUp',
+  'NodeFilesystemAlmostOutOfFiles',  // Re-added to platform-mixin
+  'NodeNetworkReceiveErrs',
+  'NodeNetworkTransmitErrs',
+  'NodeTextFileCollectorScrapeError',
+  'NodeClockSkewDetected',
+  'NodeClockNotSynchronising',
+  'NodeRAIDDegraded',
+  'NodeRAIDDiskFailure',
+  'NodeFileDescriptorLimit',
 ];
 
 {
