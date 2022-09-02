@@ -68,6 +68,16 @@ local unwatedAlerts = [
   'KubeletDown',  // Re-added to platform-mixin
   'KubeClientErrors',
 
+  // From prometheus-operator
+  'PrometheusOperatorListErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorWatchErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorReconcileErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorNodeLookupErrors',
+  'PrometheusOperatorNotReady',
+  'ConfigReloaderSidecarErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorRejectedResources',
+  'PrometheusOperatorSyncFailed',
+
   // From Prometheus
   'PrometheusBadConfig',  // Re-added to platform-mixin
   'PrometheusNotificationQueueRunningFull',
