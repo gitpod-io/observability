@@ -77,6 +77,45 @@ local unwatedAlerts = [
   'AlertmanagerClusterDown',
   'AlertmanagerClusterCrashlooping',
 
+
+  // From kube-state-metrics
+  'KubeStateMetricsWatchErrors',  // Re-added to platform-mixin
+  'KubeStateMetricsShardingMismatch',
+  'KubeStateMetricsShardsMissing',
+
+  // From prometheus-operator
+  'PrometheusOperatorListErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorWatchErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorReconcileErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorNodeLookupErrors',
+  'PrometheusOperatorNotReady',
+  'ConfigReloaderSidecarErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorRejectedResources',
+  'PrometheusOperatorSyncFailed',
+
+  // From Prometheus
+  'PrometheusBadConfig',  // Re-added to platform-mixin
+  'PrometheusNotificationQueueRunningFull',
+  'PrometheusErrorSendingAlertsToSomeAlertmanagers',
+  'PrometheusNotConnectedToAlertmanagers',
+  'PrometheusTSDBReloadsFailing',
+  'PrometheusTSDBCompactionsFailing',
+  'PrometheusNotIngestingSamples',
+  'PrometheusDuplicateTimestamps',
+  'PrometheusOutOfOrderTimestamps',
+  'PrometheusRemoteStorageFailures',  // Re-added to platform-mixin
+  'PrometheusRemoteWriteBehind',
+  'PrometheusRemoteWriteDesiredShards',
+  'PrometheusRuleFailures',  // Re-added to platform-mixin
+  'PrometheusMissingRuleEvaluations',
+  'PrometheusTargetLimitHit',
+  'PrometheusLabelLimitHit',
+  'PrometheusScrapeBodySizeLimitHit',
+  'PrometheusScrapeSampleLimitHit',
+  'PrometheusTargetSyncFailure',
+  'PrometheusHighQueryLoad',
+  'PrometheusErrorSendingAlertsToAnyAlertmanager',
+
 ];
 
 {
