@@ -67,6 +67,16 @@ local unwatedAlerts = [
   'KubeletServerCertificateRenewalErrors',
   'KubeletDown',  // Re-added to platform-mixin
   'KubeClientErrors',
+
+  // From prometheus-operator
+  'PrometheusOperatorListErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorWatchErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorReconcileErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorNodeLookupErrors',
+  'PrometheusOperatorNotReady',
+  'ConfigReloaderSidecarErrors',  // Re-added to platform-mixin
+  'PrometheusOperatorRejectedResources',
+  'PrometheusOperatorSyncFailed',
 ];
 
 {
