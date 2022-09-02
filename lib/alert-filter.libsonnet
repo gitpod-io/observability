@@ -68,6 +68,11 @@ local unwatedAlerts = [
   'KubeletDown',  // Re-added to platform-mixin
   'KubeClientErrors',
 
+  // From kube-state-metrics
+  'KubeStateMetricsWatchErrors',  // Re-added to platform-mixin
+  'KubeStateMetricsShardingMismatch',
+  'KubeStateMetricsShardsMissing',
+
   // From prometheus-operator
   'PrometheusOperatorListErrors',  // Re-added to platform-mixin
   'PrometheusOperatorWatchErrors',  // Re-added to platform-mixin
