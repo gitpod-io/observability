@@ -77,6 +77,30 @@ local unwatedAlerts = [
   'ConfigReloaderSidecarErrors',  // Re-added to platform-mixin
   'PrometheusOperatorRejectedResources',
   'PrometheusOperatorSyncFailed',
+
+  // From Prometheus
+  'PrometheusBadConfig',  // Re-added to platform-mixin
+  'PrometheusNotificationQueueRunningFull',
+  'PrometheusErrorSendingAlertsToSomeAlertmanagers',
+  'PrometheusNotConnectedToAlertmanagers',
+  'PrometheusTSDBReloadsFailing',
+  'PrometheusTSDBCompactionsFailing',
+  'PrometheusNotIngestingSamples',
+  'PrometheusDuplicateTimestamps',
+  'PrometheusOutOfOrderTimestamps',
+  'PrometheusRemoteStorageFailures',  // Re-added to platform-mixin
+  'PrometheusRemoteWriteBehind',
+  'PrometheusRemoteWriteDesiredShards',
+  'PrometheusRuleFailures',  // Re-added to platform-mixin
+  'PrometheusMissingRuleEvaluations',
+  'PrometheusTargetLimitHit',
+  'PrometheusLabelLimitHit',
+  'PrometheusScrapeBodySizeLimitHit',
+  'PrometheusScrapeSampleLimitHit',
+  'PrometheusTargetSyncFailure',
+  'PrometheusHighQueryLoad',
+  'PrometheusErrorSendingAlertsToAnyAlertmanager',
+
 ];
 
 {
