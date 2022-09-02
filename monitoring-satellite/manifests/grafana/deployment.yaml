@@ -99,6 +99,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Self-hosted examples/gitpod-sh-example-overview
           name: grafana-dashboard-gitpod-sh-example-overview
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-browser-overview
+          name: grafana-dashboard-gitpod-component-browser-overview
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-jb
           name: grafana-dashboard-gitpod-component-jb
           readOnly: false
@@ -305,6 +308,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-sh-example-overview
         name: grafana-dashboard-gitpod-sh-example-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-component-browser-overview
+        name: grafana-dashboard-gitpod-component-browser-overview
       - configMap:
           name: grafana-dashboard-gitpod-component-jb
         name: grafana-dashboard-gitpod-component-jb
