@@ -69,8 +69,8 @@
           {
             alert: 'WebsocketConnectionRateHigh',
             // Reasoning: the values are taken from past data
-            expr: 'sum(rate(server_websocket_connection_count[2m])) > 30',
-            'for': '5m',
+            expr: 'sum(rate(gitpod_server_api_connections_total[2m])) by (pod) > 5',
+            'for': '10m',
             labels: {
               // sent to the team internal channel until we fine tuned it
               severity: 'warning',
@@ -117,22 +117,6 @@
             },
           },
           {
-            alert: 'WebAppServicesHighMemoryUsage',
-            // Reasoning: high rates of RAM consumption should only be temporary. Values based on past data (around 5-10 is constant)
-            expr: 'sum(rate(container_memory_working_set_bytes{container!="POD", node=~".*", pod=~"(server|ws-manager-bridge|usage)-.*"}[30m])) by (pod, node) > 10000000',
-            'for': '15m',
-            labels: {
-              // sent to the team internal channel until we fine tuned it
-              severity: 'warning',
-              team: 'webapp'
-            },
-            annotations: {
-              runbook_url: 'https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebAppServicesHighMemoryUsage.md',
-              summary: 'WebApp services consume excessive amounts of memory. Investigation required.',
-              description: 'WebApp Services execcisve memory usage',
-            },
-          },
-          {
             alert: 'WebAppServicesHighCPUUsage',
             // Reasoning: high rates of CPU consumption should only be temporary.
             expr: 'sum(rate(container_cpu_usage_seconds_total{container!="POD", node=~".*", pod=~"(content-service|dashboard|db|db-sync|messagebus|payment-endpoint|proxy|server|ws-manager-bridge|usage)-.*"}[5m])) by (pod, node) > 0.80',
@@ -150,8 +134,9 @@
           },
           {
             alert: 'WebAppServicesCrashlooping',
-            expr: 'sum(rate(container_cpu_usage_seconds_total{container!="POD", node=~".*", pod=~"(content-service|dashboard|db|db-sync|messagebus|payment-endpoint|proxy|server|ws-manager-bridge|usage)-.*"}[5m])) by (pod, node) > 0.80',
-            'for': '15m',
+            // Reasoning: alert if any pod is restarting more than 3 times / 5 minutes.
+            expr: 'increase(kube_pod_container_status_restarts_total{container!="POD", pod=~"(content-service|dashboard|db|db-sync|messagebus|payment-endpoint|proxy|server|ws-manager-bridge|usage)-.*"}[5m]) > 3',
+            'for': '5m',
             labels: {
               // sent to the team internal channel until we fine tuned it
               severity: 'warning',
