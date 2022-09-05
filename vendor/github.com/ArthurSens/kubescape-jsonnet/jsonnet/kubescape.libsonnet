@@ -283,6 +283,141 @@ function(params) {
               "controlID": "C-0038"
             }
           ]
+        },
+        {
+          "name": "exclude-allowed-hostPath",
+          "policyType": "postureExceptionPolicy",
+          "actions": [
+            "alertOnly"
+          ],
+          "resources": [
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "fluentbit-gke"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "fluentbit-gke-256pd"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "fluentbit-gke-max"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "gke-metrics-agent"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "gke-metrics-agent-scaling-10"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "gke-metrics-agent-scaling-20"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "kube-proxy"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "network-metering-agent"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "nvidia-gpu-device-plugin"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "pdcsi-node"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "pdcsi-node-windows"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "node-exporter"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "calico-node"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "ws-daemon"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "DaemonSet",
+                "name": "registry-facade"
+              }
+            },
+            {
+              "designatorType": "Attributes",
+              "attributes": {
+                "kind": "Deployment",
+                "name": "event-exporter-gke"
+              }
+            },
+          ],
+          "posturePolicies": [
+            {
+              "controlID": "C-0006"
+            },
+            {
+              "controlID": "C-0045"
+            },
+            {
+              "controlID": "C-0048"
+            },
+            {
+              "controlID": "C-0074"
+            }
+          ]
         }
       ]
     |||,
