@@ -6,12 +6,12 @@ env:
   golang-version: "1.16"
   kind-version: "v0.11.1"
 jobs:
-  jsonnet-lint:
+  generate:
     runs-on: ubuntu-latest
-    name: Jsonnet linter
+    name: Generated code diff check
     steps:
       - uses: actions/checkout@v2
-      - run: make --always-make fmt && git diff --exit-code
+      - run: make --always-make fmt && make generate && git diff --exit-code
 
   e2e-tests:
     name: E2E tests
