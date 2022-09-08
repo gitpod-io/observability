@@ -91,7 +91,7 @@ func proxyCaddyObjects() common.RenderFunc {
 								{
 									NamespaceSelector: &metav1.LabelSelector{
 										MatchLabels: map[string]string{
-											"namespace": Namespace,
+											"kubernetes.io/metadata.name": Namespace,
 										},
 									},
 									PodSelector: &metav1.LabelSelector{
