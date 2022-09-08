@@ -9,7 +9,6 @@ local kubePrometheus =
   (import 'kube-prometheus/platforms/gke.libsonnet') +
   (import 'kube-prometheus/addons/podsecuritypolicies.libsonnet') +
   (import '../addons/networkpolicies-disabled.libsonnet') +
-  (import '../addons/disable-grafana-auth.libsonnet') +
   (import '../addons/grafana-on-gcp-oauth.libsonnet')(config) +
   (if std.objectHas(config, 'pyrra') then (import '../addons/pyrra.libsonnet')(config) else {}) +
   {
@@ -33,6 +32,20 @@ local kubePrometheus =
         internalLoadBalancerIP: '10.32.0.25',
       },
       grafana+: {
+        env: [
+          {
+            name: 'GF_AUTH_ANONYMOUS_ENABLED',
+            value: 'true',
+          },
+          {
+            name: 'GF_AUTH_ANONYMOUS_ORG_ROLE',
+            value: 'Admin',
+          },
+          {
+            name: 'GF_AUTH_DISABLE_LOGIN_FORM',
+            value: 'true',
+          },
+        ],
         resources: {
           requests: {
             memory: if std.objectHas(config, 'grafana') &&

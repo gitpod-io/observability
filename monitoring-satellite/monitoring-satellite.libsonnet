@@ -6,7 +6,6 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 (import 'kube-prometheus/platforms/gke.libsonnet') +
 (import 'kube-prometheus/addons/podsecuritypolicies.libsonnet') +
 (import 'kube-prometheus/addons/strip-limits.libsonnet') +
-(import '../addons/disable-grafana-auth.libsonnet') +
 (import '../addons/ksm-extra-labels.libsonnet') +
 (import '../addons/metrics-relabeling.libsonnet') +
 (import '../addons/argocd-crd-replace.libsonnet') +
@@ -116,6 +115,20 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
     },
 
     grafana+: {
+        env: [
+          {
+            name: 'GF_AUTH_ANONYMOUS_ENABLED',
+            value: 'true',
+          },
+          {
+            name: 'GF_AUTH_ANONYMOUS_ORG_ROLE',
+            value: 'Admin',
+          },
+          {
+            name: 'GF_AUTH_DISABLE_LOGIN_FORM',
+            value: 'true',
+          },
+        ],
       dashboards:: {},
       folderDashboards+:: {
         'Team Platform'+: $.kubernetesControlPlane.mixin.grafanaDashboards + $.prometheus.mixin.grafanaDashboards + $.alertmanager.mixin.grafanaDashboards + $.certmanager.mixin.grafanaDashboards + $.nodeExporter.mixin.grafanaDashboards,
