@@ -1,7 +1,7 @@
 {
   values+:: {
     grafana+: {
-      env+: [
+      env: [
         {
           name: 'GF_AUTH_ANONYMOUS_ENABLED',
           value: 'true',
