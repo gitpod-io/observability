@@ -127,9 +127,6 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		return nil, err
 	}
 
-	mixinImporter := importer.NewMixinImporter("https://github.com/gitpod-io/observability", "")
-	objs = append(objs, mixinImporter.ImportPrometheusRules()...)
-
 	k8s := make([]string, 0)
 	for _, o := range objs {
 		fc, err := yaml.Marshal(o)
