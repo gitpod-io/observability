@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 9.1.1
+    app.kubernetes.io/version: 9.1.2
   name: grafana
   namespace: monitoring-satellite
 spec:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: 1a5fa80e24540405e398c1bae5e9eda2
-        checksum/grafana-dashboardproviders: c08bcf74e26f61a510296e982e1c94fa
-        checksum/grafana-datasources: f7394159a679a1591412076ae9afaff5
+        checksum/grafana-config: 3ba316c8890d311ae5aaaee55e17e0e1
+        checksum/grafana-dashboardproviders: 830f193bef7aa723c9b153b258c4f44a
+        checksum/grafana-datasources: 235dc1721d3c05e9749f1d58fdb245f0
       labels:
         app.kubernetes.io/component: grafana
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 9.1.1
+        app.kubernetes.io/version: 9.1.2
     spec:
       automountServiceAccountToken: false
       containers:
@@ -36,7 +36,7 @@ spec:
           value: Admin
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: "true"
-        image: grafana/grafana:9.1.1
+        image: grafana/grafana:9.1.2
         name: grafana
         ports:
         - containerPort: 3000
@@ -95,6 +95,9 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-browser-overview
           name: grafana-dashboard-gitpod-component-browser-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-code-browser
+          name: grafana-dashboard-gitpod-component-code-browser
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-jb
           name: grafana-dashboard-gitpod-component-jb
@@ -240,6 +243,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-proxy
           name: grafana-dashboard-gitpod-component-ws-proxy
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-network-limiting
+          name: grafana-dashboard-gitpod-network-limiting
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-node-ephemeral-storage
           name: grafana-dashboard-gitpod-node-ephemeral-storage
           readOnly: false
@@ -305,6 +311,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-browser-overview
         name: grafana-dashboard-gitpod-component-browser-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-component-code-browser
+        name: grafana-dashboard-gitpod-component-code-browser
       - configMap:
           name: grafana-dashboard-gitpod-component-jb
         name: grafana-dashboard-gitpod-component-jb
@@ -449,6 +458,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-ws-proxy
         name: grafana-dashboard-gitpod-component-ws-proxy
+      - configMap:
+          name: grafana-dashboard-gitpod-network-limiting
+        name: grafana-dashboard-gitpod-network-limiting
       - configMap:
           name: grafana-dashboard-gitpod-node-ephemeral-storage
         name: grafana-dashboard-gitpod-node-ephemeral-storage
