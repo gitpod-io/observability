@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug render",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "main.go",
+            "env": {},
+            "args": ["render", "--config", "examples/full-config.yaml"],
+        }
+    ]
+}
