@@ -1750,7 +1750,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-admin-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -2837,7 +2837,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-admin-workspaces
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3931,8 +3931,851 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+    namespace: monitoring-satellite
+- apiVersion: v1
+  data:
+    gitpod-grpc-server.json: |-
+      {
+          "annotations": {
+              "list": [
+                  {
+                      "builtIn": 1,
+                      "datasource": {
+                          "type": "grafana",
+                          "uid": "-- Grafana --"
+                      },
+                      "enable": true,
+                      "hide": true,
+                      "iconColor": "rgba(0, 211, 255, 1)",
+                      "name": "Annotations & Alerts",
+                      "target": {
+                          "limit": 100,
+                          "matchAny": false,
+                          "tags": [
+
+                          ],
+                          "type": "dashboard"
+                      },
+                      "type": "dashboard"
+                  }
+              ]
+          },
+          "description": "Common visualisations of gRPC (Golang) Server metrics",
+          "editable": true,
+          "fiscalYearStartMonth": 0,
+          "graphTooltip": 1,
+          "id": 72,
+          "links": [
+
+          ],
+          "liveNow": false,
+          "panels": [
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 0
+                  },
+                  "id": 2,
+                  "panels": [
+
+                  ],
+                  "title": "Requests",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Rate of gRPC requests started",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "opm"
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 24,
+                      "x": 0,
+                      "y": 1
+                  },
+                  "id": 4,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(grpc_server_started_total{grpc_service=~\"$service\", grpc_type=~\"$type\"}[1m])) by (grpc_service, grpc_method)",
+                          "legendFormat": "{{grpc_service}}.{{grpc_method}}",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Requests started [1m]",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Rate of requests completed, by status",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "opm"
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 24,
+                      "x": 0,
+                      "y": 9
+                  },
+                  "id": 6,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(grpc_server_handled_total{grpc_service=~\"$service\", grpc_method=~\"$method\", grpc_type=~\"$type\"}[1m])) by (grpc_service, grpc_method, grpc_code)",
+                          "legendFormat": "{{grpc_service}}.{{grpc_method}} - {{grpc_code}}",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Requests completed [1m]",
+                  "type": "timeseries"
+              },
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 17
+                  },
+                  "id": 11,
+                  "panels": [
+
+                  ],
+                  "title": "Errors",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Rate of errors, by status",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "opm"
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 24,
+                      "x": 0,
+                      "y": 18
+                  },
+                  "id": 7,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(grpc_server_handled_total{grpc_service=~\"$service\", grpc_method=~\"$method\", grpc_code!=\"OK\", grpc_type=~\"$type\"}[1m])) by (grpc_service, grpc_method, grpc_code)",
+                          "legendFormat": "{{grpc_service}}.{{grpc_method}} - {{grpc_code}}",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Request errors [1m]",
+                  "type": "timeseries"
+              },
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 26
+                  },
+                  "id": 13,
+                  "panels": [
+
+                  ],
+                  "title": "Latency",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          },
+                          "unit": "s"
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 24,
+                      "x": 0,
+                      "y": 27
+                  },
+                  "id": 9,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "histogram_quantile(0.99, \n  sum(rate(grpc_server_handling_seconds_bucket{grpc_type=\"unary\", grpc_service=~\"$service\", grpc_method=~\"$method\", grpc_type=\"unary\"}[5m])) by (grpc_service, grpc_method, le)\n)",
+                          "legendFormat": "{{grpc_service}}.{{grpc_method}}",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "99th percentile response latency [5m]",
+                  "type": "timeseries"
+              },
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 35
+                  },
+                  "id": 15,
+                  "panels": [
+
+                  ],
+                  "title": "Messaging",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Rate of messages received by server",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 12,
+                      "x": 0,
+                      "y": 36
+                  },
+                  "id": 17,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(grpc_server_msg_received_total{grpc_service=~\"$service\", grpc_method=~\"$method\", grpc_type=~\"$type\"}[1m])) by (grpc_service, grpc_method)",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Server messages received [1m]",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Rate of messages sent by server",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 12,
+                      "x": 12,
+                      "y": 36
+                  },
+                  "id": 18,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(grpc_server_msg_sent_total{grpc_service=~\"$service\", grpc_method=~\"$method\", grpc_type=~\"$type\"}[1m])) by (grpc_service, grpc_method)",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Server messages sent [1m]",
+                  "type": "timeseries"
+              }
+          ],
+          "schemaVersion": 37,
+          "style": "dark",
+          "tags": [
+              "grpc",
+              "server"
+          ],
+          "templating": {
+              "list": [
+                  {
+                      "allValue": ".*",
+                      "current": {
+                          "selected": true,
+                          "text": [
+                              "All"
+                          ],
+                          "value": [
+                              "$__all"
+                          ]
+                      },
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "P4169E866C3094E38"
+                      },
+                      "definition": "label_values(grpc_server_started_total, grpc_service)",
+                      "description": "gRPC Service Name",
+                      "hide": 0,
+                      "includeAll": true,
+                      "label": "Service",
+                      "multi": true,
+                      "name": "service",
+                      "options": [
+
+                      ],
+                      "query": {
+                          "query": "label_values(grpc_server_started_total, grpc_service)",
+                          "refId": "StandardVariableQuery"
+                      },
+                      "refresh": 1,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "sort": 5,
+                      "type": "query"
+                  },
+                  {
+                      "allValue": ".*",
+                      "current": {
+                          "selected": true,
+                          "text": [
+                              "All"
+                          ],
+                          "value": [
+                              "$__all"
+                          ]
+                      },
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "P4169E866C3094E38"
+                      },
+                      "definition": "label_values(grpc_server_started_total, grpc_method)",
+                      "description": "gRPC Method Name",
+                      "hide": 0,
+                      "includeAll": true,
+                      "label": "Method",
+                      "multi": true,
+                      "name": "method",
+                      "options": [
+
+                      ],
+                      "query": {
+                          "query": "label_values(grpc_server_started_total, grpc_method)",
+                          "refId": "StandardVariableQuery"
+                      },
+                      "refresh": 1,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "sort": 5,
+                      "type": "query"
+                  },
+                  {
+                      "allValue": ".*",
+                      "current": {
+                          "selected": true,
+                          "text": [
+                              "All"
+                          ],
+                          "value": [
+                              "$__all"
+                          ]
+                      },
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "P4169E866C3094E38"
+                      },
+                      "definition": "label_values(grpc_server_started_total, grpc_type)",
+                      "description": "gRPC request type - bidirectional stream, server stream, unary, client_stream",
+                      "hide": 0,
+                      "includeAll": true,
+                      "label": "Type",
+                      "multi": true,
+                      "name": "type",
+                      "options": [
+
+                      ],
+                      "query": {
+                          "query": "label_values(grpc_server_started_total, grpc_type)",
+                          "refId": "StandardVariableQuery"
+                      },
+                      "refresh": 1,
+                      "regex": "",
+                      "skipUrlSync": false,
+                      "sort": 5,
+                      "type": "query"
+                  }
+              ]
+          },
+          "time": {
+              "from": "now-6h",
+              "to": "now"
+          },
+          "timepicker": {
+              "refresh_intervals": [
+                  "30s",
+                  "1m",
+                  "5m",
+                  "15m",
+                  "30m",
+                  "1h",
+                  "2h",
+                  "1d"
+              ]
+          },
+          "timezone": "utc",
+          "title": "gRPC / Server",
+          "uid": "fDH4_QMVk",
+          "version": 5,
+          "weekStart": "monday"
+      }
+  kind: ConfigMap
+  metadata:
+    labels:
+      app.kubernetes.io/component: grafana
+      app.kubernetes.io/name: grafana
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 9.1.4
+    name: grafana-dashboard-gitpod-grpc-server
     namespace: monitoring-satellite
 - apiVersion: v1
   data:
@@ -8069,7 +8912,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-node-resource-metrics
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -8941,7 +9784,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-nodes-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -9921,7 +10764,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -10374,7 +11217,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-slo-workspace-startuptime
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -10838,7 +11681,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-sh-example-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -11045,7 +11888,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-browser-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12308,7 +13151,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-code-browser
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12587,7 +13430,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-jb
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14703,7 +15546,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-openvsx-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -15181,7 +16024,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-ssh-gateway
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -15757,7 +16600,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-alertmanager-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -17518,7 +18361,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-apiserver
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -18855,7 +19698,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-cert-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -20726,7 +21569,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-cluster-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -21905,7 +22748,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-controller-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -24982,7 +25825,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-k8s-resources-cluster
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -27768,7 +28611,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-k8s-resources-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -28783,7 +29626,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-k8s-resources-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -31241,7 +32084,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-k8s-resources-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -33254,7 +34097,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-k8s-resources-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -35432,7 +36275,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -37675,7 +38518,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-kubelet
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -39128,7 +39971,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-namespace-by-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -40853,7 +41696,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-namespace-by-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -41905,7 +42748,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -42983,7 +43826,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-node-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -44045,7 +44888,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-nodes-darwin
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -45100,7 +45943,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -45676,7 +46519,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-persistentvolumesusage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -46893,7 +47736,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-pod-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -48552,7 +49395,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-prometheus-remote-write
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -49776,7 +50619,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-prometheus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -51036,7 +51879,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -52137,7 +52980,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-scheduler
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -52601,7 +53444,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-vulnerabilities
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -54028,7 +54871,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-workload-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55435,7 +56278,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-dashboard
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -56840,7 +57683,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-db-sync
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -58245,7 +59088,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-db
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -60816,7 +61659,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-image-builder
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -65489,7 +66332,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-messagebus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -66896,7 +67739,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -70255,7 +71098,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -70873,7 +71716,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-usage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -73172,7 +74015,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-ws-manager-bridge
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -74539,7 +75382,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-meta-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -75086,7 +75929,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-meta-services
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -76647,7 +77490,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-slo-login
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -79520,7 +80363,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-agent-smith
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -81644,7 +82487,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-blobserve
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -84212,7 +85055,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-content-service
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -87233,7 +88076,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-registry-facade
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -89807,7 +90650,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-ws-daemon
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -93067,7 +93910,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-ws-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -94475,7 +95318,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-component-ws-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -94860,7 +95703,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-network-limiting
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -95163,7 +96006,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-node-ephemeral-storage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -95925,7 +96768,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-node-problem-detector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -96188,7 +97031,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-node-swap
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98284,7 +99127,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-workspace-coredns
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98979,7 +99822,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.2
+      app.kubernetes.io/version: 9.1.4
     name: grafana-dashboard-gitpod-workspace-success-criteria
     namespace: monitoring-satellite
 kind: ConfigMapList

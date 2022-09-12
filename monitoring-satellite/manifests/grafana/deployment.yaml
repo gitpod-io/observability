@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 9.1.2
+    app.kubernetes.io/version: 9.1.4
   name: grafana
   namespace: monitoring-satellite
 spec:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: 3ba316c8890d311ae5aaaee55e17e0e1
-        checksum/grafana-dashboardproviders: 830f193bef7aa723c9b153b258c4f44a
-        checksum/grafana-datasources: 235dc1721d3c05e9749f1d58fdb245f0
+        checksum/grafana-config: 082e40b3bf02c5d99bc305e441512ff5
+        checksum/grafana-dashboardproviders: b60897c652d13b1b044f5254a6043caf
+        checksum/grafana-datasources: 8c30170b519cce126bed3d1d5c9ec101
       labels:
         app.kubernetes.io/component: grafana
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 9.1.2
+        app.kubernetes.io/version: 9.1.4
     spec:
       automountServiceAccountToken: false
       containers:
@@ -36,7 +36,7 @@ spec:
           value: Admin
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: "true"
-        image: grafana/grafana:9.1.2
+        image: grafana/grafana:9.1.4
         name: grafana
         ports:
         - containerPort: 3000
@@ -77,6 +77,9 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-cluster-autoscaler-k3s
           name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-grpc-server
+          name: grafana-dashboard-gitpod-grpc-server
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-node-resource-metrics
           name: grafana-dashboard-gitpod-node-resource-metrics
@@ -293,6 +296,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
         name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+      - configMap:
+          name: grafana-dashboard-gitpod-grpc-server
+        name: grafana-dashboard-gitpod-grpc-server
       - configMap:
           name: grafana-dashboard-gitpod-node-resource-metrics
         name: grafana-dashboard-gitpod-node-resource-metrics
