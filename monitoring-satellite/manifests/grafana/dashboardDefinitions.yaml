@@ -3966,7 +3966,6 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "id": 72,
           "links": [
 
           ],
@@ -4689,7 +4688,7 @@ items:
                           "type": "prometheus",
                           "uid": "P4169E866C3094E38"
                       },
-                      "definition": "label_values(grpc_server_started_total, grpc_method)",
+                      "definition": "label_values(grpc_server_started_total{grpc_service=~\"$service\"}, grpc_method)",
                       "description": "gRPC Method Name",
                       "hide": 0,
                       "includeAll": true,
@@ -4700,7 +4699,7 @@ items:
 
                       ],
                       "query": {
-                          "query": "label_values(grpc_server_started_total, grpc_method)",
+                          "query": "label_values(grpc_server_started_total{grpc_service=~\"$service\"}, grpc_method)",
                           "refId": "StandardVariableQuery"
                       },
                       "refresh": 1,
@@ -4724,7 +4723,7 @@ items:
                           "type": "prometheus",
                           "uid": "P4169E866C3094E38"
                       },
-                      "definition": "label_values(grpc_server_started_total, grpc_type)",
+                      "definition": "label_values(grpc_server_started_total{grpc_service=~\"$service\", grpc_method=~\"$method\"}, grpc_type)",
                       "description": "gRPC request type - bidirectional stream, server stream, unary, client_stream",
                       "hide": 0,
                       "includeAll": true,
@@ -4735,7 +4734,7 @@ items:
 
                       ],
                       "query": {
-                          "query": "label_values(grpc_server_started_total, grpc_type)",
+                          "query": "label_values(grpc_server_started_total{grpc_service=~\"$service\", grpc_method=~\"$method\"}, grpc_type)",
                           "refId": "StandardVariableQuery"
                       },
                       "refresh": 1,
@@ -4765,7 +4764,7 @@ items:
           "timezone": "utc",
           "title": "gRPC / Server",
           "uid": "fDH4_QMVk",
-          "version": 5,
+          "version": 1,
           "weekStart": "monday"
       }
   kind: ConfigMap
@@ -71132,8 +71131,6 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "id": 68,
-          "iteration": 1658784406433,
           "links": [
 
           ],
@@ -71161,6 +71158,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71223,7 +71222,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71257,6 +71257,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71319,7 +71321,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71362,11 +71365,11 @@ items:
                       "x": 0,
                       "y": 9
                   },
-                  "id": 2,
+                  "id": 14,
                   "panels": [
 
                   ],
-                  "title": "Usage Controller",
+                  "title": "Scheduled jobs",
                   "type": "row"
               },
               {
@@ -71381,6 +71384,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "# of events",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71442,7 +71447,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71456,8 +71462,8 @@ items:
                               "uid": "P4169E866C3094E38"
                           },
                           "editorMode": "code",
-                          "expr": "sum(increase(gitpod_usage_reconcile_started_total{cluster=~\"$cluster\"}[1m]))",
-                          "legendFormat": "Reconcile started",
+                          "expr": "sum(increase(gitpod_usage_scheduler_job_started_total{cluster=~\"$cluster\"}[1m])) by (job)",
+                          "legendFormat": "{{job}} started",
                           "range": true,
                           "refId": "A"
                       },
@@ -71468,15 +71474,15 @@ items:
                           },
                           "editorMode": "code",
                           "exemplar": false,
-                          "expr": "sum(increase(gitpod_usage_reconcile_completed_duration_seconds_count{cluster=~\"$cluster\"}[1m])) by (outcome)",
+                          "expr": "sum(increase(gitpod_usage_scheduler_job_completed_seconds_count{cluster=~\"$cluster\"}[1m])) by (job, outcome)",
                           "hide": false,
                           "instant": false,
-                          "legendFormat": "Reconcile completed: {{outcome}}",
+                          "legendFormat": "{{job}} completed: {{outcome}}",
                           "range": true,
                           "refId": "B"
                       }
                   ],
-                  "title": "Usage Controller Ticks",
+                  "title": "Scheduled jobs started & completed",
                   "type": "timeseries"
               },
               {
@@ -71491,6 +71497,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisGridShow": true,
                               "axisLabel": "",
                               "axisPlacement": "auto",
@@ -71554,7 +71562,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71568,7 +71577,7 @@ items:
                               "uid": "P4169E866C3094E38"
                           },
                           "editorMode": "code",
-                          "expr": "histogram_quantile(0.5, sum(rate(gitpod_usage_reconcile_completed_duration_seconds_bucket{cluster=~\"$cluster\"}[$__rate_interval])) by (le))",
+                          "expr": "histogram_quantile(0.5, sum(rate(gitpod_usage_scheduler_job_completed_seconds_bucket{cluster=~\"$cluster\"}[$__rate_interval])) by (le))",
                           "legendFormat": "50th percentile",
                           "range": true,
                           "refId": "A"
@@ -71579,18 +71588,18 @@ items:
                               "uid": "P4169E866C3094E38"
                           },
                           "editorMode": "code",
-                          "expr": "histogram_quantile(0.9, sum(rate(gitpod_usage_reconcile_completed_duration_seconds_bucket{cluster=~\"$cluster\"}[$__rate_interval])) by (le))",
+                          "expr": "histogram_quantile(0.9, sum(rate(gitpod_usage_scheduler_job_completed_seconds_bucket{cluster=~\"$cluster\"}[$__rate_interval])) by (le))",
                           "hide": false,
                           "legendFormat": "90th percentile",
                           "range": true,
                           "refId": "B"
                       }
                   ],
-                  "title": "Tick Duration",
+                  "title": "Scheduled job duration",
                   "type": "timeseries"
               }
           ],
-          "schemaVersion": 36,
+          "schemaVersion": 37,
           "style": "dark",
           "tags": [
 
@@ -71707,7 +71716,7 @@ items:
           "timezone": "utc",
           "title": "Component: Usage",
           "uid": "8W7P-jg4z",
-          "version": 8,
+          "version": 1,
           "weekStart": "monday"
       }
   kind: ConfigMap
