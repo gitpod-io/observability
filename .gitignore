@@ -13,3 +13,5 @@ diff
 !monitoring-satellite/manifests/probers/*
 !monitoring-satellite/manifests/kube-prometheus-rules/*
 !monitoring-satellite/manifests/crds/*
+
+*.tar.gz
