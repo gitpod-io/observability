@@ -95529,39 +95529,6 @@ items:
   data:
     gitpod-network-limiting.json: |-
       {
-          "__elements": {
-
-          },
-          "__inputs": [
-              {
-                  "description": "",
-                  "label": "prometheus",
-                  "name": "DS_PROMETHEUS",
-                  "pluginId": "prometheus",
-                  "pluginName": "Prometheus",
-                  "type": "datasource"
-              }
-          ],
-          "__requires": [
-              {
-                  "id": "grafana",
-                  "name": "Grafana",
-                  "type": "grafana",
-                  "version": "9.1.0"
-              },
-              {
-                  "id": "prometheus",
-                  "name": "Prometheus",
-                  "type": "datasource",
-                  "version": "1.0.0"
-              },
-              {
-                  "id": "timeseries",
-                  "name": "Time series",
-                  "type": "panel",
-                  "version": ""
-              }
-          ],
           "annotations": {
               "list": [
                   {
@@ -95590,7 +95557,6 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "id": null,
           "links": [
 
           ],
@@ -95599,7 +95565,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "${DS_PROMETHEUS}"
+                      "uid": "${datasource}"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -95682,26 +95648,13 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "${datasource}"
                           },
                           "editorMode": "code",
-                          "expr": "sum(gitpod_ws_daemon_netlimit_connections_dropped_packets{node=~\"$node\", workspace=~\"$workspace\"}) by (node, workspace)\n",
-                          "interval": "",
+                          "expr": "sum(gitpod_ws_daemon_netlimit_connections_dropped_packets{node=~\"$node\", workspace=~\"$workspace\"}) by(node, workspace)",
                           "legendFormat": "{{workspace}}",
                           "range": true,
                           "refId": "A"
-                      },
-                      {
-                          "datasource": {
-                              "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
-                          },
-                          "editorMode": "builder",
-                          "expr": "",
-                          "hide": false,
-                          "legendFormat": "__auto",
-                          "range": true,
-                          "refId": "B"
                       }
                   ],
                   "title": "Dropped packets",
@@ -95710,7 +95663,7 @@ items:
               {
                   "datasource": {
                       "type": "prometheus",
-                      "uid": "${DS_PROMETHEUS}"
+                      "uid": "${datasource}"
                   },
                   "fieldConfig": {
                       "defaults": {
@@ -95793,7 +95746,7 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "${datasource}"
                           },
                           "editorMode": "code",
                           "expr": "sum(gitpod_ws_daemon_netlimit_connections_dropped_bytes{node=~\"$node\", workspace=~\"$workspace\"}) by (node, workspace)",
@@ -95816,10 +95769,10 @@ items:
                   {
                       "current": {
                           "selected": false,
-                          "text": "prometheus",
-                          "value": "prometheus"
+                          "text": "VictoriaMetrics",
+                          "value": "VictoriaMetrics"
                       },
-                      "hide": 0,
+                      "hide": 2,
                       "includeAll": false,
                       "multi": false,
                       "name": "datasource",
@@ -95827,6 +95780,7 @@ items:
 
                       ],
                       "query": "prometheus",
+                      "queryValue": "",
                       "refresh": 1,
                       "regex": "",
                       "skipUrlSync": false,
@@ -95838,9 +95792,9 @@ items:
                       },
                       "datasource": {
                           "type": "prometheus",
-                          "uid": "${DS_PROMETHEUS}"
+                          "uid": "${datasource}"
                       },
-                      "definition": "label_values(kube_node_labels{nodepool=\"workspace-pool\"}, node)",
+                      "definition": "label_values(gitpod_ws_daemon_netlimit_connections_dropped_bytes,node)",
                       "hide": 0,
                       "includeAll": false,
                       "label": "Node",
@@ -95850,7 +95804,7 @@ items:
 
                       ],
                       "query": {
-                          "query": "label_values(kube_node_labels{nodepool=\"workspace-pool\"}, node)",
+                          "query": "label_values(gitpod_ws_daemon_netlimit_connections_dropped_bytes,node)",
                           "refId": "StandardVariableQuery"
                       },
                       "refresh": 2,
@@ -95865,19 +95819,19 @@ items:
                       },
                       "datasource": {
                           "type": "prometheus",
-                          "uid": "${DS_PROMETHEUS}"
+                          "uid": "${datasource}"
                       },
-                      "definition": "label_values(kube_pod_labels{component=\"workspace\"}, pod)",
+                      "definition": "label_values(gitpod_ws_daemon_netlimit_connections_dropped_bytes{node=\"$node\"},workspace)",
                       "hide": 0,
                       "includeAll": true,
                       "label": "Workspace",
-                      "multi": false,
+                      "multi": true,
                       "name": "workspace",
                       "options": [
 
                       ],
                       "query": {
-                          "query": "label_values(kube_pod_labels{component=\"workspace\"}, pod)",
+                          "query": "label_values(gitpod_ws_daemon_netlimit_connections_dropped_bytes{node=\"$node\"},workspace)",
                           "refId": "StandardVariableQuery"
                       },
                       "refresh": 2,
@@ -95898,7 +95852,7 @@ items:
           "timezone": "",
           "title": "Network limiting",
           "uid": "-q-ZCsW4z",
-          "version": 24,
+          "version": 1,
           "weekStart": ""
       }
   kind: ConfigMap
