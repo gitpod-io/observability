@@ -21,11 +21,6 @@ jobs:
       - name: Update jsonnet dependencies
         run: |
           make update
-          # Reset jsonnetfile.lock.json if no dependencies were updated
-          changedFiles=$(git diff --name-only | grep -v 'jsonnetfile.lock.json')
-          if [[ $changedFiles == "" ]]; then
-            git checkout -- jsonnetfile.lock.json;
-          fi
           make generate
 
       - name: Create Pull Request
