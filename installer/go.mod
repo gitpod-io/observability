@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/docker/distribution v2.8.1+incompatible
-	github.com/google/go-jsonnet v0.18.0
 	github.com/mikefarah/yq/v4 v4.27.3
 	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.59.0
 	github.com/prometheus/alertmanager v0.24.0
