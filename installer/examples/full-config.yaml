@@ -28,6 +28,9 @@ tracing:
   install: true
   honeycombDataset: "fake-dataset"
   honeycombAPIKey: "fake-key"
+  extraSpanAttributes:
+    preview: test
+    exampleKey: exampleValue
 werft:
   installServiceMonitors: false
 imports:
