@@ -198,9 +198,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-db
           name: grafana-dashboard-gitpod-component-db
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-image-builder
-          name: grafana-dashboard-gitpod-component-image-builder
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-messagebus
           name: grafana-dashboard-gitpod-component-messagebus
           readOnly: false
@@ -233,6 +230,9 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-content-service
           name: grafana-dashboard-gitpod-component-content-service
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-image-builder
+          name: grafana-dashboard-gitpod-component-image-builder
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-registry-facade
           name: grafana-dashboard-gitpod-component-registry-facade
@@ -417,9 +417,6 @@ spec:
           name: grafana-dashboard-gitpod-component-db
         name: grafana-dashboard-gitpod-component-db
       - configMap:
-          name: grafana-dashboard-gitpod-component-image-builder
-        name: grafana-dashboard-gitpod-component-image-builder
-      - configMap:
           name: grafana-dashboard-gitpod-component-messagebus
         name: grafana-dashboard-gitpod-component-messagebus
       - configMap:
@@ -452,6 +449,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-content-service
         name: grafana-dashboard-gitpod-component-content-service
+      - configMap:
+          name: grafana-dashboard-gitpod-component-image-builder
+        name: grafana-dashboard-gitpod-component-image-builder
       - configMap:
           name: grafana-dashboard-gitpod-component-registry-facade
         name: grafana-dashboard-gitpod-component-registry-facade
