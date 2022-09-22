@@ -20,10 +20,10 @@ monitoring-satellite.yaml: generate-full
 
 generate: installer
 	./installer init > examples/default-config.yaml
-	./installer render --config examples/default-config.yaml > monitoring-satellite.yaml
+	./installer render --config examples/default-config.yaml --app monitoring-satellite > monitoring-satellite.yaml
 
 generate-full: installer
-	./installer render --config examples/full-config.yaml > monitoring-satellite.yaml
+	./installer render --config examples/full-config.yaml --app monitoring-satellite > monitoring-satellite.yaml
 
 .PHONY: deploy-satellite
 apply-satellite: monitoring-satellite.yaml
