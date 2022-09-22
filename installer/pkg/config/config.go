@@ -92,9 +92,10 @@ type Config struct {
 }
 
 type Tracing struct {
-	Install          bool   `json:"install"`
-	HoneycombAPIKey  string `json:"honeycombAPIKey,omitempty"`
-	HoneycombDataset string `json:"honeycombDataset,omitempty"`
+	Install             bool              `json:"install"`
+	HoneycombAPIKey     string            `json:"honeycombAPIKey,omitempty"`
+	HoneycombDataset    string            `json:"honeycombDataset,omitempty"`
+	ExtraSpanAttributes map[string]string `json:"extraSpanAttributes,omitempty"`
 }
 
 type Alerting struct {
