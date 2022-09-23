@@ -26,7 +26,7 @@ var (
 	ErrInvalidType = fmt.Errorf("invalid type")
 )
 
-func Load(config string, strict bool) (cfg interface{}, err error) {
+func LoadSatellite(config string, strict bool) (cfg interface{}, err error) {
 	// Load default configuration
 	cfg = Factory()
 	err = Defaults(cfg)

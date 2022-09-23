@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -18,12 +19,46 @@ import (
 	"github.com/gitpod-io/observability/installer/pkg/postprocess"
 )
 
+type AppType string
+
+const (
+	MonitoringSatelliteApp AppType = "monitoring-satellite"
+	MonitoringCentralApp   AppType = "monitoring-central"
+)
+
+// String is used both by fmt.Print and by Cobra in help text
+func (a *AppType) String() string {
+	return string(*a)
+}
+
+// Set must have pointer receiver so it doesn't change the value of a copy
+func (a *AppType) Set(app string) error {
+	switch app {
+	case "monitoring-satellite", "monitoring-central":
+		*a = AppType(app)
+		return nil
+	default:
+		return errors.New("must be on of ['monitoring-satellite', 'monitoring-central']")
+	}
+}
+
+// Type is only used in help text
+func (a *AppType) Type() string {
+	return "AppType"
+}
+
+func AppTypeCompletionFunc(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
+	return []string{
+		"monitoring-satellite\tInstall the observability stack for single clusters, responsible for the ingestion of Metrics and Traces",
+		"monitoring-central\tInstall the observability stack responsible for storing Metrics and Traces for long-term period, also provides the tooling necessary to analyze and use the stored data",
+	}, cobra.ShellCompDirectiveDefault
+}
+
 var renderOpts struct {
 	ConfigFN               string
-	Namespace              string
 	ValidateConfigDisabled bool
-	UseExperimentalConfig  bool
 	FilesDir               string
+	App                    AppType
 }
 
 // renderCmd represents the render command
@@ -37,9 +72,9 @@ A config file is required which can be generated with the init command.`,
   installer render --config config.yaml | kubectl apply -f -
 
   # Install Gitpod's observability stack into a non-default namespace.
-  installer render --config config.yaml --namespace gitpod | kubectl apply -f -`,
+  installer render --config config.yaml --app monitoring-satellite | kubectl apply -f -`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		yaml, err := renderFn()
+		yaml, err := renderFn(renderOpts.App)
 		if err != nil {
 			return err
 		}
@@ -60,8 +95,8 @@ A config file is required which can be generated with the init command.`,
 	},
 }
 
-func renderFn() ([]string, error) {
-	_, cfg, err := loadConfig(renderOpts.ConfigFN)
+func renderFn(app AppType) ([]string, error) {
+	_, cfg, err := loadConfig(renderOpts.ConfigFN, app)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +120,7 @@ func saveYamlToFiles(dir string, yaml []string) error {
 	return nil
 }
 
-func loadConfig(cfgFN string) (rawCfg interface{}, cfg *config.Config, err error) {
+func loadConfig(cfgFN string, app AppType) (rawCfg interface{}, cfg *config.Config, err error) {
 	var overrideConfig string
 	// Update overrideConfig if cfgFN is not empty
 	switch cfgFN {
@@ -105,11 +140,19 @@ func loadConfig(cfgFN string) (rawCfg interface{}, cfg *config.Config, err error
 		overrideConfig = string(cfgBytes)
 	}
 
-	rawCfg, err = config.Load(overrideConfig, rootOpts.StrictConfigParse)
-	if err != nil {
-		err = fmt.Errorf("error loading config: %w", err)
-		return
+	switch app {
+	case MonitoringSatelliteApp:
+		rawCfg, err = config.LoadSatellite(overrideConfig, rootOpts.StrictConfigParse)
+		if err != nil {
+			err = fmt.Errorf("error loading config: %w", err)
+			return
+		}
+	case MonitoringCentralApp:
+		return nil, nil, errors.New("monitoring-central isn't implemented yet, aborting")
+	default:
+		return nil, nil, errors.New("app not set or invalid, aborting")
 	}
+
 	cfg = rawCfg.(*config.Config)
 	cfg = replaceDeprecatedFields(cfg)
 
@@ -117,7 +160,7 @@ func loadConfig(cfgFN string) (rawCfg interface{}, cfg *config.Config, err error
 }
 
 func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
-	ctx, err := common.NewRenderContext(*cfg, renderOpts.Namespace)
+	ctx, err := common.NewRenderContext(*cfg, renderOpts.App.String())
 	if err != nil {
 		return nil, err
 	}
@@ -230,8 +273,14 @@ func replaceDeprecatedFields(cfg *config.Config) *config.Config {
 func init() {
 	rootCmd.AddCommand(renderCmd)
 
-	renderCmd.PersistentFlags().StringVarP(&renderOpts.ConfigFN, "config", "c", os.Getenv("GITPOD_INSTALLER_CONFIG"), "path to the config file, use - for stdin")
-	renderCmd.PersistentFlags().StringVarP(&renderOpts.Namespace, "namespace", "n", "default", "namespace to deploy to")
+	renderCmd.PersistentFlags().StringVarP(&renderOpts.ConfigFN, "config", "c", "", "path to the config file, use - for stdin")
 	renderCmd.Flags().BoolVar(&renderOpts.ValidateConfigDisabled, "no-validation", false, "if set, the config will not be validated before running")
 	renderCmd.Flags().StringVar(&renderOpts.FilesDir, "output-split-files", "", "path to output individual Kubernetes manifests to")
+	renderCmd.PersistentFlags().Var(&renderOpts.App, "app", "Which observability app will be installed. Valid options are ['monitoring-satellite', 'monitoring-central'].")
+
+	err := renderCmd.RegisterFlagCompletionFunc("app", AppTypeCompletionFunc)
+	if err != nil {
+		fmt.Printf("There was an error while compiling the CLI, please reach out to the platform team")
+		os.Exit(1)
+	}
 }
