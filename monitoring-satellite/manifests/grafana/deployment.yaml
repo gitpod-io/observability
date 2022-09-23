@@ -204,6 +204,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-proxy
           name: grafana-dashboard-gitpod-component-proxy
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-server-garbage-collector
+          name: grafana-dashboard-gitpod-component-server-garbage-collector
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-server
           name: grafana-dashboard-gitpod-component-server
           readOnly: false
@@ -422,6 +425,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-proxy
         name: grafana-dashboard-gitpod-component-proxy
+      - configMap:
+          name: grafana-dashboard-gitpod-component-server-garbage-collector
+        name: grafana-dashboard-gitpod-component-server-garbage-collector
       - configMap:
           name: grafana-dashboard-gitpod-component-server
         name: grafana-dashboard-gitpod-component-server
