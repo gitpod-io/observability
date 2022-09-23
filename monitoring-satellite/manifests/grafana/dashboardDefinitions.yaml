@@ -11921,7 +11921,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 0,
-          "id": 13,
+          "id": 14,
           "links": [
 
           ],
@@ -11934,6 +11934,127 @@ items:
                       "w": 24,
                       "x": 0,
                       "y": 0
+                  },
+                  "id": 21,
+                  "panels": [
+
+                  ],
+                  "title": "Browser Workbench",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "VSCode Web workbench resources load failed ratio",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 8,
+                      "w": 12,
+                      "x": 0,
+                      "y": 1
+                  },
+                  "id": 23,
+                  "links": [
+                      {
+                          "title": "GCP Error Report",
+                          "url": "https://console.cloud.google.com/errors;service=vscode-workbench;filter=%5B%22LoadError%22%5D?project=gitpod-191109"
+                      }
+                  ],
+                  "options": {
+                      "legend": {
+                          "calcs": [
+                              "max",
+                              "mean"
+                          ],
+                          "displayMode": "table",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(rate(gitpod_vscode_web_load_total{status='failed'}[2m])) /sum(rate(gitpod_vscode_web_load_total{status='loading'}[2m]))",
+                          "legendFormat": "total_ratio",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Load Failed Ratio",
+                  "type": "timeseries"
+              },
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 9
                   },
                   "id": 13,
                   "panels": [
@@ -12007,7 +12128,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 0,
-                      "y": 1
+                      "y": 10
                   },
                   "id": 11,
                   "options": {
@@ -12108,7 +12229,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 12,
-                      "y": 1
+                      "y": 10
                   },
                   "id": 18,
                   "options": {
@@ -12246,7 +12367,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 0,
-                      "y": 9
+                      "y": 18
                   },
                   "id": 15,
                   "options": {
@@ -12347,7 +12468,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 12,
-                      "y": 9
+                      "y": 18
                   },
                   "id": 16,
                   "options": {
@@ -12429,8 +12550,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -12448,7 +12568,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 0,
-                      "y": 17
+                      "y": 26
                   },
                   "id": 19,
                   "options": {
@@ -12487,7 +12607,7 @@ items:
                       "h": 1,
                       "w": 24,
                       "x": 0,
-                      "y": 25
+                      "y": 34
                   },
                   "id": 6,
                   "panels": [
@@ -12543,8 +12663,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -12561,7 +12680,7 @@ items:
                       "h": 8,
                       "w": 24,
                       "x": 0,
-                      "y": 26
+                      "y": 35
                   },
                   "id": 14,
                   "options": {
@@ -12645,8 +12764,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -12664,7 +12782,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 0,
-                      "y": 34
+                      "y": 43
                   },
                   "id": 2,
                   "options": {
@@ -12746,8 +12864,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -12765,7 +12882,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 12,
-                      "y": 34
+                      "y": 43
                   },
                   "id": 3,
                   "options": {
@@ -12845,8 +12962,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -12864,7 +12980,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 0,
-                      "y": 42
+                      "y": 51
                   },
                   "id": 8,
                   "options": {
@@ -12981,8 +13097,7 @@ items:
                               "mode": "absolute",
                               "steps": [
                                   {
-                                      "color": "green",
-                                      "value": null
+                                      "color": "green"
                                   },
                                   {
                                       "color": "red",
@@ -13000,7 +13115,7 @@ items:
                       "h": 8,
                       "w": 12,
                       "x": 12,
-                      "y": 42
+                      "y": 51
                   },
                   "id": 9,
                   "options": {
@@ -13141,7 +13256,7 @@ items:
           "timezone": "",
           "title": "VS Code Browser Overview",
           "uid": "oLzOteZ4z",
-          "version": 4,
+          "version": 1,
           "weekStart": ""
       }
   kind: ConfigMap
@@ -65169,6 +65284,595 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 9.1.5
     name: grafana-dashboard-gitpod-component-proxy
+    namespace: monitoring-satellite
+- apiVersion: v1
+  data:
+    gitpod-component-server-garbage-collector.json: |-
+      {
+          "annotations": {
+              "list": [
+                  {
+                      "builtIn": 1,
+                      "datasource": {
+                          "type": "grafana",
+                          "uid": "-- Grafana --"
+                      },
+                      "enable": true,
+                      "hide": true,
+                      "iconColor": "rgba(0, 211, 255, 1)",
+                      "name": "Annotations & Alerts",
+                      "target": {
+                          "limit": 100,
+                          "matchAny": false,
+                          "tags": [
+
+                          ],
+                          "type": "dashboard"
+                      },
+                      "type": "dashboard"
+                  }
+              ]
+          },
+          "description": "Dashboard showing periodic garbage collection of DB records",
+          "editable": true,
+          "fiscalYearStartMonth": 0,
+          "graphTooltip": 1,
+          "links": [
+
+          ],
+          "liveNow": false,
+          "panels": [
+              {
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 0
+                  },
+                  "id": 4,
+                  "panels": [
+
+                  ],
+                  "title": "Records purged",
+                  "type": "row"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Number of Workspace records purged in the last 1h",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 12,
+                      "x": 0,
+                      "y": 1
+                  },
+                  "id": 2,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(gitpod_server_workspaces_purged_total[1h]))",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Workspaces purged [1h]",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Number of Workspace Instance records purged in the last 1h",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 12,
+                      "x": 12,
+                      "y": 1
+                  },
+                  "id": 7,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(gitpod_server_workspace_instances_purged_total[1h]))",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Workspace Instances purged [1h]",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Number of Prebuilt Workspace records purged in the last 1h",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 12,
+                      "x": 0,
+                      "y": 10
+                  },
+                  "id": 5,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(gitpod_server_prebuild_workspaces_purged_total[1h]))",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Prebuilt Workspaces purged [1h]",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Number of Prebuilt Info records purged in the last 1h",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 12,
+                      "x": 12,
+                      "y": 10
+                  },
+                  "id": 6,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(gitpod_server_prebuild_info_purged_total[1h]))",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Prebuilt Info purged [1h]",
+                  "type": "timeseries"
+              },
+              {
+                  "datasource": {
+                      "type": "prometheus",
+                      "uid": "P4169E866C3094E38"
+                  },
+                  "description": "Number of Prebuilt WorkspaceUpdatable records purged in the last 1h",
+                  "fieldConfig": {
+                      "defaults": {
+                          "color": {
+                              "mode": "palette-classic"
+                          },
+                          "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
+                              "axisPlacement": "auto",
+                              "barAlignment": 0,
+                              "drawStyle": "line",
+                              "fillOpacity": 0,
+                              "gradientMode": "none",
+                              "hideFrom": {
+                                  "legend": false,
+                                  "tooltip": false,
+                                  "viz": false
+                              },
+                              "lineInterpolation": "linear",
+                              "lineWidth": 1,
+                              "pointSize": 5,
+                              "scaleDistribution": {
+                                  "type": "linear"
+                              },
+                              "showPoints": "auto",
+                              "spanNulls": false,
+                              "stacking": {
+                                  "group": "A",
+                                  "mode": "none"
+                              },
+                              "thresholdsStyle": {
+                                  "mode": "off"
+                              }
+                          },
+                          "mappings": [
+
+                          ],
+                          "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                  {
+                                      "color": "green",
+                                      "value": null
+                                  },
+                                  {
+                                      "color": "red",
+                                      "value": 80
+                                  }
+                              ]
+                          }
+                      },
+                      "overrides": [
+
+                      ]
+                  },
+                  "gridPos": {
+                      "h": 9,
+                      "w": 12,
+                      "x": 0,
+                      "y": 19
+                  },
+                  "id": 8,
+                  "options": {
+                      "legend": {
+                          "calcs": [
+
+                          ],
+                          "displayMode": "list",
+                          "placement": "bottom",
+                          "showLegend": true
+                      },
+                      "tooltip": {
+                          "mode": "single",
+                          "sort": "none"
+                      }
+                  },
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "P4169E866C3094E38"
+                          },
+                          "editorMode": "code",
+                          "expr": "sum(increase(gitpod_server_prebuilt_workspace_updatable_purged_total[1h]))",
+                          "legendFormat": "__auto",
+                          "range": true,
+                          "refId": "A"
+                      }
+                  ],
+                  "title": "Prebuilt Workspace Updatable purged [1h]",
+                  "type": "timeseries"
+              }
+          ],
+          "schemaVersion": 37,
+          "style": "dark",
+          "tags": [
+              "webapp",
+              "server"
+          ],
+          "templating": {
+              "list": [
+
+              ]
+          },
+          "time": {
+              "from": "now-6h",
+              "to": "now"
+          },
+          "timepicker": {
+              "refresh_intervals": [
+                  "30s",
+                  "1m",
+                  "5m",
+                  "15m",
+                  "30m",
+                  "1h",
+                  "2h",
+                  "1d"
+              ]
+          },
+          "timezone": "utc",
+          "title": "Components / server / garbage collection",
+          "version": 0,
+          "weekStart": "monday"
+      }
+  kind: ConfigMap
+  metadata:
+    labels:
+      app.kubernetes.io/component: grafana
+      app.kubernetes.io/name: grafana
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 9.1.5
+    name: grafana-dashboard-gitpod-component-server-garbage-collector
     namespace: monitoring-satellite
 - apiVersion: v1
   data:
