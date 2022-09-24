@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "54f9483e725f7300440fcabd9fbc4b94c81da3bd",
+      "version": "4513671b6902f22a443439d7e2872e42b9629730",
       "sum": "IkDHlaE0gvvcPjSNurFT+jQ2aCOAbqHF1WVmXbAgkds="
     },
     {
@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "960f82a3cbcb21dae9174ea633fc428663190fa3",
-      "sum": "Re2fNdxNWeawVdFNUT3v/bJ8XXv/3MBvhlBCiy3w8iI=",
+      "version": "f2cf455e4c091af6d011633ab1fe972b1345a813",
+      "sum": "mD2vlU/B2fYFOo4GmOHpuedWtJaTrEXFaw01wbtblKw=",
       "name": "gitpod"
     },
     {
@@ -100,7 +100,7 @@
           "subdir": "jsonnet/kube-state-metrics"
         }
       },
-      "version": "bef31e3f51633fed883cd751b615e863310e7fa9",
+      "version": "12402a564cbf4557763079ab8e6e995d9afb4db9",
       "sum": "evJ+PXRzuM1tezCG5WzpAn4Lk3YJfMvDFcs+45fsscU="
     },
     {
@@ -110,7 +110,7 @@
           "subdir": "jsonnet/kube-state-metrics-mixin"
         }
       },
-      "version": "bef31e3f51633fed883cd751b615e863310e7fa9",
+      "version": "12402a564cbf4557763079ab8e6e995d9afb4db9",
       "sum": "u8gaydJoxEjzizQ8jY8xSjYgWooPmxw+wIWdDxifMAk="
     },
     {
@@ -120,7 +120,7 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "2799a51a98dbe84f2d0ea0730c70210ef706a1a3",
+      "version": "5b28779e7ded6bd6eed223006c364e514e3c9913",
       "sum": "DhCrVPYt3LTLTR1wahByUTA9Aha26MNlEIDkmYQu0s0="
     },
     {
@@ -130,7 +130,7 @@
           "subdir": "jsonnet/mixin"
         }
       },
-      "version": "34ddc82fc11468c3c53fe5dec250dfa593012f0c",
+      "version": "9f6bbb5913304f7eb951e4eb37fccd8a184c3b4a",
       "sum": "GQmaVFJwKMiD/P4n3N2LrAZVcwutriWrP8joclDtBYQ=",
       "name": "prometheus-operator-mixin"
     },
@@ -141,7 +141,7 @@
           "subdir": "jsonnet/prometheus-operator"
         }
       },
-      "version": "34ddc82fc11468c3c53fe5dec250dfa593012f0c",
+      "version": "9f6bbb5913304f7eb951e4eb37fccd8a184c3b4a",
       "sum": "P56LHovRSvKxdKJuhR+qYhotTtORA5x1RtV59cChHdM="
     },
     {
@@ -193,7 +193,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "ff9ee9acab20f8a58e8c50d71a5a6c3476e505e0",
+      "version": "bd7ff449d5d47600c419051b14384ac91c3fd4dc",
       "sum": "095uB0qB1Ek+aNYf+CgydVZk5aFETsfD8GYf6gDwSJs=",
       "name": "thanos-mixin"
     },
