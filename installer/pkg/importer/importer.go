@@ -1,7 +1,6 @@
 package importer
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/go-git/go-git/v5"
@@ -12,7 +11,7 @@ const (
 )
 
 type Importer struct {
-	GitURL string `json:"gitURL"`
+	GitURL string `json:"gitURL,omitEmpty"`
 	Path   string `json:"path"`
 }
 
@@ -23,13 +22,13 @@ func newImporter(gitURL, path string) *Importer {
 	}
 }
 
-func (i Importer) cloneRepository() {
+func (i Importer) cloneRepository() error {
 	os.RemoveAll(clonePath)
 	_, err := git.PlainClone(clonePath, false, &git.CloneOptions{
 		URL: i.GitURL,
 	})
-
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
+	return nil
 }
