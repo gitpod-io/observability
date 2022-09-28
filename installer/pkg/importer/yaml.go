@@ -24,29 +24,42 @@ func NewYAMLImporter(gitURL, path string) *YAMLImporter {
 	}
 }
 
-func (y YAMLImporter) Import() []string {
-	y.cloneRepository()
-	yamlPaths, err := y.getFiles()
+func (y YAMLImporter) Import() ([]string, error) {
+	var localImport = true
+	if y.GitURL != "" {
+		localImport = false
+		err := y.cloneRepository()
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	yamlPaths, err := y.getFiles(localImport)
 	if err != nil {
-		fmt.Printf("Error finding YAML files: %v", err)
+		return nil, fmt.Errorf("error finding YAML files: %v", err)
 	}
 
 	var yamls []string
 	for _, yamlPath := range yamlPaths {
 		yaml, err := ioutil.ReadFile(yamlPath)
 		if err != nil {
-			fmt.Printf("Error reading YAML files: File: %s Err: %v", yamlPath, err)
+			return nil, fmt.Errorf("error reading YAML files: File: %s Err: %v", yamlPath, err)
 		}
-
 		yamls = append(yamls, fmt.Sprintf("---\n%s", string(yaml)))
 	}
 
-	return yamls
+	return yamls, nil
 }
 
-func (y YAMLImporter) getFiles() ([]string, error) {
+func (y YAMLImporter) getFiles(local bool) ([]string, error) {
 	var matches []string
-	err := filepath.Walk(fmt.Sprintf("%s/%s/", clonePath, y.Path), func(path string, info os.FileInfo, err error) error {
+
+	var path = fmt.Sprintf("%s/%s/", clonePath, y.Path)
+	if local {
+		path = fmt.Sprintf("%s/", y.Path)
+	}
+
+	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}

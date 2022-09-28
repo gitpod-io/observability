@@ -44,15 +44,6 @@ func workspaceObjects() common.RenderFunc {
 							Interval:      "60s",
 							Port:          "supervisor",
 							ScrapeTimeout: "5s",
-							MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-								{
-									Action: "keep",
-									Regex:  "gitpod_(.*)",
-									SourceLabels: []monitoringv1.LabelName{
-										"__name__",
-									},
-								},
-							},
 						},
 					},
 				},

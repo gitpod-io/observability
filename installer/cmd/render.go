@@ -205,17 +205,29 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 
 	for _, imp := range ctx.Config.Imports.Kustomize {
 		kImporter := importer.NewKustomizeImporter(imp.GitURL, imp.Path)
-		output = append(output, kImporter.Import()...)
+		imports, err := kImporter.Import()
+		if err != nil {
+			return nil, fmt.Errorf("failed to import kustomize. gitURL: %s path: %s: %v", imp.GitURL, imp.Path, err)
+		}
+		output = append(output, imports...)
 	}
 
 	for _, imp := range ctx.Config.Imports.YAML {
 		yImporter := importer.NewYAMLImporter(imp.GitURL, imp.Path)
-		output = append(output, yImporter.Import()...)
+		imports, err := yImporter.Import()
+		if err != nil {
+			return nil, fmt.Errorf("failed to import yaml. gitURL: %s path: %s: %v", imp.GitURL, imp.Path, err)
+		}
+		output = append(output, imports...)
 	}
 
 	if ctx.Config.Grafana.Install {
 		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/grafana")
-		output = append(output, grafanaImporter.Import()...)
+		imports, err := grafanaImporter.Import()
+		if err != nil {
+			return nil, fmt.Errorf("failed to import grafana manifests: %v", err)
+		}
+		output = append(output, imports...)
 		output = append(output, "---")
 	}
 

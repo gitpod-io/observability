@@ -78,6 +78,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-cluster-autoscaler-k3s
           name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-grpc-client
+          name: grafana-dashboard-gitpod-grpc-client
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-grpc-server
           name: grafana-dashboard-gitpod-grpc-server
           readOnly: false
@@ -299,6 +302,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
         name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
+      - configMap:
+          name: grafana-dashboard-gitpod-grpc-client
+        name: grafana-dashboard-gitpod-grpc-client
       - configMap:
           name: grafana-dashboard-gitpod-grpc-server
         name: grafana-dashboard-gitpod-grpc-server
