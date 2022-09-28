@@ -1,5 +1,6 @@
 name: Release
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -27,7 +28,7 @@ jobs:
           format: "${major}"
           # Optional path to check for changes. If any changes are detected in the path the
           # 'changed' output will true. Enter multiple paths separated by spaces.
-          change_path: "installer/"
+          # change_path: "installer/"
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
       - uses: actions/setup-go@v2
