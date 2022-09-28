@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
         # https://github.com/PaulHatch/semantic-version
       - id: semver
-        uses: paulhatch/semantic-version@v4
+        uses: paulhatch/semantic-version@v5.0.0-alpha
         with:
           # The prefix to use to identify tags
           tag_prefix: "v"
