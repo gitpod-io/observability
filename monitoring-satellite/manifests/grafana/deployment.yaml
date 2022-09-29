@@ -69,11 +69,11 @@ spec:
         - mountPath: /tmp
           name: tmp-plugins
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-admin-nodes
-          name: grafana-dashboard-gitpod-admin-nodes
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-admin-node
+          name: grafana-dashboard-gitpod-admin-node
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-admin-workspaces
-          name: grafana-dashboard-gitpod-admin-workspaces
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-admin-workspace
+          name: grafana-dashboard-gitpod-admin-workspace
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-cluster-autoscaler-k3s
           name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
@@ -294,11 +294,11 @@ spec:
           medium: Memory
         name: tmp-plugins
       - configMap:
-          name: grafana-dashboard-gitpod-admin-nodes
-        name: grafana-dashboard-gitpod-admin-nodes
+          name: grafana-dashboard-gitpod-admin-node
+        name: grafana-dashboard-gitpod-admin-node
       - configMap:
-          name: grafana-dashboard-gitpod-admin-workspaces
-        name: grafana-dashboard-gitpod-admin-workspaces
+          name: grafana-dashboard-gitpod-admin-workspace
+        name: grafana-dashboard-gitpod-admin-workspace
       - configMap:
           name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
         name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
