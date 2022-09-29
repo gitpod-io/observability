@@ -1750,7 +1750,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-admin-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -2837,7 +2837,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-admin-workspaces
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3931,7 +3931,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3966,7 +3966,7 @@ items:
           "editable": true,
           "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "id": 76,
+          "id": 7,
           "links": [
 
           ],
@@ -4635,7 +4635,8 @@ items:
           "schemaVersion": 37,
           "style": "dark",
           "tags": [
-
+              "grpc",
+              "client"
           ],
           "templating": {
               "list": [
@@ -4644,16 +4645,10 @@ items:
                       "current": {
                           "selected": true,
                           "text": [
-                              "etcdserverpb.KV",
-                              "etcdserverpb.Lease",
-                              "etcdserverpb.Maintenance",
-                              "etcdserverpb.Watch"
+                              "All"
                           ],
                           "value": [
-                              "etcdserverpb.KV",
-                              "etcdserverpb.Lease",
-                              "etcdserverpb.Maintenance",
-                              "etcdserverpb.Watch"
+                              "$__all"
                           ]
                       },
                       "datasource": {
@@ -4771,7 +4766,7 @@ items:
           "timezone": "utc",
           "title": "gRPC / Client",
           "uid": "dxEjpXn4z",
-          "version": 3,
+          "version": 1,
           "weekStart": "monday"
       }
   kind: ConfigMap
@@ -4780,7 +4775,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-grpc-client
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -5622,7 +5617,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-grpc-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -9760,7 +9755,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-node-resource-metrics
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -10632,7 +10627,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-nodes-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -11612,7 +11607,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12065,7 +12060,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-slo-workspace-startuptime
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12529,7 +12524,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-sh-example-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12736,7 +12731,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-browser-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14114,7 +14109,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-code-browser
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14393,7 +14388,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-jb
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -16509,7 +16504,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-openvsx-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -16987,7 +16982,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-ssh-gateway
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -17563,7 +17558,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-alertmanager-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -19324,7 +19319,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-apiserver
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -20661,7 +20656,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-cert-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -22532,7 +22527,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-cluster-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -23711,7 +23706,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-controller-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -26788,7 +26783,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-k8s-resources-cluster
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -29574,7 +29569,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-k8s-resources-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -30589,7 +30584,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-k8s-resources-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -33047,7 +33042,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-k8s-resources-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -35060,7 +35055,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-k8s-resources-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -37238,7 +37233,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -39481,7 +39476,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-kubelet
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -40934,7 +40929,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-namespace-by-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -42659,7 +42654,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-namespace-by-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -43711,7 +43706,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -44789,7 +44784,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-node-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -45851,7 +45846,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-nodes-darwin
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -46906,7 +46901,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -47482,7 +47477,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-persistentvolumesusage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -48699,7 +48694,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-pod-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -50358,7 +50353,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-prometheus-remote-write
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -51582,7 +51577,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-prometheus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -52842,7 +52837,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -53943,7 +53938,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-scheduler
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -54407,7 +54402,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-vulnerabilities
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55834,7 +55829,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-workload-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -57241,7 +57236,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-dashboard
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -58646,7 +58641,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-db-sync
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -60051,7 +60046,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-db
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -64724,7 +64719,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-messagebus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -66131,7 +66126,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -66720,7 +66715,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-server-garbage-collector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -70079,7 +70074,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -70930,7 +70925,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-usage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -73229,7 +73224,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-ws-manager-bridge
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -74596,7 +74591,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-meta-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -75143,7 +75138,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-meta-services
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -76704,7 +76699,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-slo-login
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -79577,7 +79572,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-agent-smith
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -81701,7 +81696,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-blobserve
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -84269,7 +84264,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-content-service
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -86840,7 +86835,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-image-builder
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -89861,7 +89856,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-registry-facade
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -92435,7 +92430,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-ws-daemon
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -95695,7 +95690,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-ws-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -97103,7 +97098,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-component-ws-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -97540,7 +97535,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-network-limiting
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -97843,7 +97838,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-node-ephemeral-storage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98605,7 +98600,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-node-problem-detector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98868,7 +98863,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-node-swap
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -100964,7 +100959,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-workspace-coredns
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -101659,7 +101654,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.5
+      app.kubernetes.io/version: 9.1.6
     name: grafana-dashboard-gitpod-workspace-success-criteria
     namespace: monitoring-satellite
 kind: ConfigMapList
