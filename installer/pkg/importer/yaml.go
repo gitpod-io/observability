@@ -54,7 +54,7 @@ func (y YAMLImporter) Import() ([]string, error) {
 func (y YAMLImporter) getFiles(local bool) ([]string, error) {
 	var matches []string
 
-	var path = fmt.Sprintf("%s/%s/", clonePath, y.Path)
+	var path = fmt.Sprintf("%s/%s/", y.clonePath, y.Path)
 	if local {
 		path = fmt.Sprintf("%s/", y.Path)
 	}

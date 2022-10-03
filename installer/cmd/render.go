@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/spf13/cobra"
+	"golang.org/x/sync/errgroup"
 	"gopkg.in/op/go-logging.v1"
 	"sigs.k8s.io/yaml"
 
@@ -203,23 +204,11 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 		output = append(output, fmt.Sprintf("---\n# %s/%s %s\n%s", c.TypeMeta.APIVersion, c.TypeMeta.Kind, c.Metadata.Name, c.Content))
 	}
 
-	for _, imp := range ctx.Config.Imports.Kustomize {
-		kImporter := importer.NewKustomizeImporter(imp.GitURL, imp.Path)
-		imports, err := kImporter.Import()
-		if err != nil {
-			return nil, fmt.Errorf("failed to import kustomize. gitURL: %s path: %s: %v", imp.GitURL, imp.Path, err)
-		}
-		output = append(output, imports...)
+	imports, err := runImports(ctx.Config.Imports.Kustomize, ctx.Config.Imports.YAML)
+	if err != nil {
+		return nil, err
 	}
-
-	for _, imp := range ctx.Config.Imports.YAML {
-		yImporter := importer.NewYAMLImporter(imp.GitURL, imp.Path)
-		imports, err := yImporter.Import()
-		if err != nil {
-			return nil, fmt.Errorf("failed to import yaml. gitURL: %s path: %s: %v", imp.GitURL, imp.Path, err)
-		}
-		output = append(output, imports...)
-	}
+	output = append(output, imports...)
 
 	if ctx.Config.Grafana.Install {
 		grafanaImporter := importer.NewYAMLImporter("https://github.com/gitpod-io/observability", "monitoring-satellite/manifests/grafana")
@@ -295,4 +284,49 @@ func init() {
 		fmt.Printf("There was an error while compiling the CLI, please reach out to the platform team")
 		os.Exit(1)
 	}
+}
+
+// runImports will import all manifests declared in the import interface using parallelism
+func runImports(kImports []importer.KustomizeImporter, yImports []importer.YAMLImporter) ([]string, error) {
+	var imports []string
+	g := new(errgroup.Group)
+
+	importKustomize := func(i importer.KustomizeImporter) error {
+		kImporter := importer.NewKustomizeImporter(i.GitURL, i.Path)
+		imps, err := kImporter.Import()
+		if err != nil {
+			return fmt.Errorf("failed to import Kustomize. gitURL: %s path: %s: %v", i.GitURL, i.Path, err)
+		}
+		imports = append(imports, imps...)
+		return nil
+	}
+
+	importYAML := func(i importer.YAMLImporter) error {
+		yImporter := importer.NewYAMLImporter(i.GitURL, i.Path)
+		imps, err := yImporter.Import()
+		if err != nil {
+			return fmt.Errorf("failed to import YAML. gitURL: %s path: %s: %v", i.GitURL, i.Path, err)
+		}
+		imports = append(imports, imps...)
+		return nil
+	}
+
+	for _, imp := range kImports {
+		imp := imp // https://golang.org/doc/faq#closures_and_goroutines
+		g.Go(func() error {
+			return importKustomize(imp)
+		})
+	}
+
+	for _, imp := range yImports {
+		imp := imp // https://golang.org/doc/faq#closures_and_goroutines
+		g.Go(func() error {
+			return importYAML(imp)
+		})
+	}
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+
+	return imports, nil
 }
