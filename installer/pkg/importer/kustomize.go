@@ -32,7 +32,7 @@ func (k KustomizeImporter) Import() ([]string, error) {
 		}
 	}
 
-	var importPath = fmt.Sprintf("%s/%s/", clonePath, k.Path)
+	var importPath = fmt.Sprintf("%s/%s/", k.clonePath, k.Path)
 	if localImport {
 		importPath = fmt.Sprintf("%s/", k.Path)
 	}
