@@ -16,6 +16,13 @@ local kubePrometheus =
     values+:: {
       common+: {
         namespace: 'monitoring-central',
+        // versions and images can be deleted once Pyrra releases version v0.5.0
+        versions+: {
+          pyrra: "pr-436"
+        },
+        images+: {
+          pyrra: "ghcr.io/pyrra-dev/pyrra:pr-436"
+        },
       },
       gitpodParams: {
         namespace: config.namespace,
