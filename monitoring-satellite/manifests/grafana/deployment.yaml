@@ -264,6 +264,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-node-swap
           name: grafana-dashboard-gitpod-node-swap
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-psi
+          name: grafana-dashboard-gitpod-psi
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-coredns
           name: grafana-dashboard-gitpod-workspace-coredns
           readOnly: false
@@ -488,6 +491,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-node-swap
         name: grafana-dashboard-gitpod-node-swap
+      - configMap:
+          name: grafana-dashboard-gitpod-psi
+        name: grafana-dashboard-gitpod-psi
       - configMap:
           name: grafana-dashboard-gitpod-workspace-coredns
         name: grafana-dashboard-gitpod-workspace-coredns
