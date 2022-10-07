@@ -33,7 +33,7 @@ func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 						"pods",
 						"endpoints",
 					},
-					Verbs: []string{"get"},
+					Verbs: []string{"get", "list", "watch"},
 				},
 				{
 					NonResourceURLs: []string{"/metrics"},
