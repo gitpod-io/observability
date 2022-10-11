@@ -1915,7 +1915,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-admin-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3159,7 +3159,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-admin-workspace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -4253,7 +4253,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -5097,7 +5097,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-grpc-client
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -5939,7 +5939,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-grpc-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -10077,7 +10077,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-node-resource-metrics
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -11152,7 +11152,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-nodes-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12343,7 +12343,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12796,7 +12796,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-slo-workspace-startuptime
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -13260,7 +13260,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-sh-example-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -13467,7 +13467,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-browser-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14845,7 +14845,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-code-browser
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -15124,7 +15124,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-jb
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -17240,7 +17240,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-openvsx-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -17718,7 +17718,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-ssh-gateway
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -18294,7 +18294,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-alertmanager-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -20055,7 +20055,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-apiserver
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -21392,7 +21392,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-cert-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -23263,7 +23263,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-cluster-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -24442,7 +24442,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-controller-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -27519,7 +27519,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-k8s-resources-cluster
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -30305,7 +30305,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-k8s-resources-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -31320,7 +31320,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-k8s-resources-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -33778,7 +33778,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-k8s-resources-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -35791,7 +35791,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-k8s-resources-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -37969,7 +37969,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -40212,7 +40212,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-kubelet
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -41665,7 +41665,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-namespace-by-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -43390,7 +43390,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-namespace-by-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -44442,7 +44442,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -45520,7 +45520,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-node-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -46582,7 +46582,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-nodes-darwin
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -47637,7 +47637,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -48213,7 +48213,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-persistentvolumesusage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -49430,7 +49430,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-pod-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -51089,7 +51089,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-prometheus-remote-write
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -52313,7 +52313,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-prometheus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -53573,7 +53573,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -54674,7 +54674,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-scheduler
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55138,7 +55138,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-vulnerabilities
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -56565,7 +56565,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-workload-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -57972,7 +57972,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-dashboard
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -59377,7 +59377,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-db-sync
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -60782,7 +60782,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-db
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -65455,7 +65455,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-messagebus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -66862,7 +66862,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -67451,7 +67451,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-server-garbage-collector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -70810,7 +70810,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -71659,7 +71659,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-usage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -71688,15 +71688,20 @@ items:
               ]
           },
           "editable": true,
-          "gnetId": null,
+          "fiscalYearStartMonth": 0,
           "graphTooltip": 1,
-          "iteration": 1633593492656,
+          "id": 60,
           "links": [
 
           ],
+          "liveNow": false,
           "panels": [
               {
                   "collapsed": false,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
@@ -71706,6 +71711,15 @@ items:
                   "id": 56,
                   "panels": [
 
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
+                      }
                   ],
                   "title": "Health Metrics",
                   "type": "row"
@@ -71721,6 +71735,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "# of events",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71782,7 +71798,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71828,6 +71845,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "# of events",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71889,7 +71908,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -71924,6 +71944,8 @@ items:
                               "mode": "palette-classic"
                           },
                           "custom": {
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "# of events",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
@@ -71985,7 +72007,8 @@ items:
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72027,13 +72050,16 @@ items:
                       "type": "prometheus",
                       "uid": "${datasource}"
                   },
+                  "description": "These are instances that are marked as stopped by ws-manager-bridge.",
                   "fieldConfig": {
                       "defaults": {
                           "color": {
                               "mode": "palette-classic"
                           },
                           "custom": {
-                              "axisLabel": "seconds",
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
+                              "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
                               "drawStyle": "line",
@@ -72087,14 +72113,15 @@ items:
                       "x": 12,
                       "y": 9
                   },
-                  "id": 54,
+                  "id": 60,
                   "options": {
                       "legend": {
                           "calcs": [
 
                           ],
                           "displayMode": "list",
-                          "placement": "bottom"
+                          "placement": "bottom",
+                          "showLegend": true
                       },
                       "tooltip": {
                           "mode": "single",
@@ -72105,61 +72132,44 @@ items:
                       {
                           "datasource": {
                               "type": "prometheus",
-                              "uid": "P4169E866C3094E38"
+                              "uid": "${datasource}"
                           },
                           "editorMode": "code",
-                          "expr": "histogram_quantile(0.5, sum(rate(gitpod_ws_manager_bridge_workspace_instance_update_completed_seconds_bucket{db_write=\"true\", cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (le))",
-                          "legendFormat": "50th",
+                          "expr": "sum(increase(gitpod_ws_instances_marked_stopped_total[5m])) by (previous_phase)",
+                          "legendFormat": "__auto",
                           "range": true,
                           "refId": "A"
-                      },
-                      {
-                          "datasource": {
-                              "type": "prometheus",
-                              "uid": "${datasource}"
-                          },
-                          "editorMode": "code",
-                          "expr": "histogram_quantile(0.90, sum(rate(gitpod_ws_manager_bridge_workspace_instance_update_completed_seconds_bucket{db_write=\"true\", cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (le))",
-                          "hide": false,
-                          "legendFormat": "90th",
-                          "range": true,
-                          "refId": "B"
-                      },
-                      {
-                          "datasource": {
-                              "type": "prometheus",
-                              "uid": "${datasource}"
-                          },
-                          "editorMode": "code",
-                          "expr": "histogram_quantile(0.99, sum(rate(gitpod_ws_manager_bridge_workspace_instance_update_completed_seconds_bucket{db_write=\"true\", cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (le))",
-                          "hide": false,
-                          "legendFormat": "99th",
-                          "range": true,
-                          "refId": "C"
                       }
                   ],
-                  "title": "Processing latency by write replicas [1m] (bucketed)",
+                  "title": "Instances marked as stopped [5m]",
                   "type": "timeseries"
               },
               {
                   "collapsed": true,
-                  "datasource": null,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
                       "x": 0,
-                      "y": 9
+                      "y": 17
                   },
                   "id": 16,
                   "panels": [
                       {
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fieldConfig": {
                               "defaults": {
                                   "color": {
                                       "mode": "palette-classic"
                                   },
                                   "custom": {
+                                      "axisCenteredZero": false,
+                                      "axisColorMode": "text",
                                       "axisLabel": "",
                                       "axisPlacement": "auto",
                                       "barAlignment": 0,
@@ -72212,7 +72222,7 @@ items:
                               "h": 7,
                               "w": 10,
                               "x": 0,
-                              "y": 10
+                              "y": 26
                           },
                           "id": 44,
                           "options": {
@@ -72221,14 +72231,19 @@ items:
 
                                   ],
                                   "displayMode": "table",
-                                  "placement": "right"
+                                  "placement": "right",
+                                  "showLegend": true
                               },
                               "tooltip": {
-                                  "mode": "single"
+                                  "mode": "single",
+                                  "sort": "none"
                               }
                           },
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "exemplar": true,
                                   "expr": "kube_pod_container_info{cluster=~\"$cluster\", pod=~\"$pod\", image=~\".+\", container=\"ws-manager-bridge\"}",
                                   "interval": "",
@@ -72247,7 +72262,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "decimals": 2,
                           "fill": 1,
                           "fillGradient": 0,
@@ -72255,7 +72272,7 @@ items:
                               "h": 7,
                               "w": 7,
                               "x": 10,
-                              "y": 10
+                              "y": 26
                           },
                           "hiddenSeries": false,
                           "id": 2,
@@ -72278,7 +72295,7 @@ items:
                               "alertThreshold": true
                           },
                           "percentage": false,
-                          "pluginVersion": "8.1.5",
+                          "pluginVersion": "9.1.6",
                           "pointradius": 2,
                           "points": false,
                           "renderer": "flot",
@@ -72290,6 +72307,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(\n  rate(container_cpu_usage_seconds_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Cores being used",
@@ -72300,11 +72320,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "CPU Utilization",
                           "tooltip": {
                               "shared": true,
@@ -72313,9 +72331,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72325,24 +72341,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72352,7 +72362,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "description": "Saturation > 100% means that the container is requesting more than its limits.\n\nKubernetes will start to throttle CPU when that happens. That's a sign of degraded performance.\n\n'No Data' indicates that the pod has no CPU limits.",
                           "fill": 1,
                           "fillGradient": 0,
@@ -72360,7 +72372,7 @@ items:
                               "h": 7,
                               "w": 7,
                               "x": 17,
-                              "y": 10
+                              "y": 26
                           },
                           "hiddenSeries": false,
                           "id": 4,
@@ -72380,7 +72392,7 @@ items:
                               "alertThreshold": true
                           },
                           "percentage": false,
-                          "pluginVersion": "8.1.5",
+                          "pluginVersion": "9.1.6",
                           "pointradius": 2,
                           "points": false,
                           "renderer": "flot",
@@ -72395,6 +72407,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(\n  rate(container_cpu_usage_seconds_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)\n/\nsum(\n  kube_pod_container_resource_limits_cpu_cores{container!=\"POD\", cluster=\"$cluster\", pod=~\"$pod\"}\n) by (pod, cluster, node)\n",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node} - {{pod}} - CPU Saturation",
@@ -72402,6 +72417,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(\nrate(container_cpu_cfs_throttled_seconds_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod)",
                                   "interval": "",
                                   "legendFormat": "{{pod}} - CPU Throttles",
@@ -72412,11 +72430,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "CPU Saturation",
                           "tooltip": {
                               "shared": true,
@@ -72425,9 +72441,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72437,24 +72451,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "percentunit",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "s",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72464,14 +72472,16 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fill": 1,
                           "fillGradient": 0,
                           "gridPos": {
                               "h": 7,
                               "w": 12,
                               "x": 0,
-                              "y": 17
+                              "y": 33
                           },
                           "hiddenSeries": false,
                           "id": 6,
@@ -72492,7 +72502,7 @@ items:
                               "alertThreshold": true
                           },
                           "percentage": false,
-                          "pluginVersion": "8.1.5",
+                          "pluginVersion": "9.1.6",
                           "pointradius": 2,
                           "points": false,
                           "renderer": "flot",
@@ -72504,6 +72514,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(container_memory_working_set_bytes{container!=\"POD\", container!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}}",
@@ -72514,11 +72527,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Memory Utilization",
                           "tooltip": {
                               "shared": true,
@@ -72527,9 +72538,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72538,24 +72547,18 @@ items:
                           "yaxes": [
                               {
                                   "format": "bytes",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72565,7 +72568,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "decimals": 4,
                           "description": "Memory can't be throttled. When a container reaches 100% of its memory limits,  Kubernetes will kill the container and restart it.\n\n'No Data' indicates that the pod doesn't have Memory limits.",
                           "fill": 1,
@@ -72574,7 +72579,7 @@ items:
                               "h": 7,
                               "w": 12,
                               "x": 12,
-                              "y": 17
+                              "y": 33
                           },
                           "hiddenSeries": false,
                           "id": 8,
@@ -72595,7 +72600,7 @@ items:
                               "alertThreshold": true
                           },
                           "percentage": false,
-                          "pluginVersion": "8.1.5",
+                          "pluginVersion": "9.1.6",
                           "pointradius": 2,
                           "points": false,
                           "renderer": "flot",
@@ -72607,6 +72612,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum(\nrate(container_memory_working_set_bytes{container!=\"POD\", container!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)\n/\nsum(\n  kube_pod_container_resource_limits{container!=\"POD\", cluster=\"$cluster\", pod=~\"$pod\", resource=\"memory\"}\n) by (pod, cluster, node)\n",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Memory Saturation",
@@ -72617,11 +72625,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Memory Saturation",
                           "tooltip": {
                               "shared": true,
@@ -72630,9 +72636,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72642,24 +72646,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "percentunit",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72669,14 +72667,16 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fill": 1,
                           "fillGradient": 0,
                           "gridPos": {
                               "h": 7,
                               "w": 8,
                               "x": 0,
-                              "y": 24
+                              "y": 40
                           },
                           "hiddenSeries": false,
                           "id": 10,
@@ -72709,6 +72709,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_receive_bytes_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Received",
@@ -72716,6 +72719,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_transmit_bytes_total{container!=\"POD\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Transmitted",
@@ -72726,11 +72732,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Network Utilization",
                           "tooltip": {
                               "shared": true,
@@ -72739,9 +72743,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72750,24 +72752,18 @@ items:
                           "yaxes": [
                               {
                                   "format": "binBps",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72777,14 +72773,16 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fill": 1,
                           "fillGradient": 0,
                           "gridPos": {
                               "h": 7,
                               "w": 8,
                               "x": 8,
-                              "y": 24
+                              "y": 40
                           },
                           "hiddenSeries": false,
                           "id": 40,
@@ -72818,6 +72816,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_receive_packets_dropped_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Receive",
@@ -72825,6 +72826,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_transmit_packets_dropped_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Transmit",
@@ -72835,11 +72839,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Network Saturation (Packets Dropped)",
                           "tooltip": {
                               "shared": true,
@@ -72848,9 +72850,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72860,24 +72860,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "pps",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72887,14 +72881,16 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fill": 1,
                           "fillGradient": 0,
                           "gridPos": {
                               "h": 7,
                               "w": 8,
                               "x": 16,
-                              "y": 24
+                              "y": 40
                           },
                           "hiddenSeries": false,
                           "id": 42,
@@ -72927,6 +72923,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_receive_errors_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Received",
@@ -72934,6 +72933,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "sum (\n  rate(container_network_transmit_errors_total{container!=\"POD\", pod!=\"\", cluster=~\"$cluster\", node=~\"$node\", pod=~\"$pod\"}[1m])\n) by (pod, cluster, node)",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{node}} - {{pod}} - Transmitted",
@@ -72944,11 +72946,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Network Errors",
                           "tooltip": {
                               "shared": true,
@@ -72957,9 +72957,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -72969,24 +72967,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "Errors/s",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -72996,7 +72988,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "decimals": 4,
                           "description": "",
                           "fill": 1,
@@ -73005,7 +72999,7 @@ items:
                               "h": 9,
                               "w": 8,
                               "x": 0,
-                              "y": 31
+                              "y": 47
                           },
                           "hiddenSeries": false,
                           "id": 32,
@@ -73038,6 +73032,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "rate(kube_pod_container_status_restarts_total{cluster=~\"$cluster\", pod=~\"$pod\"}[1m])",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{kubernetes_pod_node_name}} - {{pod}} ",
@@ -73048,11 +73045,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Pod Restarts",
                           "tooltip": {
                               "shared": true,
@@ -73061,9 +73056,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -73073,24 +73066,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -73100,7 +73087,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "decimals": 0,
                           "description": "",
                           "fill": 1,
@@ -73109,7 +73098,7 @@ items:
                               "h": 9,
                               "w": 8,
                               "x": 8,
-                              "y": 31
+                              "y": 47
                           },
                           "hiddenSeries": false,
                           "id": 38,
@@ -73142,6 +73131,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_pod_container_status_running{cluster=~\"$cluster\", pod=~\"$pod\"} == 1 ",
                                   "interval": "",
                                   "legendFormat": "{{pod}}  - RUNNING",
@@ -73149,6 +73141,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "(\n  sum by (pod) (kube_pod_container_status_terminated{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n) * on(pod) group_left(reason) (\n  sum by (pod, reason) (kube_pod_container_status_terminated_reason{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n)",
                                   "interval": "",
                                   "legendFormat": "{{pod}}  - TERMINATED -> {{reason}}",
@@ -73156,6 +73151,9 @@ items:
                                   "refId": "B"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "(\n  sum by (pod) (kube_pod_container_status_waiting{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n) * on(pod) group_left(reason) (\n  sum by (pod, reason) (kube_pod_container_status_waiting_reason{cluster=~\"$cluster\", pod=~\"$pod\"}) == 1\n)",
                                   "interval": "",
                                   "legendFormat": "{{pod}}  - WAITING -> {{reason}}",
@@ -73166,11 +73164,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Pod Status",
                           "tooltip": {
                               "shared": true,
@@ -73179,9 +73175,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -73191,24 +73185,17 @@ items:
                               {
                                   "decimals": 0,
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -73218,7 +73205,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "decimals": 0,
                           "fill": 1,
                           "fillGradient": 0,
@@ -73226,7 +73215,7 @@ items:
                               "h": 9,
                               "w": 8,
                               "x": 16,
-                              "y": 31
+                              "y": 47
                           },
                           "hiddenSeries": false,
                           "id": 36,
@@ -73259,6 +73248,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_deployment_spec_replicas{cluster=~\"$cluster\", deployment=\"ws-manager-bridge\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{deployment}} - Desired",
@@ -73266,6 +73258,9 @@ items:
                                   "refId": "C"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_deployment_status_replicas_available{cluster=~\"$cluster\", deployment=\"ws-manager-bridge\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{deployment}} - Available replicas",
@@ -73273,6 +73268,9 @@ items:
                                   "refId": "A"
                               },
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "kube_deployment_status_replicas_unavailable{cluster=~\"$cluster\", deployment=\"ws-manager-bridge\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{deployment}} - Unvailable replicas",
@@ -73283,11 +73281,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Replicas availability",
                           "tooltip": {
                               "shared": true,
@@ -73296,9 +73292,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -73308,25 +73302,149 @@ items:
                               {
                                   "decimals": 0,
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
+                      },
+                      {
+                          "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                          },
+                          "fieldConfig": {
+                              "defaults": {
+                                  "color": {
+                                      "mode": "palette-classic"
+                                  },
+                                  "custom": {
+                                      "axisCenteredZero": false,
+                                      "axisColorMode": "text",
+                                      "axisLabel": "seconds",
+                                      "axisPlacement": "auto",
+                                      "barAlignment": 0,
+                                      "drawStyle": "line",
+                                      "fillOpacity": 0,
+                                      "gradientMode": "none",
+                                      "hideFrom": {
+                                          "legend": false,
+                                          "tooltip": false,
+                                          "viz": false
+                                      },
+                                      "lineInterpolation": "linear",
+                                      "lineWidth": 1,
+                                      "pointSize": 5,
+                                      "scaleDistribution": {
+                                          "type": "linear"
+                                      },
+                                      "showPoints": "auto",
+                                      "spanNulls": false,
+                                      "stacking": {
+                                          "group": "A",
+                                          "mode": "none"
+                                      },
+                                      "thresholdsStyle": {
+                                          "mode": "off"
+                                      }
+                                  },
+                                  "mappings": [
+
+                                  ],
+                                  "thresholds": {
+                                      "mode": "absolute",
+                                      "steps": [
+                                          {
+                                              "color": "green",
+                                              "value": null
+                                          },
+                                          {
+                                              "color": "red",
+                                              "value": 80
+                                          }
+                                      ]
+                                  }
+                              },
+                              "overrides": [
+
+                              ]
+                          },
+                          "gridPos": {
+                              "h": 8,
+                              "w": 12,
+                              "x": 12,
+                              "y": 56
+                          },
+                          "id": 54,
+                          "options": {
+                              "legend": {
+                                  "calcs": [
+
+                                  ],
+                                  "displayMode": "list",
+                                  "placement": "bottom",
+                                  "showLegend": true
+                              },
+                              "tooltip": {
+                                  "mode": "single",
+                                  "sort": "none"
+                              }
+                          },
+                          "targets": [
+                              {
+                                  "datasource": {
+                                      "type": "prometheus",
+                                      "uid": "P4169E866C3094E38"
+                                  },
+                                  "editorMode": "code",
+                                  "expr": "histogram_quantile(0.5, sum(rate(gitpod_ws_manager_bridge_workspace_instance_update_completed_seconds_bucket{db_write=\"true\", cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (le))",
+                                  "legendFormat": "50th",
+                                  "range": true,
+                                  "refId": "A"
+                              },
+                              {
+                                  "datasource": {
+                                      "type": "prometheus",
+                                      "uid": "${datasource}"
+                                  },
+                                  "editorMode": "code",
+                                  "expr": "histogram_quantile(0.90, sum(rate(gitpod_ws_manager_bridge_workspace_instance_update_completed_seconds_bucket{db_write=\"true\", cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (le))",
+                                  "hide": false,
+                                  "legendFormat": "90th",
+                                  "range": true,
+                                  "refId": "B"
+                              },
+                              {
+                                  "datasource": {
+                                      "type": "prometheus",
+                                      "uid": "${datasource}"
+                                  },
+                                  "editorMode": "code",
+                                  "expr": "histogram_quantile(0.99, sum(rate(gitpod_ws_manager_bridge_workspace_instance_update_completed_seconds_bucket{db_write=\"true\", cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (le))",
+                                  "hide": false,
+                                  "legendFormat": "99th",
+                                  "range": true,
+                                  "refId": "C"
+                              }
+                          ],
+                          "title": "Processing latency by write replicas [1m] (bucketed)",
+                          "type": "timeseries"
+                      }
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
                       }
                   ],
                   "title": "Pod Metrics",
@@ -73334,12 +73452,15 @@ items:
               },
               {
                   "collapsed": true,
-                  "datasource": null,
+                  "datasource": {
+                      "type": "datasource",
+                      "uid": "grafana"
+                  },
                   "gridPos": {
                       "h": 1,
                       "w": 24,
                       "x": 0,
-                      "y": 10
+                      "y": 18
                   },
                   "id": 22,
                   "panels": [
@@ -73350,16 +73471,8 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
-                          "fieldConfig": {
-                              "defaults": {
-                                  "custom": {
-
-                                  }
-                              },
-                              "overrides": [
-
-                              ]
+                          "datasource": {
+                              "uid": "$datasource"
                           },
                           "fill": 1,
                           "fillGradient": 0,
@@ -73367,7 +73480,7 @@ items:
                               "h": 9,
                               "w": 12,
                               "x": 0,
-                              "y": 2
+                              "y": 27
                           },
                           "hiddenSeries": false,
                           "id": 24,
@@ -73388,7 +73501,7 @@ items:
                               "alertThreshold": true
                           },
                           "percentage": false,
-                          "pluginVersion": "7.4.3",
+                          "pluginVersion": "9.1.6",
                           "pointradius": 2,
                           "points": false,
                           "renderer": "flot",
@@ -73400,6 +73513,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "process_resident_memory_bytes{cluster=~\"$cluster\", job=\"ws-manager-bridge\", pod=~\"$pod\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{pod}}",
@@ -73410,11 +73526,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Memory Usage (as seen by the runtime process)",
                           "tooltip": {
                               "shared": true,
@@ -73423,9 +73537,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -73434,24 +73546,18 @@ items:
                           "yaxes": [
                               {
                                   "format": "bytes",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -73461,27 +73567,19 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "decimals": 2,
                           "editable": true,
                           "error": false,
-                          "fieldConfig": {
-                              "defaults": {
-                                  "custom": {
-
-                                  }
-                              },
-                              "overrides": [
-
-                              ]
-                          },
                           "fill": 1,
                           "fillGradient": 0,
                           "gridPos": {
                               "h": 9,
                               "w": 12,
                               "x": 12,
-                              "y": 2
+                              "y": 27
                           },
                           "hiddenSeries": false,
                           "id": 26,
@@ -73507,7 +73605,7 @@ items:
                               "alertThreshold": true
                           },
                           "percentage": false,
-                          "pluginVersion": "7.4.3",
+                          "pluginVersion": "9.1.6",
                           "pointradius": 5,
                           "points": false,
                           "renderer": "flot",
@@ -73519,6 +73617,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "rate(process_cpu_seconds_total{cluster=~\"$cluster\", job=\"ws-manager-bridge\", pod=~\"$pod\"}[5m])",
                                   "interval": "",
                                   "intervalFactor": 2,
@@ -73531,11 +73632,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "CPU Usage (as seen by the runtime process)",
                           "tooltip": {
                               "msResolution": false,
@@ -73545,9 +73644,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
                                   "avg"
@@ -73557,24 +73654,18 @@ items:
                               {
                                   "decimals": 2,
                                   "format": "none",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -73584,7 +73675,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fieldConfig": {
                               "defaults": {
                                   "custom": {
@@ -73604,7 +73697,7 @@ items:
                               "h": 9,
                               "w": 12,
                               "x": 0,
-                              "y": 11
+                              "y": 36
                           },
                           "hiddenSeries": false,
                           "id": 28,
@@ -73637,6 +73730,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "nodejs_eventloop_lag_seconds{cluster=~\"$cluster\", job=\"ws-manager-bridge\", pod=~\"$pod\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{pod}}",
@@ -73646,11 +73742,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Node.js: Event loop lag (s)",
                           "tooltip": {
                               "shared": true,
@@ -73659,9 +73753,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -73670,24 +73762,18 @@ items:
                           "yaxes": [
                               {
                                   "format": "s",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
                       },
                       {
@@ -73697,7 +73783,9 @@ items:
                           "bars": false,
                           "dashLength": 10,
                           "dashes": false,
-                          "datasource": "$datasource",
+                          "datasource": {
+                              "uid": "$datasource"
+                          },
                           "fieldConfig": {
                               "defaults": {
                                   "custom": {
@@ -73717,7 +73805,7 @@ items:
                               "h": 9,
                               "w": 12,
                               "x": 12,
-                              "y": 11
+                              "y": 36
                           },
                           "hiddenSeries": false,
                           "id": 30,
@@ -73750,6 +73838,9 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
+                                  "datasource": {
+                                      "uid": "$datasource"
+                                  },
                                   "expr": "nodejs_active_handles_total{cluster=~\"$cluster\", job=\"ws-manager-bridge\", pod=~\"$pod\"}",
                                   "interval": "",
                                   "legendFormat": "{{cluster}} - {{pod}}",
@@ -73759,11 +73850,9 @@ items:
                           "thresholds": [
 
                           ],
-                          "timeFrom": null,
                           "timeRegions": [
 
                           ],
-                          "timeShift": null,
                           "title": "Node.js: File Handles",
                           "tooltip": {
                               "shared": true,
@@ -73772,9 +73861,7 @@ items:
                           },
                           "type": "graph",
                           "xaxis": {
-                              "buckets": null,
                               "mode": "time",
-                              "name": null,
                               "show": true,
                               "values": [
 
@@ -73783,25 +73870,28 @@ items:
                           "yaxes": [
                               {
                                   "format": "none",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
                                   "min": "0",
                                   "show": true
                               },
                               {
                                   "format": "short",
-                                  "label": null,
                                   "logBase": 1,
-                                  "max": null,
-                                  "min": null,
                                   "show": true
                               }
                           ],
                           "yaxis": {
-                              "align": false,
-                              "alignLevel": null
+                              "align": false
                           }
+                      }
+                  ],
+                  "targets": [
+                      {
+                          "datasource": {
+                              "type": "datasource",
+                              "uid": "grafana"
+                          },
+                          "refId": "A"
                       }
                   ],
                   "title": "Node.js Runtime Metrics",
@@ -73809,7 +73899,7 @@ items:
               }
           ],
           "refresh": "30s",
-          "schemaVersion": 30,
+          "schemaVersion": 37,
           "style": "dark",
           "tags": [
               "gitpod-mixin"
@@ -73817,20 +73907,16 @@ items:
           "templating": {
               "list": [
                   {
-                      "allValue": null,
                       "current": {
                           "selected": false,
-                          "text": [
-                              "stag-meta-us01"
-                          ],
-                          "value": [
-                              "stag-meta-us01"
-                          ]
+                          "text": "All",
+                          "value": "$__all"
                       },
-                      "datasource": "$datasource",
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "$datasource"
+                      },
                       "definition": "label_values(up{job=\"ws-manager-bridge\"}, cluster)",
-                      "description": null,
-                      "error": null,
                       "hide": 0,
                       "includeAll": true,
                       "label": "Cluster",
@@ -73853,16 +73939,16 @@ items:
                       "useTags": false
                   },
                   {
-                      "allValue": null,
                       "current": {
                           "selected": false,
                           "text": "All",
                           "value": "$__all"
                       },
-                      "datasource": "$datasource",
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "$datasource"
+                      },
                       "definition": "label_values(container_cpu_usage_seconds_total{cluster=~\"$cluster\", pod=~\"ws-manager-bridge.*\"}, node)",
-                      "description": null,
-                      "error": null,
                       "hide": 0,
                       "includeAll": true,
                       "label": "Node",
@@ -73885,16 +73971,16 @@ items:
                       "useTags": false
                   },
                   {
-                      "allValue": null,
                       "current": {
                           "selected": false,
                           "text": "All",
                           "value": "$__all"
                       },
-                      "datasource": "$datasource",
+                      "datasource": {
+                          "type": "prometheus",
+                          "uid": "$datasource"
+                      },
                       "definition": "label_values(container_cpu_usage_seconds_total{cluster=~\"$cluster\", node=~\"$node\", pod=~\"ws-manager-bridge.*\"}, pod)",
-                      "description": null,
-                      "error": null,
                       "hide": 0,
                       "includeAll": true,
                       "label": "Pod",
@@ -73922,11 +74008,8 @@ items:
                           "text": "VictoriaMetrics",
                           "value": "VictoriaMetrics"
                       },
-                      "description": null,
-                      "error": null,
                       "hide": 2,
                       "includeAll": false,
-                      "label": null,
                       "multi": false,
                       "name": "datasource",
                       "options": [
@@ -73950,7 +74033,8 @@ items:
           "timezone": "utc",
           "title": "Gitpod / Component / ws-manager-bridge",
           "uid": "ws-manager-bridge",
-          "version": 1
+          "version": 1,
+          "weekStart": ""
       }
   kind: ConfigMap
   metadata:
@@ -73958,7 +74042,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-ws-manager-bridge
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -75325,7 +75409,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-meta-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -75872,7 +75956,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-meta-services
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -77433,7 +77517,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-slo-login
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -80306,7 +80390,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-agent-smith
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -82430,7 +82514,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-blobserve
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -84998,7 +85082,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-content-service
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -87569,7 +87653,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-image-builder
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -90590,7 +90674,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-registry-facade
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -93164,7 +93248,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-ws-daemon
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -96424,7 +96508,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-ws-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -97832,7 +97916,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-component-ws-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98269,7 +98353,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-network-limiting
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98572,7 +98656,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-node-ephemeral-storage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -99334,7 +99418,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-node-problem-detector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -99597,7 +99681,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-node-swap
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -100237,7 +100321,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-psi
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -102333,7 +102417,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-workspace-coredns
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -103028,7 +103112,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 9.1.6
+      app.kubernetes.io/version: 9.1.7
     name: grafana-dashboard-gitpod-workspace-success-criteria
     namespace: monitoring-satellite
 kind: ConfigMapList
