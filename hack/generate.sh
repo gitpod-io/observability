@@ -130,6 +130,8 @@ jsonnet -c -J vendor -m monitoring-central/manifests \
         password: 'user',
         GCPExternalIpAddress: 'fake_external_ip_address',
         issuer: 'issuer-123',
+        cpu: 5,
+        memory: '20Gi',
     },
     stackdriver: {
         clientEmail: 'fake@email.com',
