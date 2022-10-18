@@ -14,6 +14,8 @@ local defaults = {
     'app.kubernetes.io/part-of': 'monitoring-central',
   },
   issuer: 'letsencrypt-issuer-gitpod-191109',
+  cpu: 5,
+  memory: '15Gi',
 };
 
 function(params) {
@@ -26,6 +28,8 @@ function(params) {
   assert std.objectHas(config.victoriametrics, 'username') : 'victoriametrics.username is required',
   assert std.objectHas(config.victoriametrics, 'password') : 'victoriametrics.password is required',
   assert std.objectHas(config.victoriametrics, 'GCPExternalIpAddress') : 'victoriametrics.GCPExternalIpAddress is required',
+  assert std.objectHas(config.victoriametrics, 'cpu') : 'victoriametrics.cpu is required',
+  assert std.objectHas(config.victoriametrics, 'memory') : 'victoriametrics.memory is required',
 
   clusterRole: {
     apiVersion: 'rbac.authorization.k8s.io/v1beta1',
@@ -155,7 +159,16 @@ function(params) {
                 failureThreshold: 3,
                 successThreshold: 1,
               },
-              resources: {},
+              resources: {
+                requests: {
+                  cpu: config.victoriametrics.cpu,
+                  memory: config.victoriametrics.memory,
+                },
+                limits: {
+                  cpu: config.victoriametrics.cpu,
+                  memory: config.victoriametrics.memory,
+                },
+              },
               volumeMounts: [{
                 name: 'storage-volume',
                 mountPath: '/victoria-metrics-data',
