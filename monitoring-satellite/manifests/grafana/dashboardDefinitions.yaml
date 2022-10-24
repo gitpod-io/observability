@@ -44294,7 +44294,7 @@ items:
                           "steppedLine": false,
                           "targets": [
                               {
-                                  "expr": "sum without (device) (\n  max without (fstype, mountpoint) ((\n    node_filesystem_size_bytes{job=\"node-exporter\", fstype!=\"shiftfs\", cluster=\"$cluster\"}\n    -\n    node_filesystem_avail_bytes{job=\"node-exporter\", fstype!=\"shiftfs\", cluster=\"$cluster\"}\n  ) != 0)\n)\n/ scalar(sum(max without (fstype, mountpoint) (node_filesystem_size_bytes{job=\"node-exporter\", fstype!=\"shiftfs\", cluster=\"$cluster\"})))\n",
+                                  "expr": "sum without (device) (\n  max without (fstype, mountpoint) ((\n    node_filesystem_size_bytes{job=\"node-exporter\", fstype!=\"shiftfs\", mountpoint!=\"\", cluster=\"$cluster\"}\n    -\n    node_filesystem_avail_bytes{job=\"node-exporter\", fstype!=\"shiftfs\", mountpoint!=\"\", cluster=\"$cluster\"}\n  ) != 0)\n)\n/ scalar(sum(max without (fstype, mountpoint) (node_filesystem_size_bytes{job=\"node-exporter\", fstype!=\"shiftfs\", mountpoint!=\"\", cluster=\"$cluster\"})))\n",
                                   "format": "time_series",
                                   "intervalFactor": 2,
                                   "legendFormat": "{{instance}}",
@@ -46169,14 +46169,14 @@ items:
                           "span": 6,
                           "targets": [
                               {
-                                  "expr": "max by (mountpoint) (node_filesystem_size_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\"})\n",
+                                  "expr": "max by (mountpoint) (node_filesystem_size_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\", mountpoint!=\"\"})\n",
                                   "format": "table",
                                   "instant": true,
                                   "intervalFactor": 2,
                                   "legendFormat": ""
                               },
                               {
-                                  "expr": "max by (mountpoint) (node_filesystem_avail_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\"})\n",
+                                  "expr": "max by (mountpoint) (node_filesystem_avail_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\", mountpoint!=\"\"})\n",
                                   "format": "table",
                                   "instant": true,
                                   "intervalFactor": 2,
@@ -47224,14 +47224,14 @@ items:
                           "span": 6,
                           "targets": [
                               {
-                                  "expr": "max by (mountpoint) (node_filesystem_size_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\"})\n",
+                                  "expr": "max by (mountpoint) (node_filesystem_size_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\", mountpoint!=\"\"})\n",
                                   "format": "table",
                                   "instant": true,
                                   "intervalFactor": 2,
                                   "legendFormat": ""
                               },
                               {
-                                  "expr": "max by (mountpoint) (node_filesystem_avail_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\"})\n",
+                                  "expr": "max by (mountpoint) (node_filesystem_avail_bytes{job=\"node-exporter\", instance=\"$instance\", fstype!=\"shiftfs\", mountpoint!=\"\"})\n",
                                   "format": "table",
                                   "instant": true,
                                   "intervalFactor": 2,
