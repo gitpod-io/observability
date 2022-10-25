@@ -135,6 +135,7 @@ function(params) {
               args: [
                 '-search.maxUniqueTimeseries=3000000',
                 '-search.maxQueryDuration=60s',
+                '-selfScrapeInterval=60s',
               ],
               ports: [{
                 containerPort: $._config.port,
