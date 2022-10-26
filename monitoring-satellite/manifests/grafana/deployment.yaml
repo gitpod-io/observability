@@ -96,8 +96,14 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-slo-workspace-startuptime
           name: grafana-dashboard-gitpod-slo-workspace-startuptime
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Self-hosted examples/argocd
+          name: grafana-dashboard-argocd
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Self-hosted examples/gitpod-sh-example-overview
           name: grafana-dashboard-gitpod-sh-example-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Self-hosted examples/observability
+          name: grafana-dashboard-observability
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-browser-overview
           name: grafana-dashboard-gitpod-component-browser-overview
@@ -324,8 +330,14 @@ spec:
           name: grafana-dashboard-gitpod-slo-workspace-startuptime
         name: grafana-dashboard-gitpod-slo-workspace-startuptime
       - configMap:
+          name: grafana-dashboard-argocd
+        name: grafana-dashboard-argocd
+      - configMap:
           name: grafana-dashboard-gitpod-sh-example-overview
         name: grafana-dashboard-gitpod-sh-example-overview
+      - configMap:
+          name: grafana-dashboard-observability
+        name: grafana-dashboard-observability
       - configMap:
           name: grafana-dashboard-gitpod-component-browser-overview
         name: grafana-dashboard-gitpod-component-browser-overview
