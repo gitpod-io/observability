@@ -117,6 +117,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-jb
           name: grafana-dashboard-gitpod-component-jb
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-openvsx-mirror
+          name: grafana-dashboard-gitpod-component-openvsx-mirror
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-openvsx-proxy
           name: grafana-dashboard-gitpod-component-openvsx-proxy
           readOnly: false
@@ -353,6 +356,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-jb
         name: grafana-dashboard-gitpod-component-jb
+      - configMap:
+          name: grafana-dashboard-gitpod-component-openvsx-mirror
+        name: grafana-dashboard-gitpod-component-openvsx-mirror
       - configMap:
           name: grafana-dashboard-gitpod-component-openvsx-proxy
         name: grafana-dashboard-gitpod-component-openvsx-proxy
