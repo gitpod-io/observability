@@ -33,6 +33,11 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Port:       8080,
 						TargetPort: intstr.FromString("reloader-web"),
 					},
+					{
+						Name:       "cardinality",
+						Port:       9091,
+						TargetPort: intstr.FromString("cardinality"),
+					},
 				},
 				Selector: map[string]string{
 					"app.kubernetes.io/name": "prometheus",

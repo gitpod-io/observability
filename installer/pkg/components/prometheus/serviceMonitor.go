@@ -30,6 +30,10 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Port:     "reloader-web",
 						Interval: "30s",
 					},
+					{
+						Port:     "cardinality",
+						Interval: "5m",
+					},
 				},
 				Selector: metav1.LabelSelector{
 					MatchLabels: common.Labels(Name, Component, App, Version),
