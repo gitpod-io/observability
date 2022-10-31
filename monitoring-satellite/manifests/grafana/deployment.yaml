@@ -102,6 +102,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Self-hosted examples/argocd
           name: grafana-dashboard-argocd
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Self-hosted examples/cardinality-management-overview
+          name: grafana-dashboard-cardinality-management-overview
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Self-hosted examples/gitpod-sh-example-overview
           name: grafana-dashboard-gitpod-sh-example-overview
           readOnly: false
@@ -341,6 +344,9 @@ spec:
       - configMap:
           name: grafana-dashboard-argocd
         name: grafana-dashboard-argocd
+      - configMap:
+          name: grafana-dashboard-cardinality-management-overview
+        name: grafana-dashboard-cardinality-management-overview
       - configMap:
           name: grafana-dashboard-gitpod-sh-example-overview
         name: grafana-dashboard-gitpod-sh-example-overview
