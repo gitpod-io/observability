@@ -25,7 +25,7 @@ generate: installer
 generate-full: installer
 	./installer render --config examples/full-config.yaml --app monitoring-satellite > monitoring-satellite.yaml
 
-.PHONY: deploy-satellite
+.PHONY: apply-satellite
 apply-satellite: monitoring-satellite.yaml
 	kubectl create ns monitoring-satellite || true
 	kubectl apply -f monitoring-satellite.yaml
