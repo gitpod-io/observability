@@ -40,6 +40,9 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 			},
 			RuleSelector: &metav1.LabelSelector{},
 			CommonPrometheusFields: monitoringv1.CommonPrometheusFields{
+				Containers: []corev1.Container{
+					cardinalityExporterSideCar(),
+				},
 				Image: pointer.String(fmt.Sprintf("%s:v%s", ImageURL, Version)),
 				PodMetadata: &monitoringv1.EmbeddedObjectMetadata{
 					Labels: common.Labels(Name, Component, App, Version),
@@ -112,4 +115,17 @@ func remoteWriteSpecs(ctx *common.RenderContext) []monitoringv1.RemoteWriteSpec 
 	}
 
 	return specs
+}
+
+func cardinalityExporterSideCar() corev1.Container {
+	return corev1.Container{
+		Name:  "cardinality-exporter",
+		Image: "ghcr.io/arthursens/cardinality-exporter:main",
+		Ports: []corev1.ContainerPort{
+			{
+				Name:          "cardinality",
+				ContainerPort: 9091,
+			},
+		},
+	}
 }
