@@ -285,6 +285,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-coredns
           name: grafana-dashboard-gitpod-workspace-coredns
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-psi
+          name: grafana-dashboard-gitpod-workspace-psi
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-success-criteria
           name: grafana-dashboard-gitpod-workspace-success-criteria
           readOnly: false
@@ -527,6 +530,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-workspace-coredns
         name: grafana-dashboard-gitpod-workspace-coredns
+      - configMap:
+          name: grafana-dashboard-gitpod-workspace-psi
+        name: grafana-dashboard-gitpod-workspace-psi
       - configMap:
           name: grafana-dashboard-gitpod-workspace-success-criteria
         name: grafana-dashboard-gitpod-workspace-success-criteria
