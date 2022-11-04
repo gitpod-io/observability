@@ -29,7 +29,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "0dfd7264c0b7c8e02e4a7c45259d35543a02d462",
+      "version": "e614eec9485b85d0c86f9c2a77add42d6c318bcf",
       "sum": "IkDHlaE0gvvcPjSNurFT+jQ2aCOAbqHF1WVmXbAgkds="
     },
     {
@@ -39,8 +39,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "a84a7feb02f77a22d40329695c1cddf0934ac7b2",
-      "sum": "Vm3dsuvC+/IR9RsxW08YhIbRAImC7bhaKlzahRAC44E=",
+      "version": "1e2ec46e641961c540b7bc89d31730d2de9dd827",
+      "sum": "P8W3DAmdaP+GK/fombslD1aET5Yci5vn4edxKj8jvqs=",
       "name": "gitpod"
     },
     {
@@ -100,7 +100,7 @@
           "subdir": "jsonnet/kube-state-metrics"
         }
       },
-      "version": "1a55a38d89df9ef32dee6d0b2edbdc89cdeabc60",
+      "version": "8a390513f809bf421753d0f3b4b9e51ed2efc63a",
       "sum": "evJ+PXRzuM1tezCG5WzpAn4Lk3YJfMvDFcs+45fsscU="
     },
     {
@@ -110,7 +110,7 @@
           "subdir": "jsonnet/kube-state-metrics-mixin"
         }
       },
-      "version": "1a55a38d89df9ef32dee6d0b2edbdc89cdeabc60",
+      "version": "8a390513f809bf421753d0f3b4b9e51ed2efc63a",
       "sum": "u8gaydJoxEjzizQ8jY8xSjYgWooPmxw+wIWdDxifMAk="
     },
     {
