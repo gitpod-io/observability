@@ -288,6 +288,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-psi
           name: grafana-dashboard-gitpod-workspace-psi
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-registry-facade-blobsource
+          name: grafana-dashboard-gitpod-workspace-registry-facade-blobsource
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-workspace-success-criteria
           name: grafana-dashboard-gitpod-workspace-success-criteria
           readOnly: false
@@ -533,6 +536,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-workspace-psi
         name: grafana-dashboard-gitpod-workspace-psi
+      - configMap:
+          name: grafana-dashboard-gitpod-workspace-registry-facade-blobsource
+        name: grafana-dashboard-gitpod-workspace-registry-facade-blobsource
       - configMap:
           name: grafana-dashboard-gitpod-workspace-success-criteria
         name: grafana-dashboard-gitpod-workspace-success-criteria
