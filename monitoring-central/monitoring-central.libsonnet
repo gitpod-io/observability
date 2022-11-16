@@ -89,6 +89,15 @@ local kubePrometheus =
             version: 1,
             editable: false,
           },
+          {
+            name: 'Tempo',
+            type: 'tempo',
+            access: 'proxy',
+            orgId: 1,
+            url: 'http://tempo.monitoring-central.svc.cluster.local:3100',
+            version: 1,
+            editable: false,
+          },
         ],
         config: {
           sections: {
