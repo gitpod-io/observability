@@ -1,6 +1,8 @@
 package otelcollector
 
 import (
+	"strings"
+
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -26,6 +28,13 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						Port:            "metrics",
 						Interval:        "30s",
+						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
+							{
+								SourceLabels: []monitoringv1.LabelName{"__name__"},
+								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
+								Action:       "drop",
+							},
+						},
 					},
 				},
 				NamespaceSelector: monitoringv1.NamespaceSelector{
