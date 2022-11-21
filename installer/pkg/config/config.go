@@ -95,6 +95,8 @@ type Tracing struct {
 	Install             bool              `json:"install"`
 	HoneycombAPIKey     string            `json:"honeycombAPIKey,omitempty"`
 	HoneycombDataset    string            `json:"honeycombDataset,omitempty"`
+	TempoBasicUser      string            `json:"tempoBasicUser,omitempty"`
+	TempoBasicPassword  string            `json:"tempoBasicPassword,omitempty"`
 	ExtraSpanAttributes map[string]string `json:"extraSpanAttributes,omitempty"`
 }
 

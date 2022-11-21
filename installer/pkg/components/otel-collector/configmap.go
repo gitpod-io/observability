@@ -80,15 +80,24 @@ func buildExportersConfig(ctx *common.RenderContext) string {
     endpoint: "api.honeycomb.io:443"
     headers:
       "x-honeycomb-team": "%s"
-      "x-honeycomb-dataset": "%s"`,
+      "x-honeycomb-dataset": "%s"
+  otlp/tempo:
+  	endpoint: "otel-gateway.gitpod.io"
+	auth:
+	  authenticator: basicauth/client`,
 		ctx.Config.Tracing.HoneycombAPIKey, ctx.Config.Tracing.HoneycombDataset)
 }
 
 func buildExtensionsConfig(ctx *common.RenderContext) string {
-	return `extensions:
+	return fmt.Sprintf(`extensions:
   health_check:
   pprof:
-  zpages:`
+  zpages:
+  basicauth/client:
+    client_auth:
+      username: "%s"
+      password: "%s"`,
+		ctx.Config.Tracing.TempoBasicUser, ctx.Config.Tracing.TempoBasicPassword)
 }
 
 func buildServiceConfig(ctx *common.RenderContext) string {
@@ -96,7 +105,7 @@ func buildServiceConfig(ctx *common.RenderContext) string {
   telemetry:
     logs:
       level: "debug"
-  extensions: [health_check, pprof,  zpages]
+  extensions: [health_check, pprof,  zpages, basicauth/client]
   pipelines:
     traces:
      receivers: [jaeger, otlp]
