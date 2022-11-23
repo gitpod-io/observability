@@ -1,8 +1,6 @@
 package certmanager
 
 import (
-	"strings"
-
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -29,13 +27,6 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Interval:    "30s",
 						Port:        "metrics",
 						HonorLabels: true,
-						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
-							},
-						},
 					},
 				},
 				NamespaceSelector: monitoringv1.NamespaceSelector{
