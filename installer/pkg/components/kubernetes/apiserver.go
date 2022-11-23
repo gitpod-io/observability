@@ -2,7 +2,6 @@ package kubernetes
 
 import (
 	"fmt"
-	"strings"
 
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -58,11 +57,6 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 							},
 						},
 						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
-							},
 							{
 								Action:       "drop",
 								Regex:        "kubelet_(pod_worker_latency_microseconds|pod_start_latency_microseconds|cgroup_manager_latency_microseconds|pod_worker_start_latency_microseconds|pleg_relist_latency_microseconds|pleg_relist_interval_microseconds|runtime_operations|runtime_operations_latency_microseconds|runtime_operations_errors|eviction_stats_age_microseconds|device_plugin_registration_count|device_plugin_alloc_latency_microseconds|network_plugin_operations_latency_microseconds)",
@@ -126,11 +120,6 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 						},
 						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
 							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
-							},
-							{
 								Action:       "drop",
 								Regex:        "container_(network_tcp_usage_total|network_udp_usage_total|tasks_state|cpu_load_average_10s)",
 								SourceLabels: []monitoringv1.LabelName{"__name__"},
@@ -163,13 +152,6 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 							{
 								SourceLabels: []monitoringv1.LabelName{"__metrics_path__"},
 								TargetLabel:  "metrics_path",
-							},
-						},
-						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
 							},
 						},
 						TLSConfig: &monitoringv1.TLSConfig{
