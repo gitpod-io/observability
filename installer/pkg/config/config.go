@@ -26,7 +26,9 @@ func Defaults(in interface{}) error {
 	cfg.Alerting = &Alerting{}
 
 	cfg.Tracing = &Tracing{
-		Install: false,
+		Install:            false,
+		TempoBasicUser:     "user",
+		TempoBasicPassword: "password",
 	}
 
 	cfg.Pyrra = &Pyrra{
