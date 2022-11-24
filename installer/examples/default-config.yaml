@@ -23,5 +23,7 @@ pyrra:
   install: false
 tracing:
   install: false
+  tempoBasicPassword: password
+  tempoBasicUser: user
 werft:
   installServiceMonitors: false
