@@ -110,7 +110,7 @@ func buildServiceConfig(ctx *common.RenderContext) string {
     traces:
      receivers: [jaeger, otlp]
      processors: [%s]
-     exporters: ["otlp"]
+     exporters: ["otlp", "otlp/tempo"]
 `
 	var processors = ""
 
