@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 9.2.5
+    app.kubernetes.io/version: 9.2.6
   name: grafana
   namespace: monitoring-satellite
 spec:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: 35ccbe52a2c1852e251b3383daefe91c
-        checksum/grafana-dashboardproviders: 3953e52416ad6e1f3e3855f9d2acd69d
-        checksum/grafana-datasources: e3fc0ba4ba36cbc34dc8bd52deed3b09
+        checksum/grafana-config: 1615fbfbc4a86cf24532dcef395449ff
+        checksum/grafana-dashboardproviders: 02b98f01447128ffbcf42fb458b99d43
+        checksum/grafana-datasources: 3d4ce540146866f46deee98975fc5f73
       labels:
         app.kubernetes.io/component: grafana
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 9.2.5
+        app.kubernetes.io/version: 9.2.6
     spec:
       automountServiceAccountToken: false
       containers:
@@ -36,7 +36,7 @@ spec:
           value: Admin
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: "true"
-        image: grafana/grafana:9.2.5
+        image: grafana/grafana:9.2.6
         name: grafana
         ports:
         - containerPort: 3000
@@ -116,6 +116,9 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-code-browser
           name: grafana-dashboard-gitpod-component-code-browser
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-ide-startup-time
+          name: grafana-dashboard-gitpod-component-ide-startup-time
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-jb
           name: grafana-dashboard-gitpod-component-jb
@@ -365,6 +368,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-code-browser
         name: grafana-dashboard-gitpod-component-code-browser
+      - configMap:
+          name: grafana-dashboard-gitpod-component-ide-startup-time
+        name: grafana-dashboard-gitpod-component-ide-startup-time
       - configMap:
           name: grafana-dashboard-gitpod-component-jb
         name: grafana-dashboard-gitpod-component-jb
