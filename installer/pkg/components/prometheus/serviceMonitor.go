@@ -40,17 +40,6 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 							},
 						},
 					},
-					{
-						Port:     "cardinality",
-						Interval: "5m",
-						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
-							},
-						},
-					},
 				},
 				Selector: metav1.LabelSelector{
 					MatchLabels: common.Labels(Name, Component, App, Version),
