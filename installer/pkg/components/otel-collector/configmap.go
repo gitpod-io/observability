@@ -82,7 +82,7 @@ func buildExportersConfig(ctx *common.RenderContext) string {
       "x-honeycomb-team": "%s"
       "x-honeycomb-dataset": "%s"
   otlp/tempo:
-    endpoint: "otel-gateway.gitpod.io"
+    endpoint: "otel-gateway.gitpod.io:4317"
     auth:
       authenticator: basicauth/client`,
 		ctx.Config.Tracing.HoneycombAPIKey, ctx.Config.Tracing.HoneycombDataset)
