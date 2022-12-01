@@ -2,7 +2,6 @@ package kubernetes
 
 import (
 	"fmt"
-	"strings"
 
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -52,12 +51,7 @@ func serviceMonitorKubelet(ctx *common.RenderContext) ([]runtime.Object, error) 
 								ServerName: "kubernetes",
 							},
 						},
-						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
-							},
+						MetricRelabelConfigs: append([]*monitoringv1.RelabelConfig{
 							{
 								Action:       "drop",
 								Regex:        "kubelet_(pod_worker_latency_microseconds|pod_start_latency_microseconds|cgroup_manager_latency_microseconds|pod_worker_start_latency_microseconds|pleg_relist_latency_microseconds|pleg_relist_interval_microseconds|runtime_operations|runtime_operations_latency_microseconds|runtime_operations_errors|eviction_stats_age_microseconds|device_plugin_registration_count|device_plugin_alloc_latency_microseconds|network_plugin_operations_latency_microseconds)",
@@ -118,7 +112,7 @@ func serviceMonitorKubelet(ctx *common.RenderContext) ([]runtime.Object, error) 
 								Regex:        "apiserver_request_duration_seconds_bucket;(0.15|0.25|0.3|0.35|0.4|0.45|0.6|0.7|0.8|0.9|1.25|1.5|1.75|2.5|3|3.5|4.5|6|7|8|9|15|25|30|50)",
 								SourceLabels: []monitoringv1.LabelName{"__name__", "le"},
 							},
-						},
+						}, common.DropMetricsRelabeling(ctx)...),
 					},
 				},
 			},

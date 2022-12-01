@@ -25,15 +25,9 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 			Spec: monitoringv1.ServiceMonitorSpec{
 				Endpoints: []monitoringv1.Endpoint{
 					{
-						Port:     "web",
-						Interval: "30s",
-						MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-							{
-								SourceLabels: []monitoringv1.LabelName{"__name__"},
-								Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
-								Action:       "drop",
-							},
-						},
+						Port:                 "web",
+						Interval:             "30s",
+						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),
 					},
 					{
 						Port:     "reloader-web",

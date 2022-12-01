@@ -1,6 +1,9 @@
 package common
 
 import (
+	"strings"
+
+	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -32,3 +35,16 @@ var (
 		Kind:       "NetworkPolicy",
 	}
 )
+
+func DropMetricsRelabeling(ctx *RenderContext) []*monitoringv1.RelabelConfig {
+	if ctx.Config.Prometheus.MetricsToDrop != nil {
+		return []*monitoringv1.RelabelConfig{
+			{
+				SourceLabels: []monitoringv1.LabelName{"__name__"},
+				Regex:        strings.Join(ctx.Config.Prometheus.MetricsToDrop, "|"),
+				Action:       "drop",
+			},
+		}
+	}
+	return nil
+}

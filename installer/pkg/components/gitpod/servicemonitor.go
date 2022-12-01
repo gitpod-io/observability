@@ -2,7 +2,6 @@ package gitpod
 
 import (
 	"fmt"
-	"strings"
 
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -27,16 +26,10 @@ func serviceMonitor(target string) common.RenderFunc {
 				Spec: monitoringv1.ServiceMonitorSpec{
 					Endpoints: []monitoringv1.Endpoint{
 						{
-							BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
-							Interval:        "30s",
-							Port:            "metrics",
-							MetricRelabelConfigs: []*monitoringv1.RelabelConfig{
-								{
-									SourceLabels: []monitoringv1.LabelName{"__name__"},
-									Regex:        strings.Join(cfg.Config.Prometheus.MetricsToDrop, "|"),
-									Action:       "drop",
-								},
-							},
+							BearerTokenFile:      "/var/run/secrets/kubernetes.io/serviceaccount/token",
+							Interval:             "30s",
+							Port:                 "metrics",
+							MetricRelabelConfigs: common.DropMetricsRelabeling(cfg),
 						},
 					},
 					JobLabel: "app.kubernetes.io/component",
