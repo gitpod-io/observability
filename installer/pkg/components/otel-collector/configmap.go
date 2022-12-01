@@ -1,6 +1,8 @@
 package otelcollector
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 
 	corev1 "k8s.io/api/core/v1"
@@ -13,16 +15,7 @@ import (
 const extraAttributesProcessor = "attributes"
 
 func configMap(ctx *common.RenderContext) ([]runtime.Object, error) {
-	var receiversConfig = buildReceiversConfig(ctx)
-	var processorsConfig = buildProcessorsConfig(ctx)
-	var exportersConfig = buildExportersConfig(ctx)
-	var extensionsConfig = buildExtensionsConfig(ctx)
-	var serviceConfig = buildServiceConfig(ctx)
-	var config = fmt.Sprintf(`%s
-%s
-%s
-%s
-%s`, receiversConfig, processorsConfig, exportersConfig, extensionsConfig, serviceConfig)
+	config := configMapContent(ctx)
 
 	return []runtime.Object{
 		&corev1.ConfigMap{
@@ -119,4 +112,25 @@ func buildServiceConfig(ctx *common.RenderContext) string {
 	}
 
 	return fmt.Sprintf(serviceTemplate, processors)
+}
+
+func configMapContent(ctx *common.RenderContext) string {
+	var receiversConfig = buildReceiversConfig(ctx)
+	var processorsConfig = buildProcessorsConfig(ctx)
+	var exportersConfig = buildExportersConfig(ctx)
+	var extensionsConfig = buildExtensionsConfig(ctx)
+	var serviceConfig = buildServiceConfig(ctx)
+	var config = fmt.Sprintf(`%s
+%s
+%s
+%s
+%s`, receiversConfig, processorsConfig, exportersConfig, extensionsConfig, serviceConfig)
+
+	return config
+}
+
+func configMapCheckSum(ctx *common.RenderContext) string {
+	shaBytes := sha256.Sum256([]byte(configMapContent(ctx)))
+
+	return hex.EncodeToString(shaBytes[:])
 }

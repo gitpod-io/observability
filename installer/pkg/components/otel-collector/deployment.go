@@ -26,6 +26,9 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Labels: common.Labels(Name, Component, App, Version),
+						Annotations: map[string]string{
+							"configmap.checksum": configMapCheckSum(ctx),
+						},
 					},
 					Spec: corev1.PodSpec{
 						ServiceAccountName: Name,
