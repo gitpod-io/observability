@@ -142,7 +142,7 @@ func TestQueryPrometheus(t *testing.T) {
 			expectN: 2,
 		}, {
 			query:   `up{job="prometheus-k8s"} == 1`,
-			expectN: 3,
+			expectN: 2,
 		}, {
 			query:   `up{job="prometheus-operator"} == 1`,
 			expectN: 1,

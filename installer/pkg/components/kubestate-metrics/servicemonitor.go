@@ -84,7 +84,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 								InsecureSkipVerify: true,
 							},
 						},
-						MetricRelabelConfigs: configs,
+						MetricRelabelConfigs: append(configs, common.DropMetricsRelabeling(ctx)...),
 						RelabelConfigs: []*monitoringv1.RelabelConfig{
 							{
 								Action: "labeldrop",
