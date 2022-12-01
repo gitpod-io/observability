@@ -35,6 +35,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 								InsecureSkipVerify: true,
 							},
 						},
+						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),
 					},
 				},
 			},

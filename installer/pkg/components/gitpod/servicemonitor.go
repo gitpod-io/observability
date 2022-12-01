@@ -26,9 +26,10 @@ func serviceMonitor(target string) common.RenderFunc {
 				Spec: monitoringv1.ServiceMonitorSpec{
 					Endpoints: []monitoringv1.Endpoint{
 						{
-							BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
-							Interval:        "30s",
-							Port:            "metrics",
+							BearerTokenFile:      "/var/run/secrets/kubernetes.io/serviceaccount/token",
+							Interval:             "30s",
+							Port:                 "metrics",
+							MetricRelabelConfigs: common.DropMetricsRelabeling(cfg),
 						},
 					},
 					JobLabel: "app.kubernetes.io/component",

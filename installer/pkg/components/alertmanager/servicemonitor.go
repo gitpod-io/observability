@@ -23,12 +23,14 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 			Spec: monitoringv1.ServiceMonitorSpec{
 				Endpoints: []monitoringv1.Endpoint{
 					{
-						Port:     "web",
-						Interval: "30s",
+						Port:                 "web",
+						Interval:             "30s",
+						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),
 					},
 					{
-						Port:     "reloader-web",
-						Interval: "30s",
+						Port:                 "reloader-web",
+						Interval:             "30s",
+						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),
 					},
 				},
 				Selector: metav1.LabelSelector{

@@ -23,9 +23,10 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 			Spec: monitoringv1.ServiceMonitorSpec{
 				Endpoints: []monitoringv1.Endpoint{
 					{
-						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
-						Port:            "metrics",
-						Interval:        "30s",
+						BearerTokenFile:      "/var/run/secrets/kubernetes.io/serviceaccount/token",
+						Port:                 "metrics",
+						Interval:             "30s",
+						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),
 					},
 				},
 				NamespaceSelector: monitoringv1.NamespaceSelector{
