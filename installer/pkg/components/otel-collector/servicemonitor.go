@@ -25,7 +25,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 					{
 						BearerTokenFile:      "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						Port:                 "metrics",
-						Interval:             "30s",
+						Interval:             "60s",
 						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),
 					},
 				},

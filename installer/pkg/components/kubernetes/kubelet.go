@@ -43,7 +43,7 @@ func serviceMonitorKubelet(ctx *common.RenderContext) ([]runtime.Object, error) 
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						Port:            "https",
-						Interval:        "30s",
+						Interval:        "60s",
 						Scheme:          "https",
 						TLSConfig: &monitoringv1.TLSConfig{
 							CAFile: "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt",

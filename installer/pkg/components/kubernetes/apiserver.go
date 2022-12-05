@@ -43,7 +43,7 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						HonorLabels:     true,
 						Port:            "https-metrics",
-						Interval:        "30s",
+						Interval:        "60s",
 						Scheme:          "https",
 						TLSConfig: &monitoringv1.TLSConfig{
 							SafeTLSConfig: monitoringv1.SafeTLSConfig{
@@ -103,7 +103,7 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						HonorLabels:     true,
 						HonorTimestamps: common.ToPointer(false),
-						Interval:        "30s",
+						Interval:        "60s",
 						Path:            "/metrics/cadvisor",
 						Port:            "https-metrics",
 						Scheme:          "https",
@@ -144,7 +144,7 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						HonorLabels:     true,
-						Interval:        "30s",
+						Interval:        "60s",
 						Port:            "https-metrics",
 						Path:            "/metrics/probes",
 						Scheme:          "https",

@@ -28,6 +28,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						HonorLabels:     true,
+						Interval:        "60s",
 						Port:            "https",
 						Scheme:          "https",
 						TLSConfig: &monitoringv1.TLSConfig{
