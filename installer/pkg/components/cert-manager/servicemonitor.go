@@ -24,7 +24,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 				JobLabel: "app.kubernetes.io/name",
 				Endpoints: []monitoringv1.Endpoint{
 					{
-						Interval:             "30s",
+						Interval:             "60s",
 						Port:                 "metrics",
 						HonorLabels:          true,
 						MetricRelabelConfigs: common.DropMetricsRelabeling(ctx),

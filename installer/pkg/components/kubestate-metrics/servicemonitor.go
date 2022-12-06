@@ -75,7 +75,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						Port:            "https-main",
-						Interval:        "30s",
+						Interval:        "60s",
 						ScrapeTimeout:   "30s",
 						Scheme:          "https",
 						HonorLabels:     true,
@@ -95,7 +95,7 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
 						Port:            "https-self",
-						Interval:        "30s",
+						Interval:        "60s",
 						Scheme:          "https",
 						TLSConfig: &monitoringv1.TLSConfig{
 							SafeTLSConfig: monitoringv1.SafeTLSConfig{
