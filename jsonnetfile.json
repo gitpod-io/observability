@@ -26,7 +26,7 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "heads/main",
+      "version": "heads/pd/dashboard-preview",
       "name": "gitpod"
     },
     {
