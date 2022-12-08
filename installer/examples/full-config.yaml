@@ -13,8 +13,6 @@ gitpod:
   installServiceMonitors: true
 grafana:
   install: true
-kubescape:
-  install: true
 namespace: monitoring-satellite
 prometheus:
   metricsToDrop: ["apiserver_request_duration_seconds_bucket", "apiserver_request_slo_duration_seconds_bucket"]

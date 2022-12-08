@@ -4,17 +4,6 @@
     {
       "source": {
         "git": {
-          "remote": "https://github.com/ArthurSens/kubescape-jsonnet.git",
-          "subdir": "jsonnet"
-        }
-      },
-      "version": "1d297c778b71ccb6b66834aa60b25fc247d0291d",
-      "sum": "t6SrQWOaCbvZwCeworzI3iwhOga6p11MAZmRcUktLi0=",
-      "name": "kubescape"
-    },
-    {
-      "source": {
-        "git": {
           "remote": "https://github.com/brancz/kubernetes-grafana.git",
           "subdir": "grafana"
         }

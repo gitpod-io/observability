@@ -225,7 +225,7 @@ func renderKubernetesObjects(cfg *config.Config) ([]string, error) {
 
 func replaceDeprecatedFields(cfg *config.Config) *config.Config {
 	// No deprecated config is set
-	if !(cfg.Kubescape.Install || cfg.Prober.Install) {
+	if !(cfg.Prober.Install) {
 		return cfg
 	}
 
@@ -246,16 +246,6 @@ func replaceDeprecatedFields(cfg *config.Config) *config.Config {
 			YAML:      []importer.YAMLImporter{},
 			Kustomize: []importer.KustomizeImporter{},
 		}
-	}
-
-	if cfg.Kubescape.Install {
-		logger.Info("kubescape.install is deprecated, please use the importer interface instead.")
-		cfg.Imports.YAML = append(cfg.Imports.YAML, importer.YAMLImporter{
-			Importer: &importer.Importer{
-				GitURL: "https://github.com/gitpod-io/observability",
-				Path:   "monitoring-satellite/manifests/kubescape",
-			},
-		})
 	}
 
 	if cfg.Prober.Install {

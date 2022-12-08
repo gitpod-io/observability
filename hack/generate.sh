@@ -29,7 +29,6 @@ if [[ $environment == "CI" ]]; then
         honeycombAPIKey: 'fake-key',
         honeycombDataset: 'fake-dataset',
       },
-      kubescape: {},
       pyrra: {},
       probe: {
         targets: ['http://google.com'],
@@ -103,7 +102,6 @@ jsonnet -c -J vendor -m monitoring-satellite/manifests \
     werft: {
         namespace: 'werft',
     },
-    kubescape: {},
     pyrra: {},
     probe: {
         targets: ['http://google.com'],

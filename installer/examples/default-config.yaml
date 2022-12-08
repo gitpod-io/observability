@@ -8,8 +8,6 @@ gitpod:
 grafana:
   install: false
 imports: {}
-kubescape:
-  install: false
 namespace: monitoring-satellite
 prober:
   install: false

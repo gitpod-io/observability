@@ -207,9 +207,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Platform/scheduler
           name: grafana-dashboard-scheduler
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Team Platform/vulnerabilities
-          name: grafana-dashboard-vulnerabilities
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Platform/workload-total
           name: grafana-dashboard-workload-total
           readOnly: false
@@ -461,9 +458,6 @@ spec:
       - configMap:
           name: grafana-dashboard-scheduler
         name: grafana-dashboard-scheduler
-      - configMap:
-          name: grafana-dashboard-vulnerabilities
-        name: grafana-dashboard-vulnerabilities
       - configMap:
           name: grafana-dashboard-workload-total
         name: grafana-dashboard-workload-total
