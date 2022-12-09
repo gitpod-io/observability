@@ -18,7 +18,6 @@ local gitpod = import '../components/gitpod/gitpod.libsonnet';
 (if std.objectHas(config, 'tracing') then (import '../addons/tracing.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'werft') then (import '../addons/monitor-werft.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'stackdriver') then (import '../addons/grafana-stackdriver-datasource.libsonnet')(config) else {}) +
-(if std.objectHas(config, 'kubescape') then (import '../addons/kubescape.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'pyrra') then (import '../addons/pyrra.libsonnet')(config) else {}) +
 (if std.objectHas(config, 'probe') then (import '../addons/probers.libsonnet')(config) else {}) +
 {

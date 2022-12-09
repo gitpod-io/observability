@@ -38,7 +38,6 @@ kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/prometheus/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/nodeExporter/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/kubernetesControlPlane/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/kubeStateMetrics/
-kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/kubescape/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/grafana/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/alertmanager/
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/otelCollector/

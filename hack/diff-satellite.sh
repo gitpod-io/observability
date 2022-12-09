@@ -79,7 +79,6 @@ jsonnet -c -J vendor -m diff/jsonnet-tmp \
   key
 |||,
     },
-    kubescape: {},
     pyrra: {},
     probe: {
         targets: ['http://google.com'],
