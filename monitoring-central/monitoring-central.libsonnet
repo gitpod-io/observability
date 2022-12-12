@@ -23,12 +23,6 @@ local kubePrometheus =
           pyrra: 'ghcr.io/pyrra-dev/pyrra:pr-476',
         },
       },
-      gitpodParams: {
-        namespace: config.namespace,
-      },
-      certmanagerParams: {
-        mixin+: {},
-      },
       victoriametricsParams: {
         name: 'victoriametrics',
         namespace: 'monitoring-central',
@@ -138,8 +132,8 @@ local kubePrometheus =
     },
 
     // Included just to generate gitpod dashboards. No need to generate any YAML.
-    gitpod: gitpod($.values.gitpodParams),
-    certmanager: certmanager($.values.certmanagerParams),
+    gitpod: gitpod(),
+    certmanager: certmanager(),
     victoriametrics: victoriaMetrics($.values.victoriametricsParams),
     grafana+: {
       // Disabling serviceMonitor for monitoring-central since there is no prometheus running there.

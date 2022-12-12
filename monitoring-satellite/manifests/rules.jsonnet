@@ -14,13 +14,8 @@ local rules = {
     },
     spec: {
       groups: monitoringSatellite.kubePrometheus.prometheusRule.spec.groups +
-              monitoringSatellite.alertmanager.prometheusRule.spec.groups +
-              monitoringSatellite.kubeStateMetrics.prometheusRule.spec.groups +
               monitoringSatellite.kubernetesControlPlane.prometheusRule.spec.groups +
-              monitoringSatellite.nodeExporter.prometheusRule.spec.groups +
-              monitoringSatellite.prometheus.prometheusRule.spec.groups +
-              monitoringSatellite.prometheusOperator.prometheusRule.spec.groups +
-              monitoringSatellite.certmanager.prometheusRule.spec.groups,
+              monitoringSatellite.nodeExporter.prometheusRule.spec.groups,  // +
     },
   } + (import '../lib/alert-severity-mapper.libsonnet') + (import '../lib/alert-filter.libsonnet') + (import '../lib/alert-duration-mapper.libsonnet'),
 };
