@@ -1121,6 +1121,86 @@ function(params) {
     },
   },
 
+  slowServerService: {
+    apiVersion: 'v1',
+    kind: 'Service',
+    metadata: {
+      name: $._config.name + 'slow-server',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels {
+        'app.kubernetes.io/component': 'slow-server',
+      },
+    },
+    spec: {
+      selector: {
+        component: 'slow-server',
+      },
+      ports: [{
+        name: 'metrics',
+        port: 9500,
+      }],
+    },
+  },
+
+  slowServerServiceMonitor: {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'ServiceMonitor',
+    metadata: {
+      name: $._config.name + 'slow-server',
+      namespace: $._config.namespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      jobLabel: 'app.kubernetes.io/component',
+      selector: {
+        matchLabels: $._config.commonLabels {
+          'app.kubernetes.io/component': 'slow-server',
+        },
+      },
+      namespaceSelector: {
+        matchNames: [
+          $._config.gitpodNamespace,
+        ],
+      },
+      endpoints: [{
+        bearerTokenFile: '/var/run/secrets/kubernetes.io/serviceaccount/token',
+        port: 'metrics',
+        interval: '1m',
+        scrapeTimeout: '50s',
+      }],
+    },
+  },
+
+  slowServerNetworkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: {
+      name: 'slow-server-allow-kube-prometheus',
+      namespace: $._config.gitpodNamespace,
+      labels: $._config.commonLabels,
+    },
+    spec: {
+      podSelector: {
+        matchLabels: {
+          component: 'slow-server',
+        },
+      },
+      policyTypes: ['Ingress'],
+      ingress: [{
+        from: [{
+          podSelector: {
+            matchLabels: $._config.prometheusLabels,
+          },
+          namespaceSelector: {
+            matchLabels: {
+              namespace: $._config.namespace,
+            },
+          },
+        }],
+      }],
+    },
+  },
+
   workspacePodMonitor: {
     apiVersion: 'monitoring.coreos.com/v1',
     kind: 'PodMonitor',
