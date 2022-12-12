@@ -26,6 +26,7 @@ var (
 		"public-api-server",
 		"registry-facade",
 		"server",
+		"slow-server",
 		"usage",
 		"ws-daemon",
 		"ws-manager-bridge",
