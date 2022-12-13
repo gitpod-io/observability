@@ -148,7 +148,7 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 								},
 								Resources: v1.ResourceRequirements{
 									Limits: v1.ResourceList{
-										v1.ResourceCPU:    resource.MustParse("20m"),
+										v1.ResourceCPU:    resource.MustParse("60m"),
 										v1.ResourceMemory: resource.MustParse("40Mi"),
 									},
 									Requests: v1.ResourceList{
