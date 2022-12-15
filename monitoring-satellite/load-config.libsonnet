@@ -4,7 +4,4 @@ local defaults = {
   namespace: 'monitoring-satellite',
 };
 
-function(config) defaults + config {
-  assert std.objectHas(config, 'clusterName') : 'please provide clusterName',
-
-}
+function(config) defaults + config {}

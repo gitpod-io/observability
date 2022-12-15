@@ -62,10 +62,6 @@ spec:
       record: count:up1
     - expr: count without(instance, pod, node) (up == 0)
       record: count:up0
-  - name: alertmanager.rules
-    rules: []
-  - name: kube-state-metrics
-    rules: []
   - name: kubernetes-apps
     rules: []
   - name: kubernetes-resources
@@ -840,13 +836,3 @@ spec:
           rate(node_network_transmit_drop_total{job="node-exporter", device!="lo"}[5m])
         )
       record: instance:node_network_transmit_drop_excluding_lo:rate5m
-  - name: prometheus
-    rules: []
-  - name: prometheus-operator
-    rules: []
-  - name: config-reloaders
-    rules: []
-  - name: cert-manager
-    rules: []
-  - name: certificates
-    rules: []

@@ -18,10 +18,6 @@ clean:
 generate: $(JSONNET_BIN)
 	./hack/generate.sh
 
-.PHONY: generate-ci
-generate-ci: $(JSONNET_BIN)
-	./hack/generate.sh -e CI
-
 .PHONY: fmt
 fmt: $(JSONNETFMT_BIN)
 	find . -name 'vendor' -prune -o -name '*.libsonnet' -print -o -name '*.jsonnet' -print | \
@@ -51,11 +47,6 @@ update: $(JB_BIN)
 
 .PHONY: deploy-satellite
 deploy-satellite: generate
-	./hack/prepare-kind.sh
-	./hack/deploy-satellite.sh
-
-.PHONY: deploy-satellite-go
-deploy-satellite-go: generate
 	./hack/prepare-kind.sh
 	./hack/deploy-crds.sh
 	@cd installer && $(MAKE) apply-satellite
