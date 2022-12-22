@@ -22,6 +22,9 @@ func serviceMonitor(target string) common.RenderFunc {
 					Name:      fmt.Sprintf("%s-%s", App, target),
 					Namespace: Namespace,
 					Labels:    labels(target),
+					Annotations: map[string]string{
+						"argocd.argoproj.io/sync-options": "Replace=true",
+					},
 				},
 				Spec: monitoringv1.ServiceMonitorSpec{
 					Endpoints: []monitoringv1.Endpoint{

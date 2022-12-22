@@ -27,6 +27,9 @@ func serviceMonitorAPIServer(ctx *common.RenderContext) ([]runtime.Object, error
 				Name:      fmt.Sprintf("%s-apiserver", Name),
 				Namespace: Namespace,
 				Labels:    labels,
+				Annotations: map[string]string{
+					"argocd.argoproj.io/sync-options": "Replace=true",
+				},
 			},
 			Spec: monitoringv1.ServiceMonitorSpec{
 				JobLabel: "app.kubernetes.io/name",

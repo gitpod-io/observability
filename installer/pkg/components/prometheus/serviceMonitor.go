@@ -21,6 +21,9 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Name:      resourceName(),
 				Namespace: Namespace,
 				Labels:    common.Labels(Name, Component, App, Version),
+				Annotations: map[string]string{
+					"argocd.argoproj.io/sync-options": "Replace=true",
+				},
 			},
 			Spec: monitoringv1.ServiceMonitorSpec{
 				Endpoints: []monitoringv1.Endpoint{

@@ -19,6 +19,9 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Name:      App,
 				Namespace: ServiceMonitorNamespace,
 				Labels:    labels(),
+				Annotations: map[string]string{
+					"argocd.argoproj.io/sync-options": "Replace=true",
+				},
 			},
 			Spec: monitoringv1.ServiceMonitorSpec{
 				JobLabel: "app.kubernetes.io/name",
