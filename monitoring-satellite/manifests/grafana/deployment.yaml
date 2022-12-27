@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 9.3.1
+    app.kubernetes.io/version: 9.3.2
   name: grafana
   namespace: monitoring-satellite
 spec:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: 20e6f91f12f903b0a4c8769d95e039a7
-        checksum/grafana-dashboardproviders: 35e2759cf7c0759902e95024d9f56ee6
-        checksum/grafana-datasources: 0653b1ecae8bf3af3c6de1ecf631437e
+        checksum/grafana-config: f7bffebf213747390afcfa3432205da5
+        checksum/grafana-dashboardproviders: 76d3ef32a2c9813b995f93a84d57146d
+        checksum/grafana-datasources: f1d09da0d8244b2579ebba7c0a992533
       labels:
         app.kubernetes.io/component: grafana
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 9.3.1
+        app.kubernetes.io/version: 9.3.2
     spec:
       automountServiceAccountToken: false
       containers:
@@ -36,7 +36,7 @@ spec:
           value: Admin
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: "true"
-        image: grafana/grafana:9.3.1
+        image: grafana/grafana:9.3.2
         name: grafana
         ports:
         - containerPort: 3000
@@ -110,6 +110,9 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Self-hosted examples/observability
           name: grafana-dashboard-observability
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-blobserve
+          name: grafana-dashboard-gitpod-component-blobserve
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-browser-overview
           name: grafana-dashboard-gitpod-component-browser-overview
@@ -249,9 +252,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-agent-smith
           name: grafana-dashboard-gitpod-component-agent-smith
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-blobserve
-          name: grafana-dashboard-gitpod-component-blobserve
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-content-service
           name: grafana-dashboard-gitpod-component-content-service
           readOnly: false
@@ -362,6 +362,9 @@ spec:
       - configMap:
           name: grafana-dashboard-observability
         name: grafana-dashboard-observability
+      - configMap:
+          name: grafana-dashboard-gitpod-component-blobserve
+        name: grafana-dashboard-gitpod-component-blobserve
       - configMap:
           name: grafana-dashboard-gitpod-component-browser-overview
         name: grafana-dashboard-gitpod-component-browser-overview
@@ -500,9 +503,6 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-agent-smith
         name: grafana-dashboard-gitpod-component-agent-smith
-      - configMap:
-          name: grafana-dashboard-gitpod-component-blobserve
-        name: grafana-dashboard-gitpod-component-blobserve
       - configMap:
           name: grafana-dashboard-gitpod-component-content-service
         name: grafana-dashboard-gitpod-component-content-service
