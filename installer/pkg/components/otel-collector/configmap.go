@@ -67,18 +67,12 @@ func buildProcessorsConfig(ctx *common.RenderContext) string {
 	return processorsConfig
 }
 
-func buildExportersConfig(ctx *common.RenderContext) string {
-	return fmt.Sprintf(`exporters:
+func buildExportersConfig() string {
+	return `exporters:
   otlp:
-    endpoint: "api.honeycomb.io:443"
-    headers:
-      "x-honeycomb-team": "%s"
-      "x-honeycomb-dataset": "%s"
-  otlp/tempo:
     endpoint: "otel-gateway.gitpod.io:4317"
     auth:
-      authenticator: basicauth/client`,
-		ctx.Config.Tracing.HoneycombAPIKey, ctx.Config.Tracing.HoneycombDataset)
+      authenticator: basicauth/client`
 }
 
 func buildExtensionsConfig(ctx *common.RenderContext) string {
@@ -103,7 +97,7 @@ func buildServiceConfig(ctx *common.RenderContext) string {
     traces:
      receivers: [jaeger, otlp]
      processors: [%s]
-     exporters: ["otlp", "otlp/tempo"]
+     exporters: ["otlp"]
 `
 	var processors = ""
 
@@ -117,7 +111,7 @@ func buildServiceConfig(ctx *common.RenderContext) string {
 func configMapContent(ctx *common.RenderContext) string {
 	var receiversConfig = buildReceiversConfig(ctx)
 	var processorsConfig = buildProcessorsConfig(ctx)
-	var exportersConfig = buildExportersConfig(ctx)
+	var exportersConfig = buildExportersConfig()
 	var extensionsConfig = buildExtensionsConfig(ctx)
 	var serviceConfig = buildServiceConfig(ctx)
 	var config = fmt.Sprintf(`%s
