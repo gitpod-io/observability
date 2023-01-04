@@ -81,7 +81,7 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Containers: []v1.Container{
 							{
 								Args: []string{
-									"--web.listen-address=127.0.0.1:9100",
+									"--web.listen-address=0.0.0.0:9100",
 									"--path.sysfs=/host/sys",
 									"--path.rootfs=/host/root",
 									"--no-collector.wifi",
@@ -92,6 +92,13 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 								},
 								Image: fmt.Sprintf("%s:v%s", ImageURL, Version),
 								Name:  Name,
+								Ports: []v1.ContainerPort{
+									{
+										Name:          "http",
+										HostPort:      9100,
+										ContainerPort: 9100,
+									},
+								},
 								Resources: v1.ResourceRequirements{
 									Requests: v1.ResourceList{
 										v1.ResourceCPU:    resource.MustParse("100m"),
@@ -119,52 +126,6 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 										ReadOnly:         true,
 										MountPropagation: &hostToContainer,
 									},
-								},
-							},
-							{
-								Args: []string{
-									"--logtostderr",
-									"--secure-listen-address=[$(IP)]:9100",
-									"--upstream=http://127.0.0.1:9100/",
-								},
-								Env: []v1.EnvVar{
-									{
-										Name: "IP",
-										ValueFrom: &v1.EnvVarSource{
-											FieldRef: &v1.ObjectFieldSelector{
-												FieldPath: "status.podIP",
-											},
-										},
-									},
-								},
-								Image: "quay.io/brancz/kube-rbac-proxy:v0.13.0",
-								Name:  "kube-rbac-proxy",
-								Ports: []v1.ContainerPort{
-									{
-										Name:          "https",
-										HostPort:      9100,
-										ContainerPort: 9100,
-									},
-								},
-								Resources: v1.ResourceRequirements{
-									Limits: v1.ResourceList{
-										v1.ResourceCPU:    resource.MustParse("60m"),
-										v1.ResourceMemory: resource.MustParse("40Mi"),
-									},
-									Requests: v1.ResourceList{
-										v1.ResourceCPU:    resource.MustParse("10m"),
-										v1.ResourceMemory: resource.MustParse("20Mi"),
-									},
-								},
-								SecurityContext: &v1.SecurityContext{
-									AllowPrivilegeEscalation: pointer.Bool(false),
-									Capabilities: &v1.Capabilities{
-										Drop: []v1.Capability{"ALL"},
-									},
-									ReadOnlyRootFilesystem: pointer.Bool(true),
-									RunAsGroup:             pointer.Int64(65532),
-									RunAsNonRoot:           pointer.Bool(true),
-									RunAsUser:              pointer.Int64(65532),
 								},
 							},
 						},
