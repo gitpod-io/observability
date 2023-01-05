@@ -24,6 +24,7 @@ jobs:
           # Reset jsonnetfile.lock.json if no dependencies were updated
           changedFiles=$(git diff --name-only | grep -v 'jsonnetfile.lock.json')
           if [[ $changedFiles == "" ]]; then
+            echo "There was nothing to update, the job will intentionally fail to avoid only commiting a lock file"
             git checkout -- jsonnetfile.lock.json;
           fi
           make generate
