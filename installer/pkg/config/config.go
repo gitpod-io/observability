@@ -31,31 +31,16 @@ func Defaults(in interface{}) error {
 		TempoBasicPassword: "password",
 	}
 
-	cfg.Pyrra = &Pyrra{
-		Install: false,
-	}
-
-	cfg.Prober = &Prober{
-		Install: false,
-	}
-
-	cfg.Werft = &Werft{
-		InstallServiceMonitors: false,
-	}
+	cfg.Pyrra = &Pyrra{}
+	cfg.Prober = &Prober{}
+	cfg.Werft = &Werft{}
+	cfg.Certmanager = &Certmanager{}
+	cfg.Grafana = &Grafana{}
+	cfg.Imports = &Imports{}
 
 	cfg.Gitpod = &Gitpod{
 		InstallServiceMonitors: true,
 	}
-
-	cfg.Certmanager = &Certmanager{
-		InstallServiceMonitors: false,
-	}
-
-	cfg.Grafana = &Grafana{
-		Install: false,
-	}
-
-	cfg.Imports = &Imports{}
 
 	cfg.Prometheus = &Prometheus{
 		RemoteWrite: []*RemoteWrite{
@@ -63,8 +48,6 @@ func Defaults(in interface{}) error {
 				RemoteWriteSpec: monitoringv1.RemoteWriteSpec{
 					URL: "https://example.com",
 				},
-				Username: "user",
-				Password: "password",
 			},
 		},
 	}
