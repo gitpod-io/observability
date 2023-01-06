@@ -138,7 +138,7 @@ type Grafana struct {
 
 type Certmanager struct {
 	InstallServiceMonitors bool   `json:"installServiceMonitors"`
-	Namespace              string `json:"namespace"`
+	Namespace              string `json:"namespace,omitempty"`
 }
 
 type Imports struct {
