@@ -74,18 +74,19 @@ func Defaults(in interface{}) error {
 
 // Config defines the structure of the observability config file
 type Config struct {
-	Namespace    string            `json:"namespace"`
-	Tracing      *Tracing          `json:"tracing,omitempty"`
-	Alerting     *Alerting         `json:"alerting,omitempty"`
-	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
-	Prometheus   *Prometheus       `json:"prometheus,omitempty"`
-	Pyrra        *Pyrra            `json:"pyrra,omitempty"`
-	Prober       *Prober           `json:"prober,omitempty"`
-	Werft        *Werft            `json:"werft,omitempty"`
-	Gitpod       *Gitpod           `json:"gitpod,omitempty"`
-	Grafana      *Grafana          `json:"grafana,omitempty"`
-	Certmanager  *Certmanager      `json:"certmanager,omitempty"`
-	Imports      *Imports          `json:"imports,omitempty"`
+	Namespace    string              `json:"namespace"`
+	Tracing      *Tracing            `json:"tracing,omitempty"`
+	Alerting     *Alerting           `json:"alerting,omitempty"`
+	NodeSelector map[string]string   `json:"nodeSelector,omitempty"`
+	Tolerations  []corev1.Toleration `json:"tolerations,omitempty"`
+	Prometheus   *Prometheus         `json:"prometheus,omitempty"`
+	Pyrra        *Pyrra              `json:"pyrra,omitempty"`
+	Prober       *Prober             `json:"prober,omitempty"`
+	Werft        *Werft              `json:"werft,omitempty"`
+	Gitpod       *Gitpod             `json:"gitpod,omitempty"`
+	Grafana      *Grafana            `json:"grafana,omitempty"`
+	Certmanager  *Certmanager        `json:"certmanager,omitempty"`
+	Imports      *Imports            `json:"imports,omitempty"`
 }
 
 type Tracing struct {
@@ -153,7 +154,8 @@ type Grafana struct {
 }
 
 type Certmanager struct {
-	InstallServiceMonitors bool `json:"installServiceMonitors"`
+	InstallServiceMonitors bool   `json:"installServiceMonitors"`
+	Namespace              string `json:"namespace"`
 }
 
 type Imports struct {

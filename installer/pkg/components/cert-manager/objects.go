@@ -7,6 +7,10 @@ import (
 )
 
 func Objects(ctx *common.RenderContext) common.RenderFunc {
+	if ctx.Config.Certmanager.Namespace != "" {
+		Namespace = ctx.Config.Certmanager.Namespace
+	}
+
 	if ctx.Config.Certmanager.InstallServiceMonitors {
 		return common.CompositeRenderFunc(
 			networkPolicy,

@@ -1,7 +1,10 @@
 package certmanager
 
+var (
+	Namespace = "certmanager"
+)
+
 const (
-	Namespace               = "certmanager"
 	ServiceMonitorNamespace = "monitoring-satellite"
 	App                     = "certmanager"
 	Component               = "certmanager"
