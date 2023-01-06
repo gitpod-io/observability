@@ -27,9 +27,9 @@ func serviceMonitor(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Endpoints: []monitoringv1.Endpoint{
 					{
 						BearerTokenFile: "/var/run/secrets/kubernetes.io/serviceaccount/token",
-						Port:            "https",
+						Port:            "http",
 						Interval:        "60s",
-						Scheme:          "https",
+						Scheme:          "http",
 						TLSConfig: &monitoringv1.TLSConfig{
 							SafeTLSConfig: monitoringv1.SafeTLSConfig{
 								InsecureSkipVerify: true,

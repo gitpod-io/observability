@@ -24,9 +24,9 @@ func service(ctx *common.RenderContext) ([]runtime.Object, error) {
 			Spec: corev1.ServiceSpec{
 				Ports: []corev1.ServicePort{
 					{
-						Name:       "https",
+						Name:       "http",
 						Port:       9100,
-						TargetPort: intstr.FromString("https"),
+						TargetPort: intstr.FromString("http"),
 					},
 				},
 				Selector: common.Labels(Name, Component, App, Version),
