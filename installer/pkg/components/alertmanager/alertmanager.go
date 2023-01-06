@@ -45,6 +45,7 @@ func alertmanager(ctx *common.RenderContext) ([]runtime.Object, error) {
 				ServiceAccountName: fmt.Sprintf("alertmanager-%s", Name),
 				Version:            Version,
 				NodeSelector:       ctx.Config.NodeSelector,
+				Tolerations:        ctx.Config.Tolerations,
 			},
 		},
 	}, nil
