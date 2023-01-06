@@ -32,7 +32,6 @@ var (
 		"ws-manager-bridge",
 		"ws-manager",
 		"ws-proxy",
-		"ws-scheduler",
 	}
 )
 
