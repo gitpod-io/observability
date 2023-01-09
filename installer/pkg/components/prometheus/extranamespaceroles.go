@@ -6,7 +6,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
-	"github.com/gitpod-io/observability/installer/pkg/components/certmanager"
+	certmanager "github.com/gitpod-io/observability/installer/pkg/components/cert-manager"
 )
 
 // extraNamespaceRoles and extraNamespaceRoleBindings are used to give permission to prometheus to scrape metrics
