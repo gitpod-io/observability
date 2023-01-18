@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "48ac46dab517cb5f97905e19a31ca7dfdbf265a4",
+      "version": "e3e94fe89e55d458b517da31bf00aca8e5ccc6a9",
       "sum": "IkDHlaE0gvvcPjSNurFT+jQ2aCOAbqHF1WVmXbAgkds="
     },
     {
@@ -28,8 +28,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "73378f8898555a2bafe67350e591ba221687d877",
-      "sum": "4Q2ZUo8HV/aekLmp5oqIfKg2/Omw30NVD/v3s5S2mqM=",
+      "version": "5d5719b860618d4f7e27d78d212c08a41940bfba",
+      "sum": "VLUYe4+cJIOszdkO84qYwNnyoaNNJDC0UW07xYJMFPI=",
       "name": "gitpod"
     },
     {
