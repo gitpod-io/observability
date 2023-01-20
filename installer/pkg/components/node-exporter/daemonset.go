@@ -55,7 +55,6 @@ func daemonset(ctx *common.RenderContext) ([]runtime.Object, error) {
 							RunAsUser:    pointer.Int64(65534),
 						},
 						ServiceAccountName: Name,
-						Tolerations:        ctx.Config.Tolerations,
 						Volumes: []v1.Volume{
 							{
 								Name: "sys",
