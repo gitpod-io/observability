@@ -1,7 +1,10 @@
 package certmanager
 
+var (
+	Namespace = "certmanager"
+)
+
 const (
-	Namespace               = "certmanager"
 	ServiceMonitorNamespace = "monitoring-satellite"
 	App                     = "certmanager"
 	Component               = "certmanager"
@@ -13,7 +16,7 @@ var (
 		"app.kubernetes.io/instance":  "k8s",
 		"app.kubernetes.io/name":      "prometheus",
 		"app.kubernetes.io/part-of":   "kube-prometheus",
-		"app.kubernetes.io/version":   "2.37.0",
+		"app.kubernetes.io/version":   "2.41.0",
 	}
 )
 

@@ -31,31 +31,16 @@ func Defaults(in interface{}) error {
 		TempoBasicPassword: "password",
 	}
 
-	cfg.Pyrra = &Pyrra{
-		Install: false,
-	}
-
-	cfg.Prober = &Prober{
-		Install: false,
-	}
-
-	cfg.Werft = &Werft{
-		InstallServiceMonitors: false,
-	}
+	cfg.Pyrra = &Pyrra{}
+	cfg.Prober = &Prober{}
+	cfg.Werft = &Werft{}
+	cfg.Certmanager = &Certmanager{}
+	cfg.Grafana = &Grafana{}
+	cfg.Imports = &Imports{}
 
 	cfg.Gitpod = &Gitpod{
 		InstallServiceMonitors: true,
 	}
-
-	cfg.Certmanager = &Certmanager{
-		InstallServiceMonitors: false,
-	}
-
-	cfg.Grafana = &Grafana{
-		Install: false,
-	}
-
-	cfg.Imports = &Imports{}
 
 	cfg.Prometheus = &Prometheus{
 		RemoteWrite: []*RemoteWrite{
@@ -63,8 +48,6 @@ func Defaults(in interface{}) error {
 				RemoteWriteSpec: monitoringv1.RemoteWriteSpec{
 					URL: "https://example.com",
 				},
-				Username: "user",
-				Password: "password",
 			},
 		},
 	}
@@ -74,18 +57,19 @@ func Defaults(in interface{}) error {
 
 // Config defines the structure of the observability config file
 type Config struct {
-	Namespace    string            `json:"namespace"`
-	Tracing      *Tracing          `json:"tracing,omitempty"`
-	Alerting     *Alerting         `json:"alerting,omitempty"`
-	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
-	Prometheus   *Prometheus       `json:"prometheus,omitempty"`
-	Pyrra        *Pyrra            `json:"pyrra,omitempty"`
-	Prober       *Prober           `json:"prober,omitempty"`
-	Werft        *Werft            `json:"werft,omitempty"`
-	Gitpod       *Gitpod           `json:"gitpod,omitempty"`
-	Grafana      *Grafana          `json:"grafana,omitempty"`
-	Certmanager  *Certmanager      `json:"certmanager,omitempty"`
-	Imports      *Imports          `json:"imports,omitempty"`
+	Namespace    string              `json:"namespace"`
+	Tracing      *Tracing            `json:"tracing,omitempty"`
+	Alerting     *Alerting           `json:"alerting,omitempty"`
+	NodeSelector map[string]string   `json:"nodeSelector,omitempty"`
+	Tolerations  []corev1.Toleration `json:"tolerations,omitempty"`
+	Prometheus   *Prometheus         `json:"prometheus,omitempty"`
+	Pyrra        *Pyrra              `json:"pyrra,omitempty"`
+	Prober       *Prober             `json:"prober,omitempty"`
+	Werft        *Werft              `json:"werft,omitempty"`
+	Gitpod       *Gitpod             `json:"gitpod,omitempty"`
+	Grafana      *Grafana            `json:"grafana,omitempty"`
+	Certmanager  *Certmanager        `json:"certmanager,omitempty"`
+	Imports      *Imports            `json:"imports,omitempty"`
 }
 
 type Tracing struct {
@@ -120,8 +104,8 @@ type Prometheus struct {
 
 type RemoteWrite struct {
 	monitoringv1.RemoteWriteSpec
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Username string `json:"username,omitempty"`
+	Password string `json:"password,omitempty"`
 }
 
 type GoogleIAPBasedIngress struct {
@@ -153,7 +137,8 @@ type Grafana struct {
 }
 
 type Certmanager struct {
-	InstallServiceMonitors bool `json:"installServiceMonitors"`
+	InstallServiceMonitors bool   `json:"installServiceMonitors"`
+	Namespace              string `json:"namespace,omitempty"`
 }
 
 type Imports struct {

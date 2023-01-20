@@ -13,9 +13,7 @@ prober:
   install: false
 prometheus:
   remoteWrite:
-  - password: password
-    url: https://example.com
-    username: user
+  - url: https://example.com
   resources: {}
 pyrra:
   install: false

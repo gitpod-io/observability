@@ -26,9 +26,11 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
 			Spec: appsv1.DeploymentSpec{
+
 				Selector: &metav1.LabelSelector{MatchLabels: common.Labels(Name, Component, App, Version)},
 				Replicas: pointer.Int32(1),
 				Template: corev1.PodTemplateSpec{
+
 					ObjectMeta: metav1.ObjectMeta{
 						Labels: common.Labels(Name, Component, App, Version),
 						Annotations: map[string]string{
@@ -36,6 +38,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						},
 					},
 					Spec: corev1.PodSpec{
+						Tolerations:                  ctx.Config.Tolerations,
 						NodeSelector:                 ctx.Config.NodeSelector,
 						AutomountServiceAccountToken: pointer.Bool(true),
 						SecurityContext: &corev1.PodSecurityContext{

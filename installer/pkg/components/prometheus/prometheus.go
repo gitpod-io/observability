@@ -40,7 +40,8 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 			},
 			RuleSelector: &metav1.LabelSelector{},
 			CommonPrometheusFields: monitoringv1.CommonPrometheusFields{
-				Image: pointer.String(fmt.Sprintf("%s:v%s", ImageURL, Version)),
+				Tolerations: ctx.Config.Tolerations,
+				Image:       pointer.String(fmt.Sprintf("%s:v%s", ImageURL, Version)),
 				PodMetadata: &monitoringv1.EmbeddedObjectMetadata{
 					Labels: common.Labels(Name, Component, App, Version),
 				},
@@ -70,6 +71,10 @@ func remoteWriteSecrets(ctx *common.RenderContext) []runtime.Object {
 	var secrets []runtime.Object
 
 	for i, rw := range ctx.Config.Prometheus.RemoteWrite {
+		if rw.Username == "" && rw.Password == "" {
+			continue
+		}
+
 		secrets = append(secrets, &corev1.Secret{
 			TypeMeta: metav1.TypeMeta{
 				APIVersion: "v1",
@@ -94,20 +99,23 @@ func remoteWriteSpecs(ctx *common.RenderContext) []monitoringv1.RemoteWriteSpec 
 	var specs []monitoringv1.RemoteWriteSpec
 
 	for i, rw := range ctx.Config.Prometheus.RemoteWrite {
-		rw.BasicAuth = &monitoringv1.BasicAuth{
-			Username: corev1.SecretKeySelector{
-				Key: "username",
-				LocalObjectReference: corev1.LocalObjectReference{
-					Name: fmt.Sprintf("remote-write-secret-%d", i),
+		if rw.Username != "" && rw.Password != "" {
+			rw.BasicAuth = &monitoringv1.BasicAuth{
+				Username: corev1.SecretKeySelector{
+					Key: "username",
+					LocalObjectReference: corev1.LocalObjectReference{
+						Name: fmt.Sprintf("remote-write-secret-%d", i),
+					},
 				},
-			},
-			Password: corev1.SecretKeySelector{
-				Key: "password",
-				LocalObjectReference: corev1.LocalObjectReference{
-					Name: fmt.Sprintf("remote-write-secret-%d", i),
+				Password: corev1.SecretKeySelector{
+					Key: "password",
+					LocalObjectReference: corev1.LocalObjectReference{
+						Name: fmt.Sprintf("remote-write-secret-%d", i),
+					},
 				},
-			},
+			}
 		}
+
 		specs = append(specs, *rw.DeepCopy())
 	}
 

@@ -70,6 +70,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 						ServiceAccountName:           Name,
 						AutomountServiceAccountToken: common.ToPointer(true),
 						NodeSelector:                 ctx.Config.NodeSelector,
+						Tolerations:                  ctx.Config.Tolerations,
 						Containers: []corev1.Container{
 							{
 								Name:  Name,

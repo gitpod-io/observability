@@ -6,6 +6,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
+	certmanager "github.com/gitpod-io/observability/installer/pkg/components/cert-manager"
 )
 
 // extraNamespaceRoles and extraNamespaceRoleBindings are used to give permission to prometheus to scrape metrics
@@ -25,7 +26,7 @@ func extraNamespaceRoles(ctx *common.RenderContext) ([]runtime.Object, error) {
 	}
 
 	if ctx.Config.Certmanager.InstallServiceMonitors {
-		extraRoles = append(extraRoles, roleFactory("certmanager"))
+		extraRoles = append(extraRoles, roleFactory(certmanager.Namespace))
 	}
 
 	return extraRoles, nil
