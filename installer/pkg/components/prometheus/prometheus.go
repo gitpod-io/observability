@@ -16,6 +16,11 @@ import (
 func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 	objs := remoteWriteSecrets(ctx)
 
+	serviceAccountName := fmt.Sprintf("prometheus-%s", Name)
+	if ctx.Config.Prometheus.ServiceAccountName != "" {
+		serviceAccountName = ctx.Config.Prometheus.ServiceAccountName
+	}
+
 	objs = append(objs, &monitoringv1.Prometheus{
 		TypeMeta: metav1.TypeMeta{
 			APIVersion: "monitoring.coreos.com/v1",
@@ -51,7 +56,6 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 					RunAsUser:    pointer.Int64(1000),
 					RunAsNonRoot: pointer.Bool(true),
 				},
-				ServiceAccountName:     fmt.Sprintf("prometheus-%s", Name),
 				ExternalLabels:         ctx.Config.Prometheus.ExternalLabels,
 				EnableFeatures:         ctx.Config.Prometheus.EnableFeatures,
 				Resources:              ctx.Config.Prometheus.Resources,
@@ -60,6 +64,7 @@ func prometheus(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Version:                Version,
 				ServiceMonitorSelector: &metav1.LabelSelector{},
 				PodMonitorSelector:     &metav1.LabelSelector{},
+				ServiceAccountName:     serviceAccountName,
 			},
 		},
 	})

@@ -94,12 +94,13 @@ type TeamAlertingRoute struct {
 }
 
 type Prometheus struct {
-	ExternalLabels map[string]string           `json:"externalLabels,omitempty"`
-	EnableFeatures []string                    `json:"enableFeatures,omitempty"`
-	MetricsToDrop  []string                    `json:"metricsToDrop,omitempty"`
-	Ingress        *GoogleIAPBasedIngress      `json:"ingress,omitempty"`
-	Resources      corev1.ResourceRequirements `json:"resources,omitempty"`
-	RemoteWrite    []*RemoteWrite              `json:"remoteWrite,omitempty"`
+	ExternalLabels     map[string]string           `json:"externalLabels,omitempty"`
+	EnableFeatures     []string                    `json:"enableFeatures,omitempty"`
+	MetricsToDrop      []string                    `json:"metricsToDrop,omitempty"`
+	Ingress            *GoogleIAPBasedIngress      `json:"ingress,omitempty"`
+	Resources          corev1.ResourceRequirements `json:"resources,omitempty"`
+	RemoteWrite        []*RemoteWrite              `json:"remoteWrite,omitempty"`
+	ServiceAccountName string                      `json:"serviceAccountName,omitempty"`
 }
 
 type RemoteWrite struct {
