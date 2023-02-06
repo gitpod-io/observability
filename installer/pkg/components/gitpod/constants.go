@@ -27,6 +27,7 @@ var (
 		"registry-facade",
 		"server",
 		"slow-server",
+		"spicedb",
 		"usage",
 		"ws-daemon",
 		"ws-manager-bridge",
