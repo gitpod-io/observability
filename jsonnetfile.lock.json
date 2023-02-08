@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "9bae01099413b40779000168dcef4d71501d1ac4",
+      "version": "586eaccc4d28d4c2af507eaef0051d21a7e4b04c",
       "sum": "IkDHlaE0gvvcPjSNurFT+jQ2aCOAbqHF1WVmXbAgkds="
     },
     {
@@ -28,7 +28,7 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "ca9907608c162001adee81db8baf906d3ddc5087",
+      "version": "5b96bc0257b38db6c2522eff43747612f49fd80e",
       "sum": "/mTXUMi94dGRmIlAa0jlu7lYsQkLI4/eOkej8LN+Ivw=",
       "name": "gitpod"
     },
@@ -182,8 +182,8 @@
           "subdir": "mixin"
         }
       },
-      "version": "4bb560e0060101a179bb4d032281dedda83e69c0",
-      "sum": "JGtDv5cQBGsDVhCjG0sOhVPaNO3LvP9+Lf0iVTrEPQI=",
+      "version": "1839858fca674f83177c7dd53b08e4d812637c05",
+      "sum": "md/PebXzwkmmAY2sJCNNRZ6YXcRwFwDFzZlpbGgWxNY=",
       "name": "thanos-mixin"
     },
     {
