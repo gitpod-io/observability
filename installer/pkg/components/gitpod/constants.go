@@ -32,6 +32,7 @@ var (
 		"ws-daemon",
 		"ws-manager-bridge",
 		"ws-manager",
+		"ws-manager-mk2",
 		"ws-proxy",
 	}
 )
