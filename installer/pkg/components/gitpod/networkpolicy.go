@@ -12,6 +12,10 @@ import (
 
 func networkPolicy(target string) common.RenderFunc {
 	return func(cfg *common.RenderContext) ([]runtime.Object, error) {
+		if target == "ws-daemon" {
+			return []runtime.Object{}, nil
+		}
+
 		return []runtime.Object{
 			&networkv1.NetworkPolicy{
 				TypeMeta: metav1.TypeMeta{
