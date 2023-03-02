@@ -219,9 +219,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-dashboard
           name: grafana-dashboard-gitpod-component-dashboard
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-db-sync
-          name: grafana-dashboard-gitpod-component-db-sync
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-db
           name: grafana-dashboard-gitpod-component-db
           readOnly: false
@@ -476,9 +473,6 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-dashboard
         name: grafana-dashboard-gitpod-component-dashboard
-      - configMap:
-          name: grafana-dashboard-gitpod-component-db-sync
-        name: grafana-dashboard-gitpod-component-db-sync
       - configMap:
           name: grafana-dashboard-gitpod-component-db
         name: grafana-dashboard-gitpod-component-db
