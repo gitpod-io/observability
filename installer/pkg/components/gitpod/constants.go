@@ -25,6 +25,7 @@ var (
 		"openvsx-proxy",
 		"public-api-server",
 		"registry-facade",
+		"proxy",
 		"server",
 		"slow-server",
 		"spicedb",
