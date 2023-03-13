@@ -22,6 +22,7 @@ var (
 		"ide-metrics",
 		"ide-service",
 		"image-builder-mk3",
+		"node-labeler",
 		"openvsx-proxy",
 		"public-api-server",
 		"registry-facade",
