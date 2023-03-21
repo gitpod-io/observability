@@ -27,6 +27,7 @@ var (
 		"public-api-server",
 		"registry-facade",
 		"proxy",
+		"redis",
 		"server",
 		"slow-server",
 		"spicedb",
