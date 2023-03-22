@@ -102,6 +102,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-slo-workspace-startuptime
           name: grafana-dashboard-gitpod-slo-workspace-startuptime
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/redis
+          name: grafana-dashboard-redis
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Self-hosted examples/argocd
           name: grafana-dashboard-argocd
           readOnly: false
@@ -359,6 +362,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-slo-workspace-startuptime
         name: grafana-dashboard-gitpod-slo-workspace-startuptime
+      - configMap:
+          name: grafana-dashboard-redis
+        name: grafana-dashboard-redis
       - configMap:
           name: grafana-dashboard-argocd
         name: grafana-dashboard-argocd
