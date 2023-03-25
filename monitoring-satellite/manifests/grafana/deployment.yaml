@@ -144,6 +144,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-ssh-gateway
           name: grafana-dashboard-gitpod-component-ssh-gateway
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-supervisor
+          name: grafana-dashboard-gitpod-component-supervisor
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Platform/alertmanager-overview
           name: grafana-dashboard-alertmanager-overview
           readOnly: false
@@ -404,6 +407,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-ssh-gateway
         name: grafana-dashboard-gitpod-component-ssh-gateway
+      - configMap:
+          name: grafana-dashboard-gitpod-component-supervisor
+        name: grafana-dashboard-gitpod-component-supervisor
       - configMap:
           name: grafana-dashboard-alertmanager-overview
         name: grafana-dashboard-alertmanager-overview
