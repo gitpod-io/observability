@@ -96,6 +96,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-nodes-overview
           name: grafana-dashboard-gitpod-nodes-overview
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-overview-mk2
+          name: grafana-dashboard-gitpod-overview-mk2
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Cross Teams/gitpod-overview
           name: grafana-dashboard-gitpod-overview
           readOnly: false
@@ -359,6 +362,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-nodes-overview
         name: grafana-dashboard-gitpod-nodes-overview
+      - configMap:
+          name: grafana-dashboard-gitpod-overview-mk2
+        name: grafana-dashboard-gitpod-overview-mk2
       - configMap:
           name: grafana-dashboard-gitpod-overview
         name: grafana-dashboard-gitpod-overview
