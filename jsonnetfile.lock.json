@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "49b59cc8e5c838bdc5e661de6388a0e348b3985c",
+      "version": "5021cd924cb642636fed6b4cb499e2001f15a1c4",
       "sum": "QTzBqwjnM6cGGVBhOiVJyA+ZVTkmCTuH6C6YW7XKRFw="
     },
     {
@@ -28,8 +28,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "a289f08c5eda0a13cf42edc0d7045c273b11cb61",
-      "sum": "LL1ZAiyYv62t6o3lctUG22MlCHY12sYrHNyhXS4onsc=",
+      "version": "e8a3c4e3bc55a896032123e4fab67530b395b3d9",
+      "sum": "PAjpW6/PV4oWHtwE9jAf5JzDsFM600RVCqcoQyC8CEk=",
       "name": "gitpod"
     },
     {
@@ -69,7 +69,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "d680faafc0727c4c5086f1624333363e57d2ce81",
+      "version": "8859cdd955137268f85332d181844826e628b412",
       "sum": "tDR6yT2GVfw0wTU12iZH+m01HrbIr6g/xN+/8nzNkU0="
     },
     {
@@ -79,8 +79,8 @@
           "subdir": ""
         }
       },
-      "version": "eed459199703c969afc318ea55b9361ae48180a7",
-      "sum": "iKDOR7+jXw3Rctog6Z1ofweIK5BLjuGeguIZjXLP8ls="
+      "version": "d87b757edc73a5f5b78e9f6a9bbae9023131c946",
+      "sum": "fsAZNroGj9QOUt63dI78jcahPnCXlBhpfxuPJC3dTac="
     },
     {
       "source": {
