@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "04346e870fc0823d12ca8220c3489635e9e15e72",
+      "version": "bf903e5007c41d0a9093306aab05527609de494b",
       "sum": "QTzBqwjnM6cGGVBhOiVJyA+ZVTkmCTuH6C6YW7XKRFw="
     },
     {
@@ -28,8 +28,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "7c41572bc96c5680424075e35f2ea1d4e429e783",
-      "sum": "aEE/hc3Cb1KxRDAmgh8dNC46taDCPeqMtuB6pXb3Ex4=",
+      "version": "2208a8792e9d04e55782c203afe03d0ab089039a",
+      "sum": "qPwIbR7/Wpp/iyg6w9j04K2pcZBCqxlvSxs0K8VM2aQ=",
       "name": "gitpod"
     },
     {
@@ -119,7 +119,7 @@
           "subdir": "jsonnet/mixin"
         }
       },
-      "version": "8a9e0bece9611a9ba3d4d94d2746e1a8d3022855",
+      "version": "960a97f917bc8724155c652e41c955e7276c7a81",
       "sum": "n3flMIzlADeyygb0uipZ4KPp2uNSjdtkrwgHjTC7Ca4=",
       "name": "prometheus-operator-mixin"
     },
@@ -130,7 +130,7 @@
           "subdir": "jsonnet/prometheus-operator"
         }
       },
-      "version": "8a9e0bece9611a9ba3d4d94d2746e1a8d3022855",
+      "version": "960a97f917bc8724155c652e41c955e7276c7a81",
       "sum": "c38d9sIDE00uUvPMSaHhKG/tLvE7Te47rI2NGZg6Z/M="
     },
     {
@@ -151,7 +151,7 @@
           "subdir": "docs/node-mixin"
         }
       },
-      "version": "df1b53bee29d79526c74650d2374562c9a17dcc5",
+      "version": "8c5847bd9427c67bc1845c6cbf9dd5c7eaa1cc79",
       "sum": "aFUI56y6Y8EpniS4cfYqrSaHFnxeomIw4S4+Sz8yPtQ="
     },
     {
@@ -161,7 +161,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "89af3517304bcd48a8f20686c0e3317544b6985d",
+      "version": "cb045c0e4b94bbf3eee174d91b5ef2b8553948d5",
       "sum": "LRx0tbMnoE1p8KEn+i81j2YsA5Sgt3itE5Y6jBf5eOQ=",
       "name": "prometheus"
     },
@@ -182,7 +182,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "c4321c5e1de231c87b31acb25348c1a18cdb21fe",
+      "version": "351b0572f29d1b6d93df8080436719e9ee2382f2",
       "sum": "zSLNV/0bN4DcVKojzCqjmhfjtzTY4pDKZXqbAUzw5R0=",
       "name": "thanos-mixin"
     },
