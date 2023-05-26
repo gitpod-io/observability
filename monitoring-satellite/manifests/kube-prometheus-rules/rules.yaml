@@ -63,7 +63,18 @@ spec:
     - expr: count without(instance, pod, node) (up == 0)
       record: count:up0
   - name: kubernetes-apps
-    rules: []
+    rules:
+    - alert: KubeDeploymentRolloutStuck
+      annotations:
+        description: Rollout of deployment {{ $labels.namespace }}/{{ $labels.deployment }} is not progressing for longer than 15 minutes.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubedeploymentrolloutstuck
+        summary: Deployment rollout is not progressing.
+      expr: |
+        kube_deployment_status_condition{condition="Progressing", status="false",job="kube-state-metrics"}
+        != 0
+      for: 15m
+      labels:
+        severity: warning
   - name: kubernetes-resources
     rules: []
   - name: kubernetes-storage
