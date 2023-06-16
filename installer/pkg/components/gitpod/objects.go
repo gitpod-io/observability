@@ -31,6 +31,7 @@ func Objects(ctx *common.RenderContext) common.RenderFunc {
 		workspaceObjects(),
 		proxyCaddyObjects(),
 		messagebusObjects(),
+		ideMetricsObjects(),
 	)
 
 	return common.CompositeRenderFunc(objects...)

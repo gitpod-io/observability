@@ -19,7 +19,6 @@ var (
 		"blobserve",
 		"containerd-metrics",
 		"content-service",
-		"ide-metrics",
 		"ide-service",
 		"image-builder-mk3",
 		"node-labeler",
