@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 9.5.2
+    app.kubernetes.io/version: 9.5.3
   name: grafana
   namespace: monitoring-satellite
 spec:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: c009786ce60e7522d5a5dc0c3fe2f538
-        checksum/grafana-dashboardproviders: 155439e89ab06792acdc9a8e75b98bb6
-        checksum/grafana-datasources: fd31225c6e1fb20833f923e475de4134
+        checksum/grafana-config: b9569a0d89ad7f773f87caa37e71136b
+        checksum/grafana-dashboardproviders: 36d2e199bc77936c088b4bfbd0c9e338
+        checksum/grafana-datasources: e0205019c4f63d6334aa6ae3976b08f4
       labels:
         app.kubernetes.io/component: grafana
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 9.5.2
+        app.kubernetes.io/version: 9.5.3
     spec:
       automountServiceAccountToken: false
       containers:
@@ -36,7 +36,7 @@ spec:
           value: Admin
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: "true"
-        image: grafana/grafana:9.5.2
+        image: grafana/grafana:9.5.3
         name: grafana
         ports:
         - containerPort: 3000
@@ -136,6 +136,9 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-jb
           name: grafana-dashboard-gitpod-component-jb
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-local-ssh
+          name: grafana-dashboard-gitpod-component-local-ssh
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team IDE/gitpod-component-openvsx-mirror
           name: grafana-dashboard-gitpod-component-openvsx-mirror
@@ -403,6 +406,9 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-jb
         name: grafana-dashboard-gitpod-component-jb
+      - configMap:
+          name: grafana-dashboard-gitpod-component-local-ssh
+        name: grafana-dashboard-gitpod-component-local-ssh
       - configMap:
           name: grafana-dashboard-gitpod-component-openvsx-mirror
         name: grafana-dashboard-gitpod-component-openvsx-mirror
