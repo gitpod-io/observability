@@ -284,9 +284,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-manager-mk2
           name: grafana-dashboard-gitpod-component-ws-manager-mk2
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-manager
-          name: grafana-dashboard-gitpod-component-ws-manager
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Workspace/gitpod-component-ws-proxy
           name: grafana-dashboard-gitpod-component-ws-proxy
           readOnly: false
@@ -553,9 +550,6 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-ws-manager-mk2
         name: grafana-dashboard-gitpod-component-ws-manager-mk2
-      - configMap:
-          name: grafana-dashboard-gitpod-component-ws-manager
-        name: grafana-dashboard-gitpod-component-ws-manager
       - configMap:
           name: grafana-dashboard-gitpod-component-ws-proxy
         name: grafana-dashboard-gitpod-component-ws-proxy
