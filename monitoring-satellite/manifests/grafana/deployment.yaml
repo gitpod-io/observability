@@ -236,9 +236,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-db
           name: grafana-dashboard-gitpod-component-db
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-messagebus
-          name: grafana-dashboard-gitpod-component-messagebus
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team WebApp/gitpod-component-proxy
           name: grafana-dashboard-gitpod-component-proxy
           readOnly: false
@@ -502,9 +499,6 @@ spec:
       - configMap:
           name: grafana-dashboard-gitpod-component-db
         name: grafana-dashboard-gitpod-component-db
-      - configMap:
-          name: grafana-dashboard-gitpod-component-messagebus
-        name: grafana-dashboard-gitpod-component-messagebus
       - configMap:
           name: grafana-dashboard-gitpod-component-proxy
         name: grafana-dashboard-gitpod-component-proxy
