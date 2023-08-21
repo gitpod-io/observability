@@ -72,7 +72,6 @@ spec:
                       metric:
                         type: string
                     required:
-                    - grouping
                     - metric
                     type: object
                   latency:
