@@ -1689,7 +1689,7 @@ spec:
                 description: "Use the host's network namespace if true. \n Make sure to understand the security implications if you want to enable it (https://kubernetes.io/docs/concepts/configuration/overview/). \n When hostNetwork is enabled, this will set the DNS policy to `ClusterFirstWithHostNet` automatically."
                 type: boolean
               ignoreNamespaceSelectors:
-                description: When true, `spec.namespaceSelector` from all PodMonitor, ServiceMonitor and Probe objects will be ignored. They will only discover targets within the namespace of the PodMonitor, ServiceMonitor and Probe objec.
+                description: When true, `spec.namespaceSelector` from all PodMonitor, ServiceMonitor and Probe objects will be ignored. They will only discover targets within the namespace of the PodMonitor, ServiceMonitor and Probe object.
                 type: boolean
               image:
                 description: "Container image name for Prometheus. If specified, it takes precedence over the `spec.baseImage`, `spec.tag` and `spec.sha` fields. \n Specifying `spec.version` is still necessary to ensure the Prometheus Operator knows which version of Prometheus is being configured. \n If neither `spec.image` nor `spec.baseImage` are defined, the operator will use the latest upstream version of Prometheus available at the time when the operator was released."
