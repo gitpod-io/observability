@@ -32,7 +32,7 @@ function(params) {
   assert std.objectHas(config.victoriametrics, 'memory') : 'victoriametrics.memory is required',
 
   clusterRole: {
-    apiVersion: 'rbac.authorization.k8s.io/v1beta1',
+    apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRole',
     metadata: {
       labels: $._config.commonLabels,
@@ -47,7 +47,7 @@ function(params) {
   },
 
   clusterRoleBinding: {
-    apiVersion: 'rbac.authorization.k8s.io/v1beta1',
+    apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRoleBinding',
     metadata: {
       labels: $._config.commonLabels,
@@ -269,7 +269,7 @@ function(params) {
   },
 
   vmAuthIngress: {
-    apiVersion: 'extensions/v1beta1',
+    apiVersion: 'networking.k8s.io/v1',
     kind: 'Ingress',
     metadata: {
       annotations: {
@@ -288,10 +288,15 @@ function(params) {
         http: {
           paths: [{
             backend: {
-              serviceName: $.serviceVmAuth.metadata.name,  // same name put on service resource
-              servicePort: $._config.vmAuthPort,
+              service: {
+                name: $.serviceVmAuth.metadata.name,  // same name put on service resource
+                port: {
+                  number: $._config.vmAuthPort,
+                },
+              },
             },
             path: '/*',
+            pathType: 'ImplementationSpecific',
           }],
         },
       }],
