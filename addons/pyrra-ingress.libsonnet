@@ -72,7 +72,7 @@ function(config) {
                   port: {
                     number: 9099,
                   },
-                }
+                },
               },
               path: '/*',
               pathType: 'ImplementationSpecific',

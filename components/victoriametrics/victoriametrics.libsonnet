@@ -293,7 +293,7 @@ function(params) {
                 port: {
                   number: $._config.vmAuthPort,
                 },
-              }
+              },
             },
             path: '/*',
             pathType: 'ImplementationSpecific',
