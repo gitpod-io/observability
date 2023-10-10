@@ -48,7 +48,7 @@ function(config) {
     },
 
     ingress: {
-      apiVersion: 'extensions/v1beta1',
+      apiVersion: 'networking.k8s.io/v1',
       kind: 'Ingress',
       metadata: {
         annotations: {
@@ -67,10 +67,15 @@ function(config) {
           http: {
             paths: [{
               backend: {
-                serviceName: $.pyrra.apiService.metadata.name,
-                servicePort: 9099,
+                service: {
+                  name: $.pyrra.apiService.metadata.name,
+                  port: {
+                    number: 9099,
+                  },
+                }
               },
               path: '/*',
+              pathType: 'ImplementationSpecific',
             }],
           },
 

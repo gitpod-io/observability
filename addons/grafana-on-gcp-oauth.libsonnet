@@ -47,7 +47,7 @@ function(config) {
     },
 
     ingress: {
-      apiVersion: 'extensions/v1beta1',
+      apiVersion: 'networking.k8s.io/v1',
       kind: 'Ingress',
       metadata: {
         annotations: {
@@ -66,10 +66,15 @@ function(config) {
           http: {
             paths: [{
               backend: {
-                serviceName: $.grafana.service.metadata.name,  // same name put on service resource
-                servicePort: 3000,
+                service: {
+                  name: $.grafana.service.metadata.name,  // same name put on service resource
+                  port: {
+                    number: 3000,
+                  },
+                },
               },
               path: '/*',
+              pathType: 'ImplementationSpecific',
             }],
           },
 
