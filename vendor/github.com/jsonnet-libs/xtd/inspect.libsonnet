@@ -158,11 +158,11 @@ local d = import 'doc-util/main.libsonnet';
     if std.isObject(x)
     then
       if filter_func(x)
-      then x
+      then [x]
       else
         std.foldl(
           function(acc, o)
-            acc + self.filterObjects(x[o], filter_func),
+            acc + self.filterObjects(filter_func, x[o]),
           std.objectFields(x),
           []
         )
@@ -171,7 +171,7 @@ local d = import 'doc-util/main.libsonnet';
       std.flattenArrays(
         std.map(
           function(obj)
-            self.filterObjects(obj, filter_func),
+            self.filterObjects(filter_func, obj),
           x
         )
       )
