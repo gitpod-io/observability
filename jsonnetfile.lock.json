@@ -28,8 +28,8 @@
           "subdir": "operations/observability/mixins"
         }
       },
-      "version": "f3cd71cc2d1890d446fed6620670d697812133a4",
-      "sum": "CQ+Pi/CVcMgO6agXcqZMaOmtOLI6+0evXspkyHa8rnc=",
+      "version": "5b13b510ecb38ccf7cb9a7cd17195a7fdf03af8a",
+      "sum": "TlIQ9OPlIvd5NDY7SoR1epV8tkpdaDF4rqpJ7C+91kw=",
       "name": "gitpod"
     },
     {
@@ -79,7 +79,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "356d4fb6ada32b9aedb2c2b230b616f2458c4b94",
+      "version": "6acda51437183b16b724d5d933a490b4a5cf0d37",
       "sum": "xEFMv4+ObwP5L1Wu0XK5agWci4AJzNApys6iKAQxLlQ="
     },
     {
@@ -99,8 +99,8 @@
           "subdir": ""
         }
       },
-      "version": "42adb4b347a89c8e07f7ea7d459dee50fe56afe3",
-      "sum": "V1fCscAmNomABItd9KJUYj1hcy/yXR4elCrGVE/JLlw="
+      "version": "c1a315a7dbead0335a5e0486acc5583395b22a24",
+      "sum": "UVdL+uuFI8BSQgLfMJEJk2WDKsQXNT3dRHcr2Ti9rLI="
     },
     {
       "source": {
@@ -170,7 +170,7 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "7cdecbf6ee97951d3ba1430fae6598a1fe9defe1",
+      "version": "861c3d87c753613cef77abf07ac3c1d206021867",
       "sum": "1d7ZKYArJKacAWXLUz0bRC1uOkozee/PPw97/W5zGhc=",
       "name": "alertmanager"
     },
@@ -191,7 +191,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "7eaefcf379e1b27c3551c6b698a3b1d6bf24d500",
+      "version": "0b02cc52771a4496c5e55285c2ed681de0cfa267",
       "sum": "8OngT76gVXOUROOOeP9yTe6E/dn+2D2J34Dn690QCG0=",
       "name": "prometheus"
     },
