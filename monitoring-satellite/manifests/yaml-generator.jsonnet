@@ -2,13 +2,11 @@
 local monitoringSatellite = (import '../monitoring-satellite.libsonnet');
 local excludedComponents = [
   'kubePrometheus',
-  'restrictedPodSecurityPolicy',
   'prometheusOperator',
   'pyrra',
 ];
 
 { namespace: monitoringSatellite.kubePrometheus.namespace } +
-{ 'podsecuritypolicy-restricted': monitoringSatellite.restrictedPodSecurityPolicy } +
 { 'prometheus/kube-prometheus-prometheusRule': monitoringSatellite.kubePrometheus.prometheusRule } +
 {
   [component + '/' + resource]: monitoringSatellite[component][resource]
