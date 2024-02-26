@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 10.3.1
+    app.kubernetes.io/version: 10.3.3
   name: grafana
   namespace: monitoring-satellite
 spec:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: 12684d6707b290f070e83ba07cb51d46
-        checksum/grafana-dashboardproviders: d66995983741f8b747cc06e3c9159a65
-        checksum/grafana-datasources: 332824e9b187f7b0ac2eb135e3d1ad92
+        checksum/grafana-config: f0b946f38a8cd1f4b8e7915a71111378
+        checksum/grafana-dashboardproviders: decf4ae58f97fba171d861696e7c1d60
+        checksum/grafana-datasources: c91ceddc6571e82b63edb99236c64ddd
       labels:
         app.kubernetes.io/component: grafana
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: kube-prometheus
-        app.kubernetes.io/version: 10.3.1
+        app.kubernetes.io/version: 10.3.3
     spec:
       automountServiceAccountToken: false
       containers:
@@ -36,7 +36,7 @@ spec:
           value: Admin
         - name: GF_AUTH_DISABLE_LOGIN_FORM
           value: "true"
-        image: grafana/grafana:10.3.1
+        image: grafana/grafana:10.3.3
         name: grafana
         ports:
         - containerPort: 3000
