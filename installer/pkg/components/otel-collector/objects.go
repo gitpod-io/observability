@@ -21,7 +21,6 @@ func Objects(ctx *common.RenderContext) common.RenderFunc {
 			clusterRoleBinding,
 			configMap,
 			deployment,
-			podsecuritypolicy,
 			service,
 			serviceAccount,
 			serviceMonitor,

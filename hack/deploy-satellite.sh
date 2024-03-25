@@ -24,7 +24,6 @@ if [[ $KUBECONFIG != "" ]]; then
 fi
 
 kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/namespace.yaml
-kubectl $KUBECONFIG_FLAG apply -f monitoring-satellite/manifests/podsecuritypolicy-restricted.yaml
 
 ./hack/deploy-crds.sh --kubeconfig "${KUBECONFIG}"
 

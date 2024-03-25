@@ -3,12 +3,4 @@ kind: Role
 metadata:
   name: grafana
   namespace: monitoring-satellite
-rules:
-- apiGroups:
-  - policy
-  resourceNames:
-  - kube-prometheus-restricted
-  resources:
-  - podsecuritypolicies
-  verbs:
-  - use
+rules: []

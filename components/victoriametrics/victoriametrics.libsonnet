@@ -38,12 +38,7 @@ function(params) {
       labels: $._config.commonLabels,
       name: $._config.name,
     },
-    rules: [{
-      apiGroups: ['policy'],
-      resources: ['podsecuritypolicies'],
-      verbs: ['use'],
-      resourceNames: [v.podSecurityPolicy.metadata.name],
-    }],
+    rules: [],
   },
 
   clusterRoleBinding: {
@@ -62,31 +57,6 @@ function(params) {
       apiGroup: 'rbac.authorization.k8s.io',
       kind: 'ClusterRole',
       name: v.clusterRole.metadata.name,
-    },
-  },
-
-  podSecurityPolicy: {
-    apiVersion: 'policy/v1beta1',
-    kind: 'PodSecurityPolicy',
-    metadata: {
-      labels: $._config.commonLabels,
-      name: $._config.name,
-    },
-    spec: {
-      privileged: false,
-      seLinux: {
-        rule: 'RunAsAny',
-      },
-      supplementalGroups: {
-        rule: 'RunAsAny',
-      },
-      runAsUser: {
-        rule: 'RunAsAny',
-      },
-      fsGroup: {
-        rule: 'RunAsAny',
-      },
-      volumes: ['*'],
     },
   },
 

@@ -8,7 +8,6 @@ var Objects = common.CompositeRenderFunc(
 	clusterRole,
 	clusterRoleBinding,
 	deployment,
-	podsecuritypolicy,
 	service,
 	serviceAccount,
 	serviceMonitor,
