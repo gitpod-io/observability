@@ -134,6 +134,7 @@ local var = g.dashboard.variable;
               g.panel.table.queryOptions.transformation.withId('organize')
               + g.panel.table.queryOptions.transformation.withOptions({
                 excludeByName: {
+                  Time: true,
                   'Time 1': true,
                   'Time 2': true,
                   'Time 3': true,
@@ -232,6 +233,7 @@ local var = g.dashboard.variable;
               g.panel.table.queryOptions.transformation.withId('organize')
               + g.panel.table.queryOptions.transformation.withOptions({
                 excludeByName: {
+                  Time: true,
                   'Time 1': true,
                   'Time 2': true,
                   'Time 3': true,
@@ -293,9 +295,11 @@ local var = g.dashboard.variable;
 
         g.dashboard.new('%(dashboardNamePrefix)sCompute Resources /  Multi-Cluster' % $._config.grafanaK8s)
         + g.dashboard.withUid($._config.grafanaDashboardIDs['k8s-resources-multicluster.json'])
+        + g.dashboard.withTags($._config.grafanaK8s.dashboardTags)
         + g.dashboard.withEditable(false)
         + g.dashboard.time.withFrom('now-1h')
         + g.dashboard.time.withTo('now')
+        + g.dashboard.withRefresh($._config.grafanaK8s.refresh)
         + g.dashboard.withVariables([variables.datasource])
         + g.dashboard.withPanels(
           g.util.grid.wrapPanels(panels.highlights, panelWidth=4, panelHeight=3, startY=0)
