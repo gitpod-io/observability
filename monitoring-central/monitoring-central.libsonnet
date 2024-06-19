@@ -6,7 +6,6 @@ local victoriaMetrics = import '../components/victoriametrics/victoriametrics.li
 local kubePrometheus =
   (import 'kube-prometheus/main.libsonnet') +
   (import 'kube-prometheus/platforms/gke.libsonnet') +
-  (import 'kube-prometheus/addons/podsecuritypolicies.libsonnet') +
   (import '../addons/networkpolicies-disabled.libsonnet') +
   (import '../addons/disable-grafana-auth.libsonnet') +
   (import '../addons/grafana-on-gcp-oauth.libsonnet')(config) +
