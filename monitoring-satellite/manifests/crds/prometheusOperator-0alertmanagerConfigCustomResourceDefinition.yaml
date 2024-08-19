@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
     controller-gen.kubebuilder.io/version: v0.15.0
-    operator.prometheus.io/version: 0.75.2
+    operator.prometheus.io/version: 0.76.0
   name: alertmanagerconfigs.monitoring.coreos.com
 spec:
   group: monitoring.coreos.com
@@ -526,11 +526,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -1448,11 +1444,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -2183,11 +2175,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -2900,11 +2888,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -3645,11 +3629,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -4487,11 +4467,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -5161,11 +5137,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -5935,11 +5907,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -6633,11 +6601,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -7291,11 +7255,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -7938,11 +7898,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
@@ -8650,11 +8606,7 @@ spec:
                                       It requires Prometheus >= v2.43.0.
                                     type: boolean
                                   proxyUrl:
-                                    description: |-
-                                      `proxyURL` defines the HTTP proxy server to use.
-
-
-                                      It requires Prometheus >= v2.43.0.
+                                    description: '`proxyURL` defines the HTTP proxy server to use.'
                                     pattern: ^http(s)?://.+$
                                     type: string
                                   scopes:
