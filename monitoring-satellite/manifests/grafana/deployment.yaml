@@ -203,6 +203,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/Team Platform/node-rsrc-use
           name: grafana-dashboard-node-rsrc-use
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/Team Platform/nodes-aix
+          name: grafana-dashboard-nodes-aix
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/Team Platform/nodes-darwin
           name: grafana-dashboard-nodes-darwin
           readOnly: false
@@ -467,6 +470,9 @@ spec:
       - configMap:
           name: grafana-dashboard-node-rsrc-use
         name: grafana-dashboard-node-rsrc-use
+      - configMap:
+          name: grafana-dashboard-nodes-aix
+        name: grafana-dashboard-nodes-aix
       - configMap:
           name: grafana-dashboard-nodes-darwin
         name: grafana-dashboard-nodes-darwin
