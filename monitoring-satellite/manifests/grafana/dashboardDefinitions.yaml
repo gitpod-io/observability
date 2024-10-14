@@ -42152,7 +42152,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"requests.cpu\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"requests.cpu\"}))",
                           "legendFormat": "quota - requests"
                       },
                       {
@@ -42160,7 +42160,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"limits.cpu\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"limits.cpu\"}))",
                           "legendFormat": "quota - limits"
                       }
                   ],
@@ -42410,7 +42410,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"requests.memory\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"requests.memory\"}))",
                           "legendFormat": "quota - requests"
                       },
                       {
@@ -42418,7 +42418,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"limits.memory\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"limits.memory\"}))",
                           "legendFormat": "quota - limits"
                       }
                   ],
@@ -46558,7 +46558,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"requests.cpu|cpu\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"requests.cpu|cpu\"}))",
                           "legendFormat": "quota - requests"
                       },
                       {
@@ -46566,7 +46566,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"limits.cpu\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"limits.cpu\"}))",
                           "legendFormat": "quota - limits"
                       }
                   ],
@@ -46853,7 +46853,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"requests.memory|memory\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"requests.memory|memory\"}))",
                           "legendFormat": "quota - requests"
                       },
                       {
@@ -46861,7 +46861,7 @@ items:
                               "type": "prometheus",
                               "uid": "${datasource}"
                           },
-                          "expr": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"limits.memory\"})",
+                          "expr": "scalar(max(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=~\"limits.memory\"}))",
                           "legendFormat": "quota - limits"
                       }
                   ],
