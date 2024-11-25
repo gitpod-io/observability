@@ -4,7 +4,7 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.16.5",
-      "operator.prometheus.io/version": "0.78.1"
+      "operator.prometheus.io/version": "0.78.2"
     },
     "name": "prometheuses.monitoring.coreos.com"
   },
@@ -3044,7 +3044,7 @@
                     "type": "array"
                   },
                   "disableCompaction": {
-                    "description": "When true, the Prometheus compaction is disabled.",
+                    "description": "When true, the Prometheus compaction is disabled.\nWhen `spec.thanos.objectStorageConfig` or `spec.objectStorageConfigFile` are defined, the operator automatically\ndisables block compaction to avoid race conditions during block uploads (as the Thanos documentation recommends).",
                     "type": "boolean"
                   },
                   "dnsConfig": {
@@ -4623,6 +4623,14 @@
                     "description": "Minimum number of seconds for which a newly created Pod should be ready\nwithout any of its container crashing for it to be considered available.\nDefaults to 0 (pod will be considered available as soon as it is ready)\n\nThis is an alpha field from kubernetes 1.22 until 1.24 which requires\nenabling the StatefulSetMinReadySeconds feature gate.",
                     "format": "int32",
                     "type": "integer"
+                  },
+                  "nameValidationScheme": {
+                    "description": "Specifies the validation scheme for metric and label names.",
+                    "enum": [
+                      "UTF8",
+                      "Legacy"
+                    ],
+                    "type": "string"
                   },
                   "nodeSelector": {
                     "additionalProperties": {
@@ -7276,6 +7284,17 @@
                     "type": "object",
                     "x-kubernetes-map-type": "atomic"
                   },
+                  "scrapeFallbackProtocol": {
+                    "description": "The protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.\n\nIt requires Prometheus >= v3.0.0.",
+                    "enum": [
+                      "PrometheusProto",
+                      "OpenMetricsText0.0.1",
+                      "OpenMetricsText1.0.0",
+                      "PrometheusText0.0.4",
+                      "PrometheusText1.0.0"
+                    ],
+                    "type": "string"
+                  },
                   "scrapeInterval": {
                     "default": "30s",
                     "description": "Interval between consecutive scrapes.\n\nDefault: \"30s\"",
@@ -7561,7 +7580,7 @@
                     "type": "string"
                   },
                   "shards": {
-                    "description": "Number of shards to distribute targets onto. `spec.replicas`\nmultiplied by `spec.shards` is the total number of Pods created.\n\nNote that scaling down shards will not reshard data onto remaining\ninstances, it must be manually moved. Increasing shards will not reshard\ndata either but it will continue to be available from the same\ninstances. To query globally, use Thanos sidecar and Thanos querier or\nremote write data to a central location.\n\nSharding is performed on the content of the `__address__` target meta-label\nfor PodMonitors and ServiceMonitors and `__param_target__` for Probes.\n\nDefault: 1",
+                    "description": "Number of shards to distribute scraped targets onto.\n\n`spec.replicas` multiplied by `spec.shards` is the total number of Pods\nbeing created.\n\nWhen not defined, the operator assumes only one shard.\n\nNote that scaling down shards will not reshard data onto the remaining\ninstances, it must be manually moved. Increasing shards will not reshard\ndata either but it will continue to be available from the same\ninstances. To query globally, use Thanos sidecar and Thanos querier or\nremote write data to a central location.\nAlerting and recording rules\n\nBy default, the sharding is performed on:\n* The `__address__` target's metadata label for PodMonitor,\nServiceMonitor and ScrapeConfig resources.\n* The `__param_target__` label for Probe resources.\n\nUsers can define their own sharding implementation by setting the\n`__tmp_hash` label during the target discovery with relabeling\nconfiguration (either in the monitoring resources or via scrape class).",
                     "format": "int32",
                     "type": "integer"
                   },
