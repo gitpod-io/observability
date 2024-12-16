@@ -1915,7 +1915,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-admin-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3159,7 +3159,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-admin-workspace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -3667,7 +3667,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-applications
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -4761,7 +4761,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-cluster-autoscaler-k3s
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -5410,7 +5410,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-connect-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -6307,7 +6307,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-grpc-client
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -7187,7 +7187,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-grpc-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -11325,7 +11325,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-node-resource-metrics
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -12400,7 +12400,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-nodes-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14288,7 +14288,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -14741,7 +14741,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-slo-workspace-startuptime
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -16356,7 +16356,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-redis
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -21369,7 +21369,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-argocd
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -21381,7 +21381,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-cardinality-management-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -21845,7 +21845,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-sh-example-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -23297,7 +23297,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-observability
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -25421,7 +25421,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-blobserve
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -25647,7 +25647,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-browser-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -27057,7 +27057,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-code-browser
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -28298,7 +28298,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ide-service
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -28988,7 +28988,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ide-startup-time
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -29267,7 +29267,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-jb
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -29870,7 +29870,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-local-ssh
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -32221,7 +32221,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-openvsx-mirror
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -34337,7 +34337,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-openvsx-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -34815,7 +34815,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ssh-gateway
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -35446,7 +35446,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-supervisor
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -35503,7 +35503,7 @@ items:
                           "mode": "multi"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -35551,7 +35551,7 @@ items:
                           "mode": "multi"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -35623,7 +35623,7 @@ items:
                           "mode": "multi"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "repeat": "integration",
                   "targets": [
                       {
@@ -35681,7 +35681,7 @@ items:
                           "mode": "multi"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "repeat": "integration",
                   "targets": [
                       {
@@ -35791,7 +35791,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-alertmanager-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -35829,7 +35829,7 @@ items:
                   "options": {
                       "content": "The SLO (service level objective) and other metrics displayed on this dashboard are for informational purposes only."
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "title": "Notice",
                   "type": "text"
               },
@@ -35853,7 +35853,7 @@ items:
                   },
                   "id": 2,
                   "interval": "1m",
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -35899,7 +35899,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -35933,7 +35933,7 @@ items:
                   },
                   "id": 4,
                   "interval": "1m",
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36031,7 +36031,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36075,7 +36075,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36118,7 +36118,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36152,7 +36152,7 @@ items:
                   },
                   "id": 8,
                   "interval": "1m",
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36250,7 +36250,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36294,7 +36294,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36337,7 +36337,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36380,7 +36380,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36423,7 +36423,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36469,7 +36469,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36511,7 +36511,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36554,7 +36554,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36596,7 +36596,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -36673,7 +36673,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-apiserver
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -38010,7 +38010,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-cert-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -38064,7 +38064,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38110,7 +38110,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38181,7 +38181,7 @@ items:
                       "y": 9
                   },
                   "id": 3,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38346,7 +38346,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38392,7 +38392,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38438,7 +38438,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38484,7 +38484,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38530,7 +38530,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38576,7 +38576,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38622,7 +38622,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38668,7 +38668,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38714,7 +38714,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38760,7 +38760,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38824,7 +38824,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-cluster-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -38867,7 +38867,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38918,7 +38918,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -38969,7 +38969,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39020,7 +39020,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39071,7 +39071,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39146,7 +39146,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39197,7 +39197,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39248,7 +39248,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39299,7 +39299,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39350,7 +39350,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39428,7 +39428,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-controller-manager
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -39471,7 +39471,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39506,7 +39506,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39541,7 +39541,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39576,7 +39576,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39611,7 +39611,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39646,7 +39646,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39696,7 +39696,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39755,7 +39755,7 @@ items:
                       "y": 12
                   },
                   "id": 8,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -39912,7 +39912,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40007,7 +40007,7 @@ items:
                       "y": 24
                   },
                   "id": 10,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40184,7 +40184,7 @@ items:
                       "y": 30
                   },
                   "id": 11,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40328,7 +40328,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40379,7 +40379,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40430,7 +40430,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40481,7 +40481,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40532,7 +40532,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40583,7 +40583,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40634,7 +40634,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40685,7 +40685,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40736,7 +40736,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40787,7 +40787,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -40858,7 +40858,7 @@ items:
                       "y": 96
                   },
                   "id": 22,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41015,7 +41015,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-cluster
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -41058,7 +41058,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41093,7 +41093,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41128,7 +41128,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41163,7 +41163,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41198,7 +41198,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41233,7 +41233,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41278,7 +41278,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41337,7 +41337,7 @@ items:
                       "y": 2
                   },
                   "id": 8,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41463,7 +41463,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41525,7 +41525,7 @@ items:
                       "y": 4
                   },
                   "id": 10,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41656,7 +41656,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-multicluster
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -41699,7 +41699,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41734,7 +41734,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41769,7 +41769,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41804,7 +41804,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41906,7 +41906,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -41981,7 +41981,7 @@ items:
                       "y": 14
                   },
                   "id": 6,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42164,7 +42164,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42242,7 +42242,7 @@ items:
                       "y": 28
                   },
                   "id": 8,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42432,7 +42432,7 @@ items:
                       "y": 35
                   },
                   "id": 9,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42576,7 +42576,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42627,7 +42627,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42678,7 +42678,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42729,7 +42729,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42780,7 +42780,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42831,7 +42831,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42882,7 +42882,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -42933,7 +42933,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43004,7 +43004,7 @@ items:
                       "y": 70
                   },
                   "id": 18,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43174,7 +43174,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -43276,7 +43276,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43343,7 +43343,7 @@ items:
                       "y": 6
                   },
                   "id": 2,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43505,7 +43505,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43575,7 +43575,7 @@ items:
                       "y": 18
                   },
                   "id": 4,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43752,7 +43752,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-node
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -43862,7 +43862,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -43968,7 +43968,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44010,7 +44010,7 @@ items:
                       "y": 14
                   },
                   "id": 3,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44193,7 +44193,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44254,7 +44254,7 @@ items:
                       "y": 28
                   },
                   "id": 5,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44424,7 +44424,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44475,7 +44475,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44526,7 +44526,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44577,7 +44577,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44628,7 +44628,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44679,7 +44679,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44730,7 +44730,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44789,7 +44789,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44848,7 +44848,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44899,7 +44899,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -44953,7 +44953,7 @@ items:
                       "y": 70
                   },
                   "id": 16,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45136,7 +45136,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -45194,7 +45194,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45253,7 +45253,7 @@ items:
                       "y": 7
                   },
                   "id": 2,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45384,7 +45384,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45446,7 +45446,7 @@ items:
                       "y": 21
                   },
                   "id": 4,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45597,7 +45597,7 @@ items:
                       "y": 28
                   },
                   "id": 5,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45741,7 +45741,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45792,7 +45792,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45843,7 +45843,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45894,7 +45894,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45945,7 +45945,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -45996,7 +45996,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46047,7 +46047,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46098,7 +46098,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46202,7 +46202,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -46312,7 +46312,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46399,7 +46399,7 @@ items:
                       "y": 7
                   },
                   "id": 2,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46607,7 +46607,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46697,7 +46697,7 @@ items:
                       "y": 21
                   },
                   "id": 4,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -46873,7 +46873,7 @@ items:
                       "y": 28
                   },
                   "id": 5,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47017,7 +47017,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47068,7 +47068,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47119,7 +47119,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47170,7 +47170,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47221,7 +47221,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47272,7 +47272,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47323,7 +47323,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47374,7 +47374,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47465,7 +47465,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -47508,7 +47508,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47543,7 +47543,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47578,7 +47578,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47613,7 +47613,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47648,7 +47648,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47683,7 +47683,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47734,7 +47734,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47785,7 +47785,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47836,7 +47836,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47887,7 +47887,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -47946,7 +47946,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48005,7 +48005,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48056,7 +48056,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48107,7 +48107,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48158,7 +48158,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48209,7 +48209,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48260,7 +48260,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48311,7 +48311,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48362,7 +48362,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48413,7 +48413,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48488,7 +48488,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48539,7 +48539,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48590,7 +48590,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48641,7 +48641,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48718,7 +48718,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-kubelet
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -48779,7 +48779,7 @@ items:
                       "y": 0
                   },
                   "id": 1,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48832,7 +48832,7 @@ items:
                       "y": 0
                   },
                   "id": 2,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -48903,7 +48903,7 @@ items:
                       "y": 9
                   },
                   "id": 3,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49042,7 +49042,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49088,7 +49088,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49134,7 +49134,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49180,7 +49180,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49226,7 +49226,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49272,7 +49272,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49356,7 +49356,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-namespace-by-pod
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -49403,7 +49403,7 @@ items:
                       "displayMode": "basic",
                       "showUnfilled": false
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49442,7 +49442,7 @@ items:
                       "displayMode": "basic",
                       "showUnfilled": false
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49513,7 +49513,7 @@ items:
                       "y": 9
                   },
                   "id": 3,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49699,7 +49699,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49750,7 +49750,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49801,7 +49801,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49852,7 +49852,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49903,7 +49903,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -49954,7 +49954,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -50005,7 +50005,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -50056,7 +50056,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -50152,7 +50152,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-namespace-by-workload
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -51205,7 +51205,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -52284,7 +52284,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-node-rsrc-use
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -53352,7 +53352,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-nodes-aix
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -54441,7 +54441,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-nodes-darwin
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55523,7 +55523,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-nodes
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55581,7 +55581,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -55643,7 +55643,7 @@ items:
                   },
                   "id": 2,
                   "interval": "1m",
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -55693,7 +55693,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -55755,7 +55755,7 @@ items:
                   },
                   "id": 4,
                   "interval": "1m",
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -55845,7 +55845,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-persistentvolumesusage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -55906,7 +55906,7 @@ items:
                       "y": 0
                   },
                   "id": 1,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -55959,7 +55959,7 @@ items:
                       "y": 0
                   },
                   "id": 2,
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56005,7 +56005,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56051,7 +56051,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56097,7 +56097,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56143,7 +56143,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56189,7 +56189,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56235,7 +56235,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -56337,7 +56337,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-pod-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -57996,7 +57996,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-prometheus-remote-write
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -59237,7 +59237,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-prometheus
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -59280,7 +59280,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59331,7 +59331,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59382,7 +59382,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59433,7 +59433,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59484,7 +59484,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59535,7 +59535,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59610,7 +59610,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59661,7 +59661,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59712,7 +59712,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59763,7 +59763,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59814,7 +59814,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59892,7 +59892,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -59935,7 +59935,7 @@ items:
                   "options": {
                       "colorMode": "none"
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -59986,7 +59986,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60061,7 +60061,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60136,7 +60136,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60211,7 +60211,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60262,7 +60262,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60313,7 +60313,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60364,7 +60364,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60415,7 +60415,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60493,7 +60493,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-scheduler
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -60540,7 +60540,7 @@ items:
                       "displayMode": "basic",
                       "showUnfilled": false
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60579,7 +60579,7 @@ items:
                       "displayMode": "basic",
                       "showUnfilled": false
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60618,7 +60618,7 @@ items:
                       "displayMode": "basic",
                       "showUnfilled": false
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60657,7 +60657,7 @@ items:
                       "displayMode": "basic",
                       "showUnfilled": false
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60708,7 +60708,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60759,7 +60759,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60810,7 +60810,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60861,7 +60861,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60912,7 +60912,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -60963,7 +60963,7 @@ items:
                           "mode": "single"
                       }
                   },
-                  "pluginVersion": "v11.1.0",
+                  "pluginVersion": "v11.4.0",
                   "targets": [
                       {
                           "datasource": {
@@ -61075,7 +61075,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-workload-total
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -62482,7 +62482,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-dashboard
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -63887,7 +63887,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-db
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -65749,7 +65749,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -66356,7 +66356,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-server-garbage-collector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -68879,7 +68879,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-server
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -69747,7 +69747,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-usage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -72256,7 +72256,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ws-manager-bridge
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -73251,7 +73251,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-components-spicedb
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -74174,7 +74174,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-meta-overview
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -74719,7 +74719,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-meta-services
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -76280,7 +76280,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-slo-login
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -79150,7 +79150,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-agent-smith
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -81718,7 +81718,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-content-service
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -84343,7 +84343,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-image-builder
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -87364,7 +87364,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-registry-facade
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -90803,7 +90803,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ws-daemon
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -95158,7 +95158,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ws-manager-mk2
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -96566,7 +96566,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-component-ws-proxy
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -97003,7 +97003,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-network-limiting
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -97306,7 +97306,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-node-ephemeral-storage
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98068,7 +98068,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-node-problem-detector
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -98331,7 +98331,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-node-swap
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -99007,7 +99007,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-psi
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -101122,7 +101122,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-workspace-coredns
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -101596,7 +101596,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-workspace-psi
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -102205,7 +102205,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-workspace-registry-facade-blobsource
     namespace: monitoring-satellite
 - apiVersion: v1
@@ -103007,7 +103007,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 11.3.1
+      app.kubernetes.io/version: 11.4.0
     name: grafana-dashboard-gitpod-workspace-success-criteria
     namespace: monitoring-satellite
 kind: ConfigMapList
