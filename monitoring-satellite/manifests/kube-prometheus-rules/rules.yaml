@@ -113,7 +113,7 @@ spec:
         sum by (cluster, verb, scope) (cluster_verb_scope_le:apiserver_request_sli_duration_seconds_bucket:increase1h{le="+Inf"})
       record: cluster_verb_scope:apiserver_request_sli_duration_seconds_count:increase1h
     - expr: |
-        sum by (cluster, verb, scope) (cluster_verb_scope_le:apiserver_request_sli_duration_seconds_bucket:increase30d{le="+Inf"} * 24 * 30)
+        sum by (cluster, verb, scope) (cluster_verb_scope_le:apiserver_request_sli_duration_seconds_bucket:increase30d{le="+Inf"})
       record: cluster_verb_scope:apiserver_request_sli_duration_seconds_count:increase30d
     - expr: |
         1 - (
@@ -805,7 +805,7 @@ spec:
         runbook_url: https://runbooks.prometheus-operator.dev/runbooks/node/nodecpuhighusage
         summary: High CPU usage.
       expr: |
-        sum without(mode) (avg without (cpu) (rate(node_cpu_seconds_total{job="node-exporter", mode!="idle"}[2m]))) * 100 > 90
+        sum without(mode) (avg without (cpu) (rate(node_cpu_seconds_total{job="node-exporter", mode!~"idle|iowait"}[2m]))) * 100 > 90
       for: 15m
       labels:
         severity: info
