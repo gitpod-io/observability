@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
     controller-gen.kubebuilder.io/version: v0.17.2
-    operator.prometheus.io/version: 0.80.1
+    operator.prometheus.io/version: 0.81.0
   name: prometheuses.monitoring.coreos.com
 spec:
   group: monitoring.coreos.com
@@ -3523,6 +3523,9 @@ spec:
                   For more information see https://prometheus.io/docs/prometheus/latest/querying/api/#remote-write-receiver
 
                   It requires Prometheus >= v2.33.0.
+                type: boolean
+              enableServiceLinks:
+                description: Indicates whether information about services should be injected into pod's environment variables
                 type: boolean
               enforcedBodySizeLimit:
                 description: |-
