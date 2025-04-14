@@ -50241,7 +50241,7 @@ items:
                       "hide": 0,
                       "label": "instance",
                       "name": "instance",
-                      "query": "label_values(windows_system_system_up_time{cluster=\"$cluster\"}, instance)",
+                      "query": "label_values(windows_system_boot_time_timestamp_seconds{cluster=\"$cluster\"}, instance)",
                       "refresh": 2,
                       "type": "query"
                   }
@@ -51575,6 +51575,7 @@ items:
                       "y": 0
                   },
                   "id": 1,
+                  "interval": "1m",
                   "pluginVersion": "v11.4.0",
                   "targets": [
                       {
@@ -51628,6 +51629,7 @@ items:
                       "y": 0
                   },
                   "id": 2,
+                  "interval": "1m",
                   "pluginVersion": "v11.4.0",
                   "targets": [
                       {
@@ -52195,6 +52197,7 @@ items:
                       "y": 0
                   },
                   "id": 1,
+                  "interval": "1m",
                   "options": {
                       "displayMode": "basic",
                       "showUnfilled": false
@@ -52234,6 +52237,7 @@ items:
                       "y": 0
                   },
                   "id": 2,
+                  "interval": "1m",
                   "options": {
                       "displayMode": "basic",
                       "showUnfilled": false
@@ -56737,6 +56741,7 @@ items:
                       "y": 0
                   },
                   "id": 1,
+                  "interval": "1m",
                   "pluginVersion": "v11.4.0",
                   "targets": [
                       {
@@ -56790,6 +56795,7 @@ items:
                       "y": 0
                   },
                   "id": 2,
+                  "interval": "1m",
                   "pluginVersion": "v11.4.0",
                   "targets": [
                       {
@@ -60107,6 +60113,7 @@ items:
                       "y": 0
                   },
                   "id": 1,
+                  "interval": "1m",
                   "options": {
                       "displayMode": "basic",
                       "showUnfilled": false
@@ -60146,6 +60153,7 @@ items:
                       "y": 0
                   },
                   "id": 2,
+                  "interval": "1m",
                   "options": {
                       "displayMode": "basic",
                       "showUnfilled": false
@@ -60185,6 +60193,7 @@ items:
                       "y": 9
                   },
                   "id": 3,
+                  "interval": "1m",
                   "options": {
                       "displayMode": "basic",
                       "showUnfilled": false
@@ -60224,6 +60233,7 @@ items:
                       "y": 9
                   },
                   "id": 4,
+                  "interval": "1m",
                   "options": {
                       "displayMode": "basic",
                       "showUnfilled": false
