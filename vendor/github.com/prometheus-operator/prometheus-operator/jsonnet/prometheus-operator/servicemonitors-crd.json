@@ -4,7 +4,7 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.17.2",
-      "operator.prometheus.io/version": "0.81.0"
+      "operator.prometheus.io/version": "0.82.0"
     },
     "name": "servicemonitors.monitoring.coreos.com"
   },
@@ -400,7 +400,7 @@
                             },
                             "proxyUrl": {
                               "description": "`proxyURL` defines the HTTP proxy server to use.",
-                              "pattern": "^http(s)?://.+$",
+                              "pattern": "^(http|https|socks5)://.+$",
                               "type": "string"
                             },
                             "scopes": {
