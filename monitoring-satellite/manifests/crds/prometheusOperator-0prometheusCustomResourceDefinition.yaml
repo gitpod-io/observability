@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
     controller-gen.kubebuilder.io/version: v0.17.2
-    operator.prometheus.io/version: 0.81.0
+    operator.prometheus.io/version: 0.82.0
   name: prometheuses.monitoring.coreos.com
 spec:
   group: monitoring.coreos.com
@@ -1372,7 +1372,7 @@ spec:
                           type: boolean
                         proxyUrl:
                           description: '`proxyURL` defines the HTTP proxy server to use.'
-                          pattern: ^http(s)?://.+$
+                          pattern: ^(http|https|socks5)://.+$
                           type: string
                         relabelings:
                           description: Relabel configuration applied to the discovered Alertmanagers.
@@ -5989,7 +5989,7 @@ spec:
                           type: boolean
                         proxyUrl:
                           description: '`proxyURL` defines the HTTP proxy server to use.'
-                          pattern: ^http(s)?://.+$
+                          pattern: ^(http|https|socks5)://.+$
                           type: string
                         scopes:
                           description: '`scopes` defines the OAuth2 scopes used for the token request.'
@@ -6197,7 +6197,7 @@ spec:
                       type: boolean
                     proxyUrl:
                       description: '`proxyURL` defines the HTTP proxy server to use.'
-                      pattern: ^http(s)?://.+$
+                      pattern: ^(http|https|socks5)://.+$
                       type: string
                     readRecent:
                       description: |-
@@ -6788,7 +6788,7 @@ spec:
                           type: boolean
                         proxyUrl:
                           description: '`proxyURL` defines the HTTP proxy server to use.'
-                          pattern: ^http(s)?://.+$
+                          pattern: ^(http|https|socks5)://.+$
                           type: string
                         scopes:
                           description: '`scopes` defines the OAuth2 scopes used for the token request.'
@@ -6996,7 +6996,7 @@ spec:
                       type: boolean
                     proxyUrl:
                       description: '`proxyURL` defines the HTTP proxy server to use.'
-                      pattern: ^http(s)?://.+$
+                      pattern: ^(http|https|socks5)://.+$
                       type: string
                     queueConfig:
                       description: QueueConfig allows tuning of the remote write queue parameters.
@@ -9327,6 +9327,16 @@ spec:
                   Note that the global limit only applies to scrape objects that don't specify an explicit limit value.
                   If you want to enforce a maximum limit for all scrape objects, refer to enforcedTargetLimit.
                 format: int64
+                type: integer
+              terminationGracePeriodSeconds:
+                description: |-
+                  Optional duration in seconds the pod needs to terminate gracefully.
+                  Value must be non-negative integer. The value zero indicates stop immediately via
+                  the kill signal (no opportunity to shut down) which may lead to data corruption.
+
+                  Defaults to 600 seconds.
+                format: int64
+                minimum: 0
                 type: integer
               thanos:
                 description: Defines the configuration of the optional Thanos sidecar.
