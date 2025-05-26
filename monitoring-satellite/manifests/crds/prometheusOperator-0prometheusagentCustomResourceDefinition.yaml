@@ -2722,6 +2722,12 @@ spec:
                   - name
                   type: object
                 type: array
+              convertClassicHistogramsToNHCB:
+                description: |-
+                  Whether to convert all scraped classic histograms into a native histogram with custom buckets.
+
+                  It requires Prometheus >= v3.4.0.
+                type: boolean
               dnsConfig:
                 description: Defines the DNS configuration for the pods.
                 properties:
@@ -4555,6 +4561,19 @@ spec:
                 - StatefulSet
                 - DaemonSet
                 type: string
+              nameEscapingScheme:
+                description: |-
+                  Specifies the character escaping scheme that will be requested when scraping
+                  for metric and label names that do not conform to the legacy Prometheus
+                  character set.
+
+                  It requires Prometheus >= v3.4.0.
+                enum:
+                - AllowUTF8
+                - Underscores
+                - Dots
+                - Values
+                type: string
               nameValidationScheme:
                 description: Specifies the validation scheme for metric and label names.
                 enum:
@@ -4571,6 +4590,11 @@ spec:
                   Settings related to the OTLP receiver feature.
                   It requires Prometheus >= v2.55.0.
                 properties:
+                  convertHistogramsToNHCB:
+                    description: |-
+                      Configures optional translation of OTLP explicit bucket histograms into native histograms with custom buckets.
+                      It requires Prometheus >= v3.4.0.
+                    type: boolean
                   keepIdentifyingResourceAttributes:
                     description: |-
                       Enables adding `service.name`, `service.namespace` and `service.instance.id`
@@ -4594,6 +4618,7 @@ spec:
                     enum:
                     - NoUTF8EscapingWithSuffixes
                     - UnderscoreEscapingWithSuffixes
+                    - NoTranslation
                     type: string
                 type: object
               overrideHonorLabels:
