@@ -17,7 +17,7 @@ const queryString = `{{ reReplaceAll "%22" "%5C%22" (index .Alerts 0).GeneratorU
 func configSecret(ctx *common.RenderContext) ([]runtime.Object, error) {
 	var receivers []*config.Receiver
 
-	receivers = append(receivers, criticalReceiver(ctx))
+	receivers = append(receivers, criticalReceivers(ctx)...)
 	receivers = append(receivers, defaultReceivers(ctx)...)
 	receivers = append(receivers, teamSlackReceivers(ctx)...)
 	resolveTimeout, _ := model.ParseDuration("5m")
@@ -58,6 +58,16 @@ func configSecret(ctx *common.RenderContext) ([]runtime.Object, error) {
 
 func routes(ctx *common.RenderContext) []*config.Route {
 	var routes []*config.Route
+
+	if ctx.Config.Alerting.IncidentIoURL != "" && ctx.Config.Alerting.IncidentIoAuthToken != "" {
+		routes = append(routes, &config.Route{
+			Receiver: "criticalReceiverIncidentIO",
+			Match: map[string]string{
+				"severity": "critical",
+			},
+			Continue: true,
+		})
+	}
 
 	routes = append(routes, &config.Route{
 		Receiver: "criticalReceiver",
@@ -114,9 +124,11 @@ func inhibitRules() []*config.InhibitRule {
 	return inhibitRules
 }
 
-func criticalReceiver(ctx *common.RenderContext) *config.Receiver {
+func criticalReceivers(ctx *common.RenderContext) []*config.Receiver {
+	var receivers []*config.Receiver
+
 	if ctx.Config.Alerting.PagerDutyRoutingKey != "" {
-		return &config.Receiver{
+		receivers = append(receivers, &config.Receiver{
 			Name: "criticalReceiver",
 			PagerdutyConfigs: []*config.PagerdutyConfig{
 				{
@@ -138,9 +150,28 @@ func criticalReceiver(ctx *common.RenderContext) *config.Receiver {
 					},
 				},
 			},
-		}
-	} else {
-		return &config.Receiver{
+		})
+	}
+
+	if ctx.Config.Alerting.IncidentIoURL != "" && ctx.Config.Alerting.IncidentIoAuthToken != "" {
+		receivers = append(receivers, &config.Receiver{
+			Name: "criticalReceiverIncidentIO",
+			WebhookConfigs: []*config.WebhookConfig{
+				{
+					VSendResolved: common.ToPointer(true),
+					URL:           ctx.Config.Alerting.IncidentIoURL,
+					HTTPConfig: &config.HTTPClientConfig{
+						Authorization: &config.Authorization{
+							Credentials: ctx.Config.Alerting.IncidentIoAuthToken,
+						},
+					},
+				},
+			},
+		})
+	}
+
+	if len(receivers) == 0 {
+		receivers = append(receivers, &config.Receiver{
 			Name: "criticalReceiver",
 			SlackConfigs: []*config.SlackConfig{
 				{
@@ -158,8 +189,10 @@ func criticalReceiver(ctx *common.RenderContext) *config.Receiver {
 					Actions: slackButtons(),
 				},
 			},
-		}
+		})
 	}
+
+	return receivers
 }
 
 func defaultReceivers(ctx *common.RenderContext) []*config.Receiver {

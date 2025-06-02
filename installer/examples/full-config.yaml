@@ -2,6 +2,8 @@ alerting:
   genericSlackChannel: "#generic_alerts"
   slackOAuthToken: "fake-token"
   pagerdutyRoutingKey: "fake-pd-key"
+  incidentIoURL: "https://example.com/"
+  incidentIoAuthToken: "incident-io-token"
   teamRoutes:
   - teamLabel: platform
     slackChannel: "#team_platform_alerts"

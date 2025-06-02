@@ -18,6 +18,8 @@ jsonnet -c -J vendor -m diff/jsonnet-tmp \
     clusterName: 'fake-cluster',
     alerting: {
         pagerdutyRoutingKey: 'pd-routing-key',
+        incidentIoURL: 'https://example.com/',
+        incidentIoAuthToken: 'incident-io-token'
         slackOAuthToken: 'fake-key',
 
         ide: {},

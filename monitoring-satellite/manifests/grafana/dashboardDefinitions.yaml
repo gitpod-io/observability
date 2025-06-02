@@ -35765,7 +35765,7 @@ items:
                       "hide": 2,
                       "includeAll": true,
                       "name": "integration",
-                      "query": "label_values(alertmanager_notifications_total{integration=~\"slack|pagerduty\"}, integration)",
+                      "query": "label_values(alertmanager_notifications_total{integration=~\"slack|pagerduty|webhook\"}, integration)",
                       "refresh": 2,
                       "sort": 1,
                       "type": "query"

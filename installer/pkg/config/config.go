@@ -83,6 +83,8 @@ type Tracing struct {
 
 type Alerting struct {
 	PagerDutyRoutingKey string              `json:"pagerdutyRoutingKey,omitempty"`
+	IncidentIoURL       string              `json:"incidentIoURL,omitempty"`
+	IncidentIoAuthToken string              `json:"incidentIoAuthToken,omitempty"`
 	SlackOAuthToken     string              `json:"slackOAuthToken"`
 	GenericSlackChannel string              `json:"genericSlackChannel"`
 	TeamRoutes          []TeamAlertingRoute `json:"teamRoutes,omitempty"`
