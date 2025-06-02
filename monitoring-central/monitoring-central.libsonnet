@@ -112,7 +112,7 @@ local kubePrometheus =
           _config+: {
             alertmanagerClusterLabels: 'cluster',
             alertmanagerNameLabels: 'namespace,pod',
-            alertmanagerCriticalIntegrationsRegEx: 'slack|pagerduty',
+            alertmanagerCriticalIntegrationsRegEx: 'slack|pagerduty|webhook',
           },
         },
       },
