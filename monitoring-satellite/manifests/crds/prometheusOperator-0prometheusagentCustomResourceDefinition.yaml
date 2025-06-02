@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.82.2
+    operator.prometheus.io/version: 0.83.0
   name: prometheusagents.monitoring.coreos.com
 spec:
   group: monitoring.coreos.com
@@ -2724,7 +2724,8 @@ spec:
                 type: array
               convertClassicHistogramsToNHCB:
                 description: |-
-                  Whether to convert all scraped classic histograms into a native histogram with custom buckets.
+                  Whether to convert all scraped classic histograms into a native
+                  histogram with custom buckets.
 
                   It requires Prometheus >= v3.4.0.
                 type: boolean
@@ -4575,7 +4576,10 @@ spec:
                 - Values
                 type: string
               nameValidationScheme:
-                description: Specifies the validation scheme for metric and label names.
+                description: |-
+                  Specifies the validation scheme for metric and label names.
+
+                  It requires Prometheus >= v2.55.0.
                 enum:
                 - UTF8
                 - Legacy
