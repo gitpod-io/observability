@@ -6,7 +6,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
-	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 )
 
 func role(ctx *common.RenderContext) ([]runtime.Object, error) {
@@ -21,14 +20,7 @@ func role(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Namespace: Namespace,
 				Labels:    common.Labels(Name, Component, App, Version),
 			},
-			Rules: []rbacv1.PolicyRule{
-				{
-					APIGroups:     []string{"policy"},
-					Resources:     []string{"podsecuritypolicies"},
-					Verbs:         []string{"use"},
-					ResourceNames: []string{shared.RestrictedPodsecurityPolicyName()},
-				},
-			},
+			Rules: []rbacv1.PolicyRule{},
 		},
 	}, nil
 }

@@ -30,12 +30,6 @@ func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 					Resources: []string{"subjectaccessreviews"},
 					Verbs:     []string{"create"},
 				},
-				{
-					APIGroups:     []string{"policy"},
-					Resources:     []string{"podsecuritypolicies"},
-					Verbs:         []string{"use"},
-					ResourceNames: []string{Name},
-				},
 			},
 		},
 	}, nil
