@@ -7,3 +7,5 @@ curl -s https://api.github.com/repos/gitpod-io/observability/releases/latest \
 | xargs curl -LO
 
 tar -xvf obs-installer*.tar.gz
+
+md5sum obs-installer
