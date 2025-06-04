@@ -19,14 +19,7 @@ func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Name:   Name,
 				Labels: common.Labels(Name, Component, App, Version),
 			},
-			Rules: []rbacv1.PolicyRule{
-				{
-					APIGroups:     []string{"policy"},
-					Resources:     []string{"podsecuritypolicies"},
-					Verbs:         []string{"use"},
-					ResourceNames: []string{Name},
-				},
-			},
+			Rules: []rbacv1.PolicyRule{},
 		},
 	}, nil
 }

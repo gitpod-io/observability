@@ -6,7 +6,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 
 	"github.com/gitpod-io/observability/installer/pkg/common"
-	"github.com/gitpod-io/observability/installer/pkg/components/shared"
 )
 
 func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
@@ -39,12 +38,6 @@ func clusterRole(ctx *common.RenderContext) ([]runtime.Object, error) {
 					NonResourceURLs: []string{"/metrics"},
 
 					Verbs: []string{"get"},
-				},
-				{
-					APIGroups:     []string{"policy"},
-					Resources:     []string{"podsecuritypolicies"},
-					Verbs:         []string{"use"},
-					ResourceNames: []string{shared.RestrictedPodsecurityPolicyName()},
 				},
 			},
 		},
