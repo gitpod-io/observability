@@ -5,7 +5,7 @@ import "fmt"
 const (
 	Name      = "k8s"
 	App       = "kube-prometheus"
-	Version   = "2.55.1"
+	Version   = "2.48.1"
 	Namespace = "monitoring-satellite"
 	ImageURL  = "quay.io/prometheus/prometheus"
 	Component = "prometheus"
