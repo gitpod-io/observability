@@ -12,7 +12,7 @@ var (
 		"app.kubernetes.io/instance":  "k8s",
 		"app.kubernetes.io/name":      "prometheus",
 		"app.kubernetes.io/part-of":   "kube-prometheus",
-		"app.kubernetes.io/version":   "2.55.1",
+		"app.kubernetes.io/version":   "2.48.1",
 	}
 	targets = []string{
 		"agent-smith",
