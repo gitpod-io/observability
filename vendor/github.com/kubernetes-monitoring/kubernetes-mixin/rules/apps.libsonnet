@@ -182,8 +182,8 @@
             expr: |||
               kube_pod_container_resource_limits{resource="cpu",%(kubeStateMetricsSelector)s}  * on (namespace, pod, %(clusterLabel)s)
               group_left() max by (namespace, pod, %(clusterLabel)s) (
-               (kube_pod_status_phase{phase=~"Pending|Running"} == 1)
-               )
+                (kube_pod_status_phase{phase=~"Pending|Running"} == 1)
+              )
             ||| % $._config,
           },
           {
@@ -224,7 +224,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'replicaset',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'ReplicaSet' else 'replicaset',
             },
           },
           // workload aggregation for deployments
@@ -246,7 +246,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'deployment',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'Deployment' else 'deployment',
             },
           },
           // workload aggregation for daemonsets
@@ -261,7 +261,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'daemonset',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'DaemonSet' else 'daemonset',
             },
           },
           // workload aggregation for statefulsets
@@ -275,7 +275,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'statefulset',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'StatefulSet' else 'statefulset',
             },
           },
           // backwards compatibility for jobs
@@ -297,7 +297,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'job',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'Job' else 'job',
             },
           },
           // workload aggregation for barepods
@@ -311,7 +311,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'barepod',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'BarePod' else 'barepod',
             },
           },
           // workload aggregation for staticpods
@@ -325,7 +325,7 @@
               )
             ||| % $._config,
             labels: {
-              workload_type: 'staticpod',
+              workload_type: if $._config.usePascalCaseForWorkloadTypeLabelValues then 'StaticPod' else 'staticpod',
             },
           },
           // workload aggregation for non-standard types (jobs, replicasets)
@@ -346,7 +346,7 @@
                     )
                   , "workload", "", "owner_name")
                 , "workload_type", "", "owner_kind")
-                
+
                 OR
 
                 label_replace(
