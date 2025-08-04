@@ -2505,6 +2505,22 @@ spec:
                 - Default
                 - None
                 type: string
+              enableFeatures:
+                description: |-
+                  Enable access to Thanos Ruler feature flags. By default, no features are enabled.
+
+                  Enabling features which are disabled by default is entirely outside the
+                  scope of what the maintainers will support and by doing so, you accept
+                  that this behaviour may break at any time without notice.
+
+                  For more information see https://thanos.io/tip/components/rule.md/
+
+                  It requires Thanos >= 0.39.0.
+                items:
+                  minLength: 1
+                  type: string
+                type: array
+                x-kubernetes-list-type: set
               enableServiceLinks:
                 description: Indicates whether information about services should be injected into pod's environment variables
                 type: boolean
@@ -5384,6 +5400,10 @@ spec:
                 description: Number of thanos ruler instances to deploy.
                 format: int32
                 type: integer
+              resendDelay:
+                description: Minimum amount of time to wait before resending an alert to Alertmanager.
+                pattern: ^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$
+                type: string
               resources:
                 description: |-
                   Resources defines the resource requirements for single Pods.
@@ -5466,6 +5486,13 @@ spec:
                 format: int32
                 minimum: 1
                 type: integer
+              ruleGracePeriod:
+                description: |-
+                  Minimum duration between alert and restored "for" state.
+                  This is maintained only for alerts with configured "for" time greater than grace period.
+                  It requires Thanos >= v0.30.0.
+                pattern: ^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$
+                type: string
               ruleNamespaceSelector:
                 description: |-
                   Namespaces to be selected for Rules discovery. If unspecified, only
