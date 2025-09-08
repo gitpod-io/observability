@@ -4316,6 +4316,7 @@
                         "server": {
                           "description": "The URL to connect to the Eureka server.",
                           "minLength": 1,
+                          "pattern": "^http(s)?://.+$",
                           "type": "string"
                         },
                         "tlsConfig": {
@@ -10538,21 +10539,11 @@
                           "type": "string"
                         },
                         "service": {
-                          "allOf": [
-                            {
-                              "enum": [
-                                "VPS",
-                                "DedicatedServer"
-                              ]
-                            },
-                            {
-                              "enum": [
-                                "VPS",
-                                "DedicatedServer"
-                              ]
-                            }
-                          ],
                           "description": "Service of the targets to retrieve. Must be `VPS` or `DedicatedServer`.",
+                          "enum": [
+                            "VPS",
+                            "DedicatedServer"
+                          ],
                           "type": "string"
                         }
                       },
