@@ -61,12 +61,13 @@ local defaults = {
   },
   replicas: 3,
   secrets: [],
+  alertmanagerConfigSelector: {},
   mixin:: {
     ruleLabels: {},
     _config: {
       alertmanagerName: '{{ $labels.namespace }}/{{ $labels.pod}}',
       alertmanagerClusterLabels: 'namespace,service',
-      alertmanagerSelector: 'job="alertmanager-' + defaults.name + '",namespace="' + defaults.namespace + '"',
+      alertmanagerSelector: 'job="alertmanager-' + defaults.name + '",container="alertmanager"' + ',namespace="' + defaults.namespace + '"',
       runbookURLPattern: 'https://runbooks.prometheus-operator.dev/runbooks/alertmanager/%s',
     },
   },
@@ -234,6 +235,7 @@ function(params) {
         fsGroup: 2000,
       },
       [if std.objectHas(params, 'storage') then 'storage']: am._config.storage,
+      alertmanagerConfigSelector: am._config.alertmanagerConfigSelector,
     },
   },
 }
