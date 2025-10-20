@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
     controller-gen.kubebuilder.io/version: v0.19.0
-    operator.prometheus.io/version: 0.86.0
+    operator.prometheus.io/version: 0.86.1
   name: thanosrulers.monitoring.coreos.com
 spec:
   group: monitoring.coreos.com
@@ -4807,7 +4807,11 @@ spec:
                       - V2.0
                       type: string
                     metadataConfig:
-                      description: metadataConfig defines how to send a series metadata to the remote storage.
+                      description: |-
+                        metadataConfig defines how to send a series metadata to the remote storage.
+
+                        When the field is empty, **no metadata** is sent. But when the field is
+                        null, metadata is sent.
                       properties:
                         maxSamplesPerSend:
                           description: |-
