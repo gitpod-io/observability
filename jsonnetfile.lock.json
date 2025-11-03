@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "4807b85fe843860b4bb2323a91d4bef15844e8b8",
+      "version": "1b2ed5a02d4dfc945d491c9694cd2246a751641f",
       "sum": "XmXkOCriQIZmXwlIIFhqlJMa0e6qGWdxZD+ZDYaN0Po="
     },
     {
@@ -89,8 +89,8 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "9dbb57c65d2c0ad301695224687e6207dd631123",
-      "sum": "G7B6E5sqWirDbMWRhifbLRfGgRFbIh9WCYa6X3kMh6g="
+      "version": "54a1543d797d49814d2f9c05b9c222b9f1e4f6e7",
+      "sum": "dr3ok/KQ0aNc/U+CxO5hlHFuP66z1IlsnthKeE+m/ss="
     },
     {
       "source": {
@@ -99,7 +99,7 @@
           "subdir": "mixin-utils"
         }
       },
-      "version": "9dbb57c65d2c0ad301695224687e6207dd631123",
+      "version": "54a1543d797d49814d2f9c05b9c222b9f1e4f6e7",
       "sum": "VAik6Sh5MD5H1Km1gSIXG4rwQ4m4zyw7odP5TKu3bGo="
     },
     {
@@ -129,8 +129,8 @@
           "subdir": ""
         }
       },
-      "version": "7f553ecc1b3b7a54a4cf7cf526bf1997fa8e403f",
-      "sum": "HkP6MvgWbbIL74WChYhyNt6CQuTh0tExQWs7nHjLgZI="
+      "version": "4a030d9faa1ceea49afa837902cb16aa9bdf1c85",
+      "sum": "vAaF5nrpqQVSYFa7XoSQ+ZaDMSeLVg6+u8wOEb54ZGA="
     },
     {
       "source": {
@@ -139,7 +139,7 @@
           "subdir": "jsonnet/kube-state-metrics"
         }
       },
-      "version": "7231f601ba1161a4e9c42a879a17547bafbdf200",
+      "version": "5b7a11eed724511405a0148026ee96ac426f3787",
       "sum": "3bioG7CfTfY9zeu5xU4yon6Zt3kYvNkyl492nOhQxnM="
     },
     {
@@ -149,7 +149,7 @@
           "subdir": "jsonnet/kube-state-metrics-mixin"
         }
       },
-      "version": "7231f601ba1161a4e9c42a879a17547bafbdf200",
+      "version": "5b7a11eed724511405a0148026ee96ac426f3787",
       "sum": "qclI7LwucTjBef3PkGBkKxF0mfZPbHnn4rlNWKGtR4c="
     },
     {
@@ -159,8 +159,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "3ceecb148a2e0704f5ca3e17a7185cd4d6afccbf",
-      "sum": "wLuMCUAVrOnMC9OtlH2SutI2OETqG7eof+ISJPQeR1Y="
+      "version": "e5eec3068651b6b5b3a05821b7aa03a0811ef31f",
+      "sum": "AgWlMKoyyX4Ae3wamnlduFfXLJlCTxSscsVZbCCV0PM="
     },
     {
       "source": {
@@ -169,7 +169,7 @@
           "subdir": "jsonnet/mixin"
         }
       },
-      "version": "0392446ec82e1e895a762829a7c3d440d1577ac4",
+      "version": "e8d4389fb105142325399326eb2726373eabe348",
       "sum": "gi+knjdxs2T715iIQIntrimbHRgHnpM8IFBJDD1gYfs=",
       "name": "prometheus-operator-mixin"
     },
@@ -180,7 +180,7 @@
           "subdir": "jsonnet/prometheus-operator"
         }
       },
-      "version": "0392446ec82e1e895a762829a7c3d440d1577ac4",
+      "version": "e8d4389fb105142325399326eb2726373eabe348",
       "sum": "TcntNOk/HVAJwhK0h23rMgIgxC+5pJFhV4zDBy0IMVI="
     },
     {
@@ -190,7 +190,7 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "f2fbb318cfa1beb8fcab075aad7ab1a06fe60a6b",
+      "version": "2a00f0a5dc5497684c340f3b07746a67be97372b",
       "sum": "j5prvRrJdoCv7n45l5Uy2ghl1IDb9BBUqjwCDs4ZJoQ=",
       "name": "alertmanager"
     },
@@ -211,7 +211,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "817dde743c280f3364c5ecb127cf38a26298198c",
+      "version": "0093e2159e47568b9ce00df5d0041cfa4e70b35b",
       "sum": "UuADJwhNploRwfJYGb0sr2mi+MvswKpumoOMXnGs0Dc=",
       "name": "prometheus"
     },
@@ -222,8 +222,8 @@
           "subdir": "jsonnet/controller-gen"
         }
       },
-      "version": "83a6a00737feb9fad630a71e4a7fcb1b3af2896e",
-      "sum": "O3c9Uurei8MWAY0Ad7DOL1fMqSgdHyHB7MpHsxSITKM=",
+      "version": "6ce0fe83f9b0541ace80d80ce39bc6577c245fbc",
+      "sum": "xUGxDjMr7V/SpY21Xsr0X3ve/a04du3pRlbrA3I/Uk8=",
       "name": "pyrra"
     },
     {
@@ -233,7 +233,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "bda9f2ba03e9c894f3853af0a9555282479331e4",
+      "version": "80d53a8205db4bb40021e5dd279eab8fc54e01b4",
       "sum": "ieCD4eMgGbOlrI8GmckGPHBGQDcLasE1rULYq56W/bs=",
       "name": "thanos-mixin"
     },
