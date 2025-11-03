@@ -20,7 +20,7 @@ OUT_DIR ?=dashboards_out
 all: fmt generate lint test
 
 .PHONY: dev
-dev: generate
+dev: generate lint
 	@cd scripts && ./lgtm.sh && \
 	echo '' && \
 	echo '╔═══════════════════════════════════════════════════════════════╗' && \
@@ -43,9 +43,10 @@ dev-port-forward:
 	kubectl --context kind-kubernetes-mixin wait --for=condition=Ready pods -l app=lgtm --timeout=300s
 	kubectl --context kind-kubernetes-mixin port-forward service/lgtm 3000:3000 4317:4317 4318:4318 9090:9090
 
-dev-reload: generate
+dev-reload: clean-alerts clean-rules generate lint
 	@cp -v prometheus_alerts.yaml scripts/provisioning/prometheus/ && \
 	cp -v prometheus_rules.yaml scripts/provisioning/prometheus/ && \
+	kubectl --context kind-kubernetes-mixin apply -f scripts/lgtm.yaml && \
 	kubectl --context kind-kubernetes-mixin rollout restart deployment/lgtm && \
 	echo '╔═══════════════════════════════════════════════════════════════╗' && \
 	echo '║                                                               ║' && \
@@ -58,8 +59,21 @@ dev-reload: generate
 dev-down:
 	kind delete cluster --name kubernetes-mixin
 
+clean-alerts:
+	rm -f prometheus_alerts.yaml
+
+clean-rules:
+	rm -f prometheus_rules.yaml
+
+clean-dashboards:
+	rm -f $(OUT_DIR)/*.json*
+	rm -f $(OUT_DIR)/.dashboards-generated
+
+# Find all libsonnet files recursively in the dashboards directory
+DASHBOARD_SOURCES = $(shell find $(SRC_DIR) -name '*.libsonnet' 2>/dev/null)
+
 .PHONY: generate
-generate: prometheus_alerts.yaml prometheus_rules.yaml $(OUT_DIR)
+generate: prometheus_alerts.yaml prometheus_rules.yaml $(OUT_DIR)/.dashboards-generated
 
 $(JSONNET_VENDOR): $(JB_BIN) jsonnetfile.json
 	$(JB_BIN) install
@@ -82,9 +96,10 @@ prometheus_alerts.yaml: $(JSONNET_BIN) mixin.libsonnet lib/alerts.jsonnet alerts
 prometheus_rules.yaml: $(JSONNET_BIN) mixin.libsonnet lib/rules.jsonnet rules/*.libsonnet
 	@$(JSONNET_BIN) -J vendor -S lib/rules.jsonnet > $@
 
-$(OUT_DIR): $(JSONNET_BIN) $(JSONNET_VENDOR) mixin.libsonnet lib/dashboards.jsonnet $(SRC_DIR)/*.libsonnet
+$(OUT_DIR)/.dashboards-generated: $(JSONNET_BIN) $(JSONNET_VENDOR) mixin.libsonnet lib/dashboards.jsonnet $(DASHBOARD_SOURCES)
 	@mkdir -p $(OUT_DIR)
 	@$(JSONNET_BIN) -J vendor -m $(OUT_DIR) lib/dashboards.jsonnet
+	@touch $@
 
 .PHONY: lint
 lint: jsonnet-lint alerts-lint dashboards-lint vale pint-lint
@@ -99,7 +114,7 @@ alerts-lint: $(PROMTOOL_BIN) prometheus_alerts.yaml prometheus_rules.yaml
 	@$(PROMTOOL_BIN) check rules prometheus_rules.yaml
 	@$(PROMTOOL_BIN) check rules prometheus_alerts.yaml
 
-$(OUT_DIR)/.lint: $(OUT_DIR)
+$(OUT_DIR)/.lint: $(OUT_DIR)/.dashboards-generated
 	@cp .lint $@
 
 .PHONY: dashboards-lint

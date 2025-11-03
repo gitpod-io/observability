@@ -97,7 +97,7 @@ local var = g.dashboard.variable;
         barGauge.new('Current Rate of Bytes Received')
         + barGauge.options.withDisplayMode('basic')
         + barGauge.options.withShowUnfilled(false)
-        + barGauge.standardOptions.withUnit('Bps')
+        + barGauge.standardOptions.withUnit($._config.units.network)
         + barGauge.standardOptions.color.withMode('fixed')
         + barGauge.standardOptions.color.withFixedColor('green')
         + barGauge.queryOptions.withInterval($._config.grafanaK8s.minimumTimeInterval)
@@ -106,7 +106,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_receive_bytes_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -116,7 +116,7 @@ local var = g.dashboard.variable;
         barGauge.new('Current Rate of Bytes Transmitted')
         + barGauge.options.withDisplayMode('basic')
         + barGauge.options.withShowUnfilled(false)
-        + barGauge.standardOptions.withUnit('Bps')
+        + barGauge.standardOptions.withUnit($._config.units.network)
         + barGauge.standardOptions.color.withMode('fixed')
         + barGauge.standardOptions.color.withFixedColor('green')
         + barGauge.queryOptions.withInterval($._config.grafanaK8s.minimumTimeInterval)
@@ -125,7 +125,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_transmit_bytes_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -135,7 +135,7 @@ local var = g.dashboard.variable;
         barGauge.new('Average Rate of Bytes Received')
         + barGauge.options.withDisplayMode('basic')
         + barGauge.options.withShowUnfilled(false)
-        + barGauge.standardOptions.withUnit('Bps')
+        + barGauge.standardOptions.withUnit($._config.units.network)
         + barGauge.standardOptions.color.withMode('fixed')
         + barGauge.standardOptions.color.withFixedColor('green')
         + barGauge.queryOptions.withInterval($._config.grafanaK8s.minimumTimeInterval)
@@ -144,7 +144,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(avg(rate(container_network_receive_bytes_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -154,7 +154,7 @@ local var = g.dashboard.variable;
         barGauge.new('Average Rate of Bytes Transmitted')
         + barGauge.options.withDisplayMode('basic')
         + barGauge.options.withShowUnfilled(false)
-        + barGauge.standardOptions.withUnit('Bps')
+        + barGauge.standardOptions.withUnit($._config.units.network)
         + barGauge.standardOptions.color.withMode('fixed')
         + barGauge.standardOptions.color.withFixedColor('green')
         + barGauge.queryOptions.withInterval($._config.grafanaK8s.minimumTimeInterval)
@@ -163,7 +163,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(avg(rate(container_network_transmit_bytes_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -171,13 +171,13 @@ local var = g.dashboard.variable;
         ]),
 
         tsPanel.new('Receive Bandwidth')
-        + tsPanel.standardOptions.withUnit('binBps')
+        + tsPanel.standardOptions.withUnit($._config.units.network)
         + tsPanel.queryOptions.withTargets([
           prometheus.new(
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_receive_bytes_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -185,13 +185,13 @@ local var = g.dashboard.variable;
         ]),
 
         tsPanel.new('Transmit Bandwidth')
-        + tsPanel.standardOptions.withUnit('binBps')
+        + tsPanel.standardOptions.withUnit($._config.units.network)
         + tsPanel.queryOptions.withTargets([
           prometheus.new(
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_transmit_bytes_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -205,7 +205,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_receive_packets_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -219,7 +219,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_transmit_packets_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -233,7 +233,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_receive_packets_dropped_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
@@ -247,7 +247,7 @@ local var = g.dashboard.variable;
             '${datasource}',
             |||
               sort_desc(sum(rate(container_network_transmit_packets_dropped_total{%(cadvisorSelector)s, %(clusterLabel)s="$cluster",namespace=~"$namespace"}[%(grafanaIntervalVar)s])
-              * on (namespace,pod)
+              * on (%(clusterLabel)s, namespace, pod)
               group_left(workload,workload_type) namespace_workload_pod:kube_pod_owner:relabel{%(clusterLabel)s="$cluster",namespace=~"$namespace", workload=~"$workload", workload_type=~"$type"}) by (pod))
             ||| % $._config
           )
